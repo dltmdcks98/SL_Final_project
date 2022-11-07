@@ -1,0 +1,8 @@
+footer {
+    padding: 50px 0 50px 40px;
+    background: black;
+}
+footer address {
+    padding: 80px;
+    color: white;
+}
