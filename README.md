@@ -3,7 +3,8 @@ SL Final Project
 <hr/>
 
 ## 주제 : Pinterest + 게시판
-[Pintereset](https://www.pinterest.co.kr/)
+[Pintereset](https://www.pinterest.co.kr/)</br>
+<img src="http://www.combridges.com/wp-content/uploads/2012/02/Pinterest.jpg" width="300px" height="200px">
 ### 시나리오  
 
 #### 로그인
