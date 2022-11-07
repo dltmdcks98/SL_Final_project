@@ -3,7 +3,7 @@ SL Final Project
 <hr/>
 
 ## 주제 : Pinterest + 게시판
-
+[Pintereset](https://www.pinterest.co.kr/)
 ### 시나리오  
 
 #### 로그인
