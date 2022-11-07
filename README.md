@@ -28,7 +28,7 @@ SQL
     <th>값</th>
     <tr>
         <td>user_id</td>
-        <td>PrimaryKey</td>
+        <td>INT(10) AUTO_INCREMENT PrimaryKey</td>
     </tr>
     <tr>
         <td>manager</td>
@@ -63,4 +63,109 @@ SQL
 </details>
 </h3>
 
+<h3>
+<details>
+<summary>board</summary>
+<div markdown="1">
+ <table>
+    <th>칼럼</th>
+    <th>값</th>
+    <tr>
+        <td>board_id</td>
+        <td>INT(10) AUTO_INCREMENT PRIMARY KEY </td>
+    </tr>
+    <tr>
+        <td>user_id</td>
+        <td>INT(10) NOT NULL FOREIGN KEY user_account (user_id)</td>
+    </tr>
+    <tr>
+        <td>title</td>
+        <td>VARCHAR(100) NOT NULL</td>
+    </tr>
+    <tr>
+        <td>content</td>
+        <td>TEXT</td>
+    </tr>
+    <tr>
+        <td>hit</td>
+        <td>INT(10) DEFAULT 0</td>
+    </tr>
+    <tr>
+        <td>reg_date</td>
+        <td>DATETIME DEFAULT current_timestamp</td>
+    </tr>
+    <tr>
+        <td>recommend</td>
+        <td>INT(10) DEFAULT 0</td>
+    </tr>
+    <tr>
+        <td>image_url</td>
+        <td>VARCHAR(200)</td>
+    </tr>
+    <tr>
+        <td>tag_id</td>
+        <td>VARCHAR(300)</td>
+    </tr>
+</table>
+</div>
+</details>
+</h3>
+
+<h3>
+<details>
+<summary>comment</summary>
+<div markdown="1">
+ <table>
+    <th>칼럼</th>
+    <th>값</th>
+    <tr>
+        <td>comment_id</td>
+        <td>PrimaryKey INT(10) AUTO INCREMENT</td>
+    </tr>
+    <tr>
+        <td>user_id</td>
+        <td>INT(10) NOT NULL FOREIGN KEY user_account(user_id)</td>
+    </tr>
+    <tr>
+        <td>c_content</td>
+        <td>TEXT</td>
+    </tr>
+    <tr>
+        <td>reg_date</td>
+        <td>DATETIME DEFAULT current_timestamp</td>
+    </tr>
+    <tr>
+        <td>recommend</td>
+        <td>INT(10) DEFAULT 0</td>
+    </tr>
+
+</table>
+</div>
+</details>
+</h3>
+
+<h3>
+<details>
+<summary>tag</summary>
+<div markdown="1">
+ <table>
+    <th>칼럼</th>
+    <th>값</th>
+    <tr>
+        <td>tag_id</td>
+        <td>INT(10) PRIMARY KEY</td>
+    </tr>
+    <tr>
+        <td>tag_value</td>
+        <td>VARCHAR(300)</td>
+    </tr>
+    <tr>
+        <td>reg_date</td>
+        <td>DATE DEFAULT current_timestamp</td>
+    </tr>
+
+</table>
+</div>
+</details>
+</h3>
 
