@@ -1,4 +1,4 @@
-사용자 계정
+## 사용자 계정
 1. user_id Pk 
 2. admin boolean default false
 3. reg_date default
@@ -7,9 +7,9 @@
 6. user_pass 
 7. user_email => 아이디입력칸에 잡는거 
 8. user_sex
+---
 
-
-게시판
+## 게시판
 1. board_id pk
 2. user_id(fk)
 3. title
@@ -19,15 +19,15 @@
 7. recommend default 0
 8. image_url 
 9. tag_id
-
-comment
+---
+## comment
 1. comment_id(pk)
 2. user_id
 3. c_content
 4. regdate
 5. recommend default 0
-
-TAG 
+---
+## TAG 
 1. tag_id
 2. tag_value
 
