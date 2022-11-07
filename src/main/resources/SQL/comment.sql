@@ -9,4 +9,5 @@ CREATE TABLE comment (
      REFERENCES user_account (user_id)
 );
 
+
 DROP TABLE comment;

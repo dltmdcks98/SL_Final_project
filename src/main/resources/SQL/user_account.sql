@@ -9,6 +9,8 @@ CREATE TABLE user_account(
     user_sex VARCHAR(1) NOT NULL,
     CONSTRAINT pk_tbl_user PRIMARY KEY (user_id)
     );
+
+
 DROP TABLE user_account;
 
 

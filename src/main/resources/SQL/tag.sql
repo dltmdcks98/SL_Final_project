@@ -4,4 +4,5 @@ CREATE TABLE tag (
      CONSTRAINT pk_tag PRIMARY KEY (tag_id)
 );
 
+
 DROP TABLE tag;

@@ -13,4 +13,5 @@ CREATE TABLE board(
       REFERENCES user_account (user_id)
 );
 
+
 DROP TABLE board;
