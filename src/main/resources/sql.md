@@ -16,7 +16,7 @@
 4. content (clob)
 5. hit default 0
 6. regdate default sysdate
-7. like default 0
+7. recommend default 0
 8. image_url 
 9. tag_id
 
@@ -25,7 +25,7 @@ comment
 2. user_id
 3. c_content
 4. regdate
-5. like default 0
+5. recommend default 0
 
 TAG 
 1. tag_id
