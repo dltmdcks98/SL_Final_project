@@ -22,7 +22,6 @@ public class DataBaseConfig {
 
     @Value("${local.db.password}")
     private String password;
-
     @Value("${local.db.url}")
     private String url;
 
