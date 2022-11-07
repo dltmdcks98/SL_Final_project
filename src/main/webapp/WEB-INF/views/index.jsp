@@ -4,10 +4,11 @@
 <!doctype html>
 <html lang="ko">
 <head>
-
-    <title>Document</title>
+    <%@ include file="./include/static-head.jsp"%>
 </head>
 <body>
+    <%@ include file="./include/header.jsp"%>
+
 
 </body>
 </html>

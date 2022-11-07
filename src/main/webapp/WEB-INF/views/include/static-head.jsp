@@ -7,5 +7,9 @@
 
 <title>SL Final Project</title>
 
+<!-- reset css -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+
 <!-- header css -->
+<link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/header.css">

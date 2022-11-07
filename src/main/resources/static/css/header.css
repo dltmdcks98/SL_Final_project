@@ -1,3 +1,14 @@
-.inner-header{
-    background: #000;
+/* header style */
+header {
+    background: red;
+    position: fixed;
+    width: 100%;
+    top: 0;
 }
+header .inner-header{
+    background: tomato;
+}
+
+
+
+
