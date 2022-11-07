@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!doctype html>
 <html lang="ko">
@@ -7,6 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-    hiss
+
 </body>
 </html>
