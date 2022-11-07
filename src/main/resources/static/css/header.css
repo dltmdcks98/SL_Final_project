@@ -10,18 +10,33 @@ header {
     left: 0;
 }
 .inner-header {
+    margin: 20px auto;
     float: left;
-}.inner-header .logo{
-
+    width:20%;
 }
+.inner-header .logo{
+    margin-right: 5px;
+}
+
 .intro-text {
-
-}
-.top-list {
+    margin: 30px auto;
+    font-size: 32px;
     float: left;
- }
-.top-list .top-li {
+    width: 15%;
+    color: #ffe7e7;
+}
 
+.top-list {
+    margin: 28px auto;
+    width: 55%;
+    float: left;
+}
+
+.top-list .top-li {
+    float: left;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 17px;
 }
 
 
