@@ -48,7 +48,6 @@ header {
     flex-direction: row-reverse;
     align-content: flex-end;
     justify-content: space-evenly;
-    align-items: center;
 
     background-color: rgba(17, 17, 17, 0.45);
     transition: background-color .55s ease-in-out;

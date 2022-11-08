@@ -43,9 +43,13 @@
             <div class="item__overlay">
                 <button class="js-button btn btn-secondary-outline center-block" data-toggle="modal" data-target="#modalPicture" type="button" value="Expand photo" role="button">Expand photo</button>
             </div>
-
         </a>
-
+        <a href="#" class="grid__item grid__sizer">
+            <img src="http://img.etoday.co.kr/pto_db/2022/06/700/20220621121451_1766835_1056_1500.jpg" alt="Credits to Unsplash.com" />
+            <div class="item__overlay">
+                <button class="js-button btn btn-secondary-outline center-block" data-toggle="modal" data-target="#modalPicture" type="button" value="Expand photo" role="button">Expand photo</button>
+            </div>
+        </a>
     </div>
 </section>
 <!-- Modal -->
