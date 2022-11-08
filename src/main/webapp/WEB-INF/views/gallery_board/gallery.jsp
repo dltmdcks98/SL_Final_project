@@ -19,9 +19,9 @@
             <div class="item__overlay">
                 <button class="js-button btn btn-secondary-outline center-block" data-toggle="modal" data-target="#modalPicture" type="button" value="Expand photo" role="button">Expand photo</button>
             </div>
-            <img src="https://i.ytimg.com/vi/1WlaZXAd1v0/maxresdefault.jpg" alt="Credits to Unsplash.com" />
+<%--            <img src="https://i.ytimg.com/vi/1WlaZXAd1v0/maxresdefault.jpg" alt="Credits to Unsplash.com" />--%>
         </a>
-        <a href="#" class="grid__item">
+<%--        <a href="#" class="grid__item">
             <div class="item__overlay">
                 <button class="js-button btn btn-secondary-outline center-block" data-toggle="modal" data-target="#modalPicture" type="button" value="Expand photo" role="button">Expand photo</button>
             </div>
@@ -50,7 +50,7 @@
             <div class="item__overlay">
                 <button class="js-button btn btn-secondary-outline center-block" data-toggle="modal" data-target="#modalPicture" type="button" value="Expand photo" role="button">Expand photo</button>
             </div>
-        </a>
+        </a>--%>
     </div>
 </section>
 <!-- Modal -->

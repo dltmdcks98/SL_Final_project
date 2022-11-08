@@ -22,4 +22,14 @@
     imagesLoaded( '.grid' ).on( 'progress', function() {
         masonry.layout();
     });
+
+
+       let tag = '아이유';
+       fetch('/gallery/ajax-getImg?tag='+tag)
+           .then(res => res.text())
+           .then(imgList =>{
+               console.log(imgList);
+           });
+
+
 </script>
