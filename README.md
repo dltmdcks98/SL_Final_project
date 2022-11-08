@@ -170,3 +170,12 @@ SQL
 </details>
 </h3>
 <img src="./src/main/resources/static/finaldb.png" height="500px">
+
+## 진행 일지
+<hr/>
+
+
+[notion] (https://dltmdcs98.notion.site/b3a92b16ff804926a80ecd00c3b9e8ec?v=989cdc9463f44658848f5e7dfcd184a8)
+
+
+
