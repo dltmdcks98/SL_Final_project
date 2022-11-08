@@ -74,11 +74,6 @@ header {
 }
 
 
-.grid__item--high,
-.grid__item--high img {
-    height: 480px;
-}
-
 
 img {
     width: 100%;
