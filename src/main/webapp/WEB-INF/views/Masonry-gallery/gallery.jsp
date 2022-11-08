@@ -22,74 +22,27 @@
             <div class="item__overlay">
                 <button class="js-button btn btn-secondary-outline center-block" data-toggle="modal" data-target="#modalPicture" type="button" value="Expand photo" role="button">Expand photo</button>
             </div>
-            <img src="http://ultraimg.com/images/photo-1.jpg" alt="Credits to Unsplash.com" />
+            <img src="https://i.ytimg.com/vi/1WlaZXAd1v0/maxresdefault.jpg" alt="Credits to Unsplash.com" />
         </a>
-        <a href="#" class="grid__item grid__item--high">
+        <a href="#" class="grid__item grid__sizer">
             <div class="item__overlay">
                 <button class="js-button btn btn-secondary-outline center-block" data-toggle="modal" data-target="#modalPicture" type="button" value="Expand photo" role="button">Expand photo</button>
             </div>
-            <img src="http://ultraimg.com/images/photo-2.jpg" alt="Credits to Unsplash.com" />
+            <img src="https://assets.repress.co.kr/photos/2009ea104d2c842fed5461308d9f92d7/original.jpg" alt="Credits to Unsplash.com" />
         </a>
-        <a href="#" class="grid__item">
+        <a href="#" class="grid__item grid__sizer">
             <div class="item__overlay">
                 <button class="js-button btn btn-secondary-outline center-block" data-toggle="modal" data-target="#modalPicture" type="button" value="Expand photo" role="button">Expand photo</button>
             </div>
-            <img src="http://ultraimg.com/images/photo-3.jpg" alt="Credits to Unsplash.com" />
+            <img src="https://t1.daumcdn.net/cfile/tistory/99BCFB485EDEDBAF25" alt="Credits to Unsplash.com" />
         </a>
-        <a href="#" class="grid__item grid__item--high">
+        <a href="#" class="grid__item grid__sizer">
             <div class="item__overlay">
                 <button class="js-button btn btn-secondary-outline center-block" data-toggle="modal" data-target="#modalPicture" type="button" value="Expand photo" role="button">Expand photo</button>
             </div>
-            <img src="http://ultraimg.com/images/photo-43eec3.jpg" alt="Credits to Unsplash.com" />
+             <img src="https://w.namu.la/s/59bbf73b123d0f9f693be3c3de9506b24a1f2a3067b4ffd0207a3a08eee32d750ebf1ca3e33084aa3bbcd6916bd0a8a187cc4556b87fa269c25f1a7ff3ea279f1e372d23aa0a6eee8d5932c70d5dac0ebedb6d926eeb95056849a1b9ea2a54d1ea4c5ebd439ea6d9c1f92d1ef4544ce2" alt="Credits to Unsplash.com" />
         </a>
-        <a href="#" class="grid__item">
-            <div class="item__overlay">
-                <button class="js-button btn btn-secondary-outline center-block" data-toggle="modal" data-target="#modalPicture" type="button" value="Expand photo" role="button">Expand photo</button>
-            </div>
-            <img src="http://ultraimg.com/images/photo-5.jpg" alt="Credits to Unsplash.com" />
-        </a>
-        <a href="#" class="grid__item">
-            <div class="item__overlay">
-                <button class="js-button btn btn-secondary-outline center-block" data-toggle="modal" data-target="#modalPicture" type="button" value="Expand photo" role="button">Expand photo</button>
-            </div>
-            <img src="http://ultraimg.com/images/photo-6.jpg" alt="Credits to Unsplash.com" />
-        </a>
-        <a href="#" class="grid__item">
-            <div class="item__overlay">
-                <button class="js-button btn btn-secondary-outline center-block" data-toggle="modal" data-target="#modalPicture" type="button" value="Expand photo" role="button">Expand photo</button>
-            </div>
-            <img src="http://ultraimg.com/images/photo-7.jpg" alt="Credits to Unsplash.com" />
-        </a>
-        <a href="#" class="grid__item">
-            <div class="item__overlay">
-                <button class="js-button btn btn-secondary-outline center-block" data-toggle="modal" data-target="#modalPicture" type="button" value="Expand photo" role="button">Expand photo</button>
-            </div>
-            <img src="http://ultraimg.com/images/photo-8.jpg" alt="Credits to Unsplash.com" />
-        </a>
-        <a href="#" class="grid__item grid__item--high">
-            <div class="item__overlay">
-                <button class="js-button btn btn-secondary-outline center-block" data-toggle="modal" data-target="#modalPicture" type="button" value="Expand photo" role="button">Expand photo</button>
-            </div>
-            <img src="http://ultraimg.com/images/photo-9.jpg" alt="Credits to Unsplash.com" />
-        </a>
-        <a href="#" class="grid__item">
-            <div class="item__overlay">
-                <button class="js-button btn btn-secondary-outline center-block" data-toggle="modal" data-target="#modalPicture" type="button" value="Expand photo" role="button">Expand photo</button>
-            </div>
-            <img src="http://ultraimg.com/images/photo-10.jpg" alt="Credits to Unsplash.com" />
-        </a>
-        <a href="#" class="grid__item">
-            <div class="item__overlay">
-                <button class="js-button btn btn-secondary-outline center-block" data-toggle="modal" data-target="#modalPicture" type="button" value="Expand photo" role="button">Expand photo</button>
-            </div>
-            <img src="http://ultraimg.com/images/photo-11.jpg" alt="Credits to Unsplash.com" />
-        </a>
-        <a href="#" class="grid__item">
-            <div class="item__overlay">
-                <button class="js-button btn btn-secondary-outline center-block" data-toggle="modal" data-target="#modalPicture" type="button" value="Expand photo" role="button">Expand photo</button>
-            </div>
-            <img src="http://ultraimg.com/images/photo-12.jpg" alt="Credits to Unsplash.com" />
-        </a>
+
     </div>
 </section>
 <!-- Modal -->
