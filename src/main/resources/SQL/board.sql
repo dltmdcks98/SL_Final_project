@@ -9,9 +9,13 @@ CREATE TABLE board(
       image_url VARCHAR(200),
       tag_id VARCHAR(300),
       CONSTRAINT pk_board PRIMARY KEY (board_id),
-      CONSTRAINT board FOREIGN KEY (user_id)
+      CONSTRAINT fk_board_user_account FOREIGN KEY (user_id)
       REFERENCES user_account (user_id)
 );
+
+ALTER TABLE board ADD CONSTRAINT fk_board_user_account FOREIGN KEY (user_id)
+    REFERENCES user_account(user_id)
+    ON DELETE CASCADE;
 
 
 DROP TABLE board;
