@@ -58,12 +58,13 @@ header {
 .item__overlay:focus > button, .item__overlay:hover > button {
     opacity: 1;
 }
-
+.grid{
+    width: 85%;
+    margin: 0 auto;
+}
 .grid__sizer,
 .grid__item {
-    position: relative;
-    width: 20%;
-    min-width: 16.25rem;
+    width: 23%;
 }
 
 .grid__item {
@@ -83,6 +84,7 @@ img {
     width: 100%;
     max-width: 100%;
     height: auto;
+    display: block;
 }
 
 /**
