@@ -59,3 +59,4 @@
 <script src="/scripts/toast/jquery.toast.min.js" defer></script>
 <script src="/js/demo.js" defer></script>
 <script src="/js/e-magz.js" defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
