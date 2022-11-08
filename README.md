@@ -1,66 +1,13 @@
-SL Final Project
-=========
-<hr/>
 
-## 주제 : Pinterest + 게시판
+핀터레스트의 문제들
 
-### 시나리오  
-
-#### 로그인
-1. 첫 화면에 관심사들을 기반으로 검색한 이미지들 출력
-2. TopBar(글로보기, 마이페이지(태그 편집), 로그아웃)
-3. 글로 보기 클릭시 일반적인 게시판으로 전환(TopBar-> 자유게시판(등록일 순 나열+인기글나열),나의 관심사)
-4. 글 상세 조회시 태그들을 개인 정보에 추가
-
-
-#### 비로그인
-1. 인기글들의 사진들을 출력
-2. 향후 추가 기능 : 카테고리를 기반으로 글 사진 추천 및 검색
-
-SQL
-=====
-<h3>
-<details>
-<summary>user_account</summary>
-<div markdown="1">
- <table>
-    <th>칼럼</th>
-    <th>값</th>
-    <tr>
-        <td>user_id</td>
-        <td>PrimaryKey</td>
-    </tr>
-    <tr>
-        <td>manager</td>
-        <td>VARCHAR(1) NOTNULL DEFAULT 'N'</td>
-    </tr>
-    <tr>
-        <td>reg_date</td>
-        <td>DATE DEFAULT current_timestamp</td>
-    </tr>
-    <tr>
-        <td>user_birth</td>
-        <td>DATE</td>
-    </tr>
-    <tr>
-        <td>user_name</td>
-        <td>VARCHAR(50) NOTNULL </td>
-    </tr>
-    <tr>
-        <td>user_pass</td>
-        <td>VARCHAR(150) NOTNULL</td>
-    </tr>
-    <tr>
-        <td>user_email</td>
-        <td>VARCHAR(100) NOTNULL</td>
-    </tr>
-    <tr>
-        <td>user_sex</td>
-        <td>VARCHAR(1) NOT NULL</td>
-    </tr>
-</table>
-</div>
-</details>
-</h3>
-
+1. 회원가입을 하지않는 경우 이용하지 못한다
+   - 가입하지않아도 이용할 수 있게 풀어주고 가입자는 본인이 원하는 카테고리들을 지정할 수 있고,
+     자주 봤던 카테고리들을 중심으로 화면에 자동적으로 나오게 해줌
+   
+2. 이미지 저작권 문제
+    - 관리자 재량이 될거같다(코딩으로는 해결이 안될문제 같음)
+   
+3. 악성코드 문제
+    - 이미지 url에 악성코드가 있을 경우 어떻게 처리해야되는지
 
