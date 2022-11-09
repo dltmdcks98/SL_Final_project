@@ -9,6 +9,54 @@
     <%@ include file="./include/static-head.jsp" %>
 
 </head>
+<style>
+    @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+    .tableList {
+        font-family: 'Jeju Gothic', sans-serif;
+        width: 100%;
+        border-bottom: 1px solid #29367c;
+        border-collapse: collapse;
+
+    }
+
+    tbody tr:hover {
+        background-color: #F1EFEF;
+    }
+
+    thead tr {
+        display: table-row;
+        border-style: groove hidden;
+        border-color: #81F7D8;
+    }
+
+    thead th {
+        font-weight: bold;
+    }
+
+    tbody tr {
+        border-color: #E7E6E6;
+        border: 1px;
+        border-style: groove hidden;
+    }
+
+    tbody td {
+        font-size: 15px;
+        font-weight: 1;
+    }
+th{
+    text-align: center;
+}
+    td {
+        text-align: center;
+    }
+
+    .title {
+        text-align: left;
+    }
+
+
+</style>
 <body class="skin-orange">
     <%@ include file="./include/header.jsp"%>
     <!-- main begin -->
@@ -17,216 +65,110 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-sm-12 col-xs-12">
-                    <div class="headline">
-                        <div class="nav" id="headline-nav">
-                            <a class="left carousel-control" role="button" data-slide="prev">
-                                <span class="ion-ios-arrow-left" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="right carousel-control" role="button" data-slide="next">
-                                <span class="ion-ios-arrow-right" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-                        <div class="owl-carousel owl-theme" id="headline">
-                            <div class="item">
-                                <a href="#"><div class="badge">Tip!</div> Vestibulum ante ipsum primis in faucibus orci</a>
-                            </div>
-                            <div class="item">
-                                <a href="#">Ut rutrum sodales mauris ut suscipit</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="owl-carousel owl-theme slide" id="featured">
-                        <div class="item">
-                            <article class="featured">
-                                <div class="overlay"></div>
-                                <figure>
-                                    <img src="images/news/img04.jpg" alt="Sample Article">
-                                </figure>
-                                <div class="details">
-                                    <div class="category"><a href="category.html">Computer</a></div>
-                                    <h1><a href="single.html">Phasellus iaculis quam sed est elementum vel ornare ligula venenatis</a></h1>
-                                    <div class="time">December 26, 2016</div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="item">
-                            <article class="featured">
-                                <div class="overlay"></div>
-                                <figure>
-                                    <img src="images/news/img14.jpg" alt="Sample Article">
-                                </figure>
-                                <div class="details">
-                                    <div class="category"><a href="category.html">Travel</a></div>
-                                    <h1><a href="single.html">Class aptent taciti sociosqu ad litora torquent per conubia nostra</a></h1>
-                                    <div class="time">December 10, 2016</div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="item">
-                            <article class="featured">
-                                <div class="overlay"></div>
-                                <figure>
-                                    <img src="images/news/img13.jpg" alt="Sample Article">
-                                </figure>
-                                <div class="details">
-                                    <div class="category"><a href="category.html">International</a></div>
-                                    <h1><a href="single.html">Maecenas accumsan tortor ut velit pharetra mollis</a></h1>
-                                    <div class="time">October 12, 2016</div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="item">
-                            <article class="featured">
-                                <div class="overlay"></div>
-                                <figure>
-                                    <img src="images/news/img05.jpg" alt="Sample Article">
-                                </figure>
-                                <div class="details">
-                                    <div class="category"><a href="category.html">Lifestyle</a></div>
-                                    <h1><a href="single.html">Mauris elementum libero at pharetra auctor Fusce ullamcorper elit</a></h1>
-                                    <div class="time">November 27, 2016</div>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
+
+<br><br><br><br>
+
                     <div class="line">
-                        <div>Latest News</div>
+
+                        <div><a href="/board">인기글</a></div>
+
                     </div>
+
+
                     <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+
                             <div class="row">
-                                <article class="article col-md-12">
-                                    <div class="inner">
-                                        <figure>
-                                            <a href="single.html">
-                                                <img src="images/news/img10.jpg" alt="Sample Article">
-                                            </a>
-                                        </figure>
-                                        <div class="padding">
-                                            <div class="detail">
-                                                <div class="time">December 10, 2016</div>
-                                                <div class="category"><a href="category.html">Healthy</a></div>
-                                            </div>
-                                            <h2><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                                            <footer>
-                                                <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1263</div></a>
-                                                <a class="btn btn-primary more" href="single.html">
-                                                    <div>More</div>
-                                                    <div><i class="ion-ios-arrow-thin-right"></i></div>
-                                                </a>
-                                            </footer>
-                                        </div>
-                                    </div>
-                                </article>
-                                <article class="article col-md-12">
-                                    <div class="inner">
-                                        <figure>
-                                            <a href="single.html">
-                                                <img src="images/news/img06.jpg" alt="Sample Article">
-                                            </a>
-                                        </figure>
-                                        <div class="padding">
-                                            <div class="detail">
-                                                <div class="time">December 22, 2016</div>
-                                                <div class="category"><a href="category.html">Healthy</a></div>
-                                            </div>
-                                            <h2><a href="single.html">Exercitation ullamco laboris nisi ut aliquip</a></h2>
-                                            <p>Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat sollicitudin ut est. In fringilla dui dui.</p>
-                                            <footer>
-                                                <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>327</div></a>
-                                                <a class="btn btn-primary more" href="single.html">
-                                                    <div>More</div>
-                                                    <div><i class="ion-ios-arrow-thin-right"></i></div>
-                                                </a>
-                                            </footer>
-                                        </div>
-                                    </div>
-                                </article>
+                                <div class="tableWrapper">
+                                    <table class="tableList">
+                                        <thead class="thead">
+                                        <tr>
+                                            <th>번호</th>
+                                            <th>제목</th>
+                                            <th>글쓴이</th>
+                                            <th>작성일</th>
+                                            <th>조회</th>
+                                            <th>추천</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        <tr>
+                                            <td>132131</td>
+                                            <td class="title">갤 오늘이 첨이라 물어볼라고...</td>
+
+                                            <td>ㅇㅇ</td>
+                                            <td>16:03</td>
+                                            <td>23</td>
+                                            <td>2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>132130</td>
+                                            <td class="title">뉴비 진로 질문</td>
+                                            <td>뉴우비</td>
+                                            <td>16:02</td>
+                                            <td>11</td>
+                                            <td>1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>132129</td>
+                                            <td class="title">메인 페이지 헤카테 못바꿈?</td>
+                                            <td>ㅇㅇ</td>
+                                            <td>16:01</td>
+                                            <td>686</td>
+                                            <td>123</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>1129</td>
+                                            <td class="title">메인 페이ㄷㅈㄱㄷㄱ지 헤카테 못바꿈?</td>
+                                            <td>ㅇㅈㄷㅈㅂㅇ</td>
+                                            <td>16:01</td>
+                                            <td>686</td>
+                                            <td>123</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>22</td>
+                                            <td class="title">대충 제목</td>
+                                            <td>작성자임ㅋ</td>
+                                            <td>15:22</td>
+                                            <td>1111</td>
+                                            <td>1</td>
+                                        </tr>
+
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
                             </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="row">
-                                <article class="article col-md-12">
-                                    <div class="inner">
-                                        <figure>
-                                            <a href="single.html">
-                                                <img src="images/news/img05.jpg" alt="Sample Article">
-                                            </a>
-                                        </figure>
-                                        <div class="padding">
-                                            <div class="detail">
-                                                <div class="time">December 09, 2016</div>
-                                                <div class="category"><a href="category.html">Lifestyle</a></div>
-                                            </div>
-                                            <h2><a href="single.html">Mauris elementum libero at pharetra auctor</a></h2>
-                                            <p>Vivamus in efficitur mi. Nullam semper justo ut elit lacinia lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
-                                            <footer>
-                                                <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1083</div></a>
-                                                <a class="btn btn-primary more" href="single.html">
-                                                    <div>More</div>
-                                                    <div><i class="ion-ios-arrow-thin-right"></i></div>
-                                                </a>
-                                            </footer>
-                                        </div>
-                                    </div>
-                                </article>
-                                <article class="article col-md-12">
-                                    <div class="inner">
-                                        <figure>
-                                            <a href="single.html">
-                                                <img src="images/news/img07.jpg" alt="Sample Article">
-                                            </a>
-                                        </figure>
-                                        <div class="padding">
-                                            <div class="detail">
-                                                <div class="time">December 21, 2016</div>
-                                                <div class="category"><a href="category.html">Sport</a></div>
-                                            </div>
-                                            <h2><a href="single.html">Sed do eiusmod tempor incididunt ut labore</a></h2>
-                                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris elementum libero at pharetra auctor.</p>
-                                            <footer>
-                                                <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>980</div></a>
-                                                <a class="btn btn-primary more" href="single.html">
-                                                    <div>More</div>
-                                                    <div><i class="ion-ios-arrow-thin-right"></i></div>
-                                                </a>
-                                            </footer>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
+
+
                     </div>
-                    <div class="banner">
-                        <a href="#">
-                            <img src="images/ads.png" alt="Sample Article">
-                        </a>
-                    </div>
+
+
+
+
                     <div class="line transparent little"></div>
                     <div class="row">
                         <div class="col-md-6 col-sm-6 trending-tags">
-                            <h1 class="title-col">Trending Tags</h1>
+                            <h1 class="title-col">인기 관심사</h1>
                             <div class="body-col">
                                 <ol class="tags-list">
-                                    <li><a href="#">HTML5</a></li>
-                                    <li><a href="#">CSS3</a></li>
-                                    <li><a href="#">JavaScript</a></li>
-                                    <li><a href="#">jQuery</a></li>
-                                    <li><a href="#">Bootstrap</a></li>
-                                    <li><a href="#">Responsive</a></li>
-                                    <li><a href="#">AuteIrure</a></li>
-                                    <li><a href="#">Voluptate</a></li>
-                                    <li><a href="#">Veit</a></li>
-                                    <li><a href="#">Reprehenderit</a></li>
+                                    <li><a href="#">아이유</a></li>
+                                    <li><a href="#">롤</a></li>
+                                    <li><a href="#">피파</a></li>
+                                    <li><a href="#">이쁜사진</a></li>
+                                    <li><a href="#">배경사진</a></li>
+                                    <li><a href="#">뭐시기뭐시기</a></li>
+
                                 </ol>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <h1 class="title-col">
-                                Hot News
+                                HOT 게시물
                                 <div class="carousel-nav" id="hot-news-nav">
                                     <div class="prev">
                                         <i class="ion-ios-arrow-left"></i>
@@ -237,102 +179,35 @@
                                 </div>
                             </h1>
                             <div class="body-col vertical-slider" data-max="4" data-nav="#hot-news-nav" data-item="article">
-                                <article class="article-mini">
-                                    <div class="inner">
-                                        <figure>
-                                            <a href="single.html">
-                                                <img src="images/news/img09.jpg" alt="Sample Article">
-                                            </a>
-                                        </figure>
-                                        <div class="padding">
-                                            <h1><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
-                                            <div class="detail">
-                                                <div class="category"><a href="category.html">Lifestyle</a></div>
-                                                <div class="time">December 22, 2016</div>
-                                            </div>
-                                        </div>
+
+
+                                    <div class="tableWrapper">
+                                        <table class="tableList">
+                                          <tbody>
+                                            <tr>
+                                                <td class="title">여자 인증욤ㅋ [1823]</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td class="title">뉴비 진로 질문 [32] </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="title">이거 뽑았는데 좋은건가요? [231]</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="title">(ㅎㅂ) 헉...뒷태..! [999]</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="title">대충 조회수, 댓글 많은 글 [12313]</td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
                                     </div>
-                                </article>
-                                <article class="article-mini">
-                                    <div class="inner">
-                                        <figure>
-                                            <a href="single.html">
-                                                <img src="images/news/img01.jpg" alt="Sample Article">
-                                            </a>
-                                        </figure>
-                                        <div class="padding">
-                                            <h1><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
-                                            <div class="detail">
-                                                <div class="category"><a href="category.html">Lifestyle</a></div>
-                                                <div class="time">December 22, 2016</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                                <article class="article-mini">
-                                    <div class="inner">
-                                        <figure>
-                                            <a href="single.html">
-                                                <img src="images/news/img05.jpg" alt="Sample Article">
-                                            </a>
-                                        </figure>
-                                        <div class="padding">
-                                            <h1><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
-                                            <div class="detail">
-                                                <div class="category"><a href="category.html">Lifestyle</a></div>
-                                                <div class="time">December 22, 2016</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                                <article class="article-mini">
-                                    <div class="inner">
-                                        <figure>
-                                            <a href="single.html">
-                                                <img src="images/news/img02.jpg" alt="Sample Article">
-                                            </a>
-                                        </figure>
-                                        <div class="padding">
-                                            <h1><a href="single.html">Fusce ullamcorper elit at felis cursus suscipit</a></h1>
-                                            <div class="detail">
-                                                <div class="category"><a href="category.html">Travel</a></div>
-                                                <div class="time">December 21, 2016</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                                <article class="article-mini">
-                                    <div class="inner">
-                                        <figure>
-                                            <a href="single.html">
-                                                <img src="images/news/img13.jpg" alt="Sample Article">
-                                            </a>
-                                        </figure>
-                                        <div class="padding">
-                                            <h1><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
-                                            <div class="detail">
-                                                <div class="category"><a href="category.html">International</a></div>
-                                                <div class="time">December 20, 2016</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                                <article class="article-mini">
-                                    <div class="inner">
-                                        <figure>
-                                            <a href="single.html">
-                                                <img src="images/news/img08.jpg" alt="Sample Article">
-                                            </a>
-                                        </figure>
-                                        <div class="padding">
-                                            <h1><a href="single.html">Aliquam et metus convallis tincidunt velit ut rhoncus dolor</a></h1>
-                                            <div class="detail">
-                                                <div class="category"><a href="category.html">Computer</a></div>
-                                                <div class="time">December 19, 2016</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
+
+
                             </div>
                         </div>
                     </div>

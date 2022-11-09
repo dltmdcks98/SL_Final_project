@@ -12,7 +12,12 @@ public class HomeController {
 
     @GetMapping("/board")
     public String board(){
-        return "board/board";
+        return "board";
+    }
+
+    @GetMapping("/gallery")
+    public String gallery(){
+        return "Masonry-gallery/gallery";
     }
 
 

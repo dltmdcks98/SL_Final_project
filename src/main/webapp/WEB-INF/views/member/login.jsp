@@ -16,20 +16,20 @@
                     <h4>Login</h4>
                     <form>
                         <div class="form-group">
-                            <label>Username</label>
+                            <label>이메일</label>
                             <input type="text" name="username" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label class="fw">Password
-                                <a href="forgot.html" class="pull-right">Forgot Password?</a>
+                            <label class="fw">비밀번호
+                                <a href="forgot.html" class="pull-right">비밀번호를 잊으셨나요?</a>
                             </label>
                             <input type="password" name="password" class="form-control">
                         </div>
                         <div class="form-group text-right">
-                            <button class="btn btn-primary btn-block">Login</button>
+                            <a href="/admin/loginn"> 로그인</a>
                         </div>
                         <div class="form-group text-center">
-                            <span class="text-muted">Don't have an account?</span> <a href="register.html">Create one</a>
+                            <span class="text-muted">계정이 없으신가요?</span> <a href="register">회원가입</a>
                         </div>
                         <div class="title-line">
                             or
@@ -46,5 +46,20 @@
 <%@include file="../include/footer.jsp"%>
 <!-- End Footer -->
 
+<!-- JS -->
+
+
+<script src="js/jquery.js"></script>
+<script src="js/jquery.migrate.js"></script>
+<script src="scripts/bootstrap/bootstrap.min.js"></script>
+<script>var $target_end=$(".best-of-the-week");</script>
+<script src="scripts/jquery-number/jquery.number.min.js"></script>
+<script src="scripts/owlcarousel/dist/owl.carousel.min.js"></script>
+<script src="scripts/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+<script src="scripts/easescroll/jquery.easeScroll.js"></script>
+<script src="scripts/sweetalert/dist/sweetalert.min.js"></script>
+<script src="scripts/toast/jquery.toast.min.js"></script>
+<script src="js/demo.js"></script>
+<script src="js/e-magz.js"></script>
 </body>
 </html>
