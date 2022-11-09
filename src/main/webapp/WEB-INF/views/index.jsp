@@ -69,7 +69,9 @@ th{
 <br><br><br><br>
 
                     <div class="line">
-                        <div>인기글</div>
+
+                        <div><a href="/board">인기글</a></div>
+
                     </div>
 
 
@@ -93,6 +95,7 @@ th{
                                         <tr>
                                             <td>132131</td>
                                             <td class="title">갤 오늘이 첨이라 물어볼라고...</td>
+
                                             <td>ㅇㅇ</td>
                                             <td>16:03</td>
                                             <td>23</td>

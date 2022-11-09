@@ -10,6 +10,8 @@ CREATE TABLE user_account(
     CONSTRAINT pk_tbl_user PRIMARY KEY (user_id)
     );
 
+select *from user_account;
+
 
 DROP TABLE user_account;
 

@@ -39,8 +39,8 @@
                 </div>
                 <div class="col-md-3 col-sm-12 text-right">
                     <ul class="nav-icons">
-                        <li><a href="register.html"><i class="ion-person-add"></i><div>Register</div></a></li>
-                        <li><a href="login.html"><i class="ion-person"></i><div>Login</div></a></li>
+                        <li><a href="/register"><i class="ion-person-add"></i><div>회원가입</div></a></li>
+                        <li><a href="/login"><i class="ion-person"></i><div>로그인</div></a></li>
                     </ul>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                 <ul class="nav-list">
                     <li class="for-tablet nav-title"><a>Menu</a></li>
                     <li class="for-tablet"><a href="login.html">Login</a></li>
-                    <li class="for-tablet"><a href="register.html">Register</a></li>
+                    <li class="for-tablet"><a href="../member/register.jsp">Register</a></li>
                     <li><a href="category.html">Standard</a></li>
                     <li class="dropdown magz-dropdown">
                         <a href="category.html">Pages <i class="ion-ios-arrow-right"></i></a>
@@ -75,7 +75,7 @@
                                 <a href="#">Authentication <i class="ion-ios-arrow-right"></i></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="login.html">Login</a></li>
-                                    <li><a href="register.html">Register</a></li>
+                                    <li><a href="../member/register.jsp">Register</a></li>
                                     <li><a href="forgot.html">Forgot Password</a></li>
                                     <li><a href="reset.html">Reset Password</a></li>
                                 </ul>

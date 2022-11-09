@@ -19,4 +19,6 @@ public class HomeController {
     public String gallery(){
         return "Masonry-gallery/gallery";
     }
+
+
 }
