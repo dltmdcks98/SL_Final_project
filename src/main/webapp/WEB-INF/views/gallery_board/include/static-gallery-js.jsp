@@ -23,8 +23,6 @@
         masonry.layout();
     });
 
-    const url = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyDR5HP1XN77UbnmTX9YFQowSvjW5Lz-YxU&cx=c0eb2a35954e0499f&q='
-    let tag = '아이유';
 
     // fetch(url + tag)
     //     .then(res => res.json())

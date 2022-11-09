@@ -24,7 +24,9 @@ public class GalleryBoardService {
 
         try {
             Connection.Response res = Jsoup.connect(
-                    "https://www.googleapis.com/customsearch/v1?key=AIzaSyDR5HP1XN77UbnmTX9YFQowSvjW5Lz-YxU&cx=c0eb2a35954e0499f&imageType=face&searchType=image&imageSize=MEDIUM&q=" + name).ignoreContentType(true).userAgent("Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36").execute();
+                    "https://www.googleapis.com/customsearch/v1?key=AIzaSyDR5HP1XN77UbnmTX9YFQowSvjW5Lz-YxU&cx=c0eb2a35954e0499f&imageType=face&searchType=image&imageSize=MEDIUM&q=" + name)
+                    .ignoreContentType(true).userAgent("Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36")
+                    .execute();
 
             JSONObject json = new JSONObject(res.body());
             JSONArray items = json.getJSONArray("items");
