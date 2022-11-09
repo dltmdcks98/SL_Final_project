@@ -17,7 +17,7 @@
         <div class="grid__sizer"></div>
         <a href="#" class="grid__item">
             <div class="item__overlay">
-                <button class="js-button btn btn-secondary-outline center-block" data-toggle="modal" data-target="#modalPicture" type="button" value="Expand photo" role="button">Expand photo</button>
+                <button class="js-button btn btn-secondary-outline center-block" data-toggle="modal" data-target="#modalPicture" type="button" value="Expand photo">Expand photo</button>
             </div>
 <%--            <img src="https://i.ytimg.com/vi/1WlaZXAd1v0/maxresdefault.jpg" alt="Credits to Unsplash.com" />--%>
         </a>

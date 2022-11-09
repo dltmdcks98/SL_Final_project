@@ -18,6 +18,7 @@ import java.util.List;
 public class GalleryBoardService {
 
     public List<String> getImgUrl(String tag) {
+        log.info("GalleryBoardService 진입, tag내용 : " +tag);
         String name=tag;
 
         List<String> imageUrl = new ArrayList<>();
@@ -37,7 +38,7 @@ public class GalleryBoardService {
 //                JSONArray metatags = pagemap.getJSONArray("metatags");
 //                JSONObject metaData = metatags.getJSONObject(0);
 //                String url = metaData.getString("og:image");
-                System.out.println("no : "+i +" url :"+ url);
+                log.info("no : "+i +" url :"+ url);
                 imageUrl.add(url);
             }
 

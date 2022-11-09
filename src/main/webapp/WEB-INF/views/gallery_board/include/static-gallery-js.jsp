@@ -24,17 +24,34 @@
     });
 
 
-    // fetch(url + tag)
-    //     .then(res => res.json())
-    //     .then(items => {
-    //         let itemList = items.items;
-    //         console.log(itemList[1].pagemap);
-    //     console.log(itemList[0].pagemap.cse_image[0].src);
-    //         for(let i=1; i<itemList.length; i++){
-    //             console.log(items.items[i].pagemap.metatags);
-    //         }
-    //
-    //     });
+    const $grid = document.querySelector('.gird');
+
+    fetch('/ajax-gallery')
+        .then(res => res.json())
+        .then(urlList => {
+            console.log(urlList);
+            for(let i in urlList.length){
+                const $a = document.createElement('a');
+                $a.setAttribute('href','#');
+                $a.classList.add('grid__item');
+                $grid.append($a);
+
+                const $div = document.createElement('div');
+                $div.classList.add('item__overlay');
+                $a.append($div);
+
+                const $button = document.createElement('button');
+                $button.classList.add('js-button','btn','secondary-outline','center-block');
+                $button.dataset.toggle = 'modal';
+                $button.dataset.target='#modalPicture';
+                $button.type='button';
+                $button.value='Expand photo';
+                $div.append($button);
+
+                const $img =document.createElement('img');
+                $img.setAttribute('src',urlList[i]);
+            }
+        });
 
 
 </script>
