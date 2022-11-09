@@ -127,20 +127,20 @@
 <div>
     <table>
         <thead>
-            <tr>
-                <th>인기글들</th>
-            </tr>
+        <tr>
+            <th>인기글들</th>
+        </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>ㅁㄴㅇㄴㅁㅇㅁㄴ</td>
-            </tr>
-            <tr>
-                <td>ㅁㄴㅇㄴㅁㅇㅁㄴ</td>
-            </tr>
-            <tr>
-                <td>ㅁㄴㅇㄴㅁㅇㅁㄴ</td>
-            </tr>
+        <tr>
+            <td>ㅁㄴㅇㄴㅁㅇㅁㄴ</td>
+        </tr>
+        <tr>
+            <td>ㅁㄴㅇㄴㅁㅇㅁㄴ</td>
+        </tr>
+        <tr>
+            <td>ㅁㄴㅇㄴㅁㅇㅁㄴ</td>
+        </tr>
         </tbody>
     </table>
 

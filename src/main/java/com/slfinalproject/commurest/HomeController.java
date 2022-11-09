@@ -15,4 +15,8 @@ public class HomeController {
         return "board";
     }
 
+    @GetMapping("/gallery")
+    public String gallery(){
+        return "Masonry-gallery/gallery";
+    }
 }
