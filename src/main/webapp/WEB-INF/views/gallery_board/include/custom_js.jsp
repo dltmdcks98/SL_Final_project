@@ -19,18 +19,20 @@
         .then(res => res.json())
         .then(urlList => {
             // console.log(urlList); url 전달 확인
-            let elems = [];
-            let fragment = document.createDocumentFragment();
+            // let elems = [];
+            const fragment = document.createDocumentFragment();
             for (let i = 0; i < urlList.length; i++) {
                 const item = createItem(urlList[i]);
                 console.log(item);
 
                 fragment.appendChild(item);
-                elems.push(item);
+                // elems.push(item);
+                // $grid.appendChild(item);
+                // masonry.appended(item);
             }
-            console.log(elems);
+            // console.log(elems);
             $grid.appendChild(fragment);
-            masonry.appended(elems);
+            masonry.appended($grid);
         });
 
 

@@ -61,7 +61,7 @@ public class GalleryBoardService {
     public List<String> getImgUrls(String tag, int startpage){
         List<String> urls = new ArrayList<>();
         String str = "";
-        for( int num = startpage; num <startpage+3; num++){ //검색 시작 페이지
+        for( int num = startpage; num <startpage+1; num++){ //검색 시작 페이지
             List<String> temp = getImgUrl(tag,num);
             for(int j=0; j<10; j++){ //검색 결과 list 분해
                 str = temp.get(j);
