@@ -20,12 +20,7 @@ public class GalleryRestController {
     private final GalleryBoardService galleryBoardService;
     @GetMapping("")
     public List<String> getUrl(){
-
-        String tag = "아이유";
-        List<String> urlList = galleryBoardService.getImgUrl(tag);
-        log.info("URL List : "+urlList + getClass().getName());
-
-        return urlList;
+        return galleryBoardService.getImgUrls("아이유",0);
     }
 
 }

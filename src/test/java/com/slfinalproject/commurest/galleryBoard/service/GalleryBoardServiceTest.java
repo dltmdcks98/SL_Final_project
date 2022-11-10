@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
@@ -17,8 +18,19 @@ class GalleryBoardServiceTest {
     @Test
     @DisplayName("검색결과 출력 조회")
     void getimglist(){
-        List<String> result = service.getImgUrl("아이유");
+        List<String> result = new ArrayList<>();
+        String str = "";
+
+        for(int i=0; i<3; i++){ //검색 시작 페이지
+            for(int j=0; j<10; j++){ //검색 결과 list 분해
+                str = service.getImgUrl("아이유",i).get(j);
+                result.add(str);
+            }
+        }
+
+
         for(String url:result) System.out.println(url);
+
         Assertions.assertNotNull(result);
 
 

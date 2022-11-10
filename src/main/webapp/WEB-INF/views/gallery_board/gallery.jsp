@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src=""></script>
     <%@include file="include/static-head-gallery.jsp"%>
 
 
@@ -11,7 +10,7 @@
 <body>
 <section class="container-fluid gallery bg-faded">
     <header>
-        <h1 class="text-center">Masonry Gallery</h1>
+        <h1 class="text-center">CommuRest</h1>
     </header>
     <div class="grid">
         <div class="grid__sizer"></div>
