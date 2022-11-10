@@ -95,11 +95,13 @@
     }
     document.addEventListener('scroll', e =>{
         const scrollPosition = document.documentElement.scrollTop;
-        if(scrollPosition >200){
-            setImg(1);
+        if(scrollPosition > 200){
+            setImg(3);
             return;
         }else if(scrollPosition > 500){
-            setImg(2);
+            setImg(4);
+            return;
+        }else{
             return;
         }
 
@@ -108,6 +110,7 @@
 
     (function(){
         setImg(0);
+        setImg(1);
 
     }());
 </script>
