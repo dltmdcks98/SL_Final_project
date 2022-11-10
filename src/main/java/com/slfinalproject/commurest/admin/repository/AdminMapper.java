@@ -16,7 +16,7 @@ public interface AdminMapper {
     boolean update(Admin admin);
 
     // 회원 검색
-    public Admin selectOne(String user_email);
+    public Admin selectOne(String admin);
 
 
 }

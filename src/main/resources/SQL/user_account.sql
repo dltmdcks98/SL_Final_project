@@ -10,6 +10,13 @@ CREATE TABLE user_account(
     CONSTRAINT pk_tbl_user PRIMARY KEY (user_id)
     );
 
+#매니저 타입 크기를 1->50으로 늘림
+alter table user_account modify manager varchar(50);
+
+# 매니저 초기값을 N -> ROLE_admin 으로 바꿈
+alter table user_account alter column manager set default 'ROLE_ADMIN';
+
+
 select *from user_account;
 
 

@@ -22,7 +22,7 @@
         WHERE user_id=#{user_id}
     </update>
     <select id = "selectOne"  resultType="com.slfinalproject.commurest.admin.domain.Admin">
-        SELECT user_email from user_account where user_email=#{user_email}
+        SELECT * from user_account where user_email=#{user_email}
     </select>
 
 </mapper>

@@ -14,7 +14,7 @@
             <div class="box box-border">
                 <div class="box-body">
                     <h4>Login</h4>
-                    <form>
+                    <form method="POST" action="/admin/login">
                         <div class="form-group">
                             <label>이메일</label>
 
@@ -24,14 +24,12 @@
                         <div class="form-group">
                             <label>비밀번호</label>
 
-
                                 <a href="forgot.html" class="pull-right">비밀번호를 잊으셨나요?</a>
                             </label>
                             <input type="password" name="user_pass" class="form-control">
                         </div>
                         <div class="form-group text-right">
-<%--                            <a href="/admin/loginn" > 로그인</a>--%>
-                                    <input type="button" value="로그인" >
+                            <button name="submit" class="btn btn-block btn-primary text-light">로그인</button>
 
                         </div>
                         <div class="form-group text-center">
@@ -53,32 +51,7 @@
 <!-- End Footer -->
 
 <!-- JS -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-    $(function(){
-        $($("input[type='button']")[0]).click(function(){
-            //로그인 post요청 (body 실어서 옮겨야, 노출되지 않음.)
-            $.ajax({
-                url:"/admin/loginn",
-                type:"post",
-                data:{
-                    user_email:$("input[name='user_email']").val(),
-                    user_pass:$("input[name='user_pass']").val()
-                },
-                success:function(result, status, xhr){
-                    console.log(result);
-                    if(result=="1"){
-                        //관리자 모드 메인 페이지로 들어갈 수 있게 해주자!!
-                        location.href="/";
 
-                    }else{
-                        alert("로그인 정보가 올바르지 않습니다.");
-                    }
-                }
-            });
-        });
-
-    });
 </script>
 
 <script src="js/jquery.js"></script>
