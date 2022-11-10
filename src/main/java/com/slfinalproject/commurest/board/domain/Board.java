@@ -1,4 +1,4 @@
-package com.slfinalproject.board.domain;
+package com.slfinalproject.commurest.board.domain;
 
 
 import lombok.*;
@@ -12,8 +12,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Board {
-    private int boardNo;
-//    private user_account user_id;
+   private int boardNo;
+//   private user_account user_id;
    private String title;
    private String content;
    private int hit;

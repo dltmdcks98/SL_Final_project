@@ -1,5 +1,5 @@
 CREATE TABLE board(
-      board_id INT(10) AUTO_INCREMENT,
+      board_no INT(10) AUTO_INCREMENT,
       user_id INT(10) NOT NULL,
       title VARCHAR(100) NOT NULL,
       content TEXT,
@@ -8,7 +8,7 @@ CREATE TABLE board(
       recommend INT(10) DEFAULT 0,
       image_url VARCHAR(200),
       tag_id VARCHAR(300),
-      CONSTRAINT pk_board PRIMARY KEY (board_id),
+      CONSTRAINT pk_board PRIMARY KEY (board_no),
       CONSTRAINT fk_board_user_account FOREIGN KEY (user_id)
       REFERENCES user_account (user_id)
 );
@@ -19,3 +19,4 @@ ALTER TABLE board ADD CONSTRAINT fk_board_user_account FOREIGN KEY (user_id)
 
 
 DROP TABLE board;
+ALTER  TABLE board RENAME COLUMN board_id TO board_no;
