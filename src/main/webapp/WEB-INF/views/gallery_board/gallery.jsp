@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+    <script src=""></script>
     <%@include file="include/static-head-gallery.jsp"%>
 
 
@@ -15,12 +15,6 @@
     </header>
     <div class="grid">
         <div class="grid__sizer"></div>
-        <a href="#" class="grid__item">
-            <div class="item__overlay">
-                <button class="js-button btn btn-secondary-outline center-block" data-toggle="modal" data-target="#modalPicture" type="button" value="Expand photo">Expand photo</button>
-            </div>
-            <img src="https://i.ytimg.com/vi/1WlaZXAd1v0/maxresdefault.jpg" alt="Credits to Unsplash.com" />
-        </a>
     </div>
 </section>
 <!-- Modal -->
@@ -53,7 +47,6 @@
         </div>
     </div>
 </div>
-
-<%@include file="include/static-gallery-js.jsp"%>
 </body>
+<%@include file="include/custom_js.jsp"%>
 </html>
