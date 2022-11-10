@@ -32,10 +32,10 @@ public class GalleryBoardService {
         int start = num;
         String imageSize = "medium";
         List<String> imageUrl = new ArrayList<>();
-
+        String searchUrl = "https://www.googleapis.com/customsearch/v1?key="+API+"&cx="+domain+"&imageType=face&searchType=image&imageSize="+imageSize+"&q=" + name+"&start="+(start*10+1);
         try {
             Connection.Response res = Jsoup.connect(
-                    "https://www.googleapis.com/customsearch/v1?key="+API+"&cx="+domain+"&imageType=face&searchType=image&imageSize="+imageSize+"&q=" + name+"&start="+(start*10+1))
+                            searchUrl)
                     .ignoreContentType(true).userAgent("Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36")
                     .execute();
 
@@ -61,7 +61,7 @@ public class GalleryBoardService {
     public List<String> getImgUrls(String tag, int startpage){
         List<String> urls = new ArrayList<>();
         String str = "";
-        for( int num = startpage; num <startpage+1; num++){ //검색 시작 페이지
+        for( int num = startpage; num <startpage+3; num++){ //검색 시작 페이지 초기 30개
             List<String> temp = getImgUrl(tag,num);
             for(int j=0; j<10; j++){ //검색 결과 list 분해
                 str = temp.get(j);
