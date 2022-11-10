@@ -19,8 +19,11 @@ public class GalleryRestController {
 
     private final GalleryBoardService galleryBoardService;
     @GetMapping("")
-    public List<String> getUrl(){
-        return galleryBoardService.getImgUrls("아이유",0);
+    public List<String> getUrl(int num){
+        int size=10;
+        if(num==0) size=10;
+        log.info("RestController num :"+num+" size :"+size);
+        return galleryBoardService.getImgUrls("아이유",num,size);
     }
 
 }

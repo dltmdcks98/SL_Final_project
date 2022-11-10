@@ -47,5 +47,6 @@
     </div>
 </div>
 </body>
+
 <%@include file="include/custom_js.jsp"%>
 </html>

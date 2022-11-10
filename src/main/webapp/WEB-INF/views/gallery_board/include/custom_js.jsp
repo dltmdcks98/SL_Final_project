@@ -1,41 +1,52 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
 <script>
     const $grid = document.querySelector('.grid');
-    const masonry = new Masonry('.grid', {
+/*    const $masonry = $('.grid').masonry({
         columnWidth: '.grid__sizer',
         itemSelector: '.grid__item',
         percentPosition: true,
         gutter: 20
+    });*/
+
+    const $masonry =$('.grid').masonry({
+            columnWidth: '.grid__sizer',
+            itemSelector: '.grid__item',
+            percentPosition: true,
+            gutter: 20
     });
-    //이미지 로딩이 안될시 나오는 함수
-    imagesLoaded('.grid').on('progress', function () {
-        masonry.layout();
-    });
+
+    function setImg(num){
+
+        fetch('/ajax-gallery?num='+num)
+            .then(res => res.json())
+            .then(urlList => {
+                const elems = [];
+                const fragment = document.createDocumentFragment();
+                for (let i = 0; i < urlList.length; i++) {
+                    let item = createItem(urlList[i]);
+                    console.log(item);
+
+                    fragment.appendChild(item);
+                    elems.push( item );
+                }
+                // $grid.appendChild(fragment);
+                const $elems = $(elems);
+                $masonry.append($elems).masonry('appended', $elems);
 
 
-    fetch('/ajax-gallery')
-        .then(res => res.json())
-        .then(urlList => {
 
-            const fragment = document.createDocumentFragment();
-            for (let i = 0; i < urlList.length; i++) {
-                const item = createItem(urlList[i]);
-                console.log(item);
 
-                fragment.appendChild(item);
+            });
+    }
 
-            }
-
-            $grid.appendChild(fragment);
-            masonry.appended($grid);
-        });
 
 
     // Image replacement handler
     $(document).on("click", ".js-button", function() {
-        var imageSrc = $(this).parents(".grid__item").find("img").attr("src");
+        const imageSrc = $(this).parents(".grid__item").find("img").attr("src");
         $(".js-download").attr("href", imageSrc);
         $(".js-modal-image").attr("src", imageSrc);
         $(document).on("click", ".js-heart", function() {
@@ -47,6 +58,7 @@
     function createItem(url){
         const $a = document.createElement('a');
         $a.setAttribute('href', '#');
+
         $a.classList.add('grid__item');
         // $('.grid').append($a);
 
@@ -70,4 +82,32 @@
         return $a;
     }
 
+    function scrollGetImage(scrollTop){
+        switch (scrollTop) {
+            case scrollTop>200:
+                setImg(2);
+                break;
+            case scrollTop>500:
+                setImg(3);
+                break;
+            default:break;
+        }
+    }
+    document.addEventListener('scroll', e =>{
+        const scrollPosition = document.documentElement.scrollTop;
+        if(scrollPosition >200){
+            setImg(1);
+            return;
+        }else if(scrollPosition > 500){
+            setImg(2);
+            return;
+        }
+
+        console.log(scrollPosition,e.deltaY);
+    });
+
+    (function(){
+        setImg(0);
+
+    }());
 </script>
