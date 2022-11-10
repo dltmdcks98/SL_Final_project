@@ -19,8 +19,8 @@ public class AdminService {
        return adminMapper.regist(admin);
     }
 
-    public Admin selectOne(Admin admin){
-        return adminMapper.selectOne(admin);
+    public Admin selectOne(String user_email){
+        return adminMapper.selectOne(user_email);
     }
 
 
