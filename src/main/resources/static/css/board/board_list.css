@@ -1,0 +1,69 @@
+body {
+    font-size: 18px;
+    background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+    background: linear-gradient(to right, #25c481, #25b7c4);
+}
+section{
+    margin: 150px;
+}
+table {
+    margin-left: auto; margin-right: auto;
+}
+.board-list th:nth-child(1), th:nth-child(5), th:nth-child(6) {
+    width: 5%;
+}
+.board-list th:nth-child(2), th:nth-child(4) {
+    width: 10%;
+}
+.board-list th:nth-child(3) {
+    width: 20%;
+}
+
+.board-list {
+    width: 80%;
+    margin: 55px auto 0;
+}
+.page {
+    margin-top: 30px;
+    margin-left: auto; margin-right: auto;
+    padding-bottom: 15px;
+}
+
+
+.search {
+    display:flex;
+    position: relative;
+    margin-left: 200px;
+}
+.search .form-select {
+    width: 70px;
+    height: 40px;
+    display:flex;
+    margin-left: 250px;
+    position: relative;
+    float: left;
+}
+.search .form-controller {
+    width: 450px;
+    height: 40px;
+    display:flex;
+    position: relative;
+    float: left;
+}
+.search .btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    position: relative;
+    float: left;
+}
+
+.btn-write {
+    text-decoration: none;
+    margin: auto 245px;
+    float:right;
+}
+.btn-write:hover {
+    background: #c4e6f5;
+}
+
