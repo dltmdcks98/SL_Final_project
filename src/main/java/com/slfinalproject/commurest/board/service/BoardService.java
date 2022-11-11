@@ -3,7 +3,7 @@ package com.slfinalproject.commurest.board.service;
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.repository.BoardMapper;
 import com.slfinalproject.util.paging.Page;
-import com.slfinalproject.util.search.Search;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
@@ -12,50 +12,31 @@ import java.util.List;
 import java.util.Map;
 
 @Service @Log4j2
+@RequiredArgsConstructor
 public class BoardService {
-    private BoardMapper boardMapper;
+    private final BoardMapper boardMapper;
 
-    public boolean saveService(Board board) {
-        boolean flag = boardMapper.save(board);
-        return flag;
+    // 게시글 등록
+    public boolean insertService(Board board) {
+
+        return boardMapper.insert(board);
     }
 
-    // 게시물 전체 조회 요청 중간 처리
+    // 게시글 전체 조회
     public List<Board> findAllService() {
-        log.info("findAll service start");
-        List<Board> boardList = boardMapper.selectAll();
-
-
-        return boardList;
+        return boardMapper.selectAll();
     }
 
-    // 게시물 전체 조회 요청 중간 처리 with paging --> 페이징이 밑의 searching에 포함되있어서 지워도됨
-    public Map<String, Object> findAllService(Page page) {
-        log.info("findAll service start");
+    // 게시물 전체 조회 요청 페이징
+    public Map<String, Object> PagingService(Page page) {
 
         Map<String, Object> findDataMap = new HashMap<>();
 
-        List<Board> boardList = boardMapper.selectAll(page);
-
-
+        List<Board> boardList = boardMapper.Paging(page);
         findDataMap.put("bList", boardList);
-
-
+        findDataMap.put("tc", boardMapper.getTotalCount());
         return findDataMap;
     }
 
-    // 게시물 전체 조회 요청 중간 처리 with searching
-    public Map<String, Object> SelectAll(Search search) {
-        log.info("findAll service start");
 
-        Map<String, Object> findDataMap = new HashMap<>();
-
-        List<Board> boardList = boardMapper.selectAll(search);
-
-
-        findDataMap.put("bList", boardList);
-
-
-        return findDataMap;
-    }
 }

@@ -23,19 +23,19 @@
                         <th>작성자</th>
                         <th>제목</th>
                         <th>작성일</th>
-                        <th>조회</th>
+                        <th>조회수</th>
                         <th>추천수</th>
                     </tr>
-                    <c:forEach var="b" items="${bList}">
+                    <c:forEach var="bList" items="${bList}">
                         <tr>
-                            <td>${boardNo}</td>
-                            <td>사용자이름</td>
-                            <td>${title}</td>
-                            <td>${regDate}</td>
-                            <td>${hit}</td>
-                            <td>${recommend}</td>
+                            <td>${bList.boardNo}</td>
+                            <td>${bList.userId}</td>
+                            <td>${bList.title}</td>
+                            <td>${bList.regDate}</td>
+                            <td>${bList.hit}</td>
+                            <td>${bList.recommend}</td>
                         </tr>
-                    </c:forEach>>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>
@@ -43,23 +43,13 @@
                 <nav class="page">
                     <ul class="pagination pagination-lg pagination-custom">
 
-<%--                        <c:if test="${pm.prev}">--%>
-<%--                            <li class="page-item">--%>
-<%--                                <a class="page-link" href="/board/list?pageNum=${pm.beginPage - 1}&amount=${pm.page.amount}">prev</a>--%>
-<%--                            </li>--%>
-<%--                        </c:if>--%>
 
                         <c:forEach var="n" begin="${1}" end="${10}" step="1">
                             <li data-page-num="${n}" class="page-item">
-                                <a class="page-link" href="/board/list?pageNum=${n}&amount=${pm.page.amount}">${n}</a>
+                                <a class="page-link" href="#">${n}</a>
                             </li>
                         </c:forEach>
 
-<%--                        <c:if test="${pm.next}">--%>
-<%--                            <li class="page-item">--%>
-<%--                                <a class="page-link" href="/board/list?pageNum=${pm.endPage + 1}&amount=${pm.page.amount}">next</a>--%>
-<%--                            </li>--%>
-<%--                        </c:if>--%>
 
                     </ul>
                 </nav>
@@ -70,7 +60,7 @@
             <!-- 글쓰기 버튼 -->
 
             <div class="search">
-                <form action="/board/list" method="get">
+                <form action="/board" method="get">
 
 
                     <select class="form-select" name="type" id="search-type">

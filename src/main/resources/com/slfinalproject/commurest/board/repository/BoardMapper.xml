@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.slfinalproject.commurest.board.repository.BoardMapper">
+
     <resultMap id="boardMap" type="com.slfinalproject.commurest.board.domain.Board">
         <result property="boardNo" column="board_no"/>
         <result property="hit" column="hit"/>
@@ -10,17 +11,17 @@
         <result property="recommend" column="recommend"/>
     </resultMap>
 
-    <insert id="save">
+    <insert id="insert">
         INSERT INTO board
-        (writer, title, content, account)
-        VALUES (#{writer}, #{title}, #{content}, #{account})
+        (user_id, title, content)
+        VALUES (#{userId}, #{title}, #{content})
     </insert>
 
-    <select id="selectAll" resultType="boardMap">
-        select * from board
+    <select id="selectAll" resultMap="boardMap">
+        SELECT * FROM board ORDER BY board_no DESC
     </select>
 
-    <select id="selectOne">
+    <select id="selectOne" resultMap="boardMap">
         select * from board where board_no = # {boardNo}
     </select>
 
