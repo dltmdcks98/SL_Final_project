@@ -38,6 +38,9 @@ dependencies {
 
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 
+	implementation 'org.json:json:20220924'
+	implementation 'org.jsoup:jsoup:1.15.3'
+
 
 }
 

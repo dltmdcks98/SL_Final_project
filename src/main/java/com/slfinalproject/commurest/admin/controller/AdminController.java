@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 
 @Controller
 @RequiredArgsConstructor
@@ -45,6 +47,18 @@ public class AdminController {
     @GetMapping("/accessDenied_page")
     public String access(){
         return "member/accessDenied_page";
+    }
+
+    @GetMapping ("/logout")
+    public String logout(HttpSession s){
+        log.info("/logout GET!");
+        s.invalidate();
+        return "redirect:/";
+    }
+    @PostMapping("/logout")
+    public String logout(){
+        log.info("/logout POST!");
+        return "redirect:/";
     }
 
 }

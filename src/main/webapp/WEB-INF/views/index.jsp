@@ -66,7 +66,7 @@ th{
             <div class="row">
                 <div class="col-md-8 col-sm-12 col-xs-12">
 
-<br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
 
                     <div class="line">
 
@@ -219,7 +219,7 @@ th{
                             <div class="inner">
                                 <figure>
                                     <a href="single.html">
-                                        <img src="images/news/img11.jpg" alt="Sample Article">
+                                        <img src="img/news/img11.jpg" alt="Sample Article">
                                     </a>
                                 </figure>
                                 <div class="details">
@@ -250,7 +250,7 @@ th{
                                 </div>
                                 <figure>
                                     <a href="single.html">
-                                        <img src="images/news/img02.jpg" alt="Sample Article">
+                                        <img src="img/news/img02.jpg" alt="Sample Article">
                                     </a>
                                 </figure>
                                 <div class="details">
@@ -278,7 +278,7 @@ th{
                             <div class="inner">
                                 <figure>
                                     <a href="single.html">
-                                        <img src="images/news/img03.jpg" alt="Sample Article">
+                                        <img src="img/news/img03.jpg" alt="Sample Article">
                                     </a>
                                 </figure>
                                 <div class="details">
@@ -306,7 +306,7 @@ th{
                             <div class="inner">
                                 <figure>
                                     <a href="single.html">
-                                        <img src="images/news/img09.jpg" alt="Sample Article">
+                                        <img src="img/news/img09.jpg" alt="Sample Article">
                                     </a>
                                 </figure>
                                 <div class="details">
@@ -338,13 +338,13 @@ th{
                         <div class="aside-body">
                             <div class="featured-author">
                                 <div class="featured-author-inner">
-                                    <div class="featured-author-cover" style="background-image: url('images/news/img15.jpg');">
+                                    <div class="featured-author-cover" style="background-image: url('static/img/news/img15.jpg');">
                                         <div class="badges">
                                             <div class="badge-item"><i class="ion-star"></i> Featured</div>
                                         </div>
                                         <div class="featured-author-center">
                                             <figure class="featured-author-picture">
-                                                <img src="images/img01.jpg" alt="Sample Article">
+                                                <img src="img/img01.jpg" alt="Sample Article">
                                             </figure>
                                             <div class="featured-author-info">
                                                 <h2 class="name">John Doe</h2>
@@ -382,15 +382,15 @@ th{
                                             <h2 class="block-title">Photos</h2>
                                             <div class="block-body">
                                                 <ul class="item-list-round" data-magnific="gallery">
-                                                    <li><a href="images/news/img06.jpg" style="background-image: url('images/news/img06.jpg');"></a></li>
-                                                    <li><a href="images/news/img07.jpg" style="background-image: url('images/news/img07.jpg');"></a></li>
-                                                    <li><a href="images/news/img08.jpg" style="background-image: url('images/news/img08.jpg');"></a></li>
-                                                    <li><a href="images/news/img09.jpg" style="background-image: url('images/news/img09.jpg');"></a></li>
-                                                    <li><a href="images/news/img10.jpg" style="background-image: url('images/news/img10.jpg');"></a></li>
-                                                    <li><a href="images/news/img11.jpg" style="background-image: url('images/news/img11.jpg');"></a></li>
-                                                    <li><a href="images/news/img12.jpg" style="background-image: url('images/news/img12.jpg');"><div class="more">+2</div></a></li>
-                                                    <li class="hidden"><a href="images/news/img13.jpg" style="background-image: url('images/news/img13.jpg');"></a></li>
-                                                    <li class="hidden"><a href="images/news/img14.jpg" style="background-image: url('images/news/img14.jpg');"></a></li>
+                                                    <li><a href="img/news/img06.jpg" style="background-image: url('static/img/news/img06.jpg');"></a></li>
+                                                    <li><a href="img/news/img07.jpg" style="background-image: url('static/img/news/img07.jpg');"></a></li>
+                                                    <li><a href="img/news/img08.jpg" style="background-image: url('static/img/news/img08.jpg');"></a></li>
+                                                    <li><a href="img/news/img09.jpg" style="background-image: url('static/img/news/img09.jpg');"></a></li>
+                                                    <li><a href="img/news/img10.jpg" style="background-image: url('static/img/news/img10.jpg');"></a></li>
+                                                    <li><a href="img/news/img11.jpg" style="background-image: url('static/img/news/img11.jpg');"></a></li>
+                                                    <li><a href="img/news/img12.jpg" style="background-image: url('static/img/news/img12.jpg');"><div class="more">+2</div></a></li>
+                                                    <li class="hidden"><a href="img/news/img13.jpg" style="background-image: url('static/img/news/img13.jpg');"></a></li>
+                                                    <li class="hidden"><a href="img/news/img14.jpg" style="background-image: url('static/img/news/img14.jpg');"></a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -409,7 +409,7 @@ th{
                                 <div class="inner">
                                     <figure>
                                         <a href="single.html">
-                                            <img src="images/news/img07.jpg" alt="Sample Article">
+                                            <img src="img/news/img07.jpg" alt="Sample Article">
                                         </a>
                                     </figure>
                                     <div class="padding">
@@ -421,7 +421,7 @@ th{
                                 <div class="inner">
                                     <figure>
                                         <a href="single.html">
-                                            <img src="images/news/img14.jpg" alt="Sample Article">
+                                            <img src="img/news/img14.jpg" alt="Sample Article">
                                         </a>
                                     </figure>
                                     <div class="padding">
@@ -433,7 +433,7 @@ th{
                                 <div class="inner">
                                     <figure>
                                         <a href="single.html">
-                                            <img src="images/news/img09.jpg" alt="Sample Article">
+                                            <img src="img/news/img09.jpg" alt="Sample Article">
                                         </a>
                                     </figure>
                                     <div class="padding">
@@ -445,7 +445,7 @@ th{
                                 <div class="inner">
                                     <figure>
                                         <a href="single.html">
-                                            <img src="images/news/img11.jpg" alt="Sample Article">
+                                            <img src="img/news/img11.jpg" alt="Sample Article">
                                         </a>
                                     </figure>
                                     <div class="padding">
@@ -457,7 +457,7 @@ th{
                                 <div class="inner">
                                     <figure>
                                         <a href="single.html">
-                                            <img src="images/news/img06.jpg" alt="Sample Article">
+                                            <img src="img/news/img06.jpg" alt="Sample Article">
                                         </a>
                                     </figure>
                                     <div class="padding">
@@ -469,7 +469,7 @@ th{
                                 <div class="inner">
                                     <figure>
                                         <a href="single.html">
-                                            <img src="images/news/img03.jpg" alt="Sample Article">
+                                            <img src="img/news/img03.jpg" alt="Sample Article">
                                         </a>
                                     </figure>
                                     <div class="padding">
@@ -515,7 +515,7 @@ th{
                                     <div class="inner">
                                         <figure>
                                             <a href="single.html">
-                                                <img src="images/news/img16.jpg" alt="Sample Article">
+                                                <img src="img/news/img16.jpg" alt="Sample Article">
                                             </a>
                                         </figure>
                                         <div class="details">
@@ -535,7 +535,7 @@ th{
                                     <div class="inner">
                                         <figure>
                                             <a href="single.html">
-                                                <img src="images/news/img05.jpg" alt="Sample Article">
+                                                <img src="img/news/img05.jpg" alt="Sample Article">
                                             </a>
                                         </figure>
                                         <div class="padding">
@@ -551,7 +551,7 @@ th{
                                     <div class="inner">
                                         <figure>
                                             <a href="single.html">
-                                                <img src="images/news/img02.jpg" alt="Sample Article">
+                                                <img src="img/news/img02.jpg" alt="Sample Article">
                                             </a>
                                         </figure>
                                         <div class="padding">
@@ -567,7 +567,7 @@ th{
                                     <div class="inner">
                                         <figure>
                                             <a href="single.html">
-                                                <img src="images/news/img10.jpg" alt="Sample Article">
+                                                <img src="img/news/img10.jpg" alt="Sample Article">
                                             </a>
                                         </figure>
                                         <div class="padding">
@@ -585,7 +585,7 @@ th{
                                     <div class="item">
                                         <div class="user">
                                             <figure>
-                                                <img src="images/img01.jpg" alt="User Picture">
+                                                <img src="img/img01.jpg" alt="User Picture">
                                             </figure>
                                             <div class="details">
                                                 <h5 class="name">Mark Otto</h5>
@@ -599,7 +599,7 @@ th{
                                     <div class="item">
                                         <div class="user">
                                             <figure>
-                                                <img src="images/img01.jpg" alt="User Picture">
+                                                <img src="img/img01.jpg" alt="User Picture">
                                             </figure>
                                             <div class="details">
                                                 <h5 class="name">Mark Otto</h5>
@@ -613,7 +613,7 @@ th{
                                     <div class="item">
                                         <div class="user">
                                             <figure>
-                                                <img src="images/img01.jpg" alt="User Picture">
+                                                <img src="img/img01.jpg" alt="User Picture">
                                             </figure>
                                             <div class="details">
                                                 <h5 class="name">Mark Otto</h5>
@@ -649,22 +649,22 @@ th{
                             <ul class="sponsored">
                                 <li>
                                     <a href="#">
-                                        <img src="images/sponsored.png" alt="Sponsored">
+                                        <img src="img/sponsored.png" alt="Sponsored">
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="images/sponsored.png" alt="Sponsored">
+                                        <img src="img/sponsored.png" alt="Sponsored">
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="images/sponsored.png" alt="Sponsored">
+                                        <img src="img/sponsored.png" alt="Sponsored">
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="images/sponsored.png" alt="Sponsored">
+                                        <img src="img/sponsored.png" alt="Sponsored">
                                     </a>
                                 </li>
                             </ul>
@@ -692,7 +692,7 @@ th{
                     <div class="inner">
                         <figure>
                             <a href="single.html">
-                                <img src="images/news/img03.jpg" alt="Sample Article">
+                                <img src="img/news/img03.jpg" alt="Sample Article">
                             </a>
                         </figure>
                         <div class="padding">
@@ -709,7 +709,7 @@ th{
                     <div class="inner">
                         <figure>
                             <a href="single.html">
-                                <img src="images/news/img16.jpg" alt="Sample Article">
+                                <img src="img/news/img16.jpg" alt="Sample Article">
                             </a>
                         </figure>
                         <div class="padding">
@@ -726,7 +726,7 @@ th{
                     <div class="inner">
                         <figure>
                             <a href="single.html">
-                                <img src="images/news/img15.jpg" alt="Sample Article">
+                                <img src="img/news/img15.jpg" alt="Sample Article">
                             </a>
                         </figure>
                         <div class="padding">
@@ -743,7 +743,7 @@ th{
                     <div class="inner">
                         <figure>
                             <a href="single.html">
-                                <img src="images/news/img14.jpg" alt="Sample Article">
+                                <img src="img/news/img14.jpg" alt="Sample Article">
                             </a>
                         </figure>
                         <div class="padding">
@@ -760,7 +760,7 @@ th{
                     <div class="inner">
                         <figure>
                             <a href="single.html">
-                                <img src="images/news/img01.jpg" alt="Sample Article">
+                                <img src="img/news/img01.jpg" alt="Sample Article">
                             </a>
                         </figure>
                         <div class="padding">
@@ -777,7 +777,7 @@ th{
                     <div class="inner">
                         <figure>
                             <a href="single.html">
-                                <img src="images/news/img11.jpg" alt="Sample Article">
+                                <img src="img/news/img11.jpg" alt="Sample Article">
                             </a>
                         </figure>
                         <div class="padding">

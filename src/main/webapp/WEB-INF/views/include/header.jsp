@@ -41,6 +41,7 @@
                     <ul class="nav-icons">
                         <li><a href="/register"><i class="ion-person-add"></i><div>회원가입</div></a></li>
                         <li><a href="/login"><i class="ion-person"></i><div>로그인</div></a></li>
+                        <li><a href="/logout"><i class="ion-person"></i><div>로그아웃</div></a></li>
                     </ul>
                 </div>
             </div>
