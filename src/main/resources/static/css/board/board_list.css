@@ -1,4 +1,4 @@
-body{
+body {
     font-size: 18px;
     background: -webkit-linear-gradient(left, #25c481, #25b7c4);
     background: linear-gradient(to right, #25c481, #25b7c4);
@@ -21,7 +21,7 @@ table {
 
 .board-list {
     width: 80%;
-    margin: 100px auto 0;
+    margin: 55px auto 0;
 }
 .page {
     margin-top: 30px;
@@ -31,26 +31,39 @@ table {
 
 
 .search {
+    display:flex;
     position: relative;
-    margin-left: 155px;
+    margin-left: 200px;
 }
 .search .form-select {
+    width: 70px;
+    height: 40px;
+    display:flex;
     margin-left: 250px;
     position: relative;
     float: left;
 }
 .search .form-controller {
-
+    width: 450px;
+    height: 40px;
+    display:flex;
     position: relative;
     float: left;
-    width: 30%;
 }
 .search .btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
     position: relative;
     float: left;
 }
 
 .btn-write {
+    text-decoration: none;
     margin: auto 245px;
     float:right;
 }
+.btn-write:hover {
+    background: #c4e6f5;
+}
+

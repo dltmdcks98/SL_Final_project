@@ -1,5 +1,10 @@
 package com.slfinalproject.util.paging;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter @Setter @ToString
 public class PageMaker {
 
     // 한번에 나올 페이지 수 (1~10페이지)
@@ -17,7 +22,7 @@ public class PageMaker {
     // 총 게시물 수
     private int totalPage;
 
-    public PageMaker(Page page) {
+    public PageMaker(Page page, int totalPage) {
         this.page=page;
         this.totalPage=totalPage;
         PageInit();
