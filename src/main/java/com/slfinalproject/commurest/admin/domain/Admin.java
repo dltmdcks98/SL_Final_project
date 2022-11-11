@@ -43,23 +43,23 @@ public class Admin implements UserDetails {
     }
 
     @Override
-    public boolean isAccountNonExpired() {
-        return this.isAccountNonExpired;
+    public boolean isAccountNonExpired() { // 계정 만료 여부
+        return true;
     }
 
     @Override
-    public boolean isAccountNonLocked() {
-        return this.isAccountNonLocked;
+    public boolean isAccountNonLocked() { // 계정 잠김 여부
+        return true;
     }
 
     @Override
-    public boolean isCredentialsNonExpired() {
-        return this.isCredentialIsNonExpired;
+    public boolean isCredentialsNonExpired() { // 비밀번호 만료 여부
+        return true;
     }
 
     @Override
-    public boolean isEnabled() {
-        return this.isEnabled;
+    public boolean isEnabled() { // 사용자 활성화 여부
+        return true;
     }
 
 
