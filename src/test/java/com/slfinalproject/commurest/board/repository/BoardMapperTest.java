@@ -22,8 +22,10 @@ class BoardMapperTest {
 
         for(int i=1; i<110; i++) {
             board = new Board();
-            board.setTitle("test");
-            mapper.save(board);
+            board.setTitle("test"+i);
+            board.setUserId(i);
+            board.setContent("내용"+i);
+            mapper.insert(board);
 
         }
     }
