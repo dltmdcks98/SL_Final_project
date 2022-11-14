@@ -26,18 +26,18 @@
                 const elems = [];
                 const fragment = document.createDocumentFragment();
                 for (let i = 0; i < urlList.length; i++) {
-                    let item = createItem(urlList[i]);
+                    const item = createItem(urlList[i]);
                     console.log(item);
 
-                    fragment.appendChild(item);
-                    elems.push( item );
+                    const $item = $(item);
+                    $masonry.append($item).masonry('appended',$item);
+
+                    // fragment.appendChild(item);
+                    // elems.push( item );
                 }
-                // $grid.appendChild(fragment);
-                const $elems = $(elems);
-                $masonry.append($elems).masonry('appended', $elems);
 
-
-
+                // const $elems = $(elems);
+                // $masonry.append($elems).masonry('appended', $elems);
 
             });
     }
@@ -54,10 +54,19 @@
         });
     });
 
+    const $btn_test = document.querySelector('#btn_test');
+    $btn_test.addEventListener('click',()=>{
+        let elems = [ setImg(1),setImg(2),setImg(3) ];
+
+        // make jQuery object
+        var $elems = $( elems );
+        $masonry.append( $elems ).masonry( 'appended', $elems );
+    });
 
     function createItem(url){
         const $a = document.createElement('a');
         $a.setAttribute('href', '#');
+        $a.setAttribute('style','display:block');
 
         $a.classList.add('grid__item');
         // $('.grid').append($a);
@@ -95,22 +104,13 @@
     }
     document.addEventListener('scroll', e =>{
         const scrollPosition = document.documentElement.scrollTop;
-        if(scrollPosition > 200){
-            setImg(3);
-            return;
-        }else if(scrollPosition > 500){
-            setImg(4);
-            return;
-        }else{
-            return;
-        }
-
-        console.log(scrollPosition,e.deltaY);
+        const gridHieht = $grid.clientHeight;
+        console.log(scrollPosition,e.deltaY,gridHieht);
     });
 
     (function(){
         setImg(0);
-        setImg(1);
+        // setImg(1);
 
     }());
 </script>

@@ -20,8 +20,8 @@ public class GalleryRestController {
     private final GalleryBoardService galleryBoardService;
     @GetMapping("")
     public List<String> getUrl(int num){
-        int size=10;
-        if(num==0) size=10;
+        int size=5;
+        if(num==0)size=10;
         log.info("RestController num :"+num+" size :"+size);
         return galleryBoardService.getImgUrls("아이유",num,size);
     }
