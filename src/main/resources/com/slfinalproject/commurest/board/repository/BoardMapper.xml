@@ -22,8 +22,9 @@
     </select>
 
     <select id="selectOne" resultMap="boardMap">
-        select * from board where board_no = # {boardNo}
+        select * from board where board_no = #{boardNo}
     </select>
+
 
 
 </mapper>

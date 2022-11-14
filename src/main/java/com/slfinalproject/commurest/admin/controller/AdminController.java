@@ -6,9 +6,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 
 
 @Controller
@@ -24,9 +26,6 @@ public class AdminController {
     @PostMapping("/admin/regist")
     public String regist(Admin admin){
         log.info("/admin/regist POST - param: {}", admin);
-        // 비밀번호 암호화 처리
-//        String hashedValue = hashManager.getConvertedPassword(admin.getUser_pass());
-   //     admin.setUser_pass(hashedValue);
 
         adminService.regist(admin);
         return "redirect:/";
@@ -36,6 +35,7 @@ public class AdminController {
     // 로그인페이지
     @GetMapping("/login")
     public String login(){
+
         return "member/login";
     }
     // 회원가입 페이지
