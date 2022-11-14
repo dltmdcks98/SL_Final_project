@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +13,8 @@
     <header>
         <h1 class="text-center">CommuRest</h1>
     </header>
-    <button id="btn_test">test</button>
     <div class="grid">
-        <div class="grid__sizer"></div>
+        <div class="grid-sizer"></div>
     </div>
 </section>
 

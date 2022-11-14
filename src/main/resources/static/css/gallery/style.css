@@ -63,19 +63,22 @@ header {
     margin: 0 auto;
 }
 
+.grid:after {
+    content: '';
+    display: block;
+    clear: both;
+}
 
-.grid__sizer,
-.grid__item {
+.grid-sizer,
+.grid-item {
     width: 23%;
 }
 
-.grid__item {
+.grid-item {
     margin-bottom: .9375rem;
     border-radius: 0.25rem;
     overflow: hidden;
 }
-
-
 
 img {
     width: 100%;
@@ -87,9 +90,6 @@ img {
 /**
  * Link styles
  */
-a{
-    display: block;
-}
 
 a,
 .fa {
