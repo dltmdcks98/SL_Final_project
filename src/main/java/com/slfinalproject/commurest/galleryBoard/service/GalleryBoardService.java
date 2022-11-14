@@ -26,13 +26,14 @@ public class GalleryBoardService {
 
 
 
-    public List<String> getImgUrl(String tag,int num) {
+    public List<String> getImgUrl(String tag,int num,int size) {
         log.info("GalleryBoardService 진입, tag내용 : " +tag);
         String name=tag;
         int start = num;
         String imageSize = "medium";
         List<String> imageUrl = new ArrayList<>();
-        String searchUrl = "https://www.googleapis.com/customsearch/v1?key="+API+"&cx="+domain+"&imageType=face&searchType=image&imageSize="+imageSize+"&q=" + name+"&start="+(start*10+1);
+        String searchUrl = "https://www.googleapis.com/customsearch/v1?key="+API+"&cx="+domain+"&imageType=face&searchType=image&filter=1&imageSize="+imageSize+"&q=" + name+"&start="+(start*10+1)+"&num="+size;
+
         try {
             Connection.Response res = Jsoup.connect(
                             searchUrl)
@@ -58,12 +59,12 @@ public class GalleryBoardService {
         return imageUrl;
     }
 
-    public List<String> getImgUrls(String tag, int startpage){
+    public List<String> getImgUrls(String tag, int startpage,int size){
         List<String> urls = new ArrayList<>();
         String str = "";
-        for( int num = startpage; num <startpage+3; num++){ //검색 시작 페이지 초기 30개
-            List<String> temp = getImgUrl(tag,num);
-            for(int j=0; j<10; j++){ //검색 결과 list 분해
+        for(int num = startpage; num <startpage+1; num++){ //검색 시작 페이지 초기 30개
+            List<String> temp = getImgUrl(tag,num,size);
+            for(int j=0; j<size; j++){ //검색 결과 list 분해
                 str = temp.get(j);
                 urls.add(str);
             }

@@ -12,10 +12,12 @@
     <header>
         <h1 class="text-center">CommuRest</h1>
     </header>
+    <button id="btn_test">test</button>
     <div class="grid">
         <div class="grid__sizer"></div>
     </div>
 </section>
+
 <!-- Modal -->
 <div id="modalPicture" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalPictureLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -47,5 +49,6 @@
     </div>
 </div>
 </body>
+
 <%@include file="include/custom_js.jsp"%>
 </html>

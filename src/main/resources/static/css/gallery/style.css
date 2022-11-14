@@ -62,6 +62,8 @@ header {
     width: 85%;
     margin: 0 auto;
 }
+
+
 .grid__sizer,
 .grid__item {
     width: 23%;
@@ -85,6 +87,10 @@ img {
 /**
  * Link styles
  */
+a{
+    display: block;
+}
+
 a,
 .fa {
     color: #bbb;
