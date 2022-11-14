@@ -70,14 +70,16 @@ header {
 }
 
 .grid-sizer,
-.grid-item {
+.item {
     width: 23%;
 }
 
-.grid-item {
+.item {
     margin-bottom: .9375rem;
     border-radius: 0.25rem;
     overflow: hidden;
+
+    float: left;
 }
 
 img {
