@@ -1,0 +1,25 @@
+.write-container {
+    width: 55%;
+    margin: 230px auto 150px;
+    font-size: 1.5em;
+}
+
+.fileDrop {
+    width: 600px;
+    height: 200px;
+    border: 1px dashed gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+}
+
+.uploaded-list {
+    display: flex;
+}
+
+.img-sizing {
+    display: block;
+    width: 100px;
+    height: 100px;
+}

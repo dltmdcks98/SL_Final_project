@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.slfinalproject.commurest.admin.repository.AdminMapper">
+
+    <insert id="regist">
+        INSERT INTO user_account
+            (user_email, user_pass, user_name, user_birth,user_sex)
+        VALUES (#{user_email}, #{user_pass}, #{user_name}, #{user_birth}, #{user_sex})
+    </insert>
+
+    <delete id="remove">
+        DELETE FROM user_account
+        WHERE user_id=#{user_id}
+    </delete>
+
+    <update id="update">
+        UPDATE user_account
+        SET user_pass = #{user_pass}, user_name=#{user_name}, user_birth=#{user_birth}
+        WHERE user_id=#{user_id}
+    </update>
+    <select id = "selectOne"  resultType="com.slfinalproject.commurest.admin.domain.Admin">
+        SELECT * from user_account where user_email=#{user_email}
+    </select>
+
+</mapper>
