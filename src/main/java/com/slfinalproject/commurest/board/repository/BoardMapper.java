@@ -1,7 +1,7 @@
 package com.slfinalproject.commurest.board.repository;
 
 import com.slfinalproject.commurest.board.domain.Board;
-import com.slfinalproject.commurest.util.paging.Page;
+import com.slfinalproject.util.paging.Page;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

@@ -43,21 +43,12 @@
                 <nav class="page">
                     <ul class="pagination pagination-lg pagination-custom">
 
-                        <c:if test="${pageMaker.prev}">
-                            <li class="page-item"><a class="page-link" href="/board?pageNum=${pageMaker.beginPage - 1}&amount=${pageMaker.page.amount}">◀</a></li>
-                        </c:if>
-
 
                         <c:forEach var="n" begin="${pageMaker.beginPage}" end="${pageMaker.endPage}" step="1">
                             <li data-page-num="${n}" class="page-item">
                                 <a class="page-link" href="/board?pageNum=${n}&amount=${pageMaker.page.amount}">${n}</a>
                             </li>
                         </c:forEach>
-
-                        <c:if test="${pageMaker.next}">
-                            <li class="page-item"><a class="page-link" href="/board?pageNum=${pageMaker.endPage + 1}&amount=${pageMaker.page.amount}">▶</a></li>
-                        </c:if>
-
 
 
                     </ul>
@@ -96,12 +87,42 @@
 
 
     <script>
+        function alertServerMessage() {
+            const msg = '${msg}';
+            // console.log('msg: ', msg);
+
+            if (msg === 'reg-success') {
+                alert('게시물이 정상 등록되었습니다.');
+            }
+        }
+
+
+        function detailEvent() {
+            //상세보기 요청 이벤트
+            const $table = document.querySelector(".articles");
+
+            $table.addEventListener('click', e => {
+
+
+                if (!e.target.matches('.articles td')) return;
+
+                console.log('tr 클릭됨! - ', e.target);
+
+                let bn = e.target.parentElement.firstElementChild.textContent;
+                console.log('글번호: ' + bn);
+
+                location.href = '/board/content/' + bn
+                    + "?pageNum=${pm.page.pageNum}"
+                    + "&amount=${pm.page.amount}";
+            });
+        }
+
         //현재 위치한 페이지에 active 스타일 부여하기
         function appendPageActive() {
 
             // 현재 내가 보고 있는 페이지 넘버
-            const curPageNum = '${pageMaker.page.pageNum}';
-            console.log("현재페이지: ", curPageNum);
+            const curPageNum = '${pm.page.pageNum}';
+            // console.log("현재페이지: ", curPageNum);
 
             // 페이지 li태그들을 전부 확인해서
             // 현재 위치한 페이지 넘버와 텍스트컨텐츠가 일치하는
@@ -128,7 +149,12 @@
                 }
             }
         }
+
+
         (function () {
+
+            alertServerMessage();
+            detailEvent();
             appendPageActive();
             fixSearchOption();
 
