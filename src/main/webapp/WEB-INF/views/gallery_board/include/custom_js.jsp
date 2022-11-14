@@ -4,37 +4,30 @@
 
 <script>
     let counter = 0;
-    $(function() {
-        let $masonry = $('.grid').masonry({
-            columnWidth: '.grid-sizer',
-            itemSelector: '.item',
-            percentPosition: true,
-            gutter: 20
-        });
 
-        $('#load-images').click( async function() {
-            let $items = await getItems(counter);
-            console.log("click 테스트 :" + $items);
-            $masonry.masonryImagesReveal( $items );
-            counter++;
-        });
-
-        // if($(window).scrollTop()==0){
-        //     let $items = await getItems(0);
-        //     $masonry.masonryImagesReveal($items);
-        //     console.log($(window).scrollTop());
-        // }
-
-
-        document.addEventListener('scroll', async () =>{
-            if($(window).scrollTop() == $(document).height() - $(window).height() && counter <= 10){
-                counter++;
-                console.log(counter);
-
-                $masonry.masonryImagesReveal( await getItems(counter));
-            }
-        });
+    let $masonry = $('.grid').masonry({
+        columnWidth: '.grid-sizer',
+        itemSelector: '.item',
+        percentPosition: true,
+        gutter: 20
     });
+
+    $('#load-images').click( async function() {
+        let $items = await getItems(counter);
+        console.log("click 테스트 :" + $items);
+        $masonry.masonryImagesReveal( $items );
+        counter++;
+    });
+
+    document.addEventListener('scroll', async () =>{
+        if($(window).scrollTop() == $(document).height() - $(window).height() && counter <= 10){
+            counter++;
+            console.log(counter);
+
+            $masonry.masonryImagesReveal( await getItems(counter));
+        }
+    });
+
     // const $grid = document.querySelector('.grid');
 
     $.fn.masonryImagesReveal = function( $items ) {
@@ -149,4 +142,8 @@
 
 
 
+    (async () => {
+        $masonry.masonryImagesReveal( await getItems(counter) );
+        counter++;
+    })();
 </script>
