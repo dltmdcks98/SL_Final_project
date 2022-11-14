@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,19 +25,32 @@ public class BoardService {
     }
 
     // 게시글 전체 조회
-    public List<Board> findAllService() {
-        return boardMapper.selectAll();
-    }
+
 
     // 게시물 전체 조회 요청 페이징
-    public Map<String, Object> PagingService(Page page) {
+    public Map<String, Object> findAllService(Page page) {
 
         Map<String, Object> findDataMap = new HashMap<>();
 
-        List<Board> boardList = boardMapper.Paging(page);
+        List<Board> boardList = boardMapper.selectAll(page);
+        process(boardList);
         findDataMap.put("bList", boardList);
         findDataMap.put("tc", boardMapper.getTotalCount());
         return findDataMap;
+    }
+
+    // 날짜 포맷 생성
+    private void dateFormat(Board board) {
+        Date date = board.getRegDate();
+        SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd a hh:mm");
+        board.setSimpleDate(sdf.format(date));
+    }
+    // 날짜, 댓글, 조회수 ... 갱신? 목적
+    private void process(List<Board> boardList) {
+        for (Board board: boardList
+             ) {
+            dateFormat(board);
+        }
     }
 
 

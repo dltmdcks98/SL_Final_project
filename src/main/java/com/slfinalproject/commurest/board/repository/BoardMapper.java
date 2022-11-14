@@ -10,11 +10,9 @@ import java.util.List;
 public interface BoardMapper {
     boolean insert(Board board);
 
-    // 전체 조회
-    List<Board> selectAll();
-
     // 게시글 전체 조회 with paging
-    List<Board> Paging(Page page);
+    List<Board> selectAll(Page page);
+
 
     // 하나만 조회
     Board selectOne(int boardNo);

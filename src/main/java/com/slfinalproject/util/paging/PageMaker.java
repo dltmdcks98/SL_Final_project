@@ -8,7 +8,7 @@ import lombok.ToString;
 public class PageMaker {
 
     // 한번에 나올 페이지 수 (1~10페이지)
-    private static int PAGE_COUNT =10;
+    private static final int PAGE_COUNT =10;
 
     // 렌더링시 페이지 시작과 끝 값
     private int beginPage, endPage, finalPage;
@@ -22,6 +22,7 @@ public class PageMaker {
     // 총 게시물 수
     private int totalPage;
 
+
     public PageMaker(Page page, int totalPage) {
         this.page=page;
         this.totalPage=totalPage;
@@ -31,7 +32,7 @@ public class PageMaker {
         // endPage 계산
         this.endPage= (int)(Math.ceil(page.getPageNum()/(double)PAGE_COUNT) * PAGE_COUNT);
         // beginPage 계산
-        this.beginPage=endPage-(PAGE_COUNT+1);
+        this.beginPage=endPage-PAGE_COUNT+1;
 
         int realEnd =(int)Math.ceil((double)totalPage/page.getAmount());
 
