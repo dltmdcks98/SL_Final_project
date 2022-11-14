@@ -1,4 +1,4 @@
-package com.slfinalproject.util.paging;
+package com.slfinalproject.commurest.util.paging;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,7 +16,7 @@ public class Page {
         this.amount=20;
     }
     public int getStart() {
-        return(pageNum-1)*amount;
+        return (pageNum-1)*amount;
     }
     public void setPageNum(int pageNum) {
         if(pageNum <=0 || pageNum > Integer.MAX_VALUE) {
@@ -25,6 +25,7 @@ public class Page {
         }
         this.pageNum=pageNum;
     }
+    /*
     public void setAmount(int amount) {
         if(amount <20 || amount >100) {
             this.amount=20;
@@ -32,6 +33,7 @@ public class Page {
         }
         this.amount=amount;
     }
+     */
 
 }
 

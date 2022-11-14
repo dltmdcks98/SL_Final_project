@@ -24,6 +24,9 @@ public class Board {
    private String imageUrl;
    private String tagId;
 
+   // 등록 날짜 포맷 변경
+   private String simpleDate;
+
    public Board(ResultSet rs) throws SQLException {
       this.boardNo = rs.getInt("board_no");
       this.userId = rs.getInt("user_id");
