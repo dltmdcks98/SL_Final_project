@@ -60,7 +60,7 @@ public class BoardController {
         System.out.println("번호 : "+board.getBoardNo()+"제목 : "+board.getTitle());
         model.addAttribute("b", board);
 
-
+// qewqewqewqeqw
         return "board/board_content";
 
     }
