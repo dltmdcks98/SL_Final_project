@@ -1,16 +1,24 @@
 package com.slfinalproject.commurest.board.controller;
 
+import com.slfinalproject.commurest.admin.domain.Admin;
+import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.service.BoardService;
 import com.slfinalproject.commurest.util.paging.Page;
 import com.slfinalproject.commurest.util.paging.PageMaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 @Controller
