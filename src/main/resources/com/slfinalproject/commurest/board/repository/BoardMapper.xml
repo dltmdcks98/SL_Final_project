@@ -18,11 +18,17 @@
     </insert>
 
     <select id="selectAll" resultMap="boardMap">
-        SELECT * FROM board ORDER BY board_no DESC
+        SELECT * FROM board ORDER BY board_no DESC LIMIT #{start}, 20
     </select>
 
+
+
     <select id="selectOne" resultMap="boardMap">
-        select * from board where board_no = # {boardNo}
+        select * from board where board_no = #{boardNo}
+    </select>
+
+    <select id="getTotalCount" resultType="int">
+        SELECT COUNT(*) FROM board
     </select>
 
 
