@@ -29,7 +29,7 @@
                             <input type="password" name="user_pass" class="form-control">
                         </div>
                         <div class="form-group text-right">
-                            <button name="submit" class="btn btn-block btn-primary text-light">로그인</button>
+                            <button name="button" class="btn btn-block btn-primary text-light">로그인</button>
 
                         </div>
                         <div class="form-group text-center">

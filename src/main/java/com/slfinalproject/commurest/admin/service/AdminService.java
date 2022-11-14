@@ -74,7 +74,7 @@ public class AdminService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         log.info("## loadUserByUsername ##");
         Admin admin = adminRepository.selectOne(username);
-        System.out.println("계정정보" + admin);
+        log.info("계정정보" + admin);
         if (admin != null) {
             admin.setAuthorities(Arrays.asList(new SimpleGrantedAuthority(admin.getManager())));
         }

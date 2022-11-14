@@ -38,6 +38,7 @@ public class SecurityConfig {
                         .loginProcessingUrl("/admin/login") // 로그인form의 action이랑 일치해야함
                         .usernameParameter("user_email")
                         .passwordParameter("user_pass")
+//                TODO : 이전 페이지로 이동
                         .defaultSuccessUrl("/") // 로그인 성공시 이동할 경로
                     .permitAll()
                     .and()
