@@ -13,7 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Service @Log4j2
+@Service
+@Log4j2
 @RequiredArgsConstructor
 public class BoardService {
     private final BoardMapper boardMapper;
@@ -54,6 +55,11 @@ public class BoardService {
              ) {
             dateFormat(board);
         }
+    }
+
+    public Board selectOne(int boardNo) {
+        Board board = boardMapper.selectOne(boardNo);
+        return board;
     }
 
 

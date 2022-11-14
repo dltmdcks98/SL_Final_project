@@ -30,7 +30,7 @@ public class SecurityConfig {
         http.authorizeRequests() // 각 경로에 따른 권한 지정
                     .antMatchers("/", "/login","/register","/index","/css/**","/fonts/**","/img/**","/js/**","/scripts/**","/scss/**","/src/**").permitAll() // 누구나 가능
                     .antMatchers(HttpMethod.POST, "/admin/regist","/admin/login").permitAll()
-                    .antMatchers("/board/detail").hasRole("ADMIN") // "admin"만 접근 가능, 테이블에 ROLE_권한명 으로 저장해야함
+                    .antMatchers("/board/**").hasRole("ADMIN") // "admin"만 접근 가능, 테이블에 ROLE_권한명 으로 저장해야함
                     .anyRequest().authenticated() // 로그인된 사용자가 요청을 수행할 때 필요
                     .and()
                 .formLogin()

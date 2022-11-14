@@ -38,4 +38,4 @@ ALTER TABLE board ADD CONSTRAINT fk_board_user_account FOREIGN KEY (user_id)
 DROP TABLE board;
 #ALTER  TABLE board RENAME COLUMN board_id TO board_no;
 
-select * from board;
+select * from board where board_no=249;
