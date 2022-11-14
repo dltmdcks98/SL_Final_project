@@ -1,4 +1,4 @@
-package com.slfinalproject.util.paging;
+package com.slfinalproject.commurest.util.paging;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -42,7 +42,7 @@ public class PageMaker {
             this.endPage=realEnd;
         }
 
-        this.prev=beginPage >1;
+        this.prev=beginPage > 1;
 
         this.next=endPage<realEnd;
     }

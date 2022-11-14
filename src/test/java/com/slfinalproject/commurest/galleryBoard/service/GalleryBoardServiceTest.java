@@ -23,7 +23,7 @@ class GalleryBoardServiceTest {
 
         for(int i=0; i<3; i++){ //검색 시작 페이지
             for(int j=0; j<10; j++){ //검색 결과 list 분해
-                str = service.getImgUrl("아이유",i).get(j);
+                str = service.getImgUrl("아이유",i,10).get(j);
                 result.add(str);
             }
         }

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +14,10 @@
         <h1 class="text-center">CommuRest</h1>
     </header>
     <div class="grid">
-        <div class="grid__sizer"></div>
+        <div class="grid-sizer"></div>
     </div>
 </section>
+
 <!-- Modal -->
 <div id="modalPicture" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalPictureLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -47,5 +49,6 @@
     </div>
 </div>
 </body>
+
 <%@include file="include/custom_js.jsp"%>
 </html>

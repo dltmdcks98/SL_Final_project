@@ -1,26 +1,16 @@
 package com.slfinalproject.commurest.board.controller;
 
-import com.slfinalproject.commurest.admin.domain.Admin;
-import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.service.BoardService;
-import com.slfinalproject.util.paging.Page;
-import com.slfinalproject.util.paging.PageMaker;
+import com.slfinalproject.commurest.util.paging.Page;
+import com.slfinalproject.commurest.util.paging.PageMaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -32,8 +22,23 @@ public class BoardController {
     // 게시판 메인 페이지
     @GetMapping("/board")
     public String board(@ModelAttribute("p") Page page, Model model) {
-        List<Board> bList = boardService.findAllService();
-        model.addAttribute("bList", bList);
+        Map<String, Object> boardMap = boardService.findAllService(page);
+
+
+        PageMaker pageMaker = new PageMaker(
+                new Page(page.getPageNum(), page.getAmount())
+                , (Integer) boardMap.get("tc"));
+        log.info(pageMaker);
+
+        model.addAttribute("bList", boardMap.get("bList"));
+        model.addAttribute("pageMaker", pageMaker);
+
+        //        Map<String, Object> bList= boardService.findAllService(page);
+        //        model.addAttribute("bList", bList);
+        //
+        //        Map<String, Object>boardMap = boardService.findAllService(page);
+        //        PageMaker pm = new PageMaker(new Page(page.getPageNum(), page.getAmount()),(Integer) boardMap.get("tc"));
+        //        model.addAttribute("pm", pm);
         return "board/board";
     }
 

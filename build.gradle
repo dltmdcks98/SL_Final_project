@@ -38,9 +38,11 @@ dependencies {
 
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 
-	implementation 'org.json:json:20220924'
+	//html 파싱을 위함
 	implementation 'org.jsoup:jsoup:1.15.3'
 
+	// https://mvnrepository.com/artifact/org.json/json
+	implementation 'org.json:json:20220924'
 
 }
 
