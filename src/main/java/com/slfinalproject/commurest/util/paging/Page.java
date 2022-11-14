@@ -1,4 +1,4 @@
-package com.slfinalproject.util.paging;
+package com.slfinalproject.commurest.util.paging;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

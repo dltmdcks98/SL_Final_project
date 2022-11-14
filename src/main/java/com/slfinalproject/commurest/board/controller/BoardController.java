@@ -1,8 +1,8 @@
 package com.slfinalproject.commurest.board.controller;
 
 import com.slfinalproject.commurest.board.service.BoardService;
-import com.slfinalproject.util.paging.Page;
-import com.slfinalproject.util.paging.PageMaker;
+import com.slfinalproject.commurest.util.paging.Page;
+import com.slfinalproject.commurest.util.paging.PageMaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
