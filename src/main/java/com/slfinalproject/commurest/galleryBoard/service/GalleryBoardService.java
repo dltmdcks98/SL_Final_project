@@ -1,5 +1,6 @@
 package com.slfinalproject.commurest.galleryBoard.service;
 
+import com.slfinalproject.commurest.galleryBoard.domain.Tag;
 import com.slfinalproject.commurest.galleryBoard.repository.GalleryMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -33,7 +34,7 @@ public class GalleryBoardService {
         return galleryMapper.getTagValue(tagId);
     }
     @Transactional
-    public String getTagValueByUserId(int userId){
+    public List<Tag> getTagValueByUserId(int userId){
         return galleryMapper.getTagValueByUserId(userId);
     }
     @Transactional
