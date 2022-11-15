@@ -16,7 +16,7 @@
         <div class="wrap">
 
             <div class="board-list">
-                <table>
+                <table class="showContent">
                     <tbody>
                     <tr>
                         <th>번호</th>
@@ -30,7 +30,7 @@
                         <tr>
                             <td>${bList.boardNo}</td>
                             <td>${bList.userId}</td>
-                            <td>${bList.title}</td>
+                            <td><a href="/board/content/${bList.boardNo}">${bList.title}</a></td>
                             <td>${bList.simpleDate}</td>
                             <td>${bList.hit}</td>
                             <td>${bList.recommend}</td>
@@ -96,6 +96,7 @@
 
 
     <script>
+
         //현재 위치한 페이지에 active 스타일 부여하기
         function appendPageActive() {
 

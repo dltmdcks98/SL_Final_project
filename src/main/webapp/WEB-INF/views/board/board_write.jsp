@@ -22,7 +22,7 @@
 
             <div class="mb-4">
                 <label for="writer-input" class="form-label">작성자</label>
-                <input type="text" class="form-control" id="writer-input" placeholder="이름" name="writer" >
+                <input type="text" class="form-control" id="writer-input" placeholder="이름" name="user_name" >
             </div>
             <div class="mb-4">
                 <label for="title-input" class="form-label">글제목</label>
@@ -33,7 +33,7 @@
                 <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
             </div>
 
-            <!-- 첨부파일 드래그 앤 드롭 영역 -->
+            <!-- 첨부파일 드래그 앤 드롭 영역인데 일단은 필요없다고 해서 냅둠 -->
             <div class="form-group">
                 <div class="fileDrop">
                     <span>Drop!</span>

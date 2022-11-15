@@ -27,6 +27,9 @@ public class Board {
    // 등록 날짜 포맷 변경
    private String simpleDate;
 
+   // 게시글 상세보기
+   private boolean showContent;
+
    public Board(ResultSet rs) throws SQLException {
       this.boardNo = rs.getInt("board_no");
       this.userId = rs.getInt("user_id");

@@ -12,9 +12,7 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,11 +22,12 @@ import java.util.Map;
 @Controller
 @Log4j2
 @RequiredArgsConstructor
+@RequestMapping("/board")
 public class BoardController {
     private final BoardService boardService;
 
     // 게시판 메인 페이지
-    @GetMapping("/board")
+    @GetMapping("")
     public String board(@ModelAttribute("p") Page page, Model model) {
         Map<String, Object> boardMap = boardService.findAllService(page);
 
@@ -51,15 +50,15 @@ public class BoardController {
     }
 
     // 글 작성 페이지
-    @GetMapping("board/write")
+    @GetMapping("/write")
     public String write() {
         return "board/board_write";
     }
 
     // 글 보기 페이지
-    @GetMapping("/board/{boardNo}")
+    @GetMapping("/content/{boardNo}")
     public String content(@PathVariable("boardNo") int boardNo, Model model,
-                          HttpServletResponse response, HttpServletRequest request) {
+                          HttpServletResponse response, HttpServletRequest request, @ModelAttribute("p") Page page) {
         HttpSession session = request.getSession();
         Object securityContextObject = session.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
         if(securityContextObject !=null){
@@ -73,15 +72,20 @@ public class BoardController {
         System.out.println("번호 : "+board.getBoardNo()+"제목 : "+board.getTitle());
         model.addAttribute("b", board);
 
-// qewqewqewqeqw
         return "board/board_content";
 
     }
 
+    // 게시글 수정
+    @GetMapping("/edit")
+    public String editBoard(Board board) {
+        boolean flag = boardService.edit(board);
+        return flag ? "redirect:/board/content/" + board.getBoardNo() : "redirect:/";
+    }
 
-
-    @GetMapping("/board/test")
-    public String test() {
-        return "board/board_test";
+    // 게시글 삭제
+    @PostMapping("/remove")
+    public String removeBoard(int boardNo) {
+        return boardService.remove(boardNo) ? "redirect:/board/" : "redirect:/";
     }
 }
