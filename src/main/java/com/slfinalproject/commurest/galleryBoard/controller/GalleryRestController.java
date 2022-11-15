@@ -34,11 +34,11 @@ public class GalleryRestController {
             Authentication authentication = securityContext.getAuthentication();
              Admin user = (Admin) authentication.getPrincipal();
             log.warn("현재 세션 정보 : "+user);
-
-            List<Tag> tagList = galleryBoardService.getTagValueByUserId(11);
+            int user_id = user.getUser_id();
+            List<Tag> tagList = galleryBoardService.getTagValueByUserId(user_id);
             if(tagList.size()>2)size=3;
 
-            return galleryBoardService.getImgUrlsByUserId(11,num,size);
+            return galleryBoardService.getImgUrlsByUserId(user_id,num,size);
         }
         log.info("RestController num :"+num+" size :"+size);
 

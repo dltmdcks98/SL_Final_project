@@ -24,12 +24,13 @@
 
 
     document.addEventListener('scroll', async () =>{
-        if($(window).scrollTop() == $(document).height() - $(window).height() && counter <= 10){
+        if($(window).scrollTop() == ($(document).height() - $(window).height()) && counter<=100){
             counter++;
+            $masonry.masonryImagesReveal( await getItems(counter));
             console.log(counter);
 
-            $masonry.masonryImagesReveal( await getItems(counter));
         }
+
     });
 
 
@@ -58,7 +59,7 @@
 
         imageCount = $container.find('img').length;
         resetProgress();
-        updateProgress( 0 );
+        updateProgress(0);
         return this;
     };
     // triggered after each item is loaded
@@ -141,7 +142,9 @@
 
 
     (async () => {
-        $masonry.masonryImagesReveal( await getItems(counter) );
-        counter++;
+        while($(window).scrollTop() == $(document).height() - $(window).height()){
+            $masonry.masonryImagesReveal( await getItems(counter) );
+            counter++;
+        }
     })();
 </script>
