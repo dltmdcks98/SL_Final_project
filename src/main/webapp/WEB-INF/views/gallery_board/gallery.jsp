@@ -13,6 +13,7 @@
     <header>
         <h1 class="text-center">CommuRest</h1>
     </header>
+    <button id="load-images">Load images</button>
     <div class="grid">
         <div class="grid-sizer"></div>
     </div>

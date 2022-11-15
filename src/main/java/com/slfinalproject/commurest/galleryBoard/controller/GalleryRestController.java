@@ -14,7 +14,6 @@ import java.util.List;
 @Log4j2
 @RequiredArgsConstructor
 @RequestMapping("/ajax-gallery")
-@CrossOrigin
 public class GalleryRestController {
 
     private final GalleryBoardService galleryBoardService;
