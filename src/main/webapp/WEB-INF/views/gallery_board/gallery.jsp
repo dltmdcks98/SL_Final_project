@@ -13,11 +13,14 @@
     <header>
         <h1 class="text-center">CommuRest</h1>
     </header>
-    <button id="load-images">Load images</button>
     <div class="grid">
         <div class="grid-sizer"></div>
     </div>
 </section>
+
+<div id="status">
+    <progress max="7" value="0"></progress>
+</div>
 
 <!-- Modal -->
 <div id="modalPicture" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalPictureLabel" aria-hidden="true">

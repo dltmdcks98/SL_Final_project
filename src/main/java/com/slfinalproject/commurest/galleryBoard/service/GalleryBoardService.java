@@ -1,5 +1,6 @@
 package com.slfinalproject.commurest.galleryBoard.service;
 
+import com.slfinalproject.commurest.galleryBoard.repository.GalleryMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.json.JSONArray;
@@ -9,6 +10,7 @@ import org.jsoup.Jsoup;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,6 +26,27 @@ public class GalleryBoardService {
     @Value("${LSC.google.domain}")
     private String domain;
 
+    private final GalleryMapper galleryMapper;
+
+    @Transactional
+    public String getTagValue(int tagId){
+        return galleryMapper.getTagValue(tagId);
+    }
+    @Transactional
+    public String getTagValueByUserId(int userId){
+        return galleryMapper.getTagValueByUserId(userId);
+    }
+    @Transactional
+    public boolean setTagValue(String value){
+        return galleryMapper.setTagValue(value);
+    }
+    @Transactional
+    public boolean setTagValueByBoardNo(String value,int boardNo){
+        return galleryMapper.setTagValueByBoardNo(value,boardNo);
+    }    @Transactional
+    public boolean setTagValueByUserId(String value ,int userId){
+        return galleryMapper.setTagValueByUserId(value,userId);
+    }
 
 
     public List<String> getImgUrl(String tag,int num,int size) {

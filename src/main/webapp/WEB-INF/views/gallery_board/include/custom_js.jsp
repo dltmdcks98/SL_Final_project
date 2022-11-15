@@ -5,6 +5,16 @@
 <script>
     let counter = 0;
 
+    const $container = $('.grid');
+    const $status = $('#status');
+    const $progress = $('progress');
+
+    let supportsProgress = $progress[0] &&
+        // IE does not support progress
+        $progress[0].toString().indexOf('Unknown') === -1;
+
+    let loadedImageCount, imageCount;
+
     let $masonry = $('.grid').masonry({
         columnWidth: '.grid-sizer',
         itemSelector: '.item',
@@ -12,12 +22,6 @@
         gutter: 20
     });
 
-    $('#load-images').click( async function() {
-        let $items = await getItems(counter);
-        console.log("click 테스트 :" + $items);
-        $masonry.masonryImagesReveal( $items );
-        counter++;
-    });
 
     document.addEventListener('scroll', async () =>{
         if($(window).scrollTop() == $(document).height() - $(window).height() && counter <= 10){
@@ -28,28 +32,36 @@
         }
     });
 
-    // const $grid = document.querySelector('.grid');
 
-    $.fn.masonryImagesReveal = function( $items ) {
+
+    $.fn.masonryImagesReveal = function ( $items ) {
         let msnry = this.data('masonry');
         let itemSelector = msnry.options.itemSelector;
         // hide by default
         $items.hide();
         // append to container
-        this.append( $items );
-        $items.imagesLoaded().progress( function( imgLoad, image ) {
-            // get item
-                // image is imagesLoaded class, not <img>, <img> is image.img
+        this.prepend( $items );
+         $items.imagesLoaded().progress( function( imgLoad, image ) {
             let $item = $( image.img ).parents( itemSelector );
-            // un-hide item
-            $item.show();
-            // masonry does its thing
-            msnry.appended( $item );
-        });
+            let $img = $(image.img).parent();
+            $img.removeClass('is-loading');
+             if ( !image.isLoaded ) {
+                 $img.addClass('is-broken');
+             }
+             $item.show();
+             msnry.appended( $item );
+             // update progress element
+             loadedImageCount++;
+             updateProgress( loadedImageCount );
+        }
+        ).always( onAlways );
 
+        imageCount = $container.find('img').length;
+        resetProgress();
+        updateProgress( 0 );
         return this;
     };
-
+    // triggered after each item is loaded
 
     async function getItems(num){
         let items = '';
@@ -67,32 +79,12 @@
     }
 
     const urls = async (num) => {
-        // let urls='';
-        // fetch('/ajax-gallery?num='+num)
-        //     .then(res => {
-        //         return res.json();
-        //     })
-        //     .then(urlList => {
-        //         // for (let i = 0; i < urlList.length; i++) {
-        //         //     urls += urlList[i];
-        //         // }
-        //         return urlList;
-        //     });
-        // console.log(urls);
-        // return urls;
         const response = await fetch('/ajax-gallery?num='+num);
         const data = await response.json();
 
         return data;
     }
-    // function getItems() {
-    //     var items = '';
-    //     for ( var i=0; i < 12; i++ ) {
-    //         items += getItem();
-    //     }
-    //     // return jQuery object
-    //     return $( items );
-    // }
+
 
     // Image replacement handler
     $(document).on("click", ".js-button", (event) => {
@@ -110,39 +102,47 @@
     function getItem(url){
         const item =
             '<a class="item">'+
+
             '<div class="item__overlay">'+
-            '<button class="js-button btn btn-secondary-outline center-block" data-toggle="modal" data-target="#modalPicture" value="Expand photo" data-url="'+url+'">Expand photo</button></div>'+
-            '<img src="'+url+'"/> </a>';
+            '<button class="js-button btn btn-secondary-outline center-block" data-toggle="modal" data-target="#modalPicture" value="Expand photo" data-url="'+url+'">Expand photo</button>'+
+            '</div>'+
 
-
+            '<img src="'+url+'" onerror="this.style.display=`none`"/>'+
+            '</a>';
         return item;
+    }
+    function onError(_img){
+        _img.classList('is-broken');
+    }
+    function resetProgress() {
+        $status.css({ opacity: 1 });
+        loadedImageCount = 0;
+        if ( supportsProgress ) {
+            $progress.attr( 'max', imageCount );
+        }
+    }
+
+    function updateProgress( value ) {
+        if ( supportsProgress ) {
+            $progress.attr( 'value', value );
+        } else {
+            // if you don't support progress elem
+            $status.text( value + ' / ' + imageCount );
+        }
+    }
+
+
+    function onAlways() {
+        $status.css({ opacity: 0 });
     }
 
 
 
-    $.fn.masonryImagesReveal = function( $items ) {
-        var msnry = this.data('masonry');
-        var itemSelector = msnry.options.itemSelector;
-        // hide by default
-        $items.hide();
-        // append to container
-        this.append( $items );
-        $items.imagesLoaded().progress( function( imgLoad, image ) {
-            // get item
-            // image is imagesLoaded class, not <img>, <img> is image.img
-            var $item = $( image.img ).parents( itemSelector );
-            // un-hide item
-            $item.show();
-            // masonry does its thing
-            msnry.appended( $item );
-        });
-
-        return this;
-    };
-
 
 
     (async () => {
+        $masonry.masonryImagesReveal( await getItems(counter) );
+        counter++;
         $masonry.masonryImagesReveal( await getItems(counter) );
         counter++;
     })();
