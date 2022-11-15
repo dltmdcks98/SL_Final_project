@@ -70,7 +70,7 @@ th{
 
                     <div class="line">
 
-                        <div><a href="/board">인기글</a></div>
+                        <div><a href="#">인기글</a></div>
 
                     </div>
 
@@ -218,8 +218,8 @@ th{
                         <article class="col-md-12 article-list">
                             <div class="inner">
                                 <figure>
-                                    <a href="single.html">
-                                        <img src="img/news/img11.jpg" alt="Sample Article">
+                                    <a href="#">
+                                        <img src="/img/news/img11.jpg" alt="Sample Article">
                                     </a>
                                 </figure>
                                 <div class="details">
@@ -229,13 +229,13 @@ th{
                                         </div>
                                         <div class="time">December 19, 2016</div>
                                     </div>
-                                    <h1><a href="single.html">Donec consequat arcu at ultrices sodales quam erat aliquet diam</a></h1>
+                                    <h1><a href="#">Donec consequat arcu at ultrices sodales quam erat aliquet diam</a></h1>
                                     <p>
                                         Donec consequat, arcu at ultrices sodales, quam erat aliquet diam, sit amet interdum libero nunc accumsan nisi.
                                     </p>
                                     <footer>
                                         <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>273</div></a>
-                                        <a class="btn btn-primary more" href="single.html">
+                                        <a class="btn btn-primary more" href="#">
                                             <div>More</div>
                                             <div><i class="ion-ios-arrow-thin-right"></i></div>
                                         </a>
@@ -249,8 +249,8 @@ th{
                                     Sponsored
                                 </div>
                                 <figure>
-                                    <a href="single.html">
-                                        <img src="img/news/img02.jpg" alt="Sample Article">
+                                    <a href="#">
+                                        <img src="/img/news/img02.jpg" alt="Sample Article">
                                     </a>
                                 </figure>
                                 <div class="details">
@@ -260,13 +260,13 @@ th{
                                         </div>
                                         <div class="time">December 18, 2016</div>
                                     </div>
-                                    <h1><a href="single.html">Maecenas accumsan tortor ut velit pharetra mollis</a></h1>
+                                    <h1><a href="#">Maecenas accumsan tortor ut velit pharetra mollis</a></h1>
                                     <p>
                                         Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat sollicitudin ut est. In fringilla dui.
                                     </p>
                                     <footer>
                                         <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>4209</div></a>
-                                        <a class="btn btn-primary more" href="single.html">
+                                        <a class="btn btn-primary more" href="#">
                                             <div>More</div>
                                             <div><i class="ion-ios-arrow-thin-right"></i></div>
                                         </a>
@@ -277,8 +277,8 @@ th{
                         <article class="col-md-12 article-list">
                             <div class="inner">
                                 <figure>
-                                    <a href="single.html">
-                                        <img src="img/news/img03.jpg" alt="Sample Article">
+                                    <a href="#">
+                                        <img src="/img/news/img03.jpg" alt="Sample Article">
                                     </a>
                                 </figure>
                                 <div class="details">
@@ -288,13 +288,13 @@ th{
                                         </div>
                                         <div class="time">December 16, 2016</div>
                                     </div>
-                                    <h1><a href="single.html">Nulla facilisis odio quis gravida vestibulum Proin venenatis pellentesque arcu</a></h1>
+                                    <h1><a href="#">Nulla facilisis odio quis gravida vestibulum Proin venenatis pellentesque arcu</a></h1>
                                     <p>
                                         Nulla facilisis odio quis gravida vestibulum. Proin venenatis pellentesque arcu, ut mattis nulla placerat et.
                                     </p>
                                     <footer>
                                         <a href="#" class="love active"><i class="ion-android-favorite"></i> <div>302</div></a>
-                                        <a class="btn btn-primary more" href="single.html">
+                                        <a class="btn btn-primary more" href="#">
                                             <div>More</div>
                                             <div><i class="ion-ios-arrow-thin-right"></i></div>
                                         </a>
@@ -305,8 +305,8 @@ th{
                         <article class="col-md-12 article-list">
                             <div class="inner">
                                 <figure>
-                                    <a href="single.html">
-                                        <img src="img/news/img09.jpg" alt="Sample Article">
+                                    <a href="#">
+                                        <img src="/img/news/img09.jpg" alt="Sample Article">
                                     </a>
                                 </figure>
                                 <div class="details">
@@ -316,13 +316,13 @@ th{
                                         </div>
                                         <div class="time">December 16, 2016</div>
                                     </div>
-                                    <h1><a href="single.html">Maecenas blandit ultricies lorem id tempor enim pulvinar at</a></h1>
+                                    <h1><a href="#">Maecenas blandit ultricies lorem id tempor enim pulvinar at</a></h1>
                                     <p>
                                         Maecenas blandit ultricies lorem, id tempor enim pulvinar at. Curabitur sit amet tortor eu ipsum lacinia malesuada.
                                     </p>
                                     <footer>
                                         <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>783</div></a>
-                                        <a class="btn btn-primary more" href="single.html">
+                                        <a class="btn btn-primary more" href="#">
                                             <div>More</div>
                                             <div><i class="ion-ios-arrow-thin-right"></i></div>
                                         </a>
@@ -338,13 +338,13 @@ th{
                         <div class="aside-body">
                             <div class="featured-author">
                                 <div class="featured-author-inner">
-                                    <div class="featured-author-cover" style="background-image: url('static/img/news/img15.jpg');">
+                                    <div class="featured-author-cover">
                                         <div class="badges">
                                             <div class="badge-item"><i class="ion-star"></i> Featured</div>
                                         </div>
                                         <div class="featured-author-center">
                                             <figure class="featured-author-picture">
-                                                <img src="img/img01.jpg" alt="Sample Article">
+                                                <img src="/img/img01.jpg" alt="Sample Article">
                                             </figure>
                                             <div class="featured-author-info">
                                                 <h2 class="name">John Doe</h2>
@@ -382,15 +382,7 @@ th{
                                             <h2 class="block-title">Photos</h2>
                                             <div class="block-body">
                                                 <ul class="item-list-round" data-magnific="gallery">
-                                                    <li><a href="img/news/img06.jpg" style="background-image: url('static/img/news/img06.jpg');"></a></li>
-                                                    <li><a href="img/news/img07.jpg" style="background-image: url('static/img/news/img07.jpg');"></a></li>
-                                                    <li><a href="img/news/img08.jpg" style="background-image: url('static/img/news/img08.jpg');"></a></li>
-                                                    <li><a href="img/news/img09.jpg" style="background-image: url('static/img/news/img09.jpg');"></a></li>
-                                                    <li><a href="img/news/img10.jpg" style="background-image: url('static/img/news/img10.jpg');"></a></li>
-                                                    <li><a href="img/news/img11.jpg" style="background-image: url('static/img/news/img11.jpg');"></a></li>
-                                                    <li><a href="img/news/img12.jpg" style="background-image: url('static/img/news/img12.jpg');"><div class="more">+2</div></a></li>
-                                                    <li class="hidden"><a href="img/news/img13.jpg" style="background-image: url('static/img/news/img13.jpg');"></a></li>
-                                                    <li class="hidden"><a href="img/news/img14.jpg" style="background-image: url('static/img/news/img14.jpg');"></a></li>
+                                                    background-image: url('static/img/news/img06.jpg');
                                                 </ul>
                                             </div>
                                         </div>
@@ -408,72 +400,72 @@ th{
                             <article class="article-mini">
                                 <div class="inner">
                                     <figure>
-                                        <a href="single.html">
-                                            <img src="img/news/img07.jpg" alt="Sample Article">
+                                        <a href="#">
+                                            <img src="/img/news/img07.jpg" alt="Sample Article">
                                         </a>
                                     </figure>
                                     <div class="padding">
-                                        <h1><a href="single.html">Fusce ullamcorper elit at felis cursus suscipit</a></h1>
+                                        <h1><a href="#">Fusce ullamcorper elit at felis cursus suscipit</a></h1>
                                     </div>
                                 </div>
                             </article>
                             <article class="article-mini">
                                 <div class="inner">
                                     <figure>
-                                        <a href="single.html">
-                                            <img src="img/news/img14.jpg" alt="Sample Article">
+                                        <a href="#">
+                                            <img src="/img/news/img14.jpg" alt="Sample Article">
                                         </a>
                                     </figure>
                                     <div class="padding">
-                                        <h1><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
+                                        <h1><a href="#">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
                                     </div>
                                 </div>
                             </article>
                             <article class="article-mini">
                                 <div class="inner">
                                     <figure>
-                                        <a href="single.html">
-                                            <img src="img/news/img09.jpg" alt="Sample Article">
+                                        <a href="#">
+                                            <img src="/img/news/img09.jpg" alt="Sample Article">
                                         </a>
                                     </figure>
                                     <div class="padding">
-                                        <h1><a href="single.html">Aliquam et metus convallis tincidunt velit ut rhoncus dolor</a></h1>
+                                        <h1><a href="#">Aliquam et metus convallis tincidunt velit ut rhoncus dolor</a></h1>
                                     </div>
                                 </div>
                             </article>
                             <article class="article-mini">
                                 <div class="inner">
                                     <figure>
-                                        <a href="single.html">
-                                            <img src="img/news/img11.jpg" alt="Sample Article">
+                                        <a href="#">
+                                            <img src="/img/news/img11.jpg" alt="Sample Article">
                                         </a>
                                     </figure>
                                     <div class="padding">
-                                        <h1><a href="single.html">dui augue facilisis lacus fringilla pulvinar massa felis quis velit</a></h1>
+                                        <h1><a href="#">dui augue facilisis lacus fringilla pulvinar massa felis quis velit</a></h1>
                                     </div>
                                 </div>
                             </article>
                             <article class="article-mini">
                                 <div class="inner">
                                     <figure>
-                                        <a href="single.html">
-                                            <img src="img/news/img06.jpg" alt="Sample Article">
+                                        <a href="#">
+                                            <img src="/img/news/img06.jpg" alt="Sample Article">
                                         </a>
                                     </figure>
                                     <div class="padding">
-                                        <h1><a href="single.html">neque est semper nulla, ac elementum risus quam a enim</a></h1>
+                                        <h1><a href="#">neque est semper nulla, ac elementum risus quam a enim</a></h1>
                                     </div>
                                 </div>
                             </article>
                             <article class="article-mini">
                                 <div class="inner">
                                     <figure>
-                                        <a href="single.html">
-                                            <img src="img/news/img03.jpg" alt="Sample Article">
+                                        <a href="#">
+                                            <img src="/img/news/img03.jpg" alt="Sample Article">
                                         </a>
                                     </figure>
                                     <div class="padding">
-                                        <h1><a href="single.html">Morbi vitae nisl ac mi luctus aliquet a vitae libero</a></h1>
+                                        <h1><a href="#">Morbi vitae nisl ac mi luctus aliquet a vitae libero</a></h1>
                                     </div>
                                 </div>
                             </article>
@@ -514,16 +506,16 @@ th{
                                 <article class="article-fw">
                                     <div class="inner">
                                         <figure>
-                                            <a href="single.html">
-                                                <img src="img/news/img16.jpg" alt="Sample Article">
+                                            <a href="#">
+                                                <img src="/img/news/img16.jpg" alt="Sample Article">
                                             </a>
                                         </figure>
                                         <div class="details">
                                             <div class="detail">
                                                 <div class="time">December 31, 2016</div>
-                                                <div class="category"><a href="category.html">Sport</a></div>
+                                                <div class="category"><a href="#">Sport</a></div>
                                             </div>
-                                            <h1><a href="single.html">Donec congue turpis vitae mauris</a></h1>
+                                            <h1><a href="#">Donec congue turpis vitae mauris</a></h1>
                                             <p>
                                                 Donec congue turpis vitae mauris condimentum luctus. Ut dictum neque at egestas convallis.
                                             </p>
@@ -534,14 +526,14 @@ th{
                                 <article class="article-mini">
                                     <div class="inner">
                                         <figure>
-                                            <a href="single.html">
-                                                <img src="img/news/img05.jpg" alt="Sample Article">
+                                            <a href="#">
+                                                <img src="/img/news/img05.jpg" alt="Sample Article">
                                             </a>
                                         </figure>
                                         <div class="padding">
-                                            <h1><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
+                                            <h1><a href="#">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
                                             <div class="detail">
-                                                <div class="category"><a href="category.html">Lifestyle</a></div>
+                                                <div class="category"><a href="#">Lifestyle</a></div>
                                                 <div class="time">December 22, 2016</div>
                                             </div>
                                         </div>
@@ -550,14 +542,14 @@ th{
                                 <article class="article-mini">
                                     <div class="inner">
                                         <figure>
-                                            <a href="single.html">
-                                                <img src="img/news/img02.jpg" alt="Sample Article">
+                                            <a href="#">
+                                                <img src="/img/news/img02.jpg" alt="Sample Article">
                                             </a>
                                         </figure>
                                         <div class="padding">
-                                            <h1><a href="single.html">Fusce ullamcorper elit at felis cursus suscipit</a></h1>
+                                            <h1><a href="#">Fusce ullamcorper elit at felis cursus suscipit</a></h1>
                                             <div class="detail">
-                                                <div class="category"><a href="category.html">Travel</a></div>
+                                                <div class="category"><a href="#">Travel</a></div>
                                                 <div class="time">December 21, 2016</div>
                                             </div>
                                         </div>
@@ -566,14 +558,14 @@ th{
                                 <article class="article-mini">
                                     <div class="inner">
                                         <figure>
-                                            <a href="single.html">
-                                                <img src="img/news/img10.jpg" alt="Sample Article">
+                                            <a href="#">
+                                                <img src="/img/news/img10.jpg" alt="Sample Article">
                                             </a>
                                         </figure>
                                         <div class="padding">
-                                            <h1><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
+                                            <h1><a href="#">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
                                             <div class="detail">
-                                                <div class="category"><a href="category.html">Healthy</a></div>
+                                                <div class="category"><a href="#">Healthy</a></div>
                                                 <div class="time">December 20, 2016</div>
                                             </div>
                                         </div>
@@ -585,7 +577,7 @@ th{
                                     <div class="item">
                                         <div class="user">
                                             <figure>
-                                                <img src="img/img01.jpg" alt="User Picture">
+                                                <img src="/img/img01.jpg" alt="User Picture">
                                             </figure>
                                             <div class="details">
                                                 <h5 class="name">Mark Otto</h5>
@@ -599,7 +591,7 @@ th{
                                     <div class="item">
                                         <div class="user">
                                             <figure>
-                                                <img src="img/img01.jpg" alt="User Picture">
+                                                <img src="/img/img01.jpg" alt="User Picture">
                                             </figure>
                                             <div class="details">
                                                 <h5 class="name">Mark Otto</h5>
@@ -613,7 +605,7 @@ th{
                                     <div class="item">
                                         <div class="user">
                                             <figure>
-                                                <img src="img/img01.jpg" alt="User Picture">
+                                                <img src="/img/img01.jpg" alt="User Picture">
                                             </figure>
                                             <div class="details">
                                                 <h5 class="name">Mark Otto</h5>
@@ -649,22 +641,22 @@ th{
                             <ul class="sponsored">
                                 <li>
                                     <a href="#">
-                                        <img src="img/sponsored.png" alt="Sponsored">
+                                        <img src="/img/sponsored.png" alt="Sponsored">
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="img/sponsored.png" alt="Sponsored">
+                                        <img src="/img/sponsored.png" alt="Sponsored">
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="img/sponsored.png" alt="Sponsored">
+                                        <img src="/img/sponsored.png" alt="Sponsored">
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="img/sponsored.png" alt="Sponsored">
+                                        <img src="/img/sponsored.png" alt="Sponsored">
                                     </a>
                                 </li>
                             </ul>
@@ -691,16 +683,16 @@ th{
                 <article class="article">
                     <div class="inner">
                         <figure>
-                            <a href="single.html">
-                                <img src="img/news/img03.jpg" alt="Sample Article">
+                            <a href="#">
+                                <img src="/img/news/img03.jpg" alt="Sample Article">
                             </a>
                         </figure>
                         <div class="padding">
                             <div class="detail">
                                 <div class="time">December 11, 2016</div>
-                                <div class="category"><a href="category.html">Travel</a></div>
+                                <div class="category"><a href="#">Travel</a></div>
                             </div>
-                            <h2><a href="single.html">tempor interdum Praesent tincidunt</a></h2>
+                            <h2><a href="#">tempor interdum Praesent tincidunt</a></h2>
                             <p>Praesent tincidunt, leo vitae congue molestie.</p>
                         </div>
                     </div>
@@ -708,16 +700,16 @@ th{
                 <article class="article">
                     <div class="inner">
                         <figure>
-                            <a href="single.html">
-                                <img src="img/news/img16.jpg" alt="Sample Article">
+                            <a href="#">
+                                <img src="/img/news/img16.jpg" alt="Sample Article">
                             </a>
                         </figure>
                         <div class="padding">
                             <div class="detail">
                                 <div class="time">December 09, 2016</div>
-                                <div class="category"><a href="category.html">Sport</a></div>
+                                <div class="category"><a href="#">Sport</a></div>
                             </div>
-                            <h2><a href="single.html">Maecenas porttitor sit amet turpis a semper</a></h2>
+                            <h2><a href="#">Maecenas porttitor sit amet turpis a semper</a></h2>
                             <p> Proin vulputate, urna id porttitor luctus, dui augue facilisis lacus.</p>
                         </div>
                     </div>
@@ -725,16 +717,16 @@ th{
                 <article class="article">
                     <div class="inner">
                         <figure>
-                            <a href="single.html">
-                                <img src="img/news/img15.jpg" alt="Sample Article">
+                            <a href="#">
+                                <img src="/img/news/img15.jpg" alt="Sample Article">
                             </a>
                         </figure>
                         <div class="padding">
                             <div class="detail">
                                 <div class="time">December 26, 2016</div>
-                                <div class="category"><a href="category.html">Lifestyle</a></div>
+                                <div class="category"><a href="#">Lifestyle</a></div>
                             </div>
-                            <h2><a href="single.html">Fusce ac odio eu ex volutpat pellentesque</a></h2>
+                            <h2><a href="#">Fusce ac odio eu ex volutpat pellentesque</a></h2>
                             <p>Vestibulum ante ipsum primis in faucibus orci luctus</p>
                         </div>
                     </div>
@@ -742,16 +734,16 @@ th{
                 <article class="article">
                     <div class="inner">
                         <figure>
-                            <a href="single.html">
+                            <a href="#">
                                 <img src="img/news/img14.jpg" alt="Sample Article">
                             </a>
                         </figure>
                         <div class="padding">
                             <div class="detail">
                                 <div class="time">December 26, 2016</div>
-                                <div class="category"><a href="category.html">Travel</a></div>
+                                <div class="category"><a href="#">Travel</a></div>
                             </div>
-                            <h2><a href="single.html">Nulla facilisis odio quis gravida vestibulum</a></h2>
+                            <h2><a href="#">Nulla facilisis odio quis gravida vestibulum</a></h2>
                             <p>Proin venenatis pellentesque arcu, ut mattis nulla placerat et.</p>
                         </div>
                     </div>
@@ -759,16 +751,16 @@ th{
                 <article class="article">
                     <div class="inner">
                         <figure>
-                            <a href="single.html">
+                            <a href="#">
                                 <img src="img/news/img01.jpg" alt="Sample Article">
                             </a>
                         </figure>
                         <div class="padding">
                             <div class="detail">
                                 <div class="time">December 26, 2016</div>
-                                <div class="category"><a href="category.html">Travel</a></div>
+                                <div class="category"><a href="#">Travel</a></div>
                             </div>
-                            <h2><a href="single.html">Fusce Ullamcorper Elit At Felis Cursus Suscipit</a></h2>
+                            <h2><a href="#">Fusce Ullamcorper Elit At Felis Cursus Suscipit</a></h2>
                             <p>Proin venenatis pellentesque arcu, ut mattis nulla placerat et.</p>
                         </div>
                     </div>
@@ -776,16 +768,16 @@ th{
                 <article class="article">
                     <div class="inner">
                         <figure>
-                            <a href="single.html">
-                                <img src="img/news/img11.jpg" alt="Sample Article">
+                            <a href="#">
+                                <img src="/img/news/img11.jpg" alt="Sample Article">
                             </a>
                         </figure>
                         <div class="padding">
                             <div class="detail">
                                 <div class="time">December 26, 2016</div>
-                                <div class="category"><a href="category.html">Travel</a></div>
+                                <div class="category"><a href="#">Travel</a></div>
                             </div>
-                            <h2><a href="single.html">Donec consequat arcu at ultrices sodales</a></h2>
+                            <h2><a href="#">Donec consequat arcu at ultrices sodales</a></h2>
                             <p>Proin venenatis pellentesque arcu, ut mattis nulla placerat et.</p>
                         </div>
                     </div>
@@ -797,5 +789,6 @@ th{
     <!-- main end -->
 
     <%@ include file="./include/footer.jsp"%>
+    <%@ include file="./include/scripts.jsp"%>
 </body>
 </html>

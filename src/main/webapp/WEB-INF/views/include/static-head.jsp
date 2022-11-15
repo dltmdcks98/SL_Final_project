@@ -47,16 +47,4 @@
 <link rel="stylesheet" href="/css/skins/all.css">
 <link rel="stylesheet" href="/css/demo.css">
 
-<script src="/js/jquery.js" defer></script>
-<script src="/js/jquery.migrate.js" defer></script>
-<script src="/scripts/bootstrap/bootstrap.min.js" defer></script>
-<script>let $target_end=$(".best-of-the-week");</script>
-<script src="/scripts/jquery-number/jquery.number.min.js" defer></script>
-<script src="/scripts/owlcarousel/dist/owl.carousel.min.js" defer></script>
-<script src="/scripts/magnific-popup/dist/jquery.magnific-popup.min.js" defer></script>
-<script src="/scripts/easescroll/jquery.easeScroll.js" defer></script>
-<script src="/scripts/sweetalert/dist/sweetalert.min.js" defer></script>
-<script src="/scripts/toast/jquery.toast.min.js" defer></script>
-<script src="/js/demo.js" defer></script>
-<script src="/js/e-magz.js" defer></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+

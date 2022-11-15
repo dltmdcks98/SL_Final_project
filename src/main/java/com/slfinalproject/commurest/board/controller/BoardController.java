@@ -29,7 +29,7 @@ public class BoardController {
     // 게시판 메인 페이지
     @GetMapping("")
     public String board(@ModelAttribute("p") Page page, Model model) {
-        Map<String, Object> boardMap = boardService.findAllService(page);
+       Map<String, Object> boardMap = boardService.findAllService(page);
 
 
         PageMaker pageMaker = new PageMaker(

@@ -9,7 +9,7 @@
                     <h1 class="block-title">Company Info</h1>
                     <div class="block-body">
                         <figure class="foot-logo">
-                            <img src="images/logo-light.png" class="img-responsive" alt="Logo">
+                            <img src="/img/logo-light.png" class="img-responsive" alt="Logo">
                         </figure>
                         <p class="brand-description">
                             Magz is a HTML5 &amp; CSS3 magazine template based on Bootstrap 3.
@@ -57,12 +57,12 @@
                         <article class="article-mini">
                             <div class="inner">
                                 <figure>
-                                    <a href="single.html">
-                                        <img src="images/news/img12.jpg" alt="Sample Article">
+                                    <a href="#">
+                                        <img src="/img/news/img12.jpg" alt="Sample Article">
                                     </a>
                                 </figure>
                                 <div class="padding">
-                                    <h1><a href="single.html">Donec consequat lorem quis augue pharetra</a></h1>
+                                    <h1><a href="#">Donec consequat lorem quis augue pharetra</a></h1>
                                 </div>
                             </div>
                         </article>
@@ -70,35 +70,35 @@
                             <div class="inner">
                                 <figure>
                                     <a href="single.html">
-                                        <img src="images/news/img14.jpg" alt="Sample Article">
+                                        <img src="/img/news/img14.jpg" alt="Sample Article">
                                     </a>
                                 </figure>
                                 <div class="padding">
-                                    <h1><a href="single.html">eu dapibus risus aliquam etiam ut venenatis</a></h1>
+                                    <h1><a href="#">eu dapibus risus aliquam etiam ut venenatis</a></h1>
                                 </div>
                             </div>
                         </article>
                         <article class="article-mini">
                             <div class="inner">
                                 <figure>
-                                    <a href="single.html">
-                                        <img src="images/news/img15.jpg" alt="Sample Article">
+                                    <a href="#">
+                                        <img src="/img/news/img15.jpg" alt="Sample Article">
                                     </a>
                                 </figure>
                                 <div class="padding">
-                                    <h1><a href="single.html">Nulla facilisis odio quis gravida vestibulum </a></h1>
+                                    <h1><a href="#">Nulla facilisis odio quis gravida vestibulum </a></h1>
                                 </div>
                             </div>
                         </article>
                         <article class="article-mini">
                             <div class="inner">
                                 <figure>
-                                    <a href="single.html">
-                                        <img src="images/news/img16.jpg" alt="Sample Article">
+                                    <a href="#">
+                                        <img src="/img/news/img16.jpg" alt="Sample Article">
                                     </a>
                                 </figure>
                                 <div class="padding">
-                                    <h1><a href="single.html">Proin venenatis pellentesque arcu vitae </a></h1>
+                                    <h1><a href="#">Proin venenatis pellentesque arcu vitae </a></h1>
                                 </div>
                             </div>
                         </article>
@@ -179,10 +179,10 @@
                 <div class="block">
                     <div class="block-body no-margin">
                         <ul class="footer-nav-horizontal">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="#">Home</a></li>
                             <li><a href="#">Partner</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                            <li><a href="page.html">About</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">About</a></li>
                         </ul>
                     </div>
                 </div>
