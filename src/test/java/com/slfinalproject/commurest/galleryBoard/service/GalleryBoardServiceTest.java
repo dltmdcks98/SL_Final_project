@@ -37,8 +37,10 @@ class GalleryBoardServiceTest {
     @Test
     @DisplayName("tag bulk 값 입력, tag 삽입")
     void setTagValue(){
-        boolean test = service.setTagValue("박보영");
+        boolean test = service.setTagValueByUserId("박보영",11);
+        boolean test1 = service.setTagValueByBoardNo("아이유",1);
         Assertions.assertTrue(test);
+        Assertions.assertTrue(test1);
     }
     @Test
     @DisplayName("tag value값 출력")

@@ -8,7 +8,17 @@
         SELECT tag_value FROM tag WHERE tag_id=#{tagId}
     </select>
 
+    <select id="getTagValueByUserId" resultType="String">
+        SELECT tag_value FROM tag WHERE user_id=#{userId}
+    </select>
+
     <insert id="setTagValue">
         INSERT INTO tag(tag_value) VALUES (#{tagValue})
+    </insert>
+    <insert id="setTagValueByBoardNo">
+        INSERT INTO tag(tag_value) VALUES (#{tagValue},${BoardNo})
+    </insert>
+    <insert id="setTagValueByUserId">
+        INSERT INTO tag(tag_value) VALUES (#{tagValue},${userId})
     </insert>
 </mapper>

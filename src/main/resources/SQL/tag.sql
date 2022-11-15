@@ -1,3 +1,4 @@
+# 사용자, 게시글 과 fk 연결
 CREATE TABLE tag (
      tag_id INT(10) AUTO_INCREMENT,
      tag_value VARCHAR(300),

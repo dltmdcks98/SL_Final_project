@@ -30,15 +30,23 @@ public class GalleryBoardService {
 
     @Transactional
     public String getTagValue(int tagId){
-        String tagValue =galleryMapper.getTagValue(tagId);
-        return tagValue;
+        return galleryMapper.getTagValue(tagId);
     }
-
+    @Transactional
+    public String getTagValueByUserId(int userId){
+        return galleryMapper.getTagValueByUserId(userId);
+    }
     @Transactional
     public boolean setTagValue(String value){
         return galleryMapper.setTagValue(value);
     }
-
+    @Transactional
+    public boolean setTagValueByBoardNo(String value,int boardNo){
+        return galleryMapper.setTagValueByBoardNo(value,boardNo);
+    }    @Transactional
+    public boolean setTagValueByUserId(String value ,int userId){
+        return galleryMapper.setTagValueByUserId(value,userId);
+    }
 
 
     public List<String> getImgUrl(String tag,int num,int size) {
