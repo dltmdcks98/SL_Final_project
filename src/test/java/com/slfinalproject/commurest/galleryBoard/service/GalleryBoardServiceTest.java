@@ -33,7 +33,18 @@ class GalleryBoardServiceTest {
 
         Assertions.assertNotNull(result);
 
-
     }
+    @Test
+    @DisplayName("tag bulk 값 입력, tag 삽입")
+    void setTagValue(){
+        boolean test = service.setTagValue("박보영");
+        Assertions.assertTrue(test);
+    }
+    @Test
+    @DisplayName("tag value값 출력")
+    void getTagValue(){
+        String test = service.getTagValue(1);
 
+        Assertions.assertEquals("아이유",test);
+    }
 }
