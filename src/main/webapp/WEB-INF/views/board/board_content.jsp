@@ -3,50 +3,79 @@
 <html>
 <head>
     <%@ include file="../include/static-head.jsp" %>
+    <link rel="stylesheet" href="/css/board/board_content.css">
+
+
 </head>
 <body>
     <%@ include file="../include/header.jsp" %>
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <div class="wrap">
-        <div class="content-container">
-            <br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <h1 class="main-title">${b.boardNo}번 게시물</h1>
 
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">작성자</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="이름" name="writer"
-                       value="${a.user_name}" disabled>
+
+            <!-- 게시글 영역 begin -->
+            <div class="content">
+                    <label>
+                    <input type="hidden" name="board_no" value="${b.boardNo}"> <!--hidden으로 숨길예정 test용-->
+                    </label>
+
+                    <div id="content-header">
+                        <input type="text" name="title" value="${b.title}" disabled >
+                        <input type="text" name="writer" value="${a.user_name}" disabled>
+                    </div>
+
+                    <div id="content-body">
+                        <textarea name="content" placeholder="내용작성" style="height:200px">${b.content}</textarea>
+                    </div>
+
+
+
+                    <div class="comments-list">
+                        <button id="list-btn" type="button">목록</button>
+                        <button id="edit-btn" type="button">수정</button>
+                        <button id="del-btn" type="button" >삭제</button>
+                    </div>
+
             </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput2" class="form-label">글제목</label>
-                <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="제목" name="title"
-                       value="${b.title}" disabled>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">내용</label>
+            <!-- 게시글 영역 end -->
 
-                <p class="main-content">
-                    ${b.content}
-
-                </p>
-
-            </div>
-
-
-
-
-
-        </div>
 
 
         <%@ include file="../include/footer.jsp" %>
-    </div>
+        <%@ include file="../include/scripts.jsp" %>
+    <script>
+        const $listBtn = document.getElementById('list-btn');
+        const $editBtn = document.getElementById("edit-btn");
+        const $delBtn = document.getElementById("del-btn");
+
+        console.log($listBtn);
+
+
+        (function () {
+            $listBtn.addEventListener('click', e => {
+                console.log('목록 클릭');
+            });
+
+        }());
+
+        //목록버튼
+        <%--$listBtn.onclick = e => {--%>
+        <%--    alert("목록버튼 클릭!")--%>
+        <%--    location.href = '/board?pageNum=${p.pageNum}&amount=${p.amount}';--%>
+        <%--};--%>
+
+        //수정버튼
 
 
 
+        $editBtn.onclick = e => {
+            alert("수정버튼 클릭");
+        };
+
+        //삭제버튼
+        $delBtn.onclick = e => {
+            alert("삭제버튼 클릭");
+
+        };
+    </script>
 </body>
-
-
-
-
 </html>
+

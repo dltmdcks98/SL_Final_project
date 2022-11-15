@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-12">
                     <div class="brand">
-                        <a href="../index.jsp">
+                        <a href="">
                             <img src="/img/logo.png" alt="Magz Logo">
                         </a>
                     </div>
@@ -53,7 +53,7 @@
         <div class="container">
             <div class="brand">
                 <a href="#">
-                    <img src="images/logo.png" alt="Magz Logo">
+                    <img src="/img/logo.png" alt="Magz Logo">
                 </a>
             </div>
             <div class="mobile-toggle">
@@ -163,48 +163,48 @@
                                             <article class="article col-md-4 mini">
                                                 <div class="inner">
                                                     <figure>
-                                                        <a href="single.html">
-                                                            <img src="images/news/img10.jpg" alt="Sample Article">
+                                                        <a href="#">
+                                                            <img src="/img/news/img10.jpg" alt="Sample Article">
                                                         </a>
                                                     </figure>
                                                     <div class="padding">
                                                         <div class="detail">
                                                             <div class="time">December 10, 2016</div>
-                                                            <div class="category"><a href="category.html">Healthy</a></div>
+                                                            <div class="category"><a href="#">Healthy</a></div>
                                                         </div>
-                                                        <h2><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
+                                                        <h2><a href="#">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
                                                     </div>
                                                 </div>
                                             </article>
                                             <article class="article col-md-4 mini">
                                                 <div class="inner">
                                                     <figure>
-                                                        <a href="single.html">
-                                                            <img src="images/news/img11.jpg" alt="Sample Article">
+                                                        <a href="#">
+                                                            <img src="/img/news/img11.jpg" alt="Sample Article">
                                                         </a>
                                                     </figure>
                                                     <div class="padding">
                                                         <div class="detail">
                                                             <div class="time">December 13, 2016</div>
-                                                            <div class="category"><a href="category.html">Lifestyle</a></div>
+                                                            <div class="category"><a href="#">Lifestyle</a></div>
                                                         </div>
-                                                        <h2><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
+                                                        <h2><a href="#">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
                                                     </div>
                                                 </div>
                                             </article>
                                             <article class="article col-md-4 mini">
                                                 <div class="inner">
                                                     <figure>
-                                                        <a href="single.html">
-                                                            <img src="images/news/img14.jpg" alt="Sample Article">
+                                                        <a href="#">
+                                                            <img src="/img/news/img14.jpg" alt="Sample Article">
                                                         </a>
                                                     </figure>
                                                     <div class="padding">
                                                         <div class="detail">
                                                             <div class="time">December 14, 2016</div>
-                                                            <div class="category"><a href="category.html">Travel</a></div>
+                                                            <div class="category"><a href="#">Travel</a></div>
                                                         </div>
-                                                        <h2><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
+                                                        <h2><a href="#">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
                                                     </div>
                                                 </div>
                                             </article>

@@ -243,17 +243,17 @@ $(function(){
   }
 
   // browser
-	if($.browser.safari) {
-		$("head").append($("<link/>", {
-			rel: "stylesheet",
-			href: "css/safari.css"
-		}));
-	}else if($.browser.mozilla) {
-		$(".social li").each(function() {
-			$(this).find("rect").attr("width", "100%");
-			$(this).find("rect").attr("height", "100%");
-		});
-	}
+	// if($.browser.safari) {
+	// 	$("head").append($("<link/>", {
+	// 		rel: "stylesheet",
+	// 		href: "css/safari.css"
+	// 	}));
+	// }else if($.browser.mozilla) {
+	// 	$(".social li").each(function() {
+	// 		$(this).find("rect").attr("width", "100%");
+	// 		$(this).find("rect").attr("height", "100%");
+	// 	});
+	// }
 
 	var bestOfTheWeek = function() {
 		var botwCarousel = $(".carousel-1").owlCarousel({
