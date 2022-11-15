@@ -104,8 +104,9 @@ public class GalleryBoardService {
         List<String> urlList = new ArrayList<>();
         for(int i=0; i<tagList.size();i++){
             String tag = tagList.get(i).getTagValue();
-            for(int j =0; j<size;j++){
-                urlList.add(getImgUrl(tag,startPage,size).get(j));
+            List<String> temp = getImgUrl(tag,startPage,size);
+            for(int j =0; j<temp.size();j++){
+                urlList.add(temp.get(j));
             }
         }
         log.warn(urlList);
