@@ -1,5 +1,6 @@
 package com.slfinalproject.commurest.galleryBoard.service;
 
+import com.slfinalproject.commurest.galleryBoard.domain.Tag;
 import com.slfinalproject.commurest.galleryBoard.repository.GalleryMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -33,17 +34,19 @@ public class GalleryBoardService {
         return galleryMapper.getTagValue(tagId);
     }
     @Transactional
-    public String getTagValueByUserId(int userId){
+    public List<Tag> getTagValueByUserId(int userId){
         return galleryMapper.getTagValueByUserId(userId);
     }
     @Transactional
     public boolean setTagValue(String value){
         return galleryMapper.setTagValue(value);
     }
+
     @Transactional
     public boolean setTagValueByBoardNo(String value,int boardNo){
         return galleryMapper.setTagValueByBoardNo(value,boardNo);
-    }    @Transactional
+    }
+    @Transactional
     public boolean setTagValueByUserId(String value ,int userId){
         return galleryMapper.setTagValueByUserId(value,userId);
     }
@@ -94,5 +97,20 @@ public class GalleryBoardService {
         }
         return urls;
     }
+
+    @Transactional
+    public List<String> getImgUrlsByUserId(int userId,int startPage, int size){
+        List<Tag> tagList = getTagValueByUserId(userId);
+        List<String> urlList = new ArrayList<>();
+        for(int i=0; i<tagList.size();i++){
+            String tag = tagList.get(i).getTagValue();
+            for(int j =0; j<size;j++){
+                urlList.add(getImgUrl(tag,startPage,size).get(j));
+            }
+        }
+        log.warn(urlList);
+        return urlList;
+    }
+
 }
 

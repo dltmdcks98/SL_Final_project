@@ -13,6 +13,6 @@ CREATE TABLE tag (
                  ON DELETE CASCADE
 );
 
-INSERT INTO tag(tag_value) VALUES ('아이유');
+INSERT INTO tag(tag_value,board_no) VALUES ('아이유',1);
 
 DROP TABLE tag;
