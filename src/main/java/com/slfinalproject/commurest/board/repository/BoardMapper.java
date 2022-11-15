@@ -8,6 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface BoardMapper {
+    // 게시글 쓰기
     boolean insert(Board board);
 
     // 게시글 전체 조회 with paging
@@ -19,5 +20,11 @@ public interface BoardMapper {
 
     // 전체 게시물 수 조회
     int getTotalCount();
+
+    // 게시글 한건 수정
+    boolean edit(Board board);
+
+    //게시글 한건 삭제
+    boolean remove(int boardNo);
 
 }

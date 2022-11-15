@@ -10,26 +10,43 @@
         <result property="regDate" column="reg_date"/>
         <result property="recommend" column="recommend"/>
     </resultMap>
-
+    <!--한건 등록-->
     <insert id="insert">
         INSERT INTO board
         (user_id, title, content)
         VALUES (#{userId}, #{title}, #{content})
     </insert>
-
+    <!--전체조회-->
     <select id="selectAll" resultMap="boardMap">
         SELECT * FROM board ORDER BY board_no DESC LIMIT #{start}, 20
     </select>
 
 
-
+    <!--한건 조회-->
     <select id="selectOne" resultMap="boardMap">
         select * from board where board_no = #{boardNo}
     </select>
 
+    <!--전체 게시글 수-->
     <select id="getTotalCount" resultType="int">
         SELECT COUNT(*) FROM board
     </select>
+
+    <!--게시글 삭제-->
+    <delete id="remove">
+        delete from board where board_no=#{boardNo}
+    </delete>
+
+    <!--게시글 수정-->
+    <update id="edit">
+        update board set title = #{title}, content = #{content}
+        where board_no = #{boardNo}
+    </update>
+
+    <!--조회수 갱신-->
+    <update id="hitCount">
+        update board set hit= hit+1 where board_no= #{boardNo}
+    </update>
 
 
 </mapper>

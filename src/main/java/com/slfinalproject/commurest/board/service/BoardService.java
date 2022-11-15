@@ -58,9 +58,21 @@ public class BoardService {
     }
 
     public Board selectOne(int boardNo) {
-        Board board = boardMapper.selectOne(boardNo);
-        return board;
+        return boardMapper.selectOne(boardNo);
     }
 
+//====================================================================================================================//
 
+    // 게시글 삭제 요청    - 댓글이 달려있을 경우 삭제처리 안됨
+
+    public boolean remove(int boardNo) {
+        return boardMapper.remove(boardNo);
+    }
+//====================================================================================================================//
+
+    // 게시글 수정 요청
+
+    public boolean edit(Board board) {
+        return boardMapper.edit(board);
+    }
 }
