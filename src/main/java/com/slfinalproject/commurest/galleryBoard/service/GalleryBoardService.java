@@ -41,10 +41,12 @@ public class GalleryBoardService {
     public boolean setTagValue(String value){
         return galleryMapper.setTagValue(value);
     }
+
     @Transactional
     public boolean setTagValueByBoardNo(String value,int boardNo){
         return galleryMapper.setTagValueByBoardNo(value,boardNo);
-    }    @Transactional
+    }
+    @Transactional
     public boolean setTagValueByUserId(String value ,int userId){
         return galleryMapper.setTagValueByUserId(value,userId);
     }
@@ -95,5 +97,20 @@ public class GalleryBoardService {
         }
         return urls;
     }
+
+    @Transactional
+    public List<String> getImgUrlsByUserId(int userId,int startPage, int size){
+        List<Tag> tagList = getTagValueByUserId(userId);
+        List<String> urlList = new ArrayList<>();
+        for(int i=0; i<tagList.size();i++){
+            String tag = tagList.get(i).getTagValue();
+            for(int j =0; j<size;j++){
+                urlList.add(getImgUrl(tag,startPage,size).get(j));
+            }
+        }
+        log.warn(urlList);
+        return urlList;
+    }
+
 }
 

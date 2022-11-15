@@ -143,7 +143,5 @@
     (async () => {
         $masonry.masonryImagesReveal( await getItems(counter) );
         counter++;
-        $masonry.masonryImagesReveal( await getItems(counter) );
-        counter++;
     })();
 </script>

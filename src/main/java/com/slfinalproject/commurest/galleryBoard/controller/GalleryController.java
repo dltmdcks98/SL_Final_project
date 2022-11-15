@@ -17,7 +17,7 @@ public class GalleryController {
 
     @GetMapping("")
     public String galleryHome() {
-        log.info("Controller(gallery) -" + getClass());
+        log.info("Controller(gallery)");
         return "gallery_board/gallery";
     }
 
