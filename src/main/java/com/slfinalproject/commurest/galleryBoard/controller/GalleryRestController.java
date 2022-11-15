@@ -21,11 +21,14 @@ public class GalleryRestController {
     public List<String> getUrl(int num){
         int size=10;
 
+
         log.info("RestController num :"+num+" size :"+size);
 
         List<Tag> tagList = galleryBoardService.getTagValueByUserId(11);
         if(tagList.size()>2)size=3;
+
 //        return galleryBoardService.getImgUrls(galleryBoardService.getTagValue(2),num,size);
+
         return galleryBoardService.getImgUrlsByUserId(11,num,size);
     }
 
