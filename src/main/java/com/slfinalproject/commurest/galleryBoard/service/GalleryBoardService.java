@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Log4j2
@@ -54,11 +55,9 @@ public class GalleryBoardService {
 
     public List<String> getImgUrl(String tag,int num,int size) {
         log.info("GalleryBoardService 진입, tag내용 : " +tag);
-        String name=tag;
-        int start = num;
-        String imageSize = "medium";
+
         List<String> imageUrl = new ArrayList<>();
-        String searchUrl = "https://www.googleapis.com/customsearch/v1?key="+API+"&cx="+domain+"&imageType=face&searchType=image&filter=1&imageSize="+imageSize+"&q=" + name+"&start="+(start*10+1)+"&num="+size;
+        String searchUrl = "https://www.googleapis.com/customsearch/v1?key="+API+"&cx="+domain+"&searchType=image&filter=0&imgSize=large&q="+tag+"&start="+(num*10+1)+"&num="+size;
 
         try {
             Connection.Response res = Jsoup.connect(
@@ -75,7 +74,7 @@ public class GalleryBoardService {
 //                JSONArray metatags = pagemap.getJSONArray("metatags");
 //                JSONObject metaData = metatags.getJSONObject(0);
 //                String url = metaData.getString("og:image");
-                log.info("no : "+i +" url :"+ url+" num :"+start);
+                log.info("no : "+i +" url :"+ url+" num :"+num);
                 imageUrl.add(url);
             }
 
@@ -86,15 +85,16 @@ public class GalleryBoardService {
     }
 
     public List<String> getImgUrls(String tag, int startpage,int size){
-        List<String> urls = new ArrayList<>();
+        List<String> tempurl = new ArrayList<>();
         String str = "";
-        for(int num = startpage; num <startpage+1; num++){ //검색 시작 페이지 초기 30개
+        for(int num = startpage; num <startpage+1; num++){
             List<String> temp = getImgUrl(tag,num,size);
             for(int j=0; j<size; j++){ //검색 결과 list 분해
                 str = temp.get(j);
-                urls.add(str);
+                tempurl.add(str);
             }
         }
+        List<String> urls = tempurl.stream().distinct().collect(Collectors.toList());
         return urls;
     }
 
@@ -104,8 +104,10 @@ public class GalleryBoardService {
         List<String> urlList = new ArrayList<>();
         for(int i=0; i<tagList.size();i++){
             String tag = tagList.get(i).getTagValue();
-            for(int j =0; j<size;j++){
-                urlList.add(getImgUrl(tag,startPage,size).get(j));
+            List<String> temp = getImgUrl(tag,startPage,size);
+
+            for(int j =0; j<temp.size();j++){
+                urlList.add(temp.get(j));
             }
         }
         log.warn(urlList);
