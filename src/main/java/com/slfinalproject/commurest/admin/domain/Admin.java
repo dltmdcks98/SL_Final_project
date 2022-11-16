@@ -1,5 +1,6 @@
 package com.slfinalproject.commurest.admin.domain;
 
+import com.slfinalproject.commurest.board.domain.Board;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,6 +19,7 @@ public class Admin implements UserDetails {
     private Date reg_date;
     private String user_sex;
 
+    private Board board;
 
     private int failCnt;
     private boolean isAccountNonExpired;
