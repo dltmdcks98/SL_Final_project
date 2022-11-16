@@ -30,7 +30,12 @@ public class GalleryRestController {
 
             List<Tag> tagList = galleryBoardService.getTagValueByUserId(user_id);
 
-            if(tagList.size()>2)size=3;
+            if(tagList.size()>2){
+                size=3;
+            } else if(tagList.size()==0){
+                log.info("설정된 tag가 없음 :"+tagList);
+                return galleryBoardService.getImgUrls(galleryBoardService.getTagValue(2),num,size);
+            }
 
             return galleryBoardService.getImgUrlsByUserId(user_id,num,size);
         }
