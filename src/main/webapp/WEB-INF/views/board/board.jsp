@@ -26,16 +26,18 @@
                     <th>조회수</th>
                     <th>추천수</th>
                 </tr>
-                <c:forEach var="bList" items="${bList}">
+                <c:forEach var="b" items="${bList}">
                     <tr>
-                        <td>${bList.boardNo}</td>
-                        <td>${bList.userId}</td>
-                        <td><a href="/board/content/${bList.boardNo}">${bList.title}</a></td>
-                        <td>${bList.simpleDate}</td>
-                        <td>${bList.hit}</td>
-                        <td>${bList.recommend}</td>
+                        <td>${b.boardNo}</td>
+                        <td>${b.userName}</td>
+                        <td><a href="/board/content/${b.boardNo}">${b.title}</a></td>
+                        <td>${b.simpleDate}</td>
+                        <td>${b.hit}</td>
+                        <td>${b.recommend}</td>
                     </tr>
                 </c:forEach>
+
+
                 </tbody>
             </table>
             <div class="btn-process">

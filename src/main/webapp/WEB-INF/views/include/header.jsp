@@ -28,9 +28,9 @@
                         <div class="help-block">
                             <div>Popular:</div>
                             <ul>
-                                <li><a href="#">HTML5</a></li>
-                                <li><a href="#">CSS3</a></li>
-                                <li><a href="#">Bootstrap 3</a></li>
+                                <li><a href="#">영수증 인용구</a></li>
+                                <li><a href="#">y2k pfp</a></li>
+                                <li><a href="#">blue aesthetic</a></li>
                                 <li><a href="#">jQuery</a></li>
                                 <li><a href="#">AnguarJS</a></li>
                             </ul>

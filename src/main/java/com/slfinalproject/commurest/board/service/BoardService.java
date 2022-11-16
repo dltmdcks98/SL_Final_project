@@ -27,7 +27,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class BoardService {
 
-    @Autowired
+
     private final BoardMapper boardMapper;
 
     // 게시글 등록
@@ -40,7 +40,6 @@ public class BoardService {
             Authentication authentication = securityContext.getAuthentication();
             Admin user = (Admin) authentication.getPrincipal();
             //board.setUserId(user.getUser_id());
-
      //   }
 
         board.setUserId(user.getUser_id());
@@ -50,14 +49,10 @@ public class BoardService {
 
     }
 
-    // 게시글 전체 조회
-
-
     // 게시물 전체 조회 요청 페이징
     public Map<String, Object> findAllService(Page page) {
 
         Map<String, Object> findDataMap = new HashMap<>();
-
         List<Board> boardList = boardMapper.selectAll(page);
 
         process(boardList);

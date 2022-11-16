@@ -25,7 +25,6 @@
                     <div id="content-body">
                         <textarea name="content" placeholder="내용작성" style="height:200px">
                             <p>${b.content}</textarea></p>
-
                     </div>
 
                 <p class="main-content">
