@@ -2,7 +2,8 @@
  * Base styles
  */
 body {
-    font: 100% / 1.414 "Poiret One", "Roboto", sans-serif;
+    /*font: 100% / 1.414 "Poiret One", "Roboto", sans-serif;*/
+    font: 100% / 1.414'Raleway', sans-serif;
 }
 li{
 
@@ -20,9 +21,28 @@ li{
  */
 header {
     padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
     background: none;
-    display: block;
+    display: flex;
+    width: 85%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+h1.text-center{
+    width: fit-content;
+    margin: 0 auto;
+}
+div.login{
+    margin-right: 2rem;
+    width: fit-content;
+
+}
+div.login>h2{
+    margin-bottom: 0px;
+
 }
 
 /**
@@ -110,6 +130,14 @@ img {
     z-index: 2; /* over other stuff */
 
     transition: opacity 0.4s;
+}
+.status-reset{
+    display: none !important;
+    opacity: 1;
+}
+.status-update{
+    display: block !important;
+    opacity: 0;
 }
 /*
  loading 화면

@@ -11,7 +11,10 @@
 <body>
 <section class="container-fluid gallery bg-faded">
     <header>
-        <h1 class="text-center">CommuRest</h1>
+        <h1 class="text-center"><a href="/">CommuRest</a></h1>
+        <div class="login">
+            <h2><a href="/login">Login</a></h2>
+        </div>
     </header>
     <div class="grid">
         <div class="grid-sizer"></div>
