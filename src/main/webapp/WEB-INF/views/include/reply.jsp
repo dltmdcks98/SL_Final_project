@@ -4,9 +4,9 @@
 <script>
 
     // 로그인한 회원 계정명 -> 세션을 통해 얻고 있음
-    const currentAccount = '${user.user_email}';
+    const currentAccount = '${user.user_id}';
     const auth = '${user.manager}';
-
+    console.log(currentAccount,auth);
     //원본 글 번호
     const bno = '${b.boardNo}';
     // console.log('bno:', bno);

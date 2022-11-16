@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
@@ -24,6 +25,14 @@ class ReplyMapperTest {
         System.out.println(replyList);
 
         assertNotNull(replyList);
+
+    }
+
+    @Test
+    @DisplayName("특정 게시물의 댓글목록의 개수.")
+    void countReply() {
+        int num = mapper.getReplyCount(19);
+        assertEquals(1,num);
 
     }
 }
