@@ -10,7 +10,9 @@
         <result property="hit" column="hit"/>
         <result property="regDate" column="reg_date"/>
         <result property="recommend" column="recommend"/>
+        <result property="userName" column="user_name"/>
     </resultMap>
+
     <!--한건 등록-->
     <insert id="insert">
         INSERT INTO board
@@ -19,7 +21,11 @@
     </insert>
     <!--전체조회-->
     <select id="selectAll" resultMap="boardMap">
-        SELECT * FROM board ORDER BY board_no DESC LIMIT #{start}, 20
+        SELECT A.board_no, A.user_id, A.title, A.reg_date, A.hit, A.recommend, B.user_name
+        FROM board A
+        JOIN user_account B ON A.user_id = B.user_id
+        ORDER BY board_no DESC
+        LIMIT #{start}, 20
     </select>
 
 

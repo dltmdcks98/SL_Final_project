@@ -13,6 +13,7 @@
         <div class="box-wrapper">
             <div class="box box-border">
                 <div class="box-body">
+
                     <h4>Login</h4>
 
                     <form method="POST" action="/admin/login">
@@ -29,8 +30,8 @@
                             </label>
                             <input type="password" name="user_pass" class="form-control">
                         </div>
-                        <div class="">
-                            <button name="button" class="">로그인</button>
+                        <div class="form-group text-right">
+                            <button name="button" class="btn btn-block btn-primary text-light">로그인</button>
 
                         </div>
                         <div class="form-group text-center">
