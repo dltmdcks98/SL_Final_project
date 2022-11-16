@@ -40,7 +40,6 @@ public class BoardController {
                 new Page(page.getPageNum(), page.getAmount())
                 , (Integer) boardMap.get("tc"));
         log.info(pageMaker);
-
         model.addAttribute("bList", boardMap.get("bList"));
         model.addAttribute("pageMaker", pageMaker);
 
@@ -92,7 +91,7 @@ public class BoardController {
     }
 
     // 게시글 수정 처리 요청
-    @GetMapping("/edit")
+    @PostMapping("/edit")
     public String editBoard(Board board) {
         boolean flag = boardService.edit(board);
         return flag ? "redirect:/board/content/" + board.getBoardNo() : "redirect:/";

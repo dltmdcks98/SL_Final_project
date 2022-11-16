@@ -42,14 +42,14 @@
                                     </thead>
 
                                     <tbody>
-                                    <c:forEach var="bList" items="${bList}">
+                                    <c:forEach var="b" items="${bList}">
                                         <tr onclick="location.href='/board/content/${bList.boardNo}'" >
-                                            <td>${bList.boardNo}</td>
-                                            <td>${bList.userId}</td>
+                                            <td>${b.boardNo}</td>
+                                            <td>${b.userName}</td>
                                             <td class="title">${bList.title}</td>
-                                            <td>${bList.simpleDate}</td>
-                                            <td>${bList.hit}</td>
-                                            <td>${bList.recommend}</td>
+                                            <td>${b.simpleDate}</td>
+                                            <td>${b.hit}</td>
+                                            <td>${b.recommend}</td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
