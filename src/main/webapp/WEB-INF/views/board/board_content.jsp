@@ -51,7 +51,7 @@
 
                 <%--                            ${loginUser == null}과 같음  }--%>
                 <c:if test="${empty user}">
-                    <a href="/member/sign-in">댓글은 로그인 후 작성 가능합니다.</a>
+                    <a href="/login">댓글은 로그인 후 작성 가능합니다.</a>
                 </c:if>
 
                 <c:if test="${not empty user}">
