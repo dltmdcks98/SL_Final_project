@@ -41,7 +41,6 @@ public class BoardController {
                 , (Integer) boardMap.get("tc"));
         log.info(pageMaker);
 
-
         model.addAttribute("bList", boardMap.get("bList"));
         model.addAttribute("pageMaker", pageMaker);
 
@@ -85,12 +84,17 @@ public class BoardController {
         return "redirect:/board";
     }
 
+    // 게시글 수정 화면 요청
+    @GetMapping("/edit/test")
+    public String edit(int boardNo, Model model, HttpServletRequest request, HttpServletResponse response) {
+        Board board = boardService.findOneService(boardNo, response, request);
+        return "board/board/edit";
+    }
 
-    /*
-    // 게시글 수정
+    // 게시글 수정 처리 요청
     @GetMapping("/edit")
     public String editBoard(Board board) {
-        //boolean flag = boardService.edit(board);
+        boolean flag = boardService.edit(board);
         return flag ? "redirect:/board/content/" + board.getBoardNo() : "redirect:/";
     }
 
@@ -99,6 +103,4 @@ public class BoardController {
     public String removeBoard(int boardNo) {
         return boardService.remove(boardNo) ? "redirect:/board/" : "redirect:/";
     }
-
-    */
 }

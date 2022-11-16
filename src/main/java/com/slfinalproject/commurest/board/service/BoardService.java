@@ -11,6 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -80,9 +81,8 @@ public class BoardService {
             dateFormat(board);
         }
     }
-
-
-
+//====================================================================================================================//
+    // 게시글 작성
     public Board selectOne(int boardNo) {
         return boardMapper.selectOne(boardNo);
     }
@@ -100,5 +100,11 @@ public class BoardService {
 
     public boolean edit(Board board) {
         return boardMapper.edit(board);
+    }
+    //====================================================================================================================//
+    @Transactional
+    public Board findOneService(int boardNo, HttpServletResponse response, HttpServletRequest request) {
+        log.info("findOne service start - {}", boardNo);
+        return boardMapper.selectOne(boardNo);
     }
 }

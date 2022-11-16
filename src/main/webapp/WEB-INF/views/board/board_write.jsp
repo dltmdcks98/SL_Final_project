@@ -6,7 +6,7 @@
 <head>
     <%@ include file="../include/static-head.jsp" %>
     <link rel="stylesheet" href="/css/board/board_write.css">
-    <script src="/js/board/board_write.js" defer></script>
+    <script src="/js/board/write.js" defer></script>
     <script src="/js/board/jquery_board_write.js" defer></script>
 </head>
 
