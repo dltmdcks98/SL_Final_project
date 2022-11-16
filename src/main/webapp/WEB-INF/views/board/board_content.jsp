@@ -23,7 +23,9 @@
                     </div>
 
                     <div id="content-body">
-                        <textarea name="content" placeholder="내용작성" style="height:200px">${b.content}</textarea>
+                        <textarea name="content" placeholder="내용작성" style="height:200px">
+                            <p>${b.content}</textarea></p>
+
                     </div>
 
 
@@ -43,37 +45,31 @@
         <%@ include file="../include/scripts.jsp" %>
     <script>
         const $listBtn = document.getElementById('list-btn');
-        const $editBtn = document.getElementById("edit-btn");
-        const $delBtn = document.getElementById("del-btn");
+        const $editBtn = document.getElementById('edit-btn');
+        const $delBtn = document.getElementById('del-btn');
 
-        console.log($listBtn);
-
-
-        (function () {
-            $listBtn.addEventListener('click', e => {
-                console.log('목록 클릭');
-            });
-
-        }());
+        // console.log($listBtn);
 
         //목록버튼
-        <%--$listBtn.onclick = e => {--%>
-        <%--    alert("목록버튼 클릭!")--%>
-        <%--    location.href = '/board?pageNum=${p.pageNum}&amount=${p.amount}';--%>
-        <%--};--%>
+        $listBtn.onclick = e => {
+
+            location.href = '/board?pageNum=${p.pageNum}&amount=${p.amount}';
+        };
 
         //수정버튼
-
-
-
         $editBtn.onclick = e => {
-            alert("수정버튼 클릭");
+            if($editBtn!==null) {
+                confirm('수정하시겠습니까?');
+                location.href='/board/edit?boardNo=${b.boardNo}';
+            }
         };
 
         //삭제버튼
         $delBtn.onclick = e => {
-            alert("삭제버튼 클릭");
-
+            if($delBtn!==null) {
+                confirm('삭제하시겠습니까?');
+                location.href='/board/delete?boardNo=${b.boardNo}';
+            }
         };
     </script>
 </body>

@@ -39,7 +39,7 @@
 
     <!--게시글 수정-->
     <update id="edit">
-        update board set title = #{title}, content = #{content}
+        update board set user_id = #{userId}, title = #{title}, content = #{content}
         where board_no = #{boardNo}
     </update>
 

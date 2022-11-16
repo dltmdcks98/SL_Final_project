@@ -6,7 +6,10 @@ import com.slfinalproject.commurest.util.paging.Page;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -56,7 +59,8 @@ public class BoardService {
             dateFormat(board);
         }
     }
-
+//====================================================================================================================//
+    // 게시글 작성
     public Board selectOne(int boardNo) {
         return boardMapper.selectOne(boardNo);
     }
@@ -74,5 +78,11 @@ public class BoardService {
 
     public boolean edit(Board board) {
         return boardMapper.edit(board);
+    }
+    //====================================================================================================================//
+    @Transactional
+    public Board findOneService(int boardNo, HttpServletResponse response, HttpServletRequest request) {
+        log.info("findOne service start - {}", boardNo);
+        return boardMapper.selectOne(boardNo);
     }
 }

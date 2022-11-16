@@ -628,11 +628,7 @@ th{
                             </div>
                         </h1>
                         <div class="aside-body">
-                            <ul class="video-list" data-youtube='"carousel":true, "nav": "#video-list-nav"'>
-                                <li><a data-youtube-id="SBjQ9tuuTJQ" data-action="magnific"></a></li>
-                                <li><a data-youtube-id="9cVJr3eQfXc" data-action="magnific"></a></li>
-                                <li><a data-youtube-id="DnGdoEa1tPg" data-action="magnific"></a></li>
-                            </ul>
+                           <p>영상</p>
                         </div>
                     </aside>
                     <aside id="sponsored">

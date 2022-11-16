@@ -76,7 +76,14 @@ public class BoardController {
 
     }
 
-    // 게시글 수정
+    // 게시글 수정 화면 요청
+    @GetMapping("/edit/test")
+    public String edit(int boardNo, Model model, HttpServletRequest request, HttpServletResponse response) {
+        Board board = boardService.findOneService(boardNo, response, request);
+        return "board/board/edit";
+    }
+
+    // 게시글 수정 처리 요청
     @GetMapping("/edit")
     public String editBoard(Board board) {
         boolean flag = boardService.edit(board);

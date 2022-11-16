@@ -94,10 +94,9 @@
 
 <%@ include file="../include/footer.jsp"%>
 <%@ include file="../include/scripts.jsp"%>
-
+<%--<script src="/js/board/list.js"></script>--%>
 
     <script>
-
         //현재 위치한 페이지에 active 스타일 부여하기
         function appendPageActive() {
 

@@ -29,6 +29,8 @@ CREATE TABLE board(
 
 select * from board;
 insert into board(user_id, title, content)  values(1,'제목테스트','내용테스트');
+insert into board(user_id, title, content)  values(2,'제목테스트2','내용테스트2');
+insert into board(user_id, title, content)  values(3,'제목테스트3','내용테스트3');
 
 ALTER TABLE board ADD CONSTRAINT fk_board_user_account FOREIGN KEY (user_id)
     REFERENCES user_account(user_id)
