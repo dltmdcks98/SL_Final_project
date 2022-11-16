@@ -9,8 +9,8 @@
 <br><br><br><br><br><br><br><br><br><br><br><br><br>
     <div class="wrap">
         <div class="content-container">
-            <br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <h1 class="main-title">${b.boardNo}번 게시물</h1>
+
+            <h1 class="main-title">자유 게시판</h1>
 
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">작성자</label>

@@ -7,56 +7,9 @@
 <head>
 
     <%@ include file="./include/static-head.jsp" %>
-
+    <link rel="stylesheet" href="/css/board/board_list.css">
 </head>
-<style>
-    @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 
-    .tableList {
-        font-family: 'Jeju Gothic', sans-serif;
-        width: 100%;
-        border-bottom: 1px solid #29367c;
-        border-collapse: collapse;
-
-    }
-
-    tbody tr:hover {
-        background-color: #F1EFEF;
-    }
-
-    thead tr {
-        display: table-row;
-        border-style: groove hidden;
-        border-color: #81F7D8;
-    }
-
-    thead th {
-        font-weight: bold;
-    }
-
-    tbody tr {
-        border-color: #E7E6E6;
-        border: 1px;
-        border-style: groove hidden;
-    }
-
-    tbody td {
-        font-size: 15px;
-        font-weight: 1;
-    }
-th{
-    text-align: center;
-}
-    td {
-        text-align: center;
-    }
-
-    .title {
-        text-align: left;
-    }
-
-
-</style>
 <body class="skin-orange">
     <%@ include file="./include/header.jsp"%>
     <!-- main begin -->
@@ -66,7 +19,7 @@ th{
             <div class="row">
                 <div class="col-md-8 col-sm-12 col-xs-12">
 
-<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
 
                     <div class="line">
 
@@ -666,6 +619,7 @@ th{
             </div>
         </div>
     </section>
+
 
     <section class="best-of-the-week">
         <div class="container">

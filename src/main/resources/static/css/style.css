@@ -393,7 +393,6 @@ a.twitch {
     -moz-border-radius: 5px;
     -o-border-radius: 5px;
     -ms-border-radius: 5px;
-    background-image: url("../images/spinner.svg");
     background-size: 100%;
     width: 80px;
     height: 80px;
@@ -2847,7 +2846,6 @@ aside .ads figcaption {
         height: calc(100% - 55px);
         height: -webkit-calc(100% - 55px);
         height: -moz-calc(100% - 55px);
-        height: -o-calc(100% - 55px);
         width: 320px;
         transform: scale(1);
         -webkit-transform: scale(1);
@@ -2919,7 +2917,6 @@ aside .ads figcaption {
     }
     .article-list .details .detail {
         display: inline-flex;
-        display: -webkit-inline-box;
     }
 
     .line div {
@@ -3928,7 +3925,6 @@ blockquote {
     width: calc(100% / 3);
     width: -webkit-calc(100% / 3);
     width: -moz-calc(100% / 3);
-    width: -o-calc(100% / 3);
     text-align: center;
     padding: 5px 0;
     border-right: 1px solid #f2f2f2;
