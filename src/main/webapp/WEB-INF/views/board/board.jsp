@@ -43,10 +43,10 @@
 
                                     <tbody>
                                     <c:forEach var="b" items="${bList}">
-                                        <tr onclick="location.href='/board/content/${bList.boardNo}'" >
+                                        <tr onclick="location.href='/board/content/${b.boardNo}'" >
                                             <td>${b.boardNo}</td>
                                             <td>${b.userName}</td>
-                                            <td class="title">${bList.title}</td>
+                                            <td class="title">${b.title}</td>
                                             <td>${b.simpleDate}</td>
                                             <td>${b.hit}</td>
                                             <td>${b.recommend}</td>
