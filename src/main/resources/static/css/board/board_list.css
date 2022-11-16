@@ -1,89 +1,48 @@
-body {
-    /*font-size: 18px;*/
-    /*background: -webkit-linear-gradient(left, #25c481, #25b7c4);*/
-    /*background: linear-gradient(to right, #25c481, #25b7c4);*/
-}
-section{
-    position: relative;
-    margin: 150px;
-}
-.board-list .showContent {
-    margin-left: auto; margin-right: auto;
-    border: 2px solid #020715;
-}
-.board-list th:nth-child(1), th:nth-child(5), th:nth-child(6) {
-    width: 5%;
-}
-.board-list th:nth-child(2), th:nth-child(4) {
-    width: 10%;
-}
-.board-list th:nth-child(3) {
-    width: 20%;
-}
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 
-.board-list {
-    width: 80%;
-    margin: 55px auto 0 79px;
-}
-.board-list .showContent tr {
-    border: 2px solid #020715;
-}
-.btn-process {
-    display: inline-block;
-    box-sizing: border-box;
-    background: #444;
-    border: 1px solid #303030;
-    color: #fff !important;
-    text-decoration: none;
-    text-align: center;
-    position: relative;
-    float:right;
-    margin: auto 155px;
-}
-.btn-write:hover {
-    background: #c4e6f5;
-}
-.board-bottom {
-    position: center;
+.tableList {
+    font-family: 'Jeju Gothic', sans-serif;
     width: 100%;
-    margin-top: 15px;
+    border-bottom: 1px solid #29367c;
+    border-collapse: collapse;
+
 }
 
-.page {
-    margin-top: 50px;
-    margin-left: auto; margin-right: auto;
-    padding-bottom: 15px;
+tbody tr:hover {
+    background-color: #F1EFEF;
 }
 
-
-.search {
-    display:flex;
-    position: relative;
-    margin-left: 200px;
-}
-.search .form-select {
-    width: 70px;
-    height: 40px;
-    display:flex;
-    margin-left: 250px;
-    position: relative;
-    float: left;
-}
-.search .form-controller {
-    width: 450px;
-    height: 40px;
-    display:flex;
-    position: relative;
-    float: left;
-}
-.search .btn {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    position: relative;
-    float: left;
+thead tr {
+    display: table-row;
+    border-style: groove hidden;
+    border-color: #81F7D8;
 }
 
+thead th {
+    font-weight: bold;
+}
 
+tbody tr {
+    border-color: #E7E6E6;
+    border: 1px;
+    border-style: groove hidden;
+}
+
+tbody td {
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 1;
+}
+th{
+    text-align: center;
+}
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+.title {
+    text-align: left;
+}
 
 
