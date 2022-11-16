@@ -14,6 +14,7 @@
             <div class="box box-border">
                 <div class="box-body">
                     <h4>Login</h4>
+
                     <form method="POST" action="/admin/login">
                         <div class="form-group">
                             <label>이메일</label>
@@ -24,12 +25,12 @@
                         <div class="form-group">
                             <label>비밀번호</label>
 
-                                <a href="forgot.html" class="pull-right">비밀번호를 잊으셨나요?</a>
+                            <a href="forgot.html" class="pull-right">비밀번호를 잊으셨나요?</a>
                             </label>
                             <input type="password" name="user_pass" class="form-control">
                         </div>
-                        <div class="form-group text-right">
-                            <button name="button" class="btn btn-block btn-primary text-light">로그인</button>
+                        <div class="">
+                            <button name="button" class="">로그인</button>
 
                         </div>
                         <div class="form-group text-center">

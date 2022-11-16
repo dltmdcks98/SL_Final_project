@@ -67,7 +67,9 @@ public class AdminService implements UserDetailsService {
     public Admin selectOne(String admin) {
         return adminMapper.selectOne(admin);
     }
-
+    public Admin selectOne2(int userId) {
+        return adminMapper.selectOne2(userId);
+    }
 
 
     @Override
@@ -84,6 +86,7 @@ public class AdminService implements UserDetailsService {
 
 
     }
+
 
 
 }

@@ -16,15 +16,24 @@
 
     <div class="write-container">
 
-        <form id="write-form" action="/board/write" method="post" autocomplete="off" enctype="multipart/form-data">
-
+        <form id="write-form" action="/board/writeForm" method="post" autocomplete="off" enctype="multipart/form-data">
 
 
             <div class="mb-4">
-                <label for="writer-input" class="form-label">작성자</label>
-                <input type="text" class="form-control" id="writer-input" placeholder="이름" name="user_name" >
+                <label for="asd" class="form-label">user_id</label>
+                <input type="text" class="form-control" id="asd" placeholder="${a.user_id}" name="user_id"
+                        disabled>
+
             </div>
+
+
             <div class="mb-4">
+                <label for="exampleFormControlInput1" class="form-label">작성자</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="${a.user_name}" name="writer"
+                    value="${a.user_name}" disabled>
+
+            </div>
+            <div class="mb-4">.
                 <label for="title-input" class="form-label">글제목</label>
                 <input type="text" class="form-control" id="title-input" placeholder="제목" name="title">
             </div>
@@ -33,7 +42,7 @@
                 <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
             </div>
 
-            <!-- 첨부파일 드래그 앤 드롭 영역인데 일단은 필요없다고 해서 냅둠 -->
+            <!-- 첨부파일 드래그 앤 드롭 영역 -->
             <div class="form-group">
                 <div class="fileDrop">
                     <span>Drop!</span>
@@ -49,7 +58,7 @@
 
 
             <div class="d-grid gap-2">
-                <button id="write_btn" class="btn btn-dark" type="button">글 작성하기</button>
+                <button id="write_btn" class="btn btn-dark" type="submit">글 작성하기</button>
                 <button id="list_btn" class="btn btn-info" type="button">목록으로</button>
             </div>
 
@@ -58,7 +67,6 @@
     </div>
 
     <%@ include file="../include/footer.jsp" %>
-    <%@ include file="../include/scripts.jsp" %>
 
 
 

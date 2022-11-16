@@ -16,8 +16,6 @@
 
 
 
-
-
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -30,6 +28,8 @@
 <meta property="og:url" content="http://github.com/nauvalazhar/Magz" />
 <meta property="og:image" content="https://raw.githubusercontent.com/nauvalazhar/Magz/master/images/preview.png" />
 <title>Pinterest &mdash; Responsive HTML5 &amp; CSS3 Pinterest Template</title>
+
+
 <!-- Bootstrap -->
 <link rel="stylesheet" href="/scripts/bootstrap/bootstrap.min.css">
 <!-- IonIcons -->
