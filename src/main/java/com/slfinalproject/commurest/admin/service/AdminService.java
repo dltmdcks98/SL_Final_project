@@ -1,7 +1,6 @@
 package com.slfinalproject.commurest.admin.service;
 
 import com.slfinalproject.commurest.admin.domain.Admin;
-
 import com.slfinalproject.commurest.admin.repository.AdminMapper;
 import com.slfinalproject.commurest.admin.repository.AdminRepository;
 import lombok.RequiredArgsConstructor;
@@ -9,22 +8,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
+import javax.servlet.http.HttpSession;
 import java.util.Arrays;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -37,9 +34,6 @@ public class AdminService implements UserDetailsService {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-
-
 
 
     Logger log = LoggerFactory.getLogger(this.getClass());
@@ -69,7 +63,18 @@ public class AdminService implements UserDetailsService {
     }
 
 
+    public Admin setLoginSession(HttpSession session){
+        Admin user = null;
+        Object securityContextObject = session.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
+        if(securityContextObject !=null){
+            SecurityContext securityContext = (SecurityContext) securityContextObject;
+            Authentication authentication = securityContext.getAuthentication();
+            user = (Admin) authentication.getPrincipal();
 
+            log.info("현재 세션 정보 : "+user);
+        }
+        return user;
+    }
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         log.info("## loadUserByUsername ##");

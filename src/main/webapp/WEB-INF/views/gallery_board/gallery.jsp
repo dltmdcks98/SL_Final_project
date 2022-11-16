@@ -13,7 +13,14 @@
     <header>
         <h1 class="text-center"><a href="/">CommuRest</a></h1>
         <div class="login">
-            <h2><a href="/login">Login</a></h2>
+            <h2>
+                <c:if test="${user != null}">
+                    <a href="/logout">logOut</a>
+                </c:if>
+                <c:if test="${user == null}">
+                    <a href="/login">logIn</a>
+                </c:if>
+            </h2>
         </div>
     </header>
     <div class="grid">
