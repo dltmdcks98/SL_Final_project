@@ -6,11 +6,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.security.Principal;
 
 
 @Controller
@@ -34,11 +34,24 @@ public class AdminController {
 
     // 로그인페이지
     @GetMapping("/login")
-    public String login(){
-
+    public String login(HttpServletRequest request){
+        String refer = request.getHeader("Referer");
+        request.getSession().setAttribute("redirectURI",refer);
         return "member/login";
     }
 
+    @GetMapping("/login_success")
+    public String login(HttpSession session){
+        log.info("POST login success");
+        String redirectURI = (String) session.getAttribute("redirectURI");
+        Admin user = adminService.setLoginSession(session);
+        if(user!=null){
+            session.setAttribute("user",user);
+            log.info("세션에 넣은 값 확인 - "+user);
+        }
+
+        return "redirect:"+redirectURI;
+    }
 
 
     // 회원가입 페이지

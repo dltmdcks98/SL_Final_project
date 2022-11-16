@@ -7,7 +7,7 @@
 
 <%--custom css--%>
 <link rel="stylesheet" href="/css/gallery/style.css">
-<%--<link rel="stylesheet" href="/css/gallery/normalize.css">--%>
+
 
 <%-- static js--%>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>

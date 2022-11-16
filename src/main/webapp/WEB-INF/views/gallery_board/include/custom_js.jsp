@@ -117,6 +117,7 @@
     }
     function resetProgress() {
         $status.css({ opacity: 1 });
+        $status.css('display', 'block');
         loadedImageCount = 0;
         if ( supportsProgress ) {
             $progress.attr( 'max', imageCount );
@@ -135,6 +136,7 @@
 
     function onAlways() {
         $status.css({ opacity: 0 });
+        $status.css('display', 'none');
     }
 
 
