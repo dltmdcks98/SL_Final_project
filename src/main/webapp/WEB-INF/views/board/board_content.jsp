@@ -1,15 +1,16 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <%@ include file="../include/static-head.jsp" %>
     <link rel="stylesheet" href="/css/board/board_content.css">
-
+    <link rel="stylesheet" href="/css/board/Reply.css">
 
 </head>
 <body>
 <%@ include file="../include/header.jsp" %>
 
+        <h1 class="main-title">자유 게시판</h1>
 
 <!-- 게시글 영역 begin -->
 <div class="content">
@@ -37,6 +38,48 @@
 </div>
 <!-- 게시글 영역 end -->
 
+                <!-- 댓글 페이징 영역 -->
+                <ul class="pagination justify-content-center">
+                    <!--
+                    < JS로 댓글 페이징 DIV삽입 >
+                -->
+                </ul>
+            </div>
+        </div> <!-- end reply content -->
+    </div>
+</div> <!-- end replies row -->
+
+<!-- 댓글 수정 모달 -->
+<div class="modal fade bd-example-modal-lg" id="replyModifyModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header" style="background: #343A40; color: white;">
+                <h4 class="modal-title">댓글 수정하기</h4>
+                <button type="button" class="close text-white" data-bs-dismiss="modal">X</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="form-group">
+                    <input id="modReplyId" type="hidden">
+                    <label for="modReplyText" hidden>댓글내용</label>
+                    <textarea id="modReplyText" class="form-control" placeholder="수정할 댓글 내용을 입력하세요."
+                              rows="3"></textarea>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button id="replyModBtn" type="button" class="btn btn-dark">수정</button>
+                <button id="modal-close" type="button" class="btn btn-danger"
+                        data-bs-dismiss="modal">닫기
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <%@ include file="../include/footer.jsp" %>
@@ -71,5 +114,7 @@
     };
 </script>
 </body>
+<%@include file="../include/reply.jsp"%>>
+
 </html>
 
