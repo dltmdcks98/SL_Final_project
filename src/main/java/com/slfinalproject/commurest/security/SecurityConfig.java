@@ -23,7 +23,7 @@ public class SecurityConfig {
     @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.authorizeRequests() // 각 경로에 따른 권한 지정
-                    .antMatchers("/", "/login","/register","/index","/css/**","/fonts/**","/img/**","/js/**","/scripts/**","/scss/**","/src/**","/gallery/**","/ajax-gallery/**").permitAll() // 누구나 가능
+                    .antMatchers("/", "/login","/register","/index","/css/**","/fonts/**","/img/**","/js/**","/scripts/**","/scss/**","/src/**","/gallery/**","/ajax-gallery/**","/board","/board/content/**").permitAll() // 누구나 가능
                     .antMatchers(HttpMethod.POST, "/admin/regist","/admin/login","/board/**").permitAll()
                     .antMatchers("/board/**").hasRole("ADMIN") // "admin"만 접근 가능, 테이블에 ROLE_권한명 으로 저장해야함
                     .anyRequest().authenticated() // 로그인된 사용자가 요청을 수행할 때 필요

@@ -21,10 +21,9 @@ public class AdminController {
     private final AdminService adminService;
 
 
-
     // 회원가입 처리
     @PostMapping("/admin/regist")
-    public String regist(Admin admin){
+    public String regist(Admin admin) {
         log.info("/admin/regist POST - param: {}", admin);
 
         adminService.regist(admin);
@@ -34,47 +33,78 @@ public class AdminController {
 
     // 로그인페이지
     @GetMapping("/login")
-    public String login(HttpServletRequest request){
+    public String login(HttpServletRequest request) {
         String refer = request.getHeader("Referer");
-        request.getSession().setAttribute("redirectURI",refer);
+        request.getSession().setAttribute("redirectURI", refer);
         return "member/login";
     }
 
     @GetMapping("/login_success")
-    public String login(HttpSession session){
+    public String login(HttpSession session) {
         log.info("POST login success");
         String redirectURI = (String) session.getAttribute("redirectURI");
         Admin user = adminService.setLoginSession(session);
-        if(user!=null){
-            session.setAttribute("user",user);
-            log.info("세션에 넣은 값 확인 - "+user);
+        if (user != null) {
+            session.setAttribute("user", user);
+            log.info("세션에 넣은 값 확인 - " + user);
         }
 
-        return "redirect:"+redirectURI;
+        return "redirect:" + redirectURI;
     }
 
 
     // 회원가입 페이지
     @GetMapping("/register")
-    public String register(){
+    public String register() {
         return "member/register";
     }
 
     @GetMapping("/accessDenied_page")
-    public String access(){
+    public String access() {
         return "member/accessDenied_page";
     }
 
-    @GetMapping ("/logout")
-    public String logout(HttpSession s){
+    @GetMapping("/logout")
+    public String logout(HttpSession s) {
         log.info("/logout GET!");
         s.invalidate();
         return "redirect:/";
     }
+
     @PostMapping("/logout")
-    public String logout(){
+    public String logout() {
         log.info("/logout POST!");
         return "redirect:/";
+    }
+
+    // ======================    마이페이지 ==========================================
+    @GetMapping("/mypage")
+    public String myPage() {
+        return "member/myPage";
+    }
+
+    @GetMapping("/mypage/myposting")
+    public String myPosting() {
+        return "member/myPosting";
+    }
+
+    @GetMapping("/mypage/mycomment")
+    public String myComment() {
+        return "member/myComment";
+    }
+
+    @GetMapping("/mypage/myinfo")
+    public String myInfo(){
+        return "member/myInfo";
+    }
+
+    @GetMapping("/mypage/myinfo_tag")
+    public String myInfo_pass(){
+        return "member/myInfo_tag";
+    }
+    @GetMapping("/mypage/myinfo_drop")
+    public String myInfo_drop(){
+        return "member/myInfo_drop";
     }
 
 }
