@@ -39,7 +39,7 @@ public class BoardController {
         PageMaker pageMaker = new PageMaker(
                 new Page(page.getPageNum(), page.getAmount())
                 , (Integer) boardMap.get("tc"));
-        log.info(pageMaker);
+        log.info("페이지 정보 : {}",pageMaker);
         model.addAttribute("bList", boardMap.get("bList"));
         model.addAttribute("pageMaker", pageMaker);
 
@@ -84,15 +84,18 @@ public class BoardController {
     }
 
     // 게시글 수정 화면 요청
-    @GetMapping("/edit/test")
+    @GetMapping("/edit")
     public String edit(int boardNo, Model model, HttpServletRequest request, HttpServletResponse response) {
+        log.info("boardNo : {}",boardNo);
         Board board = boardService.findOneService(boardNo, response, request);
-        return "board/board/edit";
+        model.addAttribute("board", board);
+        return "board/board_edit";
     }
 
-    // 게시글 수정 처리 요청
+    // 수정 처리 요청
     @PostMapping("/edit")
-    public String editBoard(Board board) {
+    public String edit(Board board) {
+        log.info("controller request POST 요청 : {}", board);
         boolean flag = boardService.edit(board);
         return flag ? "redirect:/board/content/" + board.getBoardNo() : "redirect:/";
     }
