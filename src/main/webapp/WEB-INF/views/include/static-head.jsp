@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
 
 <!-- header css -->
-<link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/header.css">
 
 
@@ -31,14 +30,24 @@
 
 <%--jquery--%>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
 <!-- Bootstrap -->
 <link rel="stylesheet" href="/scripts/bootstrap/bootstrap.min.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+
 <!-- IonIcons -->
 <link rel="stylesheet" href="/scripts/ionicons/css/ionicons.min.css">
 
-<!-- Custom style -->
+<!-- font style -->
 <link rel="stylesheet" href="/css/style.css">
+
+
+
+
+<%--JS--%>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="/scripts/bootstrap/bootstrap.min.js" defer></script>
+
 
 
 

@@ -11,7 +11,7 @@ import java.util.List;
 public interface ReplyMapper {
     boolean save(Reply reply);
     boolean modify(Reply reply);
-    boolean remove(Reply reply);
+    boolean remove(int replyNo);
     List<Reply> findAll(@Param("boardNo") int boardNo, @Param("page") Page page);
     int getReplyCount(int boardNo);
     Reply findOne(int replyNo);

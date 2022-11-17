@@ -48,12 +48,17 @@
     <update id="edit">
         update board set user_id = #{userId}, title = #{title}, content = #{content}
         where board_no = #{boardNo}
+<!--     UPDATE
+        (   SELECT A.title=A.title, A.content=A.content
+            FROM board A, user_account B
+            WHERE A.user_id = B.user_id
+        ) SET A.user_name = B.user_name
+-->
     </update>
 
     <!--조회수 갱신-->
     <update id="hitCount">
         update board set hit= hit+1 where board_no= #{boardNo}
     </update>
-
 
 </mapper>

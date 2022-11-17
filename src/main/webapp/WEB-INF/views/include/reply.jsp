@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 댓글관련 script -->
+
 <script>
 
     // 로그인한 회원 계정명 -> 세션을 통해 얻고 있음
@@ -13,7 +14,7 @@
 
     // 댓글 요청 URL
     const URL = '/ajax/replies';
-
+    const $pageUl = document.querySelector('.pagination');
     //날짜 포맷 변환 함수
     function formatDate(datetime) {
         //문자열 날짜 데이터를 날짜객체로 변환
@@ -26,7 +27,7 @@
         let day = dateObj.getDate();
         let hour = dateObj.getHours();
         let minute = dateObj.getMinutes();
-        //오전, 오후 시간체크
+/*        //오전, 오후 시간체크
         let ampm = '';
         if (hour < 12 && hour >= 6) {
             ampm = '오전';
@@ -40,13 +41,13 @@
             hour -= 12;
         } else {
             ampm = '새벽';
-        }
+        }*/
         //숫자가 1자리일 경우 2자리로 변환
         (month < 10) ? month = '0' + month: month;
         (day < 10) ? day = '0' + day: day;
         (hour < 10) ? hour = '0' + hour: hour;
         (minute < 10) ? minute = '0' + minute: minute;
-        return year + "-" + month + "-" + day + " " + ampm + " " + hour + ":" + minute;
+        return year + "-" + month + "-" + day + " " + " " + hour + ":" + minute;
     }
 
 
@@ -55,15 +56,16 @@
         let tag = "";
         const begin = pageInfo.beginPage;
         const end = pageInfo.endPage;
+
         //이전 버튼 만들기
         if (pageInfo.prev) {
             tag += "<li class='page-item'><a class='page-link page-active' href='" + (begin - 1) +
-                "'>이전</a></li>";
+                "'>이전</a></li>"
         }
         //페이지 번호 리스트 만들기
         for (let i = begin; i <= end; i++) {
             let active = '';
-            if (pageInfo.page.pageNum === i) {
+            if (pageInfo.page.pageNum == i) {
                 active = 'p-active';
             }
 
@@ -77,7 +79,8 @@
         }
 
         // 페이지태그 렌더링
-        const $pageUl = document.querySelector('.pagination');
+
+        console.log(tag,$pageUl);
         $pageUl.innerHTML = tag;
 
         // ul에 마지막페이지 번호 저장.
@@ -96,17 +99,18 @@
         // 각 댓글 하나의 태그
         let tag = '';
 
-        if (replyList === null || replyList.length === 0) {
-            tag += "<div id='replyContent' class='card-body'>댓글이 아직 없습니다! ㅠㅠ</div>";
+        if (replyList == null || replyList.length == 0) {
+            tag += "<div id='replyContent' class='card-body'>댓글이 아직 없습니다</div>";
 
         } else {
             for (let rep of replyList) {
+                console.log(rep);
                 tag += "<div id='replyContent' class='card-body' data-replyId='" + rep.replyNo + "'>" +
                     "    <div class='row user-block'>" +
                     "       <span class='col-md-3'>" +
                     "         <b>" + rep.replyWriter + "</b>" +
                     "       </span>" +
-                    "       <span class='offset-md-6 col-md-3 text-right'><b>" + formatDate(rep.replyDate) +
+                    "       <span class='offset-md-6 col-md-3 text-right'><b>" + rep.replyDate +
                     "</b></span>" +
                     "    </div><br>" +
                     "    <div class='row'>" +
@@ -114,15 +118,15 @@
                     "       <div class='offset-md-2 col-md-4 text-right'>";
 
                 //권한 확인
-                if (currentAccount === rep.account || auth === 'ADMIN') {
-                    tag +=
-                        "         <a id='replyModBtn' class='btn btn-sm btn-outline-dark' data-bs-toggle='modal' data-bs-target='#replyModifyModal'>수정</a>&nbsp;" +
+                if (currentAccount == rep.userAccount || auth == 'ADMIN') {
+                    tag += "         <a id='replyModBtn' class='btn btn-sm btn-outline-dark' data-bs-toggle='modal' data-bs-target='#replyModifyModal'>수정</a>&nbsp;" +
                         "         <a id='replyDelBtn' class='btn btn-sm btn-outline-dark' href='#'>삭제</a>";
                 }
                 tag += "       </div>" +
                     "    </div>" +
                     " </div>";
             }
+            console.log(tag);
         }
 
         // 댓글 목록에 생성된 DOM 추가
@@ -152,8 +156,9 @@
     // 페이지 버튼 클릭이벤트 등록 함수
     function makePageButtonClickEvent() {
         // 페이지 버튼 클릭이벤트 처리
-        const $pageUl = document.querySelector('.pagination');
+        // const $pageUl = document.querySelector('.pagination');
         $pageUl.onclick = e => {
+            console.log(e);
             if (!e.target.matches('.page-item a')) return;
 
             e.preventDefault();
@@ -172,9 +177,8 @@
         document.getElementById('replyAddBtn').onclick = makeReplyRegisterClickHandler;
     }
 
-
     // 댓글 등록 이벤트 처리 핸들러 함수
-    function makeReplyRegisterClickHandler(e) {
+    function makeReplyRegisterClickHandler() {
 
         const $writerInput = document.getElementById('newReplyWriter');
         const $contentInput = document.getElementById('newReplyText');
@@ -185,6 +189,7 @@
             replyText: $contentInput.value,
             boardNo: bno
         };
+        console.log(replyData);
 
         // POST요청을 위한 요청 정보 객체
         const reqInfo = {
@@ -198,13 +203,13 @@
         fetch(URL, reqInfo)
             .then(res => res.text())
             .then(msg => {
-                if (msg === 'insert-success') {
+                if (msg == 'insert-success') {
                     alert('댓글 등록 성공');
                     // 댓글 입력창 리셋
                     // $writerInput.value = '';
                     $contentInput.value = '';
                     // 댓글 목록 재요청
-                    showReplies(document.querySelector('.pagination').dataset.fp);
+                    showReplies($pageUl.dataset.fp);
                 } else {
                     alert('댓글 등록 실패');
                 }
@@ -214,7 +219,7 @@
     // 댓글 수정화면 열기 상세처리
     function processModifyShow(e, rno) {
 
-        // console.log('수정버튼 클릭함!! after');
+        console.log('수정버튼 클릭함!! after');
 
         // 클릭한 버튼 근처에 있는 댓글 내용텍스트를 얻어온다.
         const replyText = e.target.parentElement.parentElement.firstElementChild.textContent;
@@ -230,14 +235,14 @@
 
     // 댓글 삭제 상세처리
     function processRemove(rno) {
-        if (!confirm('진짜로 삭제합니까??')) return;
+        if (!confirm('지울까요?')) return;
 
         fetch(URL + '/' + rno, {
             method: 'DELETE'
         })
             .then(res => res.text())
             .then(msg => {
-                if (msg === 'del-success') {
+                if (msg == 'del-success') {
                     alert('삭제 성공!!');
                     showReplies(); // 댓글 새로불러오기
                 } else {
@@ -255,7 +260,7 @@
 
         e.preventDefault();
 
-        // console.log('수정버튼 클릭함!! before');
+        console.log('수정버튼 클릭함!! before');
         if (e.target.matches('#replyModBtn')) {
             processModifyShow(e, rno);
         } else if (e.target.matches('#replyDelBtn')) {
@@ -298,7 +303,7 @@
                 fetch(URL + '/' + rno, reqInfo)
                     .then(res => res.text())
                     .then(msg => {
-                        if (msg === 'mod-success') {
+                        if (msg == 'mod-success') {
                             alert('수정 성공!!');
                             $modal.modal('hide'); // 모달창 닫기
                             showReplies(); // 댓글 새로불러오기
