@@ -1,7 +1,7 @@
 /* header style */
 header {
     font: 100% / 1.414'Raleway', sans-serif;
-    z-index: 100;
+    z-index: 1000;
     background: #690714;
     position: fixed;
     width: 100%;
