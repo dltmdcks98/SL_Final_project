@@ -31,6 +31,10 @@ public class AdminController {
     }
 
 
+
+
+
+
     // 로그인페이지
     @GetMapping("/login")
     public String login(HttpServletRequest request) {
@@ -106,5 +110,13 @@ public class AdminController {
     public String myInfo_drop(){
         return "member/myInfo_drop";
     }
+
+
+    @PostMapping("/update")
+    public String update(Admin admin){
+        adminService.update(admin);
+        return "redirect:/mypage";
+    }
+
 
 }

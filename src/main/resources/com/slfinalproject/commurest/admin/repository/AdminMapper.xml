@@ -24,7 +24,7 @@
 
     <update id="update">
         UPDATE user_account
-        SET user_pass = #{user_pass}, user_name=#{user_name}, user_birth=#{user_birth}
+        SET user_pass = #{user_pass}, user_name=#{user_name}, user_birth=#{user_birth}, user_sex=#{user_sex}
         WHERE user_id=#{user_id}
     </update>
     <select id = "selectOne"  resultType="com.slfinalproject.commurest.admin.domain.Admin">

@@ -58,6 +58,17 @@ public class AdminService implements UserDetailsService {
         return adminMapper.regist(admin);
     }
 
+    // 업데이트 처리
+    @Transactional
+    public boolean update(Admin admin){
+       BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        admin.setUser_pass(passwordEncoder.encode(admin.getUser_pass()));
+
+
+        return adminMapper.update(admin);
+    }
+
+
     public Admin selectOne(String admin) {
         return adminMapper.selectOne(admin);
     }

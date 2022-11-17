@@ -153,7 +153,7 @@
                 <p class="menu-title">기본 정보 변경</p>
             </div>
 
-            <form id = "update-form" action="/admin/update" method="post">
+            <form id = "update-form" action="/update" method="post">
 
                 <div class="form-group">
                     <label>닉네임</label>
