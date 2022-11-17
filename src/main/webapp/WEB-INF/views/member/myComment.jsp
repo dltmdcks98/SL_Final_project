@@ -8,8 +8,6 @@
 <style>
 
     .mymain-container {
-
-        margin-top: 12%;
         height: 100%;
         margin-left: 10%;
         margin-right: 10%;
@@ -94,7 +92,7 @@
 
 <body>
 <%@include file="../include/header.jsp" %>
-
+<section>
 <div class="mymain-container">
     <div class="test">
 
@@ -191,7 +189,7 @@
 
     </div>
 </div>
-
+</section>
 <%@include file="../include/footer.jsp" %>
 </body>
 
