@@ -13,7 +13,7 @@
 
     // 댓글 요청 URL
     const URL = '/ajax/replies';
-
+    const $pageUl = document.querySelector('.pagination');
     //날짜 포맷 변환 함수
     function formatDate(datetime) {
         //문자열 날짜 데이터를 날짜객체로 변환
@@ -55,15 +55,16 @@
         let tag = "";
         const begin = pageInfo.beginPage;
         const end = pageInfo.endPage;
+
         //이전 버튼 만들기
         if (pageInfo.prev) {
             tag += "<li class='page-item'><a class='page-link page-active' href='" + (begin - 1) +
-                "'>이전</a></li>";
+                "'>이전</a></li>"
         }
         //페이지 번호 리스트 만들기
         for (let i = begin; i <= end; i++) {
             let active = '';
-            if (pageInfo.page.pageNum === i) {
+            if (pageInfo.page.pageNum == i) {
                 active = 'p-active';
             }
 
@@ -77,7 +78,8 @@
         }
 
         // 페이지태그 렌더링
-        const $pageUl = document.querySelector('.pagination');
+
+        console.log(tag,$pageUl);
         $pageUl.innerHTML = tag;
 
         // ul에 마지막페이지 번호 저장.
@@ -96,18 +98,18 @@
         // 각 댓글 하나의 태그
         let tag = '';
 
-        if (replyList === null || replyList.length === 0) {
+        if (replyList == null || replyList.length == 0) {
             tag += "<div id='replyContent' class='card-body'>댓글이 아직 없습니다</div>";
 
         } else {
             for (let rep of replyList) {
-                tag +=
-                    "<div id='replyContent' class='card-body' data-replyId='" + rep.replyNo + "'>" +
+                console.log(rep);
+                tag += "<div id='replyContent' class='card-body' data-replyId='" + rep.replyNo + "'>" +
                     "    <div class='row user-block'>" +
                     "       <span class='col-md-3'>" +
                     "         <b>" + rep.replyWriter + "</b>" +
                     "       </span>" +
-                    "       <span class='offset-md-6 col-md-3 text-right'><b>" + formatDate(rep.replyDate) +
+                    "       <span class='offset-md-6 col-md-3 text-right'><b>" + rep.replyDate +
                     "</b></span>" +
                     "    </div><br>" +
                     "    <div class='row'>" +
@@ -115,16 +117,15 @@
                     "       <div class='offset-md-2 col-md-4 text-right'>";
 
                 //권한 확인
-                if (currentAccount === rep.account || auth === 'ADMIN') {
-                    tag +=
-                        "         <a id='replyModBtn' class='btn btn-sm btn-outline-dark' data-bs-toggle='modal' data-bs-target='#replyModifyModal'>수정</a>&nbsp;" +
+                if (currentAccount == rep.userAccount || auth == 'ADMIN') {
+                    tag += "         <a id='replyModBtn' class='btn btn-sm btn-outline-dark' data-bs-toggle='modal' data-bs-target='#replyModifyModal'>수정</a>&nbsp;" +
                         "         <a id='replyDelBtn' class='btn btn-sm btn-outline-dark' href='#'>삭제</a>";
                 }
-                tag +=
-                    "       </div>" +
+                tag += "       </div>" +
                     "    </div>" +
                     " </div>";
             }
+            console.log(tag);
         }
 
         // 댓글 목록에 생성된 DOM 추가
@@ -154,7 +155,7 @@
     // 페이지 버튼 클릭이벤트 등록 함수
     function makePageButtonClickEvent() {
         // 페이지 버튼 클릭이벤트 처리
-        const $pageUl = document.querySelector('.pagination');
+        // const $pageUl = document.querySelector('.pagination');
         $pageUl.onclick = e => {
             console.log(e);
             if (!e.target.matches('.page-item a')) return;
@@ -170,14 +171,10 @@
     }
 
     // 댓글 등록 이벤트 처리 핸들러 등록 함수
-/*    function makeReplyRegisterClickEvent() {
+    function makeReplyRegisterClickEvent() {
 
         document.getElementById('replyAddBtn').onclick = makeReplyRegisterClickHandler;
-    }*/
-
-    document.getElementById('replyAddBtn').onclick=makeReplyRegisterClickHandler;
-
-    // $('#replyAddBtn').addEventListener('click' ,);
+    }
 
     // 댓글 등록 이벤트 처리 핸들러 함수
     function makeReplyRegisterClickHandler() {
@@ -211,7 +208,7 @@
                     // $writerInput.value = '';
                     $contentInput.value = '';
                     // 댓글 목록 재요청
-                    showReplies(document.querySelector('.pagination').dataset.fp);
+                    showReplies($pageUl.dataset.fp);
                 } else {
                     alert('댓글 등록 실패');
                 }
@@ -244,7 +241,7 @@
         })
             .then(res => res.text())
             .then(msg => {
-                if (msg === 'del-success') {
+                if (msg == 'del-success') {
                     alert('삭제 성공!!');
                     showReplies(); // 댓글 새로불러오기
                 } else {
@@ -305,7 +302,7 @@
                 fetch(URL + '/' + rno, reqInfo)
                     .then(res => res.text())
                     .then(msg => {
-                        if (msg === 'mod-success') {
+                        if (msg == 'mod-success') {
                             alert('수정 성공!!');
                             $modal.modal('hide'); // 모달창 닫기
                             showReplies(); // 댓글 새로불러오기
@@ -325,10 +322,10 @@
         showReplies();
 
         // 댓글 페이지 버튼 클릭이벤트 처리
-        // makePageButtonClickEvent();
+        makePageButtonClickEvent();
 
-        // // 댓글 등록 버튼 클릭이벤트 처리
-        // makeReplyRegisterClickEvent();
+        // 댓글 등록 버튼 클릭이벤트 처리
+        makeReplyRegisterClickEvent();
 
         // 댓글 수정 모달 오픈, 삭제 이벤트 처리
         openModifyModalAndRemoveEvent();

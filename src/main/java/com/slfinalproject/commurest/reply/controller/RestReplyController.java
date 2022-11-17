@@ -22,7 +22,7 @@ public class RestReplyController {
 
     @GetMapping("")
     public Map<String,Object> list(int boardNo, Page page){
-        log.info("/ajax/replies GET! bno={}, page={}", boardNo, page);
+        log.info("/ajax/replies GET bno={}, page={}", boardNo, page);
         Map<String,Object> replies = replyService.getAll(boardNo,page);
         log.info(replies);
         return replies;
