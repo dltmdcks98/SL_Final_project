@@ -97,11 +97,11 @@
     <!-- end replies row -->
 
     <!-- 댓글 수정 모달 -->
-    <div class="modal fade bd-example-modal-lg" id="replyModifyModal">
+    <div class="modal fade bs-example-modal-lg" id="replyModifyModal">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <!-- Modal Header -->
-                <div class="modal-header" style="background: #343A40; color: white;">
+                <div class="modal-header">
                     <h4 class="modal-title">댓글 수정하기</h4>
                     <button type="button" class="close text-white" data-bs-dismiss="modal">X</button>
                 </div>
