@@ -69,13 +69,25 @@
                     <li class="for-tablet"><a href="/register">Register</a></li>
 
                     <li class="dropdown magz-dropdown">
-                        <a href="category.html">Standard <i class="ion-ios-arrow-right"></i></a>
+
+                        <a href="/">Standard <i class="ion-ios-arrow-right"></i></a>
 
                         <ul class="dropdown-menu">
                             <li><a href="/">Home</a></li>
                             <li class="dropdown magz-dropdown">
                             <li><a href="/board">Board</a></li>
                             <li><a href="/gallery">Gallery</a></li>
+                        </ul>
+
+                    </li>
+                    <li class="dropdown magz-dropdown">
+
+                        <a href="/mypage">Mypage <i class="ion-ios-arrow-right"></i></a>
+
+                        <ul class="dropdown-menu">
+                            <li><a href="/mypage">Home</a></li>
+                            <li class="dropdown magz-dropdown">
+                            <li><a href="/mypage/myinfo">My Information</a></li>
                         </ul>
 
                     </li>
