@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 댓글관련 script -->
+
 <script>
 
     // 로그인한 회원 계정명 -> 세션을 통해 얻고 있음

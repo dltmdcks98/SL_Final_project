@@ -128,9 +128,8 @@
     </div>
 </div>
 
-
-</body>
 <%@ include file="../include/footer.jsp" %>
-<%@ include file="../include/scripts.jsp" %>
+<%@ include file="../include/scripts.jsp"%>
+</body>
 <%@ include file="../include/reply.jsp" %>
 </html>
