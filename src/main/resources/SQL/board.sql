@@ -15,7 +15,7 @@ CREATE TABLE board(
 );
 use spring10;
 use finaldb;
-CREATE TABLE board(
+CREATE TABLE board (
                       board_no INT(10) AUTO_INCREMENT,
                       user_id INT(10) NULL,
                       title VARCHAR(100) NOT NULL,
@@ -30,6 +30,7 @@ CREATE TABLE board(
 
 select * from board;
 select * from user_account;
+delete from user_account where user_id='14';
 select *
 from user_account;
 insert into board(user_id, title, content)  values(8,'제목테스트','내용테스트');

@@ -1,7 +1,7 @@
 @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 
 .tableList {
-    font-family: 'Jeju Gothic', sans-serif;
+    font: 100% / 1.414'Raleway', sans-serif;
     width: 100%;
     border-bottom: 1px solid #29367c;
     border-collapse: collapse;

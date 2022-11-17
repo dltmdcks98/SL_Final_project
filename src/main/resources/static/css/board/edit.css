@@ -1,6 +1,3 @@
-body {
-    /*z-index: auto;*/
-}
 input[type=text], select, textarea {
     width: 100%;
     padding: 12px;
@@ -11,7 +8,7 @@ input[type=text], select, textarea {
     margin-bottom: 16px;
     resize: vertical;
 }
-input[type=button], button {
+button {
     background-color: #04AA6D;
     color: white;
     padding: 12px 20px;
@@ -32,4 +29,7 @@ button:hover {
 .comments-list *{
     margin: 2px;
     float:right;
+}
+.content-body {
+    height: 200px;
 }
