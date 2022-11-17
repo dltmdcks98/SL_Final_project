@@ -26,7 +26,7 @@
         let day = dateObj.getDate();
         let hour = dateObj.getHours();
         let minute = dateObj.getMinutes();
-        //오전, 오후 시간체크
+/*        //오전, 오후 시간체크
         let ampm = '';
         if (hour < 12 && hour >= 6) {
             ampm = '오전';
@@ -40,13 +40,13 @@
             hour -= 12;
         } else {
             ampm = '새벽';
-        }
+        }*/
         //숫자가 1자리일 경우 2자리로 변환
         (month < 10) ? month = '0' + month: month;
         (day < 10) ? day = '0' + day: day;
         (hour < 10) ? hour = '0' + hour: hour;
         (minute < 10) ? minute = '0' + minute: minute;
-        return year + "-" + month + "-" + day + " " + ampm + " " + hour + ":" + minute;
+        return year + "-" + month + "-" + day + " " + " " + hour + ":" + minute;
     }
 
 
@@ -97,11 +97,12 @@
         let tag = '';
 
         if (replyList === null || replyList.length === 0) {
-            tag += "<div id='replyContent' class='card-body'>댓글이 아직 없습니다! ㅠㅠ</div>";
+            tag += "<div id='replyContent' class='card-body'>댓글이 아직 없습니다</div>";
 
         } else {
             for (let rep of replyList) {
-                tag += "<div id='replyContent' class='card-body' data-replyId='" + rep.replyNo + "'>" +
+                tag +=
+                    "<div id='replyContent' class='card-body' data-replyId='" + rep.replyNo + "'>" +
                     "    <div class='row user-block'>" +
                     "       <span class='col-md-3'>" +
                     "         <b>" + rep.replyWriter + "</b>" +
@@ -119,7 +120,8 @@
                         "         <a id='replyModBtn' class='btn btn-sm btn-outline-dark' data-bs-toggle='modal' data-bs-target='#replyModifyModal'>수정</a>&nbsp;" +
                         "         <a id='replyDelBtn' class='btn btn-sm btn-outline-dark' href='#'>삭제</a>";
                 }
-                tag += "       </div>" +
+                tag +=
+                    "       </div>" +
                     "    </div>" +
                     " </div>";
             }
@@ -154,6 +156,7 @@
         // 페이지 버튼 클릭이벤트 처리
         const $pageUl = document.querySelector('.pagination');
         $pageUl.onclick = e => {
+            console.log(e);
             if (!e.target.matches('.page-item a')) return;
 
             e.preventDefault();
@@ -167,14 +170,17 @@
     }
 
     // 댓글 등록 이벤트 처리 핸들러 등록 함수
-    function makeReplyRegisterClickEvent() {
+/*    function makeReplyRegisterClickEvent() {
 
         document.getElementById('replyAddBtn').onclick = makeReplyRegisterClickHandler;
-    }
+    }*/
 
+    document.getElementById('replyAddBtn').onclick=makeReplyRegisterClickHandler;
+
+    // $('#replyAddBtn').addEventListener('click' ,);
 
     // 댓글 등록 이벤트 처리 핸들러 함수
-    function makeReplyRegisterClickHandler(e) {
+    function makeReplyRegisterClickHandler() {
 
         const $writerInput = document.getElementById('newReplyWriter');
         const $contentInput = document.getElementById('newReplyText');
@@ -185,6 +191,7 @@
             replyText: $contentInput.value,
             boardNo: bno
         };
+        console.log(replyData);
 
         // POST요청을 위한 요청 정보 객체
         const reqInfo = {
@@ -198,7 +205,7 @@
         fetch(URL, reqInfo)
             .then(res => res.text())
             .then(msg => {
-                if (msg === 'insert-success') {
+                if (msg == 'insert-success') {
                     alert('댓글 등록 성공');
                     // 댓글 입력창 리셋
                     // $writerInput.value = '';
@@ -318,10 +325,10 @@
         showReplies();
 
         // 댓글 페이지 버튼 클릭이벤트 처리
-        makePageButtonClickEvent();
+        // makePageButtonClickEvent();
 
-        // 댓글 등록 버튼 클릭이벤트 처리
-        makeReplyRegisterClickEvent();
+        // // 댓글 등록 버튼 클릭이벤트 처리
+        // makeReplyRegisterClickEvent();
 
         // 댓글 수정 모달 오픈, 삭제 이벤트 처리
         openModifyModalAndRemoveEvent();

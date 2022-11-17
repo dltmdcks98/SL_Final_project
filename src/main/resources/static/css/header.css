@@ -1,5 +1,6 @@
 /* header style */
 header {
+    font: 100% / 1.414'Raleway', sans-serif;
     z-index: 100;
     background: #690714;
     position: fixed;
@@ -8,20 +9,28 @@ header {
     top: 0;
     bottom: 0;
     left: 0;
+
+    display: flex;
+}
+.brand{
+    width: 100%;
+}
+.brand>a{
+    font-size: 4rem;
 }
 .inner-header {
     margin: 20px auto;
-    float: left;
+    /*float: left;*/
     width:20%;
 }
-.inner-header .logo{
-    margin-right: 5px;
-}
+/*.inner-header .logo{*/
+/*    margin-right: 5px;*/
+/*}*/
 
 .intro-text {
     margin: 30px auto;
     font-size: 32px;
-    float: left;
+    /*float: left;*/
     width: 15%;
     color: #ffe7e7;
 }
@@ -29,11 +38,11 @@ header {
 .top-list {
     margin: 28px auto;
     width: 55%;
-    float: left;
+    /*float: left;*/
 }
 
 .top-list .top-li {
-    float: left;
+    /*float: left;*/
     box-sizing: border-box;
     text-align: center;
     padding: 17px;

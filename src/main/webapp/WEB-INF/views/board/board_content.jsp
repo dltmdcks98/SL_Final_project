@@ -3,9 +3,9 @@
 <html>
 <head>
     <%@ include file="../include/static-head.jsp" %>
+
     <link rel="stylesheet" href="/css/board/board_content.css">
     <link rel="stylesheet" href="/css/board/Reply.css">
-
 </head>
 <body>
 <%@ include file="../include/header.jsp" %>
@@ -42,14 +42,12 @@
 <!-- 게시글 영역 end -->
 
 <!-- 댓글 영역 -->
-
 <div id="replies" class="row">
     <div class="offset-md-1 col-md-10">
         <!-- 댓글 쓰기 영역 -->
         <div class="card">
             <div class="card-body">
-
-                <%--                            ${loginUser == null}과 같음  }--%>
+                <%--${loginUser == null}과 같음  }--%>
                 <c:if test="${empty user}">
                     <a href="/login">댓글은 로그인 후 작성 가능합니다.</a>
                 </c:if>
@@ -77,7 +75,8 @@
                     </div>
                 </c:if>
             </div>
-        </div> <!-- end reply write -->
+        </div>
+        <!-- end reply write -->
 
         <!--댓글 내용 영역-->
         <div class="card">
@@ -89,21 +88,18 @@
             <!-- 댓글 내용 바디 -->
             <div id="replyCollapse" class="card">
                 <div id="replyData">
-                    <!--
-                    < JS로 댓글 정보 DIV삽입 >
-                -->
-                </div>
+v>
 
                 <!-- 댓글 페이징 영역 -->
                 <ul class="pagination justify-content-center">
-                    <!--
-                    < JS로 댓글 페이징 DIV삽입 >
-                -->
+
                 </ul>
             </div>
-        </div> <!-- end reply content -->
+        </div>
+            <!-- end reply content -->
     </div>
-</div> <!-- end replies row -->
+</div>
+    <!-- end replies row -->
 
 <!-- 댓글 수정 모달 -->
 <div class="modal fade bd-example-modal-lg" id="replyModifyModal">
@@ -140,9 +136,9 @@
 
 <%@ include file="../include/footer.jsp" %>
 </div>
-
+<%@include file="../include/reply.jsp"%>
 
 </body>
-<%@include file="../include/reply.jsp"%>>
+
 
 </html>
