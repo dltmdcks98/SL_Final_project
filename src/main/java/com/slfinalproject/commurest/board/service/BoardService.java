@@ -84,8 +84,9 @@ public class BoardService {
 
 //====================================================================================================================//
 
-    // 게시글 삭제 요청    - 댓글이 달려있을 경우 삭제처리 안됨
+    // 게시글 삭제 요청
 
+//    @Transactional
     public boolean remove(int boardNo) {
         return boardMapper.remove(boardNo);
     }

@@ -3,7 +3,7 @@
 <html>
 <head>
     <%@ include file="../include/static-head.jsp" %>
-    <link rel="stylesheet" href="/css/board/edit.css">
+    <link rel="stylesheet" href="/css/board/board_edit.css">
 
 
 </head>
@@ -38,7 +38,6 @@
 
 
 <%@ include file="../include/footer.jsp" %>
-<%@ include file="../include/scripts.jsp" %>
 
 <script>
     const $listBtn = document.getElementById('list-btn');
@@ -47,6 +46,7 @@
         location.href = '/board/content/${board.boardNo}';
     };
 </script>
+<%@ include file="../include/scripts.jsp" %>
 </body>
 </html>
 

@@ -27,7 +27,7 @@
     $delBtn.onclick = e => {
         if ($delBtn !== null) {
             confirm('삭제하시겠습니까?');
-            location.href = '/board/delete?boardNo=${b.boardNo}';
+            location.href = '/board/remove?boardNo=${b.boardNo}';
         }
     };
 </script>

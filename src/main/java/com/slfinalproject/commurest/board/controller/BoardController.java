@@ -100,9 +100,22 @@ public class BoardController {
         return flag ? "redirect:/board/content/" + board.getBoardNo() : "redirect:/";
     }
 
-    // 게시글 삭제
+
+    //게시글 삭제 화면 요청
+    @GetMapping("/remove")
+    public String remove(@ModelAttribute("boardNo") int boardNo, Model model) {
+
+        log.info("controller request delete : {}", boardNo);
+
+        return "board/board_remove";
+    }
+
+
+    // 게시글 삭제 처리 요청
     @PostMapping("/remove")
-    public String removeBoard(int boardNo) {
-        return boardService.remove(boardNo) ? "redirect:/board/" : "redirect:/";
+    public String remove(int boardNo) {
+        log.info("controller request delete POST : {}", boardNo);
+
+        return boardService.remove(boardNo) ? "redirect:/board" : "redirect:/";
     }
 }
