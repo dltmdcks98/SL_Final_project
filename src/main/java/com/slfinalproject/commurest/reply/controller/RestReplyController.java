@@ -15,7 +15,6 @@ import java.util.Map;
 @RequiredArgsConstructor
 @Log4j2
 @RequestMapping("/ajax/replies")
-@CrossOrigin
 public class RestReplyController {
 
     private final ReplyService replyService;
@@ -37,5 +36,19 @@ public class RestReplyController {
         log.info("saveRelpy Controller - POST {}",reply);
         boolean status = replyService.write(reply);
         return status ? "insert-success" : "insert-fail";
+    }
+    @DeleteMapping("{rno}")
+    public String deleteRelply(@PathVariable int rno){
+        log.info("Delete Reply - rno:{}"+rno);
+        boolean result = replyService.remove(rno);
+        return result ? "del-success" : "del-fail";
+    }
+
+    @PutMapping("{rno}")
+    public String modify(@PathVariable int rno, @RequestBody Reply reply){
+        log.info("Modify Reply GET - {}, {}"+ rno,reply);
+        reply.setReplyNo(rno);
+        boolean result = replyService.modify(reply);
+        return result ? "mod-success" : "mod-fail";
     }
 }

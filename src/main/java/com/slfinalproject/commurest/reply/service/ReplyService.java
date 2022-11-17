@@ -37,8 +37,8 @@ public class ReplyService {
         return replyMapper.save(reply);
     }
 //    댓글 삭제
-    public boolean remove (Reply reply){
-        return replyMapper.remove(reply);
+    public boolean remove (int replyNo){
+        return replyMapper.remove(replyNo);
     }
 //    댓글 수정
     public boolean modify (Reply reply){

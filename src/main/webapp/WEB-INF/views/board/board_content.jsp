@@ -5,7 +5,6 @@
     <%@ include file="../include/static-head.jsp" %>
 
     <link rel="stylesheet" href="/css/board/board_content.css">
-    <link rel="stylesheet" href="/css/board/Reply.css">
 </head>
 <body>
 <%@ include file="../include/header.jsp" %>
@@ -105,7 +104,6 @@ v>
 <div class="modal fade bd-example-modal-lg" id="replyModifyModal">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-
             <!-- Modal Header -->
             <div class="modal-header" style="background: #343A40; color: white;">
                 <h4 class="modal-title">댓글 수정하기</h4>

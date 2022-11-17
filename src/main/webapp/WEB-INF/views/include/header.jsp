@@ -4,7 +4,7 @@
 
 <!-- header -->
 
-<header class="primary">
+<header>
     <div class="firstbar">
         <div class="container">
             <div class="row">
