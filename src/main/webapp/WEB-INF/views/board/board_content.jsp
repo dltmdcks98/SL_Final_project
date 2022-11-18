@@ -128,9 +128,9 @@
     </div>
 </div>
 
-<%@ include file="../include/footer.jsp" %>
 <%@ include file="../include/scripts.jsp"%>
 <%@ include file="../include/reply.jsp"  %>
+<%@ include file="../include/footer.jsp" %>
 </body>
 
 </html>

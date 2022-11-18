@@ -1,23 +1,23 @@
 /*@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);*/
 body {
     font: 100% / 1.414'Raleway', sans-serif;
-    font-size: 1.5em;
 }
 
 .write-container {
     width: 55%;
-    margin: 230px auto 150px;
-    font-size: 1.5em;
+    height: 40%;
+    margin: 12% auto 2%;
+    font-size: 2em;
 }
 
 .fileDrop {
-    width: 600px;
-    height: 200px;
+    width: 55%;
+    height: 10%;
     border: 1px dashed gray;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5em;
+    font-size: 2em;
 }
 
 .uploaded-list {
@@ -26,6 +26,6 @@ body {
 
 .img-sizing {
     display: block;
-    width: 100px;
-    height: 100px;
+    width: 5%;
+    height: 5%;
 }
