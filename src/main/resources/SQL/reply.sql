@@ -8,7 +8,8 @@ CREATE TABLE reply(
     CONSTRAINT pk_reply PRIMARY KEY (reply_no),
     CONSTRAINT fk_reply_board FOREIGN KEY (board_no)
                   REFERENCES board(board_no)
-                  ON DELETE CASCADE ,
+                  ON DELETE CASCADE
+                  ON UPDATE CASCADE,
     CONSTRAINT fk_reply_user FOREIGN KEY (user_account)
                   REFERENCES user_account(user_id)
                   ON DELETE CASCADE

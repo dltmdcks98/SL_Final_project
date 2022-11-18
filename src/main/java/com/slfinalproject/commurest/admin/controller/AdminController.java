@@ -39,14 +39,6 @@ public class AdminController {
         log.info("GET -로그인 시도");
         return "member/login";
     }
-    @GetMapping("/ajax-login")
-    public String ajaxLogin(HttpServletRequest request){
-        String refer = request.getHeader("Referer");
-        request.getSession().setAttribute("redirectURI", refer);
-        log.info("GET - ajax 로그인 시도 refer:" +refer);
-        return "member/login";
-    }
-
     @GetMapping("/login_success")
     public String loginSuccess(HttpSession session) {
         log.info("login success");

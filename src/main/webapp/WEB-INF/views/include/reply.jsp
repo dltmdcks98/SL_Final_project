@@ -172,9 +172,9 @@
     }
 
     // 댓글 등록 이벤트 처리 핸들러 등록 함수
-    // function makeReplyRegisterClickEvent() {
-
-    // }
+    function makeReplyRegisterClickEvent() {
+        document.getElementById('replyAddBtn').onclick = makeReplyRegisterClickHandler;
+    }
 
     // 댓글 등록 이벤트 처리 핸들러 함수
     function makeReplyRegisterClickHandler() {
@@ -328,7 +328,7 @@
         // makeReplyRegisterClickEvent();
         console.log(currentAccount);
         if(currentAccount!=''){
-            document.getElementById('replyAddBtn').onclick = makeReplyRegisterClickHandler;
+            makeReplyRegisterClickEvent();
         }
 
         // 댓글 수정 모달 오픈, 삭제 이벤트 처리

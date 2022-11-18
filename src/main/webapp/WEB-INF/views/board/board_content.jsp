@@ -42,7 +42,6 @@
         <!-- 댓글 쓰기 영역 -->
         <div class="card">
             <div class="card-body">
-                <%--${loginUser == null}과 같음  }--%>
                 <c:if test="${empty user}">
                     <a href="/login">댓글은 로그인 후 작성 가능합니다.</a>
                 </c:if>
