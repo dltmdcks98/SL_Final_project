@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -20,7 +19,6 @@ public class AdminController {
     @Autowired
     private final AdminService adminService;
 
-
     // 회원가입 처리
     @PostMapping("/admin/regist")
     public String regist(Admin admin) {
@@ -29,7 +27,6 @@ public class AdminController {
         adminService.regist(admin);
         return "redirect:/";
     }
-
 
     // 로그인페이지
     @GetMapping("/login")
@@ -71,40 +68,6 @@ public class AdminController {
         return "redirect:/";
     }
 
-    @PostMapping("/logout")
-    public String logout() {
-        log.info("/logout POST!");
-        return "redirect:/";
-    }
 
-    // ======================    마이페이지 ==========================================
-    @GetMapping("/mypage")
-    public String myPage() {
-        return "member/myPage";
-    }
-
-    @GetMapping("/mypage/myposting")
-    public String myPosting() {
-        return "member/myPosting";
-    }
-
-    @GetMapping("/mypage/mycomment")
-    public String myComment() {
-        return "member/myComment";
-    }
-
-    @GetMapping("/mypage/myinfo")
-    public String myInfo(){
-        return "member/myInfo";
-    }
-
-    @GetMapping("/mypage/myinfo_tag")
-    public String myInfo_pass(){
-        return "member/myInfo_tag";
-    }
-    @GetMapping("/mypage/myinfo_drop")
-    public String myInfo_drop(){
-        return "member/myInfo_drop";
-    }
 
 }

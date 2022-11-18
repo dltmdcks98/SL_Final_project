@@ -4,127 +4,23 @@
 <head>
     <%@ include file="../include/static-head.jsp" %>
     <link rel="stylesheet" href="/css/board/board_list.css">
+    <link rel="stylesheet" href="/css/mypage/mypage.css">
 </head>
 <style>
-
-    .mymain-container {
-
-        margin-top: 12%;
-        height: 100%;
-        margin-left: 10%;
-        margin-right: 10%;
-    }
-
-    .right-container {
-        float: left;
-        width: 80%;
-        height: 80%;
-
-
-    }
-
-    .left-container {
-        float: left;
-        width: 20%;
-
-    }
-
-    .left-menu li {
-        border: 1px #BDBDBD solid;
-        border-radius: 5%;
-        margin-right: 15%;
-        text-align: left;
-        padding-left: 5%;
-        margin-top: 5%;
-        padding-top: 4%;
-        padding-bottom: 4%;
-        font-weight: bold;
-
-    }
-
     .myinfo {
         background-color: #3b4890;
         color: white;
     }
 
-    .tableList td {
-        padding-bottom: 2px;
-        text-align: left;
-    }
-
-    .tableList p {
-        font-size: 6px;
-    }
-
-    .home-title {
-        font-size: 20px;
-        font-weight: bold;
-
-        border-top: hidden;
-        border-left: hidden;
-        border-right: hidden;
-        border-bottom: 2px #3b4890 solid;
-
-        color: #FA5858;
-
-
-    }
-
-
-    .row:nth-child(2) {
-        margin-top: 2%;
-    }
-
-    .info-menu {
-        float: left;
-        border: 1px #BDBDBD solid;
-        border-radius: 10px;
-        padding: 3%;
-
-        text-align: center;
-        font-weight: bold;
-        width: 20%;
-        margin: auto 4%;
-
-
-    }
-
     .info-menu:nth-child(3) {
         background-color: #3b4890;
         color: white;
-
     }
-
-    .info-menu-container {
-
-    }
-
-    .menu-content {
-        float: left;
-
-        width: 80%;
-        height: 80%;
-    }
-
-    .menu-title {
-        margin-top: 5%;
-        padding-bottom: 1%;
-        font-size: 17px;
-        font-weight: bold;
-
-        border-top: hidden;
-        border-left: hidden;
-        border-right: hidden;
-        border-bottom: 2px #3b4890 solid;
-
-        color: #FA5858;
-    }
-
 </style>
 
 <body>
 <%@include file="../include/header.jsp" %>
-
+<section>
 <div class="mymain-container">
 
 
@@ -153,7 +49,11 @@
                 <p class="menu-title">회원 탈퇴</p>
             </div>
 
-            <form id = "delete-form" action="/admin/delete" method="post">
+
+            <form id = "delete-form" action="/userDelete" method="post">
+                <div class="form-group">
+                    <input type="hidden" name="user_id" class="form-control" value="${a.user_id}" readonly>
+                </div>
 너없으면 망함 탈퇴 ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ
 너없으면 망함 탈퇴 ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ
 너없으면 망함 탈퇴 ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ
@@ -180,7 +80,7 @@
 
 
 </div>
-
+    </section>
 <%@include file="../include/footer.jsp" %>
 </body>
 
