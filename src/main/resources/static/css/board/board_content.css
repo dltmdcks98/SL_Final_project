@@ -23,7 +23,7 @@ button:hover {
     background-color: #45a049;
 }
 .content {
-    margin: 180px auto;
+    margin: 180px auto 10px auto;
     width: 60%;
     height: 500px;
     border-radius: 5px;

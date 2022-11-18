@@ -15,6 +15,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 @Log4j2
 @RequestMapping("/ajax/replies")
+@CrossOrigin
 public class RestReplyController {
 
     private final ReplyService replyService;

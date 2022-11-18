@@ -36,12 +36,20 @@ public class AdminController {
     public String login(HttpServletRequest request) {
         String refer = request.getHeader("Referer");
         request.getSession().setAttribute("redirectURI", refer);
+        log.info("GET -로그인 시도");
+        return "member/login";
+    }
+    @GetMapping("/ajax-login")
+    public String ajaxLogin(HttpServletRequest request){
+        String refer = request.getHeader("Referer");
+        request.getSession().setAttribute("redirectURI", refer);
+        log.info("GET - ajax 로그인 시도 refer:" +refer);
         return "member/login";
     }
 
     @GetMapping("/login_success")
-    public String login(HttpSession session) {
-        log.info("POST login success");
+    public String loginSuccess(HttpSession session) {
+        log.info("login success");
         String redirectURI = (String) session.getAttribute("redirectURI");
         Admin user = adminService.setLoginSession(session);
         if (user != null) {

@@ -34,7 +34,7 @@ public class SecurityConfig {
                         .usernameParameter("user_email")
                         .passwordParameter("user_pass")
 //                TODO : 이전 페이지로 이동
-                        .defaultSuccessUrl("/login_success") // 로그인 성공시 이동할 경로
+                        .defaultSuccessUrl("/login_success",true) // 로그인 성공시 이동할 경로
                     .permitAll()
                     .and()
                 .logout()

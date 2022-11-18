@@ -172,10 +172,9 @@
     }
 
     // 댓글 등록 이벤트 처리 핸들러 등록 함수
-    function makeReplyRegisterClickEvent() {
+    // function makeReplyRegisterClickEvent() {
 
-        document.getElementById('replyAddBtn').onclick = makeReplyRegisterClickHandler;
-    }
+    // }
 
     // 댓글 등록 이벤트 처리 핸들러 함수
     function makeReplyRegisterClickHandler() {
@@ -325,17 +324,18 @@
         // 댓글 페이지 버튼 클릭이벤트 처리
         makePageButtonClickEvent();
 
-        // 댓글 등록 버튼 클릭이벤트 처리
-        makeReplyRegisterClickEvent();
+        // // 댓글 등록 버튼 클릭이벤트 처리
+        // makeReplyRegisterClickEvent();
+        console.log(currentAccount);
+        if(currentAccount!=''){
+            document.getElementById('replyAddBtn').onclick = makeReplyRegisterClickHandler;
+        }
 
         // 댓글 수정 모달 오픈, 삭제 이벤트 처리
         openModifyModalAndRemoveEvent();
 
         // 댓글 수정 완료 버튼 이벤트 처리
         replyModifyEvent();
-
-
-
 
     })();
 </script>

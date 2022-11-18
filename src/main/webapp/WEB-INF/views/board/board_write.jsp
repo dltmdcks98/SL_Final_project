@@ -19,27 +19,27 @@
         <form id="write-form" action="/board/writeForm" method="post" autocomplete="off" enctype="multipart/form-data">
 
 
-            <div class="mb-4">
+ <%--           <div class="mb-4">
                 <label for="asd" class="form-label">user_id</label>
                 <input type="text" class="form-control" id="asd" placeholder="${a.user_id}" name="user_id"
                         disabled>
 
-            </div>
+            </div>--%>
 
 
-            <div class="mb-4">
+<%--            <div class="mb-4">
                 <label for="exampleFormControlInput1" class="form-label">작성자</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="${a.user_name}" name="writer"
                     value="${a.user_name}" disabled>
 
-            </div>
-            <div class="mb-4">.
+            </div>--%>
+            <div class="mb-4">
                 <label for="title-input" class="form-label">글제목</label>
                 <input type="text" class="form-control" id="title-input" placeholder="제목" name="title">
             </div>
             <div class="mb-4">
                 <label for="exampleFormControlTextarea1" class="form-label">내용</label>
-                <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+                <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="30"></textarea>
             </div>
 
             <!-- 첨부파일 드래그 앤 드롭 영역 -->

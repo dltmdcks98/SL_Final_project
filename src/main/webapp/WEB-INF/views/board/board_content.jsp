@@ -62,8 +62,8 @@
                                 <input id="newReplyWriter" name="replyWriter" type="text"
                                        value="${user.user_name}" class="form-control" placeholder="작성자 이름"
                                        readonly style="margin-bottom: 6px;">
-                                <button id="replyAddBtn" type="button"
-                                        class="btn btn-dark form-control">등록
+                                <button id="replyAddBtn" type="button" class="btn btn-dark form-control">
+                                    등록
                                 </button>
                             </div>
                         </div>
@@ -83,8 +83,6 @@
             <!-- 댓글 내용 바디 -->
             <div id="replyCollapse" class="card">
                 <div id="replyData">
-                    v>
-
                     <!-- 댓글 페이징 영역 -->
                     <ul class="pagination justify-content-center">
 
@@ -130,6 +128,7 @@
 
 <%@ include file="../include/footer.jsp" %>
 <%@ include file="../include/scripts.jsp"%>
+<%@ include file="../include/reply.jsp"  %>
 </body>
-<%@ include file="../include/reply.jsp" %>
+
 </html>
