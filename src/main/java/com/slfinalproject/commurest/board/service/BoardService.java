@@ -3,10 +3,10 @@ package com.slfinalproject.commurest.board.service;
 import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.repository.BoardMapper;
+import com.slfinalproject.commurest.reply.repository.ReplyMapper;
 import com.slfinalproject.commurest.util.paging.Page;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
@@ -29,6 +29,8 @@ public class BoardService {
 
 
     private final BoardMapper boardMapper;
+
+    private final ReplyMapper replyMapper;
 
     // 게시글 등록
     public void insertService(Board board,
@@ -74,6 +76,7 @@ public class BoardService {
     private void process(List<Board> boardList) {
         for (Board board: boardList) {
             dateFormat(board);
+            getReplyCount(board);
         }
     }
 //====================================================================================================================//
@@ -101,5 +104,11 @@ public class BoardService {
     public Board findOneService(int boardNo, HttpServletResponse response, HttpServletRequest request) {
         log.info("findOne service start - {}", boardNo);
         return boardMapper.selectOne(boardNo);
+    }
+
+
+//   각 게시물의 댓글 수 조회
+    public void getReplyCount(Board b){
+        b.setReplyCnt(replyMapper.getReplyCount(b.getBoardNo()));
     }
 }
