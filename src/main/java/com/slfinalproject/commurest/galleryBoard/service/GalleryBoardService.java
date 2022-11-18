@@ -58,7 +58,7 @@ public class GalleryBoardService {
 
         List<String> imageUrl = new ArrayList<>();
         String searchUrl = "https://www.googleapis.com/customsearch/v1?key="+API+"&cx="+domain+"&searchType=image&filter=0&imgSize=large&q="+tag+"&start="+(num*10+1)+"&num="+size;
-
+        log.info("검색 url : "+ searchUrl);
         try {
             Connection.Response res = Jsoup.connect(
                             searchUrl)

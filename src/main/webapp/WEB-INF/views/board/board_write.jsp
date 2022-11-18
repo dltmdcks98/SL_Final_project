@@ -55,7 +55,13 @@
 
                 </div>
             </div>
-
+            <label for="tag" class="tagLabel">Tag</label>
+            <div class="tagDiv" id="tag">
+                <input type="text" placeholder="태그를 입력해주세요">
+                <input type="text" placeholder="태그를 입력해주세요">
+                <input type="text" placeholder="태그를 입력해주세요">
+                <input type="text" placeholder="">
+            </div>
 
             <div class="d-grid gap-2">
                 <button id="write_btn" class="btn btn-dark" type="submit">글 작성하기</button>
@@ -73,10 +79,6 @@
 </div>
 
 
-<script>
-    // 게시물 등록 입력값 검증 함수
-
-</script>
 
 
 </body>

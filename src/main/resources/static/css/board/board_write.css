@@ -23,3 +23,26 @@
     width: 100px;
     height: 100px;
 }
+
+
+/*태그 입력 DIV*/
+.tagLabel{
+    font-size: 1.5rem;
+}
+.tagDiv{
+    width: 100%;
+    margin-bottom:3%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.tagDiv>input{
+    margin-right: 2%;
+    width: fit-content;
+    font-size: 0.5rem;
+    height: 2rem;
+    padding: 1%;
+    background: tomato;
+    opacity: 0.4;
+    border: none;
+}
+
