@@ -1,14 +1,14 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <%@ include file="../include/static-head.jsp" %>
 </head>
 <body>
-<%@include file="../include/header.jsp"%>
+<%@include file="../include/header.jsp" %>
 
-<section class="login first grey">
+<%--<section class="login first grey">--%>
     <div class="container">
         <div class="box-wrapper">
             <div class="box box-border">
@@ -16,10 +16,9 @@
 
                     <h4>Login</h4>
 
-                    <form method="POST" action="/admin/login">
+                    <form method="POST" action="/admin/login" name="myForm">
                         <div class="form-group">
                             <label>이메일</label>
-
                             <input type="text" name="user_email" class="form-control">
                         </div>
 
@@ -40,20 +39,26 @@
                         <div class="title-line">
                             or
                         </div>
-                        <a href="#" class="btn btn-social btn-block facebook"><i class="ion-social-facebook"></i> Login with Facebook</a>
+                        <a href="#" class="btn btn-social btn-block facebook"><i class="ion-social-facebook"></i> Login
+                            with Facebook</a>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</section>
+<%--</section>--%>
 
 <!-- Start footer -->
-<%@include file="../include/footer.jsp"%>
+<%@include file="../include/footer.jsp" %>
 <!-- End Footer -->
 
 <!-- JS -->
-
+<script>
+    document.myForm.addEventListener("keydown", evt => {
+        if ((evt.keyCode || evt.which) === 13) {
+            evt.preventDefault();
+        }
+    });
 </script>
 
 

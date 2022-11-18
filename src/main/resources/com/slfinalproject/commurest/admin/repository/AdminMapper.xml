@@ -17,7 +17,7 @@
         VALUES (#{user_email}, #{user_pass}, #{user_name}, #{user_birth}, #{user_sex})
     </insert>
 
-    <delete id="remove">
+    <delete id="delete">
         DELETE FROM user_account
         WHERE user_id=#{user_id}
     </delete>
@@ -33,7 +33,7 @@
 
 
     <select id = "selectOne2"  resultType="com.slfinalproject.commurest.admin.domain.Admin">
-        SELECT user_name from user_account where user_id=#{user_id}
+        SELECT * from user_account where user_id=#{user_id}
     </select>
 
 
