@@ -6,53 +6,35 @@
         <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="block">
-                    <h1 class="block-title">Company Info</h1>
+                    <h1 class="block-title">회사 소개</h1>
                     <div class="block-body">
                         <figure class="foot-logo">
                             <img src="/img/logo-light.png" class="img-responsive" alt="Logo">
                         </figure>
                         <p class="brand-description">
-                            Magz is a HTML5 &amp; CSS3 magazine template based on Bootstrap 3.
-                        </p>
-                        <a href="page.html" class="btn btn-magz white">About Us <i class="ion-ios-arrow-thin-right"></i></a>
+                            갤러리와 핀터레스트가 공존하는 사이트
+                        </p><br>
+                        <p></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="block">
-                    <h1 class="block-title">Popular Tags <div class="right"><a href="#">See All <i class="ion-ios-arrow-thin-right"></i></a></div></h1>
+                    <h1 class="block-title">인기 태그<div class="right"><a href="#">더보기</a></div></h1>
                     <div class="block-body">
                         <ul class="tags">
                             <li><a href="#">HTML5</a></li>
                             <li><a href="#">CSS3</a></li>
                             <li><a href="#">Bootstrap 3</a></li>
                             <li><a href="#">Web Design</a></li>
-                            <li><a href="#">Creative Mind</a></li>
-                            <li><a href="#">Standing On The Train</a></li>
-                            <li><a href="#">at 6.00PM</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="line"></div>
-                <div class="block">
-                    <h1 class="block-title">Newsletter</h1>
-                    <div class="block-body">
-                        <p>By subscribing you will receive new articles in your email.</p>
-                        <form class="newsletter">
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="ion-ios-email-outline"></i>
-                                </div>
-                                <input type="email" class="form-control email" placeholder="Your mail">
-                            </div>
-                            <button class="btn btn-primary btn-block white">Subscribe</button>
-                        </form>
-                    </div>
-                </div>
+
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="block">
-                    <h1 class="block-title">Latest News</h1>
+                    <h1 class="block-title">추천글</h1>
                     <div class="block-body">
                         <article class="article-mini">
                             <div class="inner">
@@ -62,112 +44,90 @@
                                     </a>
                                 </figure>
                                 <div class="padding">
-                                    <h1><a href="#">Donec consequat lorem quis augue pharetra</a></h1>
+                                    <h1><a href="#">인기글1</a></h1>
                                 </div>
                             </div>
                         </article>
                         <article class="article-mini">
                             <div class="inner">
                                 <figure>
-                                    <a href="single.html">
+                                    <a href="#">
                                         <img src="/img/news/img14.jpg" alt="Sample Article">
                                     </a>
                                 </figure>
                                 <div class="padding">
-                                    <h1><a href="#">eu dapibus risus aliquam etiam ut venenatis</a></h1>
+                                    <h1><a href="#">인기글2</a></h1>
                                 </div>
                             </div>
                         </article>
-                        <article class="article-mini">
-                            <div class="inner">
-                                <figure>
-                                    <a href="#">
-                                        <img src="/img/news/img15.jpg" alt="Sample Article">
-                                    </a>
-                                </figure>
-                                <div class="padding">
-                                    <h1><a href="#">Nulla facilisis odio quis gravida vestibulum </a></h1>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="article-mini">
-                            <div class="inner">
-                                <figure>
-                                    <a href="#">
-                                        <img src="/img/news/img16.jpg" alt="Sample Article">
-                                    </a>
-                                </figure>
-                                <div class="padding">
-                                    <h1><a href="#">Proin venenatis pellentesque arcu vitae </a></h1>
-                                </div>
-                            </div>
-                        </article>
-                        <a href="#" class="btn btn-magz white btn-block">See All <i class="ion-ios-arrow-thin-right"></i></a>
+
+                        <a href="#" class="btn btn-magz white btn-block">더보기</a>
                     </div>
                 </div>
             </div>
+
             <div class="col-md-3 col-xs-12 col-sm-6">
                 <div class="block">
-                    <h1 class="block-title">Follow Us</h1>
+                    <h1 class="block-title">팔로워</h1>
                     <div class="block-body">
                         <p>Follow us and stay in touch to get the latest news</p>
                         <ul class="social trp">
                             <li>
-                                <a href="#" class="facebook">
+                                <a href="https://ko-kr.facebook.com/" class="facebook">
                                     <svg><rect width="0" height="0"/></svg>
                                     <i class="ion-social-facebook"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="twitter">
+                                <a href="https://twitter.com/?lang=ko" class="twitter">
                                     <svg><rect width="0" height="0"/></svg>
                                     <i class="ion-social-twitter-outline"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="youtube">
+                                <a href="https://www.youtube.com/" class="youtube">
                                     <svg><rect width="0" height="0"/></svg>
                                     <i class="ion-social-youtube-outline"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="googleplus">
+                                <a href="https://web.dev/googleplus/" class="googleplus">
                                     <svg><rect width="0" height="0"/></svg>
                                     <i class="ion-social-googleplus"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="instagram">
+                                <a href="https://www.instagram.com/" class="instagram">
                                     <svg><rect width="0" height="0"/></svg>
                                     <i class="ion-social-instagram-outline"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="tumblr">
+                                <a href="https://www.tumblr.com/explore/trending?source=homepage_explore" class="tumblr">
                                     <svg><rect width="0" height="0"/></svg>
                                     <i class="ion-social-tumblr"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="dribbble">
+                                <a href="https://dribbble.com/" class="dribbble">
                                     <svg><rect width="0" height="0"/></svg>
                                     <i class="ion-social-dribbble"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="linkedin">
+                                <a href="https://kr.linkedin.com/" class="linkedin">
                                     <svg><rect width="0" height="0"/></svg>
                                     <i class="ion-social-linkedin"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="skype">
+                                <a href="https://skype.daesung.com/main.asp" class="skype">
                                     <svg><rect width="0" height="0"/></svg>
                                     <i class="ion-social-skype"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="rss">
+                                <a href="https://www.weather.go.kr/w/pop/rss-guide.dohtml" class="rss">
                                     <svg><rect width="0" height="0"/></svg>
                                     <i class="ion-social-rss"></i>
                                 </a>
@@ -175,25 +135,16 @@
                         </ul>
                     </div>
                 </div>
-                <div class="line"></div>
-                <div class="block">
-                    <div class="block-body no-margin">
-                        <ul class="footer-nav-horizontal">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Partner</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">About</a></li>
-                        </ul>
-                    </div>
-                </div>
+
             </div>
+
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="copyright">
-                    COPYRIGHT &copy; MAGZ 2017. ALL RIGHT RESERVED.
+                    COPYRIGHT &copy; SL_PROJECT 2022. ALL RIGHT RESERVED.
                     <div>
-                        Made with <i class="ion-heart"></i> by <a href="http://kodinger.com">Kodinger</a>
+                        Github Link <i class="ion-heart"></i> <a href="https://github.com/dltmdcks98/SL_Final_project" target="_blank">SL_PROJECT</a>
                     </div>
                 </div>
             </div>

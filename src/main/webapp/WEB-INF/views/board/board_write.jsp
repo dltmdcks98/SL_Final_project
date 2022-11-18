@@ -19,21 +19,21 @@
         <form id="write-form" action="/board/writeForm" method="post" autocomplete="off" enctype="multipart/form-data">
 
 
- <%--           <div class="mb-4">
-                <label for="asd" class="form-label">user_id</label>
-                <input type="text" class="form-control" id="asd" placeholder="${a.user_id}" name="user_id"
+            <div class="mb-4">
+<%--                <label for="asd" class="form-label">user_id</label>--%>
+                <input type="hidden" class="form-control" id="asd" placeholder="${a.user_id}" name="user_id"
                         disabled>
 
-            </div>--%>
+            </div>
 
 
-<%--            <div class="mb-4">
+            <div class="mb-4">
                 <label for="exampleFormControlInput1" class="form-label">작성자</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="${a.user_name}" name="writer"
                     value="${a.user_name}" disabled>
 
-            </div>--%>
-            <div class="mb-4">
+            </div>
+            <div class="mb-4">.
                 <label for="title-input" class="form-label">글제목</label>
                 <input type="text" class="form-control" id="title-input" placeholder="제목" name="title">
             </div>
@@ -68,17 +68,7 @@
 
     <%@ include file="../include/footer.jsp" %>
 
-
-
 </div>
-
-
-<script>
-    // 게시물 등록 입력값 검증 함수
-
-</script>
-
-
 </body>
 
 </html>

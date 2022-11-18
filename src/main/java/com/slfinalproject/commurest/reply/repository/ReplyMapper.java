@@ -12,6 +12,9 @@ public interface ReplyMapper {
     boolean save(Reply reply);
     boolean modify(Reply reply);
     boolean remove(int replyNo);
+
+    // 게시글 삭제시 전체 댓글 삭제
+    boolean removeAll(int boardNo);
     List<Reply> findAll(@Param("boardNo") int boardNo, @Param("page") Page page);
     int getReplyCount(int boardNo);
     Reply findOne(int replyNo);

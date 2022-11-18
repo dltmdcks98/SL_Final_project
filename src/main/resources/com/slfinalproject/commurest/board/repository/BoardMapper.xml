@@ -11,6 +11,7 @@
         <result property="regDate" column="reg_date"/>
         <result property="recommend" column="recommend"/>
         <result property="userName" column="user_name"/>
+<!--        <result property="replyCount" column="replyCount"/>-->
     </resultMap>
 
     <!--한건 등록-->
@@ -41,19 +42,13 @@
 
     <!--게시글 삭제-->
     <delete id="remove">
-        delete from board where board_no=#{boardNo}
+        delete from board where board_no = #{boardNo}
     </delete>
 
     <!--게시글 수정-->
     <update id="edit">
         update board set user_id = #{userId}, title = #{title}, content = #{content}
         where board_no = #{boardNo}
-<!--     UPDATE
-        (   SELECT A.title=A.title, A.content=A.content
-            FROM board A, user_account B
-            WHERE A.user_id = B.user_id
-        ) SET A.user_name = B.user_name
--->
     </update>
 
     <!--조회수 갱신-->

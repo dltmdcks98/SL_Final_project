@@ -1,11 +1,12 @@
-@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
-
+/*@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);*/
+body {
+    font: 100% / 1.414'Raleway', sans-serif;
+    font-size: 1.5em;
+}
 .tableList {
-    font-family: 'Jeju Gothic', sans-serif;
     width: 100%;
     border-bottom: 1px solid #29367c;
     border-collapse: collapse;
-
 }
 
 tbody tr:hover {
@@ -18,10 +19,6 @@ thead tr {
     border-color: #81F7D8;
 }
 
-thead th {
-    font-weight: bold;
-}
-
 tbody tr {
     border-color: #E7E6E6;
     border: 1px;
@@ -30,8 +27,6 @@ tbody tr {
 
 tbody td {
     padding: 10px;
-    font-size: 15px;
-    font-weight: 1;
 }
 th{
     text-align: center;

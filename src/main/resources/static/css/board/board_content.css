@@ -1,5 +1,7 @@
+/*@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);*/
 body {
-    /*z-index: auto;*/
+    font: 100% / 1.414'Raleway', sans-serif;
+    font-size: 1.5em;
 }
 input[type=text], select, textarea {
     width: 100%;

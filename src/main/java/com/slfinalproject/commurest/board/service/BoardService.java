@@ -3,6 +3,7 @@ package com.slfinalproject.commurest.board.service;
 import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.repository.BoardMapper;
+import com.slfinalproject.commurest.reply.repository.ReplyMapper;
 import com.slfinalproject.commurest.util.paging.Page;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -12,7 +13,9 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.util.WebUtils;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -29,6 +32,8 @@ public class BoardService {
 
 
     private final BoardMapper boardMapper;
+
+    private final ReplyMapper replyMapper;
 
     // 게시글 등록
     public void insertService(Board board,
@@ -78,15 +83,19 @@ public class BoardService {
     }
 //====================================================================================================================//
     // 게시글 작성
-    public Board selectOne(int boardNo) {
+    public Board selectOne(int boardNo, HttpServletResponse response, HttpServletRequest request) {
+        Board board=boardMapper.selectOne(boardNo);
+        hitCount(boardNo, response, request);
         return boardMapper.selectOne(boardNo);
     }
 
 //====================================================================================================================//
 
-    // 게시글 삭제 요청    - 댓글이 달려있을 경우 삭제처리 안됨
+    // 게시글 삭제 요청
 
+    @Transactional
     public boolean remove(int boardNo) {
+        replyMapper.removeAll(boardNo); // 삭제 처리했는데 CASCADE로 처리 했다고 합니다 그러면 transaction이랑 removeAll 필요없을듯?
         return boardMapper.remove(boardNo);
     }
 //====================================================================================================================//
@@ -96,10 +105,25 @@ public class BoardService {
     public boolean edit(Board board) {
         return boardMapper.edit(board);
     }
-    //====================================================================================================================//
+//====================================================================================================================//
     @Transactional
-    public Board findOneService(int boardNo, HttpServletResponse response, HttpServletRequest request) {
-        log.info("findOne service start - {}", boardNo);
+    public Board findOneService(int boardNo) {
         return boardMapper.selectOne(boardNo);
+    }
+
+//====================================================================================================================//
+
+    // 게시글 조회수 갱신
+    private void hitCount(int boardNo, HttpServletResponse response, HttpServletRequest request) {
+        Cookie foundcookie = WebUtils.getCookie(request, "b" + boardNo);
+        if(foundcookie == null) {
+            boardMapper.hitCount(boardNo);
+
+            Cookie cookie = new Cookie("b"+boardNo, String.valueOf(boardNo));
+            cookie.setMaxAge(60/2);
+            cookie.setPath("/board/content");
+            response.addCookie(cookie);
+
+        }
     }
 }
