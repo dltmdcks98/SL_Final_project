@@ -10,8 +10,8 @@
         <result property="replyText" column="reply_text" />
         <result property="replyWriter" column="reply_writer" />
         <result property="replyDate" column="reply_date" />
-        <result property="boardNo" column="board_no" />
         <result property="userAccount" column="user_account" />
+        <result property="boardNo" column="board_no" />
     </resultMap>
 
     <insert id="save">

@@ -33,6 +33,9 @@ public class Board {
    // 게시판 전체 조회 userId -> userName 변경하기
    private String userName;
 
+   // 게시판 댓글 수 조회
+   private int replyCount;
+
    public Board(ResultSet rs) throws SQLException {
       this.boardNo = rs.getInt("board_no");
       this.userId = rs.getInt("user_id");

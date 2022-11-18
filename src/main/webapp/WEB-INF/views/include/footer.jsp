@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="block">
-                    <h1 class="block-title">Company Info</h1>
+                    <h1 class="block-title">회사 소개</h1>
                     <div class="block-body">
                         <figure class="foot-logo">
                             <img src="/img/logo-light.png" class="img-responsive" alt="Logo">
@@ -20,7 +20,7 @@
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="block">
-                    <h1 class="block-title">Popular Tags <div class="right"><a href="#">See All <i class="ion-ios-arrow-thin-right"></i></a></div></h1>
+                    <h1 class="block-title">인기 태그<div class="right"><a href="#">더보기</a></div></h1>
                     <div class="block-body">
                         <ul class="tags">
                             <li><a href="#">HTML5</a></li>
@@ -34,7 +34,7 @@
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="block">
-                    <h1 class="block-title">Latest News</h1>
+                    <h1 class="block-title">추천글</h1>
                     <div class="block-body">
                         <article class="article-mini">
                             <div class="inner">
@@ -44,31 +44,31 @@
                                     </a>
                                 </figure>
                                 <div class="padding">
-                                    <h1><a href="#">Donec consequat lorem quis augue pharetra</a></h1>
+                                    <h1><a href="#">인기글1</a></h1>
                                 </div>
                             </div>
                         </article>
                         <article class="article-mini">
                             <div class="inner">
                                 <figure>
-                                    <a href="single.html">
+                                    <a href="#">
                                         <img src="/img/news/img14.jpg" alt="Sample Article">
                                     </a>
                                 </figure>
                                 <div class="padding">
-                                    <h1><a href="#">eu dapibus risus aliquam etiam ut venenatis</a></h1>
+                                    <h1><a href="#">인기글2</a></h1>
                                 </div>
                             </div>
                         </article>
 
-                        <a href="#" class="btn btn-magz white btn-block">See All <i class="ion-ios-arrow-thin-right"></i></a>
+                        <a href="#" class="btn btn-magz white btn-block">더보기</a>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-3 col-xs-12 col-sm-6">
                 <div class="block">
-                    <h1 class="block-title">Follow Us</h1>
+                    <h1 class="block-title">팔로워</h1>
                     <div class="block-body">
                         <p>Follow us and stay in touch to get the latest news</p>
                         <ul class="social trp">

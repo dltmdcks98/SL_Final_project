@@ -48,8 +48,8 @@ public class BoardController {
 
     // 글 상세보기 페이지
     @GetMapping("/content/{boardNo}")
-    public String content(@PathVariable("boardNo") int boardNo, Model model, @ModelAttribute("p") Page page) {
-        Board board = boardService.selectOne(boardNo);
+    public String content(@PathVariable("boardNo") int boardNo,HttpServletResponse response, HttpServletRequest request, Model model, @ModelAttribute("p") Page page) {
+        Board board = boardService.selectOne(boardNo, response, request);
         Admin admin = adminService.selectOne2(board.getUserId());
         model.addAttribute("b", board);
         model.addAttribute("a", admin);
@@ -85,9 +85,9 @@ public class BoardController {
 
     // 게시글 수정 화면 요청
     @GetMapping("/edit")
-    public String edit(int boardNo, Model model, HttpServletRequest request, HttpServletResponse response) {
+    public String edit(int boardNo, Model model) {
         log.info("boardNo : {}",boardNo);
-        Board board = boardService.findOneService(boardNo, response, request);
+        Board board = boardService.findOneService(boardNo);
         model.addAttribute("board", board);
         return "board/board_edit";
     }

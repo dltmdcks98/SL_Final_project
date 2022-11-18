@@ -19,3 +19,4 @@ alter table reply
     change reply reply_no int(10) auto_increment;
 
 DROP TABLE reply;
+select * from reply where board_no=38;

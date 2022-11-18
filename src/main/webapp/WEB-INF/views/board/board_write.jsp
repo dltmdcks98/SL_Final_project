@@ -20,8 +20,8 @@
 
 
             <div class="mb-4">
-                <label for="asd" class="form-label">user_id</label>
-                <input type="text" class="form-control" id="asd" placeholder="${a.user_id}" name="user_id"
+<%--                <label for="asd" class="form-label">user_id</label>--%>
+                <input type="hidden" class="form-control" id="asd" placeholder="${a.user_id}" name="user_id"
                         disabled>
 
             </div>
@@ -68,17 +68,7 @@
 
     <%@ include file="../include/footer.jsp" %>
 
-
-
 </div>
-
-
-<script>
-    // 게시물 등록 입력값 검증 함수
-
-</script>
-
-
 </body>
 
 </html>
