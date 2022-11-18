@@ -218,11 +218,10 @@
     // 댓글 수정화면 열기 상세처리
     function processModifyShow(e, rno) {
 
-        console.log('수정버튼 클릭함!! after');
 
         // 클릭한 버튼 근처에 있는 댓글 내용텍스트를 얻어온다.
         const replyText = e.target.parentElement.parentElement.firstElementChild.textContent;
-        console.log('수정 댓글내용:', replyText);
+
 
         // 모달에 해당 댓글내용을 배치한다.
         document.getElementById('modReplyText').value = replyText;
@@ -259,7 +258,6 @@
 
         e.preventDefault();
 
-        console.log('수정버튼 클릭함!! before');
         if (e.target.matches('#replyModBtn')) {
             processModifyShow(e, rno);
         } else if (e.target.matches('#replyDelBtn')) {
