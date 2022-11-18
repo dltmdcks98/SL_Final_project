@@ -7,7 +7,6 @@ import com.slfinalproject.commurest.reply.repository.ReplyMapper;
 import com.slfinalproject.commurest.util.paging.Page;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
@@ -79,6 +78,7 @@ public class BoardService {
     private void process(List<Board> boardList) {
         for (Board board: boardList) {
             dateFormat(board);
+            getReplyCount(board);
         }
     }
 //====================================================================================================================//
@@ -91,11 +91,10 @@ public class BoardService {
 
 //====================================================================================================================//
 
-    // 게시글 삭제 요청
+    // 게시글 삭제 요청    - 댓글이 달려있을 경우 삭제처리 안됨
 
     @Transactional
     public boolean remove(int boardNo) {
-        replyMapper.removeAll(boardNo); // 삭제 처리했는데 CASCADE로 처리 했다고 합니다 그러면 transaction이랑 removeAll 필요없을듯?
         return boardMapper.remove(boardNo);
     }
 //====================================================================================================================//
@@ -125,5 +124,11 @@ public class BoardService {
             response.addCookie(cookie);
 
         }
+    }
+
+
+//   각 게시물의 댓글 수 조회
+    public void getReplyCount(Board b){
+        b.setReplyCnt(replyMapper.getReplyCount(b.getBoardNo()));
     }
 }

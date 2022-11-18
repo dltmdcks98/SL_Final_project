@@ -46,7 +46,8 @@
                                         <tr onclick="location.href='/board/content/${b.boardNo}'" >
                                             <td>${b.boardNo}</td>
                                             <td>${b.userName}</td>
-                                            <td class="title">${b.title}</td>
+                                            <td class="title">${b.title} <c:if test="${b.replyCnt != 0}">[${b.replyCnt}]</c:if>
+                                            </td>
                                             <td>${b.simpleDate}</td>
                                             <td>${b.hit}</td>
                                             <td>${b.recommend}</td>
