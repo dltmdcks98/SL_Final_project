@@ -49,7 +49,7 @@ public class BoardController {
     // 글 상세보기 페이지
     @GetMapping("/content/{boardNo}")
     public String content(@PathVariable("boardNo") int boardNo, Model model, @ModelAttribute("p") Page page, HttpServletResponse response, HttpServletRequest request) {
-        Board board = boardService.selectOne(boardNo);
+        Board board = boardService.selectOne(boardNo,response,request);
 
         model.addAttribute("b", board);
 
