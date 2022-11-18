@@ -16,102 +16,89 @@
 <body>
 <%@include file="../include/header.jsp" %>
 <section>
-<div class="mymain-container">
-    <div class="test">
+    <div class="mymain-container">
+        <div class="test">
 
-        <div class="left-container">
+            <div class="left-container">
 
-            <ul class="left-menu">
-                <li class="home" onclick="location.href='/mypage'">홈</li>
-                <li class="posting" onclick="location.href='/mypage/myposting'">게시글</li>
-                <li class="comment" onclick="location.href='/mypage/mycomment'">댓글</li>
-                <li class="myinfo" onclick="location.href='/mypage/myinfo'">개인 정보 관리</li>
+                <ul class="left-menu">
+                    <li class="home" onclick="location.href='/mypage'">홈</li>
+                    <li class="posting" onclick="location.href='/mypage/myposting'">게시글</li>
+                    <li class="comment" onclick="location.href='/mypage/mycomment'">댓글</li>
+                    <li class="myinfo" onclick="location.href='/mypage/myinfo'">개인 정보 관리</li>
 
-            </ul>
+                </ul>
 
-
-        </div>
-
-        <div class="right-container">
-
-            <div class="row">
-
-
-                <div class="tableWrapper">
-                    <table class="tableList">
-                        <tr>
-                            <td class="home-title">댓글</td>
-                            <td class="t1">
-                                <input type="text" name="q" class="mysearch" placeholder="댓글 검색">
-                                <button class="btn btn-primary"><i class="ion-search"></i></button>
-                            </td>
-
-
-                        </tr>
-                        <tr>
-                            <td>댓글이 들어가는 곳입니다아아아아아아 [3]<br>
-                                <p>2022.11.17</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>댓글이 들어가는 곳입니다아아아아아아 [3]<br>
-                                <p>2022.11.17</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>댓글이 들어가는 곳입니다아아아아아아 [3]<br>
-                                <p>2022.11.17</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>댓글이 들어가는 곳입니다아아아아아아 [3]<br>
-                                <p>2022.11.17</p>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
 
             </div>
 
-            <div class="row">
+            <div class="right-container">
+
+                <div class="row">
 
 
-                <div>
-                    <nav class="page">
-                        <ul class="pagination pagination-lg pagination-custom">
+                    <div class="tableWrapper">
+                        <table class="tableList">
+                            <tr>
+                                <td class="home-title">댓글</td>
+                                <td class="t1">
+                                    <input type="text" name="q" class="mysearch" placeholder="댓글 검색">
+                                    <button class="btn btn-primary"><i class="ion-search"></i></button>
+                                </td>
 
-                            <c:if test="${pageMaker.prev}">
-                                <li class="page-item"><a class="page-link"
-                                                         href="/board?pageNum=${pageMaker.beginPage - 1}&amount=${pageMaker.page.amount}">◀</a>
-                                </li>
-                            </c:if>
 
-
-                            <c:forEach var="n" begin="${pageMaker.beginPage}" end="${pageMaker.endPage}" step="1">
-                                <li data-page-num="${n}" class="page-item">
-                                    <a class="page-link"
-                                       href="/board?pageNum=${n}&amount=${pageMaker.page.amount}">${n}</a>
-                                </li>
+                            </tr>
+                            <c:forEach var="r" items="${rList}">
+                                <tr onclick="location.href='/board/content/${r.boardNo}'">
+                                    <td class="title">${r.replyText}
+                                        <p>${r.replyDate}</p>
+                                    </td>
+                                </tr>
                             </c:forEach>
+                        </table>
+                    </div>
 
-                            <c:if test="${pageMaker.next}">
-                                <li class="page-item"><a class="page-link"
-                                                         href="/board?pageNum=${pageMaker.endPage + 1}&amount=${pageMaker.page.amount}">▶</a>
-                                </li>
-                            </c:if>
+                </div>
+
+                <div class="row">
 
 
-                        </ul>
-                    </nav>
+                    <div>
+                        <nav class="page">
+                            <ul class="pagination pagination-lg pagination-custom">
+
+                                <c:if test="${pageMaker.prev}">
+                                    <li class="page-item"><a class="page-link"
+                                                             href="/board?pageNum=${pageMaker.beginPage - 1}&amount=${pageMaker.page.amount}">◀</a>
+                                    </li>
+                                </c:if>
+
+
+                                <c:forEach var="n" begin="${pageMaker.beginPage}" end="${pageMaker.endPage}" step="1">
+                                    <li data-page-num="${n}" class="page-item">
+                                        <a class="page-link"
+                                           href="/board?pageNum=${n}&amount=${pageMaker.page.amount}">${n}</a>
+                                    </li>
+                                </c:forEach>
+
+                                <c:if test="${pageMaker.next}">
+                                    <li class="page-item"><a class="page-link"
+                                                             href="/board?pageNum=${pageMaker.endPage + 1}&amount=${pageMaker.page.amount}">▶</a>
+                                    </li>
+                                </c:if>
+
+
+                            </ul>
+                        </nav>
+
+                    </div>
 
                 </div>
 
             </div>
 
         </div>
-
     </div>
-</div>
 </section>
 <%@include file="../include/footer.jsp" %>
 </body>

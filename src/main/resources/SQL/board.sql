@@ -52,3 +52,14 @@ select * from board where board_no=249;
 select * from comment;
 select * from tag;
 select * from board where board_no=2;
+
+
+SELECT A.board_no, A.user_id, A.title, A.reg_date, A.hit, A.recommend, B.user_name
+FROM board A
+         JOIN user_account B ON A.user_id = B.user_id
+WHERE A.user_id = 17
+ORDER BY board_no DESC
+
+select * from board where user_id=17;
+
+SELECT COUNT(*) FROM board where user_id=17;

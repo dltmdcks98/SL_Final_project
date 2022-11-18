@@ -12,6 +12,7 @@
     const bno = '${b.boardNo}';
     // console.log('bno:', bno);
 
+
     // 댓글 요청 URL
     const URL = '/ajax/replies';
     const $pageUl = document.querySelector('.pagination');

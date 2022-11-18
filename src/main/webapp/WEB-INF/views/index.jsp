@@ -98,9 +98,6 @@
 
                     </div>
 
-
-
-
                     <div class="line transparent little"></div>
                     <div class="row">
                         <div class="col-md-6 col-sm-6 trending-tags">

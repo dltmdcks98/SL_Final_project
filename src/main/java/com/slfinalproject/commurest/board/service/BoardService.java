@@ -12,6 +12,7 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.Cookie;
@@ -36,20 +37,20 @@ public class BoardService {
 
     // 게시글 등록
     public void insertService(Board board,
-                                 HttpServletResponse response, HttpServletRequest request) {
+                              HttpServletResponse response, HttpServletRequest request) {
         HttpSession session = request.getSession();
         Object securityContextObject = session.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
-      //  if(securityContextObject !=null){
-            SecurityContext securityContext = (SecurityContext) securityContextObject;
-            Authentication authentication = securityContext.getAuthentication();
-            Admin user = (Admin) authentication.getPrincipal();
-            //board.setUserId(user.getUser_id());
-     //   }
+        //  if(securityContextObject !=null){
+        SecurityContext securityContext = (SecurityContext) securityContextObject;
+        Authentication authentication = securityContext.getAuthentication();
+        Admin user = (Admin) authentication.getPrincipal();
+        //board.setUserId(user.getUser_id());
+        //   }
 
         board.setUserId(user.getUser_id());
 
         boardMapper.insert(board);
-        log.info("user_id : "+board.getUserId());
+        log.info("user_id : " + board.getUserId());
 
     }
 
@@ -64,6 +65,20 @@ public class BoardService {
         findDataMap.put("tc", boardMapper.getTotalCount());
         return findDataMap;
     }
+// 나의 게시글 조회
+    public Map<String, Object> findAllServiceByUserId(Page page,int userId) {
+
+        Map<String, Object> findDataMap = new HashMap<>();
+        List<Board> boardList = boardMapper.selectAllByUserId(page, userId);
+
+        process(boardList);
+        findDataMap.put("bList", boardList);
+        findDataMap.put("tc", boardMapper.getTotalCountByUserId());
+        return findDataMap;
+    }
+
+
+
 //====================================================================================================================//
 
     // 날짜 포맷 생성     == 이후에 추가로 할 것 : 당일날 작성한 글은 'HH:mm'만 나오고 다음날로 넘어가면(24:00) 가 되면 'yy-MM-dd'로 변경
@@ -73,18 +88,19 @@ public class BoardService {
         board.setSimpleDate(sdf.format(date));
     }
 
-//====================================================================================================================//
+    //====================================================================================================================//
     // 날짜, 댓글, 조회수 ... 갱신? 목적 --> 지금은 날짜 포맷만 넣었음
     private void process(List<Board> boardList) {
-        for (Board board: boardList) {
+        for (Board board : boardList) {
             dateFormat(board);
             getReplyCount(board);
         }
     }
-//====================================================================================================================//
+
+    //====================================================================================================================//
     // 게시글 작성
     public Board selectOne(int boardNo, HttpServletResponse response, HttpServletRequest request) {
-        Board board=boardMapper.selectOne(boardNo);
+        Board board = boardMapper.selectOne(boardNo);
         hitCount(boardNo, response, request);
         return boardMapper.selectOne(boardNo);
     }
@@ -104,7 +120,8 @@ public class BoardService {
     public boolean edit(Board board) {
         return boardMapper.edit(board);
     }
-//====================================================================================================================//
+
+    //====================================================================================================================//
     @Transactional
     public Board findOneService(int boardNo) {
         return boardMapper.selectOne(boardNo);
@@ -115,11 +132,11 @@ public class BoardService {
     // 게시글 조회수 갱신
     private void hitCount(int boardNo, HttpServletResponse response, HttpServletRequest request) {
         Cookie foundcookie = WebUtils.getCookie(request, "b" + boardNo);
-        if(foundcookie == null) {
+        if (foundcookie == null) {
             boardMapper.hitCount(boardNo);
 
-            Cookie cookie = new Cookie("b"+boardNo, String.valueOf(boardNo));
-            cookie.setMaxAge(60/2);
+            Cookie cookie = new Cookie("b" + boardNo, String.valueOf(boardNo));
+            cookie.setMaxAge(60 / 2);
             cookie.setPath("/board/content");
             response.addCookie(cookie);
 
@@ -127,8 +144,8 @@ public class BoardService {
     }
 
 
-//   각 게시물의 댓글 수 조회
-    public void getReplyCount(Board b){
+    //   각 게시물의 댓글 수 조회
+    public void getReplyCount(Board b) {
         b.setReplyCnt(replyMapper.getReplyCount(b.getBoardNo()));
     }
 }

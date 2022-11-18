@@ -61,4 +61,13 @@
         WHERE board_no=#{boardNo}
     </select>
 
+<!--  나의 댓글 조회하기  -->
+    <select id="findReplyByUserId" resultMap="replyMap">
+        SELECT * FROM reply
+        WHERE user_account = #{userAccount}
+        ORDER BY reply_no desc
+--         LIMIT #{page.start}, #{page.amount} desc
+    </select>
+
+
 </mapper>

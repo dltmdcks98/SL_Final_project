@@ -18,4 +18,8 @@ public interface ReplyMapper {
     List<Reply> findAll(@Param("boardNo") int boardNo, @Param("page") Page page);
     int getReplyCount(int boardNo);
     Reply findOne(int replyNo);
+
+
+//  나의 댓글 조회하기
+    List<Reply> findReplyByUserId(Page page, int userAccount);
 }

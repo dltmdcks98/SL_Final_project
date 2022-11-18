@@ -10,7 +10,7 @@
 <%@ include file="../include/header.jsp" %>
 
 <h1 class="main-title">자유 게시판</h1>
-
+<section>
 <!-- 게시글 영역 begin -->
 <div class="content">
 <%--
@@ -133,6 +133,7 @@
 <%@ include file="../include/footer.jsp" %>
 <%@ include file="../include/scripts.jsp"%>
 <%@ include file="../include/reply.jsp"  %>
+</section>
 </body>
 
 </html>
