@@ -34,15 +34,42 @@
     margin-bottom:3%;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
 }
 .tagDiv>input{
+    position: relative;
     margin-right: 2%;
     width: fit-content;
     font-size: 0.5rem;
     height: 2rem;
     padding: 1%;
-    background: tomato;
-    opacity: 0.4;
+
     border: none;
+    border-radius: 3rem;
 }
 
+.tagDiv>input:hover{
+    background:#fd7e14;
+    opacity: 0.4;
+    /*
+    $orange(#fd7e14)
+    $indigo-200(#6610f2)
+    $red-200(#dc3545)
+    $teal-300(#20c997)*/
+    transition: all .5s;
+
+}
+.tagDiv .tagInput :focus::placeholder{
+    opacity: 0;
+}
+.tagDiv .tagInput :hover::placeholder{
+    opacity: 0;
+    transition: all .5s;
+}
+.tagList{
+    opacity:0.7;
+    font-weight: bold;
+}
+.tagList ::placeholder{
+    opacity: 0;
+}

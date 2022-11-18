@@ -35,4 +35,32 @@ ListBtn.onclick = e => {
     location.href = '/board';
 };
 
+/*
+*   태그 JS
+*
+*/
+const tagInput = "<input class=\"tagInput\" name=\"tag\" type=\"text\" placeholder=\"태그를 입력해주세요!\">";
+const $tagDiv = document.querySelector('.tagDiv');
+const firstTag = document.getElementById('firstTag');
+$tagDiv.addEventListener('keyup',e =>{
+    e.stopPropagation();
+    if(e.key=='Enter'){
+        console.log(e);
+        createTag();
+    }
+
+});
+
+function createTag(){
+    const $tagInput = document.querySelector('.tagInput');
+    let tagText = $tagInput.getAttribute('value');
+    console.log(tagText);
+    $tagInput.setAttribute('disabled','true');
+    $tagInput.classList.add('tagList');
+    $tagInput.classList.remove('tagInput');
+
+    $tagDiv.innerHTML+=tagInput;
+    const $newTag = $tagDiv.lastChild;
+    $newTag.focus();
+}
 
