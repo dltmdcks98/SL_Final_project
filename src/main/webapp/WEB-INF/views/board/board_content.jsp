@@ -13,9 +13,11 @@
 
 <!-- 게시글 영역 begin -->
 <div class="content">
+<%--
     <label>
         <input type="hidden" name="boardNo" value="${b.boardNo}"> <!--hidden으로 숨길예정 test용-->
     </label>
+--%>
 
     <div id="content-header">
         <input type="text" name="title" value="${b.title}" disabled>
