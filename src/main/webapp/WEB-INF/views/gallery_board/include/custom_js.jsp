@@ -28,7 +28,7 @@
         console.log($(document).height() - $(window).height()-1);
         console.log($(window).scrollTop() >= ($(document).height() - $(window).height()-1));
         console.log(counter);*/
-        if($(window).scrollTop() >= ($(document).height() - $(window).height()-1)){
+        if($(window).scrollTop() >= ($(document).height() - $(window).height()-10)){
             console.log("진입?");
             counter++;
             $masonry.masonryImagesReveal( await getItems(counter));

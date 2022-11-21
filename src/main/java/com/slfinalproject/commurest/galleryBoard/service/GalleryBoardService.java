@@ -92,17 +92,12 @@ public class GalleryBoardService {
         return urlList;
     }
 
-    public List<String> getImgUrlByHotTag(int starPage, int size){
+    public List<String> getImgUrlByHotTag(int startPage, int size){
         List<TagList> tagList = tagService.getHotTag();
-
-        return tempUrl(tagList, starPage, size);
-    }
-
-    public List<String> tempUrl(List<TagList> tagList, int starPage, int size){
         List<String> urlList = new ArrayList<>();
         for(int i=0; i<tagList.size();i++){
             String tag = tagList.get(i).getTagValue();
-            List<String> temp = getImgUrl(tag,starPage,size);
+            List<String> temp = getImgUrl(tag,startPage,size);
 
             for(int j=0; j<temp.size();j++){
                 urlList.add(temp.get(j));
@@ -111,6 +106,7 @@ public class GalleryBoardService {
         log.warn(urlList);
         return urlList;
     }
+
 
 }
 
