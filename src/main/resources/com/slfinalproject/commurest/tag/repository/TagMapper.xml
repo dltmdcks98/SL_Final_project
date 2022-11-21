@@ -25,11 +25,14 @@
     </insert>
 
     <insert id="setTagValueByBoardNo">
-        INSERT INTO tag(tag_value,board_no) VALUES (#{tagValue},${boardNo})
+        INSERT INTO tag(tag_value,board_no) VALUES (#{tagValue},#{boardNo})
     </insert>
 
     <insert id="setTagValueByUserId">
         INSERT INTO tag(tag_value,user_id) VALUES (#{tagValue},${userId})
     </insert>
 
+    <select id="getBoardNo" resultType="int">
+        SELECT DISTINCT LAST_INSERT_ID() AS boardNo FROM board;
+    </select>
 </mapper>

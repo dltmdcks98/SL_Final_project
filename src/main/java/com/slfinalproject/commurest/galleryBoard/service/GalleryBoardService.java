@@ -1,7 +1,7 @@
 package com.slfinalproject.commurest.galleryBoard.service;
 
 import com.slfinalproject.commurest.tag.domain.Tag;
-import com.slfinalproject.commurest.tag.repository.TagMapper;
+import com.slfinalproject.commurest.tag.service.TagService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.json.JSONArray;
@@ -28,30 +28,7 @@ public class GalleryBoardService {
     @Value("${LSC.google.domain}")
     private String domain;
 
-    private final TagMapper tagMapper;
-
-    @Transactional
-    public String getTagValue(int tagId){
-        return tagMapper.getTagValue(tagId);
-    }
-    @Transactional
-    public List<Tag> getTagValueByUserId(int userId){
-        return tagMapper.getTagValueByUserId(userId);
-    }
-    @Transactional
-    public boolean setTagValue(String value){
-        return tagMapper.setTagValue(value);
-    }
-
-    @Transactional
-    public boolean setTagValueByBoardNo(String value,int boardNo){
-        return tagMapper.setTagValueByBoardNo(value,boardNo);
-    }
-    @Transactional
-    public boolean setTagValueByUserId(String value ,int userId){
-        return tagMapper.setTagValueByUserId(value,userId);
-    }
-
+    private final TagService tagService;
 
     public List<String> getImgUrl(String tag,int num,int size) {
         log.info("GalleryBoardService 진입, tag내용 : " +tag);
@@ -100,7 +77,7 @@ public class GalleryBoardService {
 
     @Transactional
     public List<String> getImgUrlsByUserId(int userId,int startPage, int size){
-        List<Tag> tagList = getTagValueByUserId(userId);
+        List<Tag> tagList = tagService.getTagValueByUserId(userId);
         List<String> urlList = new ArrayList<>();
         for(int i=0; i<tagList.size();i++){
             String tag = tagList.get(i).getTagValue();

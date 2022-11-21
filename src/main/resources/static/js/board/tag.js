@@ -10,7 +10,11 @@ const $red ='#dc3545';
 const $teal = '#20c997';
 let count = 0;
 
-const tagInput = "<input class=\"tagInput\" name=\"tag\" type=\"text\" placeholder=\"태그를 입력해주세요!\">";
+
+
+const tagInput = "<input class=\"tagInput\" type=\"text\" placeholder=\"태그를 입력해주세요!\">";
+
+
 const $tagDiv = document.querySelector('.tagDiv');
 const $tagInput = document.querySelector('.tagInput');
 $tagDiv.addEventListener('input',e=>{
@@ -21,6 +25,7 @@ $tagDiv.addEventListener('input',e=>{
 $tagDiv.addEventListener('keyup',e =>{
     e.stopPropagation();
     if(e.key=='Enter'){
+        e.target.setAttribute('name','tagList');
         createTag(e);
 
     }
@@ -34,7 +39,7 @@ function createTag(e){
     // sendTag(tagText);
 
     $tagInput.setAttribute('value',tagText);
-    $tagInput.setAttribute('disabled','true');
+    $tagInput.setAttribute('readonly','true');
 
     setColor($tagInput);
     $tagInput.classList.add('tagList');
@@ -42,6 +47,7 @@ function createTag(e){
 
     $tagDiv.innerHTML+=tagInput;
     const $newTag = $tagDiv.lastChild;
+
     $newTag.focus();
 }
 
@@ -71,10 +77,10 @@ function setColor($tagInput){
 
 function sendTag(value){
     const tagValue ={
-        method:'PUT',
+        method:'GET',
         body : value
     }
-    fetch('/ajax',tagValue)
+    fetch('/ajax-tag',tagValue)
         .then(res => {
             console.log(res);
         });

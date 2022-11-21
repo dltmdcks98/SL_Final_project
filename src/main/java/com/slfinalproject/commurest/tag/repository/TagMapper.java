@@ -9,7 +9,7 @@ import java.util.List;
 public interface TagMapper {
 
     String getTagValue(int tagId);
-
+    int getBoardNo();
     List<Tag> getTagValueByUserId(int userId);
     boolean setTagValue(String tagValue);
     boolean setTagValueByBoardNo(String tagValue,int boardNo);
