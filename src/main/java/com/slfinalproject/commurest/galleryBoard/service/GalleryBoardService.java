@@ -95,12 +95,21 @@ public class GalleryBoardService {
     public List<String> getImgUrlByHotTag(int startPage, int size){
         List<TagList> tagList = tagService.getHotTag();
         List<String> urlList = new ArrayList<>();
-        for(int i=0; i<tagList.size();i++){
-            String tag = tagList.get(i).getTagValue();
-            List<String> temp = getImgUrl(tag,startPage,size);
+        if(size==9){
+//            index 에서 인기 태그
+            String firstTag = tagList.get(0).getTagValue();
+            List<String> temp = getImgUrl(firstTag,startPage,size);
+            for(String tag : temp) urlList.add(tag);
 
-            for(int j=0; j<temp.size();j++){
-                urlList.add(temp.get(j));
+        }else{
+//            gallery에서 인기태그
+            for(int i=0; i<tagList.size();i++){
+                String tag = tagList.get(i).getTagValue();
+                List<String> temp = getImgUrl(tag,startPage,size);
+
+                for(int j=0; j<temp.size();j++){
+                    urlList.add(temp.get(j));
+                }
             }
         }
         log.warn(urlList);

@@ -48,8 +48,16 @@ public class GalleryRestController {
 
         return galleryBoardService.getImgUrlByHotTag(num,size);
 
-
     }
 
+    @GetMapping("/index")
+    public List<String> indexImg(){
+        int num=0;
+        int size = 9;
+        log.info("rest gallery indexd 접근- GET ");
+        return galleryBoardService.getImgUrlByHotTag(num,size);
+
+
+    }
 
 }

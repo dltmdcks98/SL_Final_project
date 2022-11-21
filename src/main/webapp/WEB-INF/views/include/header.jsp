@@ -4,13 +4,6 @@
 
 <!-- header -->
 
-<style>
-
-
-</style>
-
-
-
         <div class="firstbar">
             <div class="container">
                 <div class="row">
@@ -34,11 +27,9 @@
                             <div class="help-block">
                                 <div>Popular Tag:</div>
                                 <ul>
-                                    <li><a href="#">아이유</a></li>
-                                    <li><a href="#">뭐시기</a></li>
-                                    <li><a href="#">인기태그 1</a></li>
-                                    <li><a href="#">인기태그 2</a></li>
-                                    <li><a href="#">인기태그 3</a></li>
+                                    <c:forEach var="TagList" items="${hotTagList}">
+                                    <li><a href="#"><c:out value="${TagList.tagValue}"/></a></li>
+                                    </c:forEach>
                                 </ul>
                             </div>
                         </form>

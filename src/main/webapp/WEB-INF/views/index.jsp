@@ -5,6 +5,7 @@
 <head>
     <%@ include file="./include/static-head.jsp" %>
     <link rel="stylesheet" href="/css/board/board_list.css">
+
 </head>
 
 <body>
@@ -104,12 +105,9 @@
                             <h1 class="title-col">인기 관심사</h1>
                             <div class="body-col">
                                 <ol class="tags-list">
-                                    <li><a href="#">아이유</a></li>
-                                    <li><a href="#">롤</a></li>
-                                    <li><a href="#">피파</a></li>
-                                    <li><a href="#">이쁜사진</a></li>
-                                    <li><a href="#">배경사진</a></li>
-                                    <li><a href="#">뭐시기뭐시기</a></li>
+                                    <c:forEach var="TagList" items="${hotTagList}">
+                                        <li><a href="#"><c:out value="${TagList.tagValue}"/></a></li>
+                                    </c:forEach>
 
                                 </ol>
                             </div>
@@ -269,18 +267,11 @@
                                             </div>
                                         </div>
                                         <div class="featured-author-quote">
-                                            " 아이유 "
+                                            " <c:out value="${hotTagList[0].tagValue}" /> "
                                         </div>
                                         <div class="block">
                                             <h2 class="block-title">Photos</h2>
-                                                <img src="/img/img01.jpg" alt="Sample Article" style="width: 30%">
-                                                <img src="/img/img02.jpg" alt="Sample Article" style="width: 30%">
-                                                <img src="/img/img03.jpg" alt="Sample Article" style="width: 30%">
-                                                <img src="/img/img04.jpg" alt="Sample Article" style="width: 30%">
-                                                <img src="/img/img05.jpg" alt="Sample Article" style="width: 30%">
-                                                <img src="/img/img06.jpg" alt="Sample Article" style="width: 30%">
-                                                <img src="/img/img07.jpg" alt="Sample Article" style="width: 30%">
-                                                <img src="/img/img08.jpg" alt="Sample Article" style="width: 30%">
+
                                         </div>
 
                                     </div>
@@ -298,6 +289,6 @@
     <!-- main end -->
 
     <%@ include file="./include/footer.jsp"%>
-    <%@ include file="./include/scripts.jsp"%>
+    <%@ include file="include/image.jsp"%>
 </body>
 </html>
