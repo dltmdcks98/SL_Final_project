@@ -86,6 +86,7 @@
         WHERE bno = #{bno}
     </select>
 
+
 <!--    <select id="findMemberByBoardNo" resultType="com.project.web_prj.board.dto.ValidateMemberDTO">-->
 
 <!--        SELECT account, auth-->

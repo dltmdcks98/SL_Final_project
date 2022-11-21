@@ -96,7 +96,7 @@ public class BoardService {
         board.setSimpleDate(sdf.format(date));
     }
 
-    //====================================================================================================================//
+//====================================================================================================================//
     // 날짜, 댓글, 조회수 ... 갱신? 목적 --> 지금은 날짜 포맷만 넣었음
     private void process(List<Board> boardList) {
         for (Board board : boardList) {
@@ -104,13 +104,13 @@ public class BoardService {
             getReplyCount(board);
         }
     }
-
-    //====================================================================================================================//
-    // 게시글 작성
+//====================================================================================================================//
+    // 게시글 한건 상세보기
+    @Transactional
     public Board selectOne(int boardNo, HttpServletResponse response, HttpServletRequest request) {
         Board board = boardMapper.selectOne(boardNo);
         hitCount(boardNo, response, request);
-        return boardMapper.selectOne(boardNo);
+        return board;
     }
 
 //====================================================================================================================//
@@ -128,8 +128,7 @@ public class BoardService {
     public boolean edit(Board board) {
         return boardMapper.edit(board);
     }
-
-    //====================================================================================================================//
+//====================================================================================================================//
     @Transactional
     public Board findOneService(int boardNo) {
         return boardMapper.selectOne(boardNo);
@@ -140,7 +139,7 @@ public class BoardService {
     // 게시글 조회수 갱신
     private void hitCount(int boardNo, HttpServletResponse response, HttpServletRequest request) {
         Cookie foundcookie = WebUtils.getCookie(request, "b" + boardNo);
-        if (foundcookie == null) {
+        if(foundcookie == null) {
             boardMapper.hitCount(boardNo);
 
             Cookie cookie = new Cookie("b" + boardNo, String.valueOf(boardNo));
@@ -154,11 +153,11 @@ public class BoardService {
 //====================================================================================================================//
 
     // 첨부파일 가져오기
-    /*
-   public List<String> getFiles(Long bno) {
-        return boardMapper.addFile();
+
+   public List<String> getFiles(int bno) {
+        return boardMapper.fileNames(bno);
     }
-    */
+
 
 
 
