@@ -57,7 +57,7 @@
 
 
             <div class="d-grid gap-2">
-                <button id="write_btn" class="btn btn-dark" type="submit">글 작성하기</button>
+                <button id="write_btn" class="btn btn-dark" type="button">글 작성하기</button>
                 <button id="list_btn" class="btn btn-info" type="button">목록으로</button>
             </div>
 
