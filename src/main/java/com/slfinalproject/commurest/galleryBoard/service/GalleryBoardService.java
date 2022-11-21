@@ -1,7 +1,7 @@
 package com.slfinalproject.commurest.galleryBoard.service;
 
-import com.slfinalproject.commurest.galleryBoard.domain.Tag;
-import com.slfinalproject.commurest.galleryBoard.repository.GalleryMapper;
+import com.slfinalproject.commurest.tag.domain.Tag;
+import com.slfinalproject.commurest.tag.service.TagService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.json.JSONArray;
@@ -28,37 +28,14 @@ public class GalleryBoardService {
     @Value("${LSC.google.domain}")
     private String domain;
 
-    private final GalleryMapper galleryMapper;
-
-    @Transactional
-    public String getTagValue(int tagId){
-        return galleryMapper.getTagValue(tagId);
-    }
-    @Transactional
-    public List<Tag> getTagValueByUserId(int userId){
-        return galleryMapper.getTagValueByUserId(userId);
-    }
-    @Transactional
-    public boolean setTagValue(String value){
-        return galleryMapper.setTagValue(value);
-    }
-
-    @Transactional
-    public boolean setTagValueByBoardNo(String value,int boardNo){
-        return galleryMapper.setTagValueByBoardNo(value,boardNo);
-    }
-    @Transactional
-    public boolean setTagValueByUserId(String value ,int userId){
-        return galleryMapper.setTagValueByUserId(value,userId);
-    }
-
+    private final TagService tagService;
 
     public List<String> getImgUrl(String tag,int num,int size) {
         log.info("GalleryBoardService 진입, tag내용 : " +tag);
 
         List<String> imageUrl = new ArrayList<>();
         String searchUrl = "https://www.googleapis.com/customsearch/v1?key="+API+"&cx="+domain+"&searchType=image&filter=0&imgSize=large&q="+tag+"&start="+(num*10+1)+"&num="+size;
-
+        log.info("검색 url : "+ searchUrl);
         try {
             Connection.Response res = Jsoup.connect(
                             searchUrl)
@@ -100,7 +77,7 @@ public class GalleryBoardService {
 
     @Transactional
     public List<String> getImgUrlsByUserId(int userId,int startPage, int size){
-        List<Tag> tagList = getTagValueByUserId(userId);
+        List<Tag> tagList = tagService.getTagValueByUserId(userId);
         List<String> urlList = new ArrayList<>();
         for(int i=0; i<tagList.size();i++){
             String tag = tagList.get(i).getTagValue();

@@ -5,19 +5,18 @@ body {
 
 .write-container {
     width: 55%;
-    height: 40%;
-    margin: 12% auto 2%;
-    font-size: 2em;
+    margin: 230px auto 150px;
+    font-size: 1.5em;
 }
 
 .fileDrop {
-    width: 55%;
-    height: 10%;
+    width: 600px;
+    height: 200px;
     border: 1px dashed gray;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 .uploaded-list {
@@ -26,6 +25,55 @@ body {
 
 .img-sizing {
     display: block;
-    width: 5%;
-    height: 5%;
+    width: 100px;
+    height: 100px;
+}
+
+
+/*태그 입력 DIV*/
+.tagLabel{
+    font-size: 1.5rem;
+}
+.tagDiv{
+    width: 100%;
+    margin-bottom:3%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.tagDiv>input{
+    position: relative;
+    margin-right: 2%;
+    /*width: auto;*/
+    font-size: 0.5rem;
+    height: 2rem;
+    padding: 5px;
+    border: none;
+    border-radius: 3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.tagDiv>.tagInput:hover{
+    background:#fd7e14;
+    opacity: 0.4;
+
+    transition: all .5s;
+
+}
+.tagDiv .tagInput :focus::placeholder{
+    opacity: 0;
+}
+.tagDiv .tagInput :hover::placeholder{
+    opacity: 0;
+    transition: all .5s;
+}
+.tagList{
+    opacity:0.6;
+    font-weight: bold;
+
+}
+
+.tagList ::placeholder{
+    opacity: 0;
 }

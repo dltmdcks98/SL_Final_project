@@ -3,7 +3,6 @@ package com.slfinalproject.commurest.board.controller;
 import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.admin.service.AdminService;
 import com.slfinalproject.commurest.board.domain.Board;
-import com.slfinalproject.commurest.board.repository.BoardMapper;
 import com.slfinalproject.commurest.board.service.BoardService;
 import com.slfinalproject.commurest.util.paging.Page;
 import com.slfinalproject.commurest.util.paging.PageMaker;
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -80,9 +78,12 @@ public class BoardController {
     }
 
     // 글 쓰기 처리
+
     @PostMapping("/writeForm")
     public String writeForm(Board board, HttpServletResponse response, HttpServletRequest request) {
+        log.info("tag test "+ board);
         boardService.insertService(board, response, request);
+
         return "redirect:/board";
     }
 

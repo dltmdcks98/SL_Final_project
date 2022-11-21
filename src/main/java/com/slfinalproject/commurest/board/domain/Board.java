@@ -23,7 +23,8 @@ public class Board {
    private Date regDate;
    private int recommend;
    private String imageUrl;
-   private String tagId;
+
+   private List<String> tagList;
 
    // 등록 날짜 포맷 변경
    private String simpleDate;

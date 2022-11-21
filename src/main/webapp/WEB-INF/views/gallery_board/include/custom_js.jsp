@@ -24,7 +24,12 @@
 
 
     document.addEventListener('scroll', async () =>{
-        if($(window).scrollTop() == ($(document).height() - $(window).height()) && counter<=100){
+/*        console.log($(window).scrollTop());
+        console.log($(document).height() - $(window).height()-1);
+        console.log($(window).scrollTop() >= ($(document).height() - $(window).height()-1));
+        console.log(counter);*/
+        if($(window).scrollTop() >= ($(document).height() - $(window).height()-1)){
+            console.log("진입?");
             counter++;
             $masonry.masonryImagesReveal( await getItems(counter));
             console.log(counter);
@@ -75,7 +80,7 @@
             }
         });
 
-        console.log("await문 나오거 : " + items);
+        // console.log("await문 나오거 : " + items);
         return $( items );
     }
 

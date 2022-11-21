@@ -24,7 +24,7 @@ CREATE TABLE board (
                       reg_date DATETIME DEFAULT current_timestamp,
                       recommend INT(10) DEFAULT 0,
                       image_url VARCHAR(200),
-                      tag_id VARCHAR(300),
+#                       tag_id VARCHAR(300),
                       CONSTRAINT pk_board PRIMARY KEY (board_no)
 );
 
@@ -52,3 +52,5 @@ select * from board where board_no=249;
 select * from comment;
 select * from tag;
 select * from board where board_no=2;
+
+ALTER TABLE board DROP COLUMN tag_id;

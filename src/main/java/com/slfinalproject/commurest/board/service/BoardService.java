@@ -4,6 +4,7 @@ import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.repository.BoardMapper;
 import com.slfinalproject.commurest.reply.repository.ReplyMapper;
+import com.slfinalproject.commurest.tag.repository.TagMapper;
 import com.slfinalproject.commurest.util.paging.Page;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -31,10 +32,12 @@ public class BoardService {
 
 
     private final BoardMapper boardMapper;
+    private final TagMapper tagMapper;
 
     private final ReplyMapper replyMapper;
 
     // 게시글 등록
+    @Transactional
     public void insertService(Board board,
                                  HttpServletResponse response, HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -47,8 +50,13 @@ public class BoardService {
      //   }
 
         board.setUserId(user.getUser_id());
+        log.info("tagList 테스트 "+ board.getTagList());
 
         boardMapper.insert(board);
+        int boardno = tagMapper.getBoardNo();
+        for(int i=0; i< board.getTagList().size();i++){
+            tagMapper.setTagValueByBoardNo(board.getTagList().get(i),boardno);
+        }
         log.info("user_id : "+board.getUserId());
 
     }

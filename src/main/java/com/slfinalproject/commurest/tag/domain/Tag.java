@@ -1,4 +1,4 @@
-package com.slfinalproject.commurest.galleryBoard.domain;
+package com.slfinalproject.commurest.tag.domain;
 
 import lombok.*;
 
