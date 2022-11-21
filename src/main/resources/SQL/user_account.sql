@@ -18,6 +18,9 @@ alter table user_account alter column manager set default 'ROLE_ADMIN';
 
 
 select *from user_account;
+UPDATE user_account
+SET user_name='xxx2'
+WHERE user_id=8;
 
 
 DROP TABLE user_account;

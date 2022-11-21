@@ -22,23 +22,26 @@
         <input type="text" name="writer" value="${a.user_name}" disabled>
     </div>
 
-    <div id="content-body">
-        <textarea name="content" placeholder="내용작성" style="height:200px">${b.content}</textarea>
+    <div id="content-body" class="content-body">
+        <textarea name="content" placeholder="내용작성" class="area-text">${b.content}</textarea>
     </div>
 
 
     <div class="comments-list">
         <button id="list-btn" type="button">목록</button>
-        <button id="edit-btn" type="button">수정</button>
-        <button id="del-btn" type="button">삭제</button>
+        <c:if test="${user.user_id == b.userId}">
+            <button id="edit-btn" type="button">수정</button>
+            <button id="del-btn" type="button">삭제</button>
+        </c:if>
+
     </div>
 
 </div>
 <!-- 게시글 영역 end -->
 
 <!-- 댓글 영역 -->
-<div id="replies" class="row">
-    <div class="offset-md-1 col-md-10">
+<div id="replies" class="row-content">
+    <div class="recommend">
         <!-- 댓글 쓰기 영역 -->
         <div class="card">
             <div class="card-body">
@@ -48,10 +51,10 @@
 
                 <c:if test="${not empty user}">
                     <div class="row">
-                        <div class="col-md-9">
-                            <div class="form-group">
+                        <div class="write-recommend">
+                            <div class="com">
                                 <label for="newReplyText" hidden>댓글 내용</label>
-                                <textarea rows="3" id="newReplyText" name="replyText" class="form-control"
+                                <textarea rows="3" id="newReplyText" name="replyText" class="recommend-text"
                                           placeholder="댓글을 입력해주세요."></textarea>
                             </div>
                         </div>
@@ -60,7 +63,7 @@
                                 <label for="newReplyWriter" hidden>댓글 작성자</label>
                                 <input id="newReplyWriter" name="replyWriter" type="text"
                                        value="${user.user_name}" class="form-control" placeholder="작성자 이름"
-                                       readonly style="margin-bottom: 6px;">
+                                       readonly>
                                 <button id="replyAddBtn" type="button" class="btn btn-dark form-control">
                                     등록
                                 </button>
@@ -115,19 +118,17 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button id="replyModBtn" type="button" class="btn btn-dark" data-bs-dismiss="modal">수정</button>
-                    <button id="modal-close" type="button" class="btn btn-danger"
-                            data-bs-dismiss="modal">닫기
-                    </button>
+                    <button id="replyModBtn" type="button" class="btn btn-dark">수정</button>
+                    <button id="modal-close" type="button" class="btn btn-danger" data-bs-dismiss="modal">닫기</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<%@ include file="../include/footer.jsp" %>
 <%@ include file="../include/scripts.jsp"%>
 <%@ include file="../include/reply.jsp"  %>
+<%@ include file="../include/footer.jsp" %>
 </body>
 
 </html>

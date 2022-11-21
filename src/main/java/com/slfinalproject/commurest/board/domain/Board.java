@@ -35,7 +35,11 @@ public class Board {
    // 게시판 전체 조회 userId -> userName 변경하기
    private String userName;
 
-   private int replyCnt;//각 게시물의 댓글 수
+   private int replyCnt; //각 게시물의 댓글 수
+
+   // 첨부파일들의 이름 목록
+   private List<String> fileNames;
+
    public Board(ResultSet rs) throws SQLException {
       this.boardNo = rs.getInt("board_no");
       this.userId = rs.getInt("user_id");

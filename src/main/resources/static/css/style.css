@@ -708,6 +708,7 @@ section.search .search-result {
 .form-control {
     border-radius: 0;
     height: 40px;
+    font-size: 2rem;
 }
 .form-control:focus {
     border-color: #989898;

@@ -18,16 +18,16 @@
     //수정버튼
     $editBtn.onclick = e => {
         if ($editBtn !== null) {
-            confirm('수정하시겠습니까?');
             location.href = '/board/edit?boardNo=${b.boardNo}';
         }
+
     };
 
     //삭제버튼
     $delBtn.onclick = e => {
         if ($delBtn !== null) {
-            confirm('삭제하시겠습니까?');
-            location.href = '/board/delete?boardNo=${b.boardNo}';
+            location.href = '/board/remove?boardNo=${b.boardNo}';
         }
+
     };
 </script>

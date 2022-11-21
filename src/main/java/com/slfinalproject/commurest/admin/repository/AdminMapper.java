@@ -10,14 +10,14 @@ public interface AdminMapper {
     boolean regist(Admin admin);
 
     // 회원 삭제
-    boolean remove(Admin admin);
+    void delete(Admin admin);
 
     // 회원 수정
-    boolean update(Admin admin);
+    void update(Admin admin);
 
     // 회원 검색
     Admin selectOne(String admin);
 
-    Admin selectOne2(int userId);
+    Admin selectOne2(Admin admin);
 
 }

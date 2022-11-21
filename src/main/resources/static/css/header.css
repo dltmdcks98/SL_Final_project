@@ -1,7 +1,9 @@
 header {
     z-index: 100;
     background: #690714;
-    position: fixed;
+    position:sticky;
+
+
     width: 100%;
     height: 100px;
     top: 0;

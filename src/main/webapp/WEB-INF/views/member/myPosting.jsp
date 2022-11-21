@@ -4,97 +4,18 @@
 <head>
     <%@ include file="../include/static-head.jsp" %>
     <link rel="stylesheet" href="/css/board/board_list.css">
+    <link rel="stylesheet" href="/css/mypage/mypage.css">
 </head>
 <style>
-
-    .mymain-container {
-
-        margin-top: 12%;
-        height: 100%;
-        margin-left: 10%;
-        margin-right: 10%;
-    }
-
-    .right-container {
-        float: left;
-        width: 80%;
-
-    }
-
-    .left-container {
-        float: left;
-        width: 20%;
-
-    }
-
-    .left-menu li {
-        border: 1px #BDBDBD solid;
-        border-radius: 5%;
-        margin-right: 15%;
-        text-align: left;
-        padding-left: 5%;
-        margin-top: 5%;
-        padding-top: 4%;
-        padding-bottom: 4%;
-        font-weight: bold;
-
-    }
-
     .posting {
         background-color: #3b4890;
         color: white;
     }
-
-    .tableList td {
-        padding-bottom: 2px;
-        text-align: left;
-    }
-
-    .tableList p {
-        font-size: 6px;
-    }
-
-    .home-title {
-
-        font-size: 20px;
-        font-weight: bold;
-
-        border-top: hidden;
-        border-left: hidden;
-        border-right: hidden;
-        border-bottom: 2px #3b4890 solid;
-
-        color: #FA5858;
-
-
-    }
-
-
-    .row:nth-child(2) {
-        margin-top: 2%;
-    }
-
-   .t1 {
-       padding-left: 25%;
-       border-top: hidden;
-       border-left: hidden;
-       border-right: hidden;
-       border-bottom: 2px #3b4890 solid;
-
-   }
-   .t1:nth-child(2){
-       border-top: hidden;
-   }
-
-.mysearch{
-
-}
-
 </style>
 
 <body>
 <%@include file="../include/header.jsp" %>
-
+<section>
 <div class="mymain-container">
     <div class="test">
 
@@ -191,7 +112,7 @@
 
     </div>
 </div>
-
+    </section>
 <%@include file="../include/footer.jsp" %>
 </body>
 

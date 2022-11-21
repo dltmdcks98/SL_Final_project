@@ -8,6 +8,8 @@ import com.slfinalproject.commurest.util.paging.Page;
 import com.slfinalproject.commurest.util.paging.PageMaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
@@ -46,11 +48,11 @@ public class BoardController {
 
     // 글 상세보기 페이지
     @GetMapping("/content/{boardNo}")
-    public String content(@PathVariable("boardNo") int boardNo, Model model, @ModelAttribute("p") Page page) {
-        Board board = boardService.selectOne(boardNo);
-        Admin admin = adminService.selectOne2(board.getUserId());
+    public String content(@PathVariable("boardNo") int boardNo, Model model, @ModelAttribute("p") Page page, HttpServletResponse response, HttpServletRequest request) {
+        Board board = boardService.selectOne(boardNo,response,request);
+
         model.addAttribute("b", board);
-        model.addAttribute("a", admin);
+
 
         return "board/board_content";
 
@@ -69,6 +71,7 @@ public class BoardController {
             System.out.println("현재 세션 정보 : " + user);
             model.addAttribute("a", user);
         }
+        model.addAttribute("p", page);
         model.addAttribute("b", board);
 
         return "board/board_write";
@@ -86,9 +89,9 @@ public class BoardController {
 
     // 게시글 수정 화면 요청
     @GetMapping("/edit")
-    public String edit(int boardNo, Model model, HttpServletRequest request, HttpServletResponse response) {
+    public String edit(int boardNo, Model model) {
         log.info("boardNo : {}",boardNo);
-        Board board = boardService.findOneService(boardNo, response, request);
+        Board board = boardService.findOneService(boardNo);
         model.addAttribute("board", board);
         return "board/board_edit";
     }
@@ -101,9 +104,35 @@ public class BoardController {
         return flag ? "redirect:/board/content/" + board.getBoardNo() : "redirect:/";
     }
 
-    // 게시글 삭제
-    @PostMapping("/remove")
-    public String removeBoard(int boardNo) {
-        return boardService.remove(boardNo) ? "redirect:/board/" : "redirect:/";
+
+    //게시글 삭제 화면 요청
+    @GetMapping("/remove")
+    public String remove(@ModelAttribute("boardNo") int boardNo, Model model) {
+
+        log.info("controller request delete : {}", boardNo);
+
+        return "board/board_remove";
     }
+
+
+    // 게시글 삭제 처리 요청
+    @PostMapping("/remove")
+    public String remove(int boardNo) {
+        log.info("controller request delete POST : {}", boardNo);
+
+        return boardService.remove(boardNo) ? "redirect:/board" : "redirect:/";
+    }
+
+    // 특정 게시물에 붙은 첨부파일경로 리스트를 클라이언트에게 비동기 전송
+    /*
+    @GetMapping("/file/{bno}")
+    @ResponseBody
+    public ResponseEntity<List<String>> getFiles(@PathVariable int bno) {
+
+        List<String> files = boardService.getFiles(bno);
+        log.info("/board/file/{} GET! ASYNC - {}", bno, files);
+
+        return new ResponseEntity<>(files, HttpStatus.OK);
+    }
+     */
 }

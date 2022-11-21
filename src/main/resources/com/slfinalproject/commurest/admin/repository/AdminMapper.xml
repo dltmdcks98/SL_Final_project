@@ -17,14 +17,14 @@
         VALUES (#{user_email}, #{user_pass}, #{user_name}, #{user_birth}, #{user_sex})
     </insert>
 
-    <delete id="remove">
+    <delete id="delete">
         DELETE FROM user_account
         WHERE user_id=#{user_id}
     </delete>
 
     <update id="update">
         UPDATE user_account
-        SET user_pass = #{user_pass}, user_name=#{user_name}, user_birth=#{user_birth}
+        SET user_pass = #{user_pass}, user_name=#{user_name}, user_birth=#{user_birth}, user_sex=#{user_sex}
         WHERE user_id=#{user_id}
     </update>
     <select id = "selectOne"  resultType="com.slfinalproject.commurest.admin.domain.Admin">
@@ -33,7 +33,7 @@
 
 
     <select id = "selectOne2"  resultType="com.slfinalproject.commurest.admin.domain.Admin">
-        SELECT user_name from user_account where user_id=#{user_id}
+        SELECT * from user_account where user_id=#{user_id}
     </select>
 
 
