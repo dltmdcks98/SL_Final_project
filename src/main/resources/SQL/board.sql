@@ -62,4 +62,6 @@ ORDER BY board_no DESC
 
 select * from board where user_id=17;
 
+select * from tag;
+
 SELECT COUNT(*) FROM board where user_id=17;
