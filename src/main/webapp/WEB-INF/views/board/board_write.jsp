@@ -23,7 +23,6 @@
 <%--                <label for="asd" class="form-label">user_id</label>--%>
                 <input type="hidden" class="form-control" id="asd" placeholder="${a.user_id}" name="user_id"
                         disabled>
-
             </div>
 
 
@@ -48,7 +47,7 @@
                     <span>Drop!</span>
                 </div>
                 <div class="uploadDiv">
-                    <input type="file" name="files" id="ajax-file" style="display:none;">
+                    <input type="file" name="files" id="ajax-file" style="display:flex;">
                 </div>
                 <!-- 업로드된 파일의 썸네일을 보여줄 영역 -->
                 <div class="uploaded-list">
@@ -58,7 +57,7 @@
 
 
             <div class="d-grid gap-2">
-                <button id="write_btn" class="btn btn-dark" type="submit">글 작성하기</button>
+                <button id="write_btn" class="btn btn-dark" type="button">글 작성하기</button>
                 <button id="list_btn" class="btn btn-info" type="button">목록으로</button>
             </div>
 
@@ -66,9 +65,9 @@
 
     </div>
 
-    <%@ include file="../include/footer.jsp" %>
 
 </div>
+    <%@ include file="../include/footer.jsp" %>
 </body>
 
 </html>

@@ -48,18 +48,6 @@
                                 </div>
                             </div>
                         </article>
-                        <article class="article-mini">
-                            <div class="inner">
-                                <figure>
-                                    <a href="#">
-                                        <img src="/img/news/img14.jpg" alt="Sample Article">
-                                    </a>
-                                </figure>
-                                <div class="padding">
-                                    <h1><a href="#">인기글2</a></h1>
-                                </div>
-                            </div>
-                        </article>
 
                         <a href="#" class="btn btn-magz white btn-block">더보기</a>
                     </div>

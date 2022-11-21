@@ -1,11 +1,10 @@
-@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+/*@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);*/
 
 .tableList {
     font-family: 'Jeju Gothic', sans-serif;
     width: 100%;
     border-bottom: 1px solid #29367c;
     border-collapse: collapse;
-
 }
 
 tbody tr:hover {
@@ -29,15 +28,13 @@ tbody tr {
 }
 
 tbody td {
-    padding: 10px;
-    font-size: 15px;
-    font-weight: 1;
+    padding: 1%;
 }
 th{
     text-align: center;
 }
 td {
-    padding: 10px;
+    padding: 1%;
     text-align: center;
 }
 

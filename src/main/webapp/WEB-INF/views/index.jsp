@@ -21,7 +21,7 @@
 
                     <div class="line">
 
-                        <div><a href="#">인기글</a></div>
+                        <div><a href="/board">인기글</a></div>
 
                     </div>
 

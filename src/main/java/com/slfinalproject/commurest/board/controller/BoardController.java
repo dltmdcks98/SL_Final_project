@@ -9,6 +9,8 @@ import com.slfinalproject.commurest.util.paging.Page;
 import com.slfinalproject.commurest.util.paging.PageMaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
@@ -71,6 +73,7 @@ public class BoardController {
             System.out.println("현재 세션 정보 : " + user);
             model.addAttribute("a", user);
         }
+        model.addAttribute("p", page);
         model.addAttribute("b", board);
 
         return "board/board_write";
@@ -118,4 +121,17 @@ public class BoardController {
 
         return boardService.remove(boardNo) ? "redirect:/board" : "redirect:/";
     }
+
+    // 특정 게시물에 붙은 첨부파일경로 리스트를 클라이언트에게 비동기 전송
+    /*
+    @GetMapping("/file/{bno}")
+    @ResponseBody
+    public ResponseEntity<List<String>> getFiles(@PathVariable int bno) {
+
+        List<String> files = boardService.getFiles(bno);
+        log.info("/board/file/{} GET! ASYNC - {}", bno, files);
+
+        return new ResponseEntity<>(files, HttpStatus.OK);
+    }
+     */
 }
