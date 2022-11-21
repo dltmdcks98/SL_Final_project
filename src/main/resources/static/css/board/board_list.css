@@ -46,3 +46,26 @@ td {
 }
 
 
+/*index 인기 태그 photos*/
+/*.gird{
+    width: 100%;
+    margin: 0 auto;
+}
+.item {
+    margin-bottom: .9375rem;
+    border-radius: 0.25rem;
+    overflow: hidden;
+
+    float: left;
+}
+.item img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}*/
+.block img{
+    width: 30%;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}

@@ -18,4 +18,6 @@ INSERT INTO tag(tag_value,board_no) VALUES ('아이유',1);
 INSERT INTO board(user_id, title, content) VALUES (11,'test','asdf');
 INSERT INTO tag(tag_value, board_no) VALUES ('test1', LAST_INSERT_ID());
 SELECT LAST_INSERT_ID() FROM board;
+
+SELECT tag_value, count(*) as count FROM tag WHERE user_id IS NULL GROUP BY tag_value ORDER BY count DESC LIMIT 0,6;
 DROP TABLE tag;

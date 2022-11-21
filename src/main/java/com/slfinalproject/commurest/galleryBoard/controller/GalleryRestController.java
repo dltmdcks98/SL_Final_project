@@ -38,7 +38,7 @@ public class GalleryRestController {
                 size=3;
             } else if(tagList.size()==0){
                 log.info("설정된 tag가 없음 :"+tagList);
-                return galleryBoardService.getImgUrls(tagService.getTagValue(2),num,size);
+                return galleryBoardService.getImgUrlByHotTag(num,size);
             }
 
             return galleryBoardService.getImgUrlsByUserId(user_id,num,size);
@@ -46,10 +46,18 @@ public class GalleryRestController {
         log.info("RestController num :"+num+" size :"+size);
 
 
-        return galleryBoardService.getImgUrls(tagService.getTagValue(2),num,size);
-
+        return galleryBoardService.getImgUrlByHotTag(num,size);
 
     }
 
+    @GetMapping("/index")
+    public List<String> indexImg(){
+        int num=0;
+        int size = 9;
+        log.info("rest gallery indexd 접근- GET ");
+        return galleryBoardService.getImgUrlByHotTag(num,size);
+
+
+    }
 
 }

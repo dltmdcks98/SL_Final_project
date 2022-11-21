@@ -1,6 +1,7 @@
 package com.slfinalproject.commurest.tag.repository;
 
 import com.slfinalproject.commurest.tag.domain.Tag;
+import com.slfinalproject.commurest.tag.dto.TagList;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,5 +15,7 @@ public interface TagMapper {
     boolean setTagValue(String tagValue);
     boolean setTagValueByBoardNo(String tagValue,int boardNo);
     boolean setTagValueByUserId(String tagValue,int userId);
+
+    List<TagList> getHotTag();
 
 }
