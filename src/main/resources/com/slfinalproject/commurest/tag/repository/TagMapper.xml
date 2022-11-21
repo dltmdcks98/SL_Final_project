@@ -11,6 +11,11 @@
         <result property="boardId" column="board_no"/>
         <result property="userId" column="user_id"/>
     </resultMap>
+
+    <resultMap id="hotTag" type="com.slfinalproject.commurest.tag.dto.TagList">
+        <result column="tag_value" property="tagValue"/>
+        <result column="count" property="count" />
+    </resultMap>
     
     <select id="getTagValue" resultType="String">
         SELECT tag_value FROM tag WHERE tag_id=#{tagId}
@@ -34,5 +39,9 @@
 
     <select id="getBoardNo" resultType="int">
         SELECT DISTINCT LAST_INSERT_ID() AS boardNo FROM board;
+    </select>
+
+    <select id="getHotTag" resultMap="hotTag">
+        SELECT tag_value, count(*) as count FROM tag GROUP BY tag_value ORDER BY count DESC
     </select>
 </mapper>

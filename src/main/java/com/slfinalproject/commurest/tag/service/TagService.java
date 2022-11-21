@@ -1,6 +1,7 @@
 package com.slfinalproject.commurest.tag.service;
 
 import com.slfinalproject.commurest.tag.domain.Tag;
+import com.slfinalproject.commurest.tag.dto.TagList;
 import com.slfinalproject.commurest.tag.repository.TagMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -37,5 +38,7 @@ public class TagService {
         return tagMapper.setTagValueByUserId(value,userId);
     }
 
-
+    public List<TagList> getHotTag(){
+        return tagMapper.getHotTag();
+    }
 }

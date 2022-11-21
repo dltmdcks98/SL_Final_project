@@ -2,10 +2,16 @@ package com.slfinalproject.commurest.tag.repository;
 
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.repository.BoardMapper;
+import com.slfinalproject.commurest.tag.dto.TagList;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 @SpringBootTest
 class TagMapperTest {
 
@@ -26,6 +32,13 @@ class TagMapperTest {
         for(int i=0; i<10;i++){
             tagMapper.setTagValueByBoardNo("test"+i,num);
         }
+    }
 
+    @Test
+    @DisplayName("인기 태그 확인")
+    void selectHotTag(){
+        List<TagList> taglist = tagMapper.getHotTag();
+        System.out.println(taglist);
+        assertNotNull(taglist);
     }
 }
