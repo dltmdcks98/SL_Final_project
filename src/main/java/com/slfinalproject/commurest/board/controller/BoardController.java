@@ -16,10 +16,13 @@ import org.springframework.security.web.context.HttpSessionSecurityContextReposi
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -48,10 +51,12 @@ public class BoardController {
 
     // 글 상세보기 페이지
     @GetMapping("/content/{boardNo}")
-    public String content(@PathVariable("boardNo") int boardNo, Model model, @ModelAttribute("p") Page page, HttpServletResponse response, HttpServletRequest request) {
-        Board board = boardService.selectOne(boardNo,response,request);
+    public String content(@PathVariable("boardNo") int boardNo,HttpServletResponse response, HttpServletRequest request, Model model, @ModelAttribute("p") Page page) {
+        Board board = boardService.selectOne(boardNo, response, request);
+        Admin admin = adminService.selectOne2(board.getUserId());
         model.addAttribute("b", board);
-        log.info("page: {}", page);
+        model.addAttribute("a", admin);
+
         return "board/board_content";
 
     }
@@ -69,19 +74,21 @@ public class BoardController {
             model.addAttribute("a", user);
         }
 
-            model.addAttribute("b", board);
+        model.addAttribute("b", board);
 
         return "board/board_write";
     }
 
     // 글 쓰기 처리
 
-    @PostMapping("/writeForm")
-    public String writeForm(Board board, HttpServletResponse response, HttpServletRequest request) {
-        log.info("tag test "+ board);
-        boardService.insertService(board, response, request);
-
-        return "redirect:/board";
+    @PostMapping("/write")
+    public String write(Board board, HttpServletResponse response, HttpServletRequest request,
+                        @RequestParam("files") List<MultipartFile> fileList, RedirectAttributes ra) {
+//        log.info("tag test "+ board);
+        boolean flag = boardService.insertService(board, response, request);
+        // 게시물 등록에 성공하면 클라이언트에 성공메시지 전송
+        if (flag) ra.addFlashAttribute("msg", "reg-success");
+        return flag ? "redirect:/board" : "redirect:/";
     }
 
     // 게시글 수정 화면 요청

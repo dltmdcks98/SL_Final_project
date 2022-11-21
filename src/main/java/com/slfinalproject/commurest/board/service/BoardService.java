@@ -39,7 +39,7 @@ public class BoardService {
 
     // 게시글 등록
     @Transactional
-    public void insertService(Board board,
+    public boolean insertService(Board board,
                               HttpServletResponse response, HttpServletRequest request) {
         HttpSession session = request.getSession();
         Object securityContextObject = session.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
@@ -53,13 +53,23 @@ public class BoardService {
         board.setUserId(user.getUser_id());
         log.info("tagList 테스트 "+ board.getTagList());
 
-        boardMapper.insert(board);
+        // 게시글을 DB에 저장
+        boolean flag = boardMapper.insert(board);
+        List<String> fileNames = board.getFileNames();
+        if (fileNames != null && fileNames.size() > 0) {
+            for (String fileName : fileNames) {
+                // 첨부파일 내용 DB에 저장
+                boardMapper.addFile(fileName);
+            }
+        }
         int boardno = tagMapper.getBoardNo();
+        /*
         for(int i=0; i< board.getTagList().size();i++){
             tagMapper.setTagValueByBoardNo(board.getTagList().get(i),boardno);
         }
+        */
         log.info("user_id : "+board.getUserId());
-
+        return flag;
     }
 
     // 게시물 전체 조회 요청 페이징

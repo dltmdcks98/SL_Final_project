@@ -17,7 +17,7 @@
 
     <div class="write-container">
 
-        <form id="write-form" action="/board/writeForm" method="post" autocomplete="off" enctype="multipart/form-data">
+        <form id="write-form" action="/board/write" method="post" autocomplete="off" enctype="multipart/form-data">
 
 
             <div class="mb-4">

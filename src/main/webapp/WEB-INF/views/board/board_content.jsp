@@ -5,6 +5,7 @@
     <%@ include file="../include/static-head.jsp" %>
     <link rel="stylesheet" href="/css/board/board_content.css">
 
+
 </head>
 <body>
 <%@ include file="../include/header.jsp" %>
@@ -126,7 +127,8 @@
     </div>
 </div>
 
-<%@ include file="./include/content.jsp"  %>
+
+<%@ include file="../include/scripts.jsp"%>
 <%@ include file="../include/reply.jsp"  %>
 <%@ include file="../include/footer.jsp" %>
 </body>

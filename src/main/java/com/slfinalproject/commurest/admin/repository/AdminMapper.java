@@ -18,6 +18,6 @@ public interface AdminMapper {
     // 회원 검색
     Admin selectOne(String admin);
 
-    Admin selectOne2(Admin admin);
+    Admin selectOne2(int admin);
 
 }

@@ -296,8 +296,6 @@
 
 
     <!-- main end -->
-
     <%@ include file="./include/footer.jsp"%>
-    <%@ include file="./include/scripts.jsp"%>
 </body>
 </html>
