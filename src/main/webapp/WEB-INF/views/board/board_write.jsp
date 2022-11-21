@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/board/board_write.css">
     <script src="/js/board/write.js" defer></script>
     <script src="/js/board/jquery_board_write.js" defer></script>
+    <script src="/js/board/tag.js" defer></script>
 </head>
 
 <body>
