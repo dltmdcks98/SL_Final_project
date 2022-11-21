@@ -29,6 +29,15 @@
         LIMIT #{start}, 20
     </select>
 
+<!--  나의 게시글 조회-->
+    <select id="selectAllByUserId" resultMap="boardMap">
+        SELECT * from board
+        WHERE user_id = #{userId}
+        ORDER BY board_no DESC
+        LIMIT 0, 10
+    </select>
+
+
 
     <!--한건 조회-->
     <select id="selectOne" resultMap="boardMap">
@@ -38,6 +47,11 @@
     <!--전체 게시글 수-->
     <select id="getTotalCount" resultType="int">
         SELECT COUNT(*) FROM board
+    </select>
+
+<!--   나의 게시글 수 -->
+    <select id="getTotalCountByUserId" resultType="int">
+        SELECT COUNT(*) FROM board where user_id=#{userId}
     </select>
 
     <!--게시글 삭제-->

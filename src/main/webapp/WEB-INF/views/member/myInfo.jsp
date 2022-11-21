@@ -51,7 +51,6 @@
             <form id = "update-form" action="/update" method="post">
 
                 <div class="form-group">
-                    <label>userid</label>
                     <input type="hidden" name="user_id" class="form-control" value="${a.user_id}" readonly>
                 </div>
 

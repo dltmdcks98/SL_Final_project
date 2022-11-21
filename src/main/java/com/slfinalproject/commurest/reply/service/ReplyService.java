@@ -9,6 +9,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -28,6 +29,17 @@ public class ReplyService {
 
         return replyMap;
     }
+
+    // 나의 댓글 조회
+    public Map<String,Object> getAllByUserId(int userAccount, Page page){
+        Map<String,Object> replyMap = new HashMap<>();
+        List<Reply> replyList = replyMapper.findReplyByUserId(page, userAccount);
+
+        replyMap.put("rList",replyList);
+        return replyMap;
+    }
+
+
 
     public int getCount(int boardNo){
         return replyMapper.getReplyCount(boardNo);

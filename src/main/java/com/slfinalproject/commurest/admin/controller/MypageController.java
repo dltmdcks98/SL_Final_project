@@ -3,7 +3,11 @@ package com.slfinalproject.commurest.admin.controller;
 
 import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.admin.service.AdminService;
+import com.slfinalproject.commurest.board.domain.Board;
+import com.slfinalproject.commurest.board.service.BoardService;
+import com.slfinalproject.commurest.reply.service.ReplyService;
 import com.slfinalproject.commurest.util.paging.Page;
+import com.slfinalproject.commurest.util.paging.PageMaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +18,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -27,24 +33,58 @@ public class MypageController {
     @Autowired
     private final AdminService adminService;
 
+@Autowired
+private final BoardService boardService;
+
+@Autowired
+private final ReplyService replyService;
 
     // 마이페이지 요청
     @GetMapping("/mypage")
-    public String myPage() {
+    public String myPage(@ModelAttribute("p") Page page, Model model, HttpSession session) {
+        Admin admin = adminService.setLoginSession(session);
+        log.info(""+admin.getUser_id());
+        Map<String, Object> replies = replyService.getAllByUserId(admin.getUser_id(),page);
+        Map<String, Object> boardMap = boardService.findAllServiceByUserId(page, admin.getUser_id());
+
+        PageMaker pageMaker = new PageMaker(
+                new Page(page.getPageNum(), page.getAmount())
+                , (Integer) boardMap.get("tc"));
+        log.info("페이지 정보 : {}",pageMaker);
+        model.addAttribute("bList", boardMap.get("bList"));
+        model.addAttribute("rList", replies.get("rList"));
+        model.addAttribute("pageMaker", pageMaker);
+
         return "member/myPage";
     }
 
 
     // 내가쓴글 페이지 요청
     @GetMapping("/mypage/myposting")
-    public String myPosting() {
+    public String myPosting(@ModelAttribute("p") Page page, Model model, HttpSession session) {
+        Admin admin = adminService.setLoginSession(session);
+        Map<String, Object> boardMap = boardService.findAllServiceByUserId(page, admin.getUser_id());
+
+        PageMaker pageMaker = new PageMaker(
+                new Page(page.getPageNum(), page.getAmount())
+                , (Integer) boardMap.get("tc"));
+        log.info("페이지 정보 : {}",pageMaker);
+        model.addAttribute("bList", boardMap.get("bList"));
+        model.addAttribute("pageMaker", pageMaker);
+
         return "member/myPosting";
     }
 
 
     // 내가쓴 댓글페이지 요청
     @GetMapping("/mypage/mycomment")
-    public String myComment() {
+    public String myComment(@ModelAttribute("p") Page page, Model model, HttpSession session) {
+        Admin admin = adminService.setLoginSession(session);
+        log.info(""+admin.getUser_id());
+        Map<String, Object> replies = replyService.getAllByUserId(admin.getUser_id(),page);
+
+        model.addAttribute("rList", replies.get("rList"));
+
         return "member/myComment";
     }
 
@@ -57,7 +97,7 @@ public class MypageController {
 
     // 회원탈퇴 페이지 요청
     @GetMapping("/mypage/myinfo_drop")
-    public String myInfo_drop(Model model, HttpSession session) {
+    public String myInfo_drop(HttpSession session) {
         Admin user = adminService.setLoginSession(session);
         if(user!=null){
             session.setAttribute("a",user);

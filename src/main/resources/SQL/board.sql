@@ -24,7 +24,7 @@ CREATE TABLE board (
                       reg_date DATETIME DEFAULT current_timestamp,
                       recommend INT(10) DEFAULT 0,
                       image_url VARCHAR(200),
-#                       tag_id VARCHAR(300),
+                      tag_id VARCHAR(300),
                       CONSTRAINT pk_board PRIMARY KEY (board_no)
 );
 
@@ -53,4 +53,13 @@ select * from comment;
 select * from tag;
 select * from board where board_no=2;
 
-ALTER TABLE board DROP COLUMN tag_id;
+
+SELECT A.board_no, A.user_id, A.title, A.reg_date, A.hit, A.recommend, B.user_name
+FROM board A
+         JOIN user_account B ON A.user_id = B.user_id
+WHERE A.user_id = 17
+ORDER BY board_no DESC
+
+select * from board where user_id=17;
+
+SELECT COUNT(*) FROM board where user_id=17;
