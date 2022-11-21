@@ -22,6 +22,7 @@ $tagDiv.addEventListener('keyup',e =>{
     e.stopPropagation();
     if(e.key=='Enter'){
         createTag(e);
+
     }
 
 });
@@ -30,9 +31,11 @@ function createTag(e){
     const $tagInput = document.querySelector('.tagInput');
     let tagText = e.target.value;
     console.log(tagText);
+    // sendTag(tagText);
 
     $tagInput.setAttribute('value',tagText);
     $tagInput.setAttribute('disabled','true');
+
     setColor($tagInput);
     $tagInput.classList.add('tagList');
     $tagInput.classList.remove('tagInput');
@@ -64,4 +67,15 @@ function setColor($tagInput){
             break;
     }
 
+}
+
+function sendTag(value){
+    const tagValue ={
+        method:'PUT',
+        body : value
+    }
+    fetch('/ajax',tagValue)
+        .then(res => {
+            console.log(res);
+        });
 }

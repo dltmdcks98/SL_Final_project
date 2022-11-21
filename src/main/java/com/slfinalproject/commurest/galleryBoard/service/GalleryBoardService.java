@@ -1,7 +1,7 @@
 package com.slfinalproject.commurest.galleryBoard.service;
 
-import com.slfinalproject.commurest.galleryBoard.domain.Tag;
-import com.slfinalproject.commurest.galleryBoard.repository.GalleryMapper;
+import com.slfinalproject.commurest.tag.domain.Tag;
+import com.slfinalproject.commurest.tag.repository.TagMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.json.JSONArray;
@@ -28,28 +28,28 @@ public class GalleryBoardService {
     @Value("${LSC.google.domain}")
     private String domain;
 
-    private final GalleryMapper galleryMapper;
+    private final TagMapper tagMapper;
 
     @Transactional
     public String getTagValue(int tagId){
-        return galleryMapper.getTagValue(tagId);
+        return tagMapper.getTagValue(tagId);
     }
     @Transactional
     public List<Tag> getTagValueByUserId(int userId){
-        return galleryMapper.getTagValueByUserId(userId);
+        return tagMapper.getTagValueByUserId(userId);
     }
     @Transactional
     public boolean setTagValue(String value){
-        return galleryMapper.setTagValue(value);
+        return tagMapper.setTagValue(value);
     }
 
     @Transactional
     public boolean setTagValueByBoardNo(String value,int boardNo){
-        return galleryMapper.setTagValueByBoardNo(value,boardNo);
+        return tagMapper.setTagValueByBoardNo(value,boardNo);
     }
     @Transactional
     public boolean setTagValueByUserId(String value ,int userId){
-        return galleryMapper.setTagValueByUserId(value,userId);
+        return tagMapper.setTagValueByUserId(value,userId);
     }
 
 

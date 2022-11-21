@@ -1,6 +1,6 @@
 package com.slfinalproject.commurest.galleryBoard.service;
 
-import com.slfinalproject.commurest.galleryBoard.domain.Tag;
+import com.slfinalproject.commurest.tag.domain.Tag;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

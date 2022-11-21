@@ -1,8 +1,8 @@
 package com.slfinalproject.commurest.galleryBoard.controller;
 
 import com.slfinalproject.commurest.admin.domain.Admin;
-import com.slfinalproject.commurest.galleryBoard.domain.Tag;
 import com.slfinalproject.commurest.galleryBoard.service.GalleryBoardService;
+import com.slfinalproject.commurest.tag.domain.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.GetMapping;
