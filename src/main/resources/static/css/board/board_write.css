@@ -1,11 +1,11 @@
 /*@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);*/
 body {
-    font: 100% / 1.414'Raleway', sans-serif;
+    font-family: 'Jeju Gothic', sans-serif;
 }
 
 .write-container {
     width: 55%;
-    margin: 230px auto 150px;
+    margin: 0% auto 150px;
     font-size: 1.5em;
 }
 

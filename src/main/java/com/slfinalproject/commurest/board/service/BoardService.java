@@ -108,9 +108,12 @@ public class BoardService {
     //====================================================================================================================//
     // 게시글 작성
     public Board selectOne(int boardNo, HttpServletResponse response, HttpServletRequest request) {
+
         Board board = boardMapper.selectOne(boardNo);
+        dateFormat(board);
+
         hitCount(boardNo, response, request);
-        return boardMapper.selectOne(boardNo);
+        return board;
     }
 
 //====================================================================================================================//

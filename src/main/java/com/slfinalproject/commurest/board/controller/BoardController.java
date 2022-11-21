@@ -50,8 +50,10 @@ public class BoardController {
     @GetMapping("/content/{boardNo}")
     public String content(@PathVariable("boardNo") int boardNo, Model model, @ModelAttribute("p") Page page, HttpServletResponse response, HttpServletRequest request) {
         Board board = boardService.selectOne(boardNo,response,request);
+        Admin admin = adminService.selectOne2(board.getUserId());
 
         model.addAttribute("b", board);
+        model.addAttribute("a", admin);
 
 
         return "board/board_content";

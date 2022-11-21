@@ -1,19 +1,58 @@
-/*@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);*/
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+p{
+    text-align: left;
+}
+.boardH {
+    font-family: 'Jeju Gothic', sans-serif;
+    text-align: left;
+    color: #F73F52;
+    font-size: 3rem;
+    border-bottom: 2px #F73F52 solid;
+    margin-bottom: 3%;
+}
+
+
+
+.justify{
+    display: flex;
+    justify-content: space-between;
+}
 body {
-    font: 100% / 1.414'Raleway', sans-serif;
-    font-size: 2em;
+    font-family: 'Jeju Gothic', sans-serif;
 
 }
+.content-content{
+    font-size: 1.5rem;
+    color: black;
+
+}
+.content-title {
+    font-size: 2.4rem;
+    color: #714C4A;
+    text-align: justify;
+}
+
+
+
+.content-writer {
+     margin-bottom: 5%;
+     font-size: 1.2rem;
+ }
+
+
 input[type=text], select, textarea {
     width: 100%;
     padding: 1.2%;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    background: white;
     box-sizing: border-box;
-    margin-top: 0.6%;
-    margin-bottom: 1.6%;
+    border: none;
     resize: vertical;
+    height: 50%;
+    font-size: 1.7rem;
 }
+
+
 input[type=button], button {
     background-color: #04AA6D;
     color: white;
@@ -22,49 +61,61 @@ input[type=button], button {
     border-radius: 4px;
     cursor: pointer;
 }
+
 button:hover {
     background-color: #45a049;
 }
+
 .content {
-    margin: 10% auto 5%;
+    margin: 0% auto 5%;
     width: 60%;
-    height: 40%;
+    height: auto;
     border-radius: 5px;
     /*background-color: #f2f2f2;*/
 }
+
 .comments-list * {
     margin: 2% 0.2%;
-    float:right;
+    float: right;
+}
 
-}
+
 .content .content-body {
-    height: 50%;
+    height: auto;
 }
+
 .area-text {
-    height: 100%;
+    overflow: auto;
+    height: auto;
+    font-size: 1.6rem;
 }
 
 .row-content {
-    display:flex;
+    display: flex;
     width: 60%;
     margin: 3% auto 3%;
 }
+
 .recommend {
     width: 100%;
 }
+
 .card {
     position: relative;
     display: flex;
 }
+
 .card-body {
-    flex:auto;
+    flex: auto;
     padding: 2%;
-    width:100%;
+    width: 100%;
 }
+
 .row .write-recommend {
     width: 75%;
     height: 100%;
 }
+
 .recommend-text {
     height: 100%;
 }
