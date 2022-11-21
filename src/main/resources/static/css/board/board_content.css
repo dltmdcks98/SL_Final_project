@@ -30,9 +30,41 @@ button:hover {
     width: 60%;
     height: 40%;
     border-radius: 5px;
-    background-color: #f2f2f2;
+    /*background-color: #f2f2f2;*/
 }
-.comments-list *{
-    margin: 0.2%;
+.comments-list * {
+    margin: 2% 0.2%;
     float:right;
+
+}
+.content .content-body {
+    height: 50%;
+}
+.area-text {
+    height: 100%;
+}
+
+.row-content {
+    display:flex;
+    width: 60%;
+    margin: 3% auto 3%;
+}
+.recommend {
+    width: 100%;
+}
+.card {
+    position: relative;
+    display: flex;
+}
+.card-body {
+    flex:auto;
+    padding: 2%;
+    width:100%;
+}
+.row .write-recommend {
+    width: 75%;
+    height: 100%;
+}
+.recommend-text {
+    height: 100%;
 }
