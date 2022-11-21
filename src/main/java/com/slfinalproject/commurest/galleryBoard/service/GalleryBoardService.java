@@ -1,6 +1,7 @@
 package com.slfinalproject.commurest.galleryBoard.service;
 
 import com.slfinalproject.commurest.tag.domain.Tag;
+import com.slfinalproject.commurest.tag.dto.TagList;
 import com.slfinalproject.commurest.tag.service.TagService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -84,6 +85,21 @@ public class GalleryBoardService {
             List<String> temp = getImgUrl(tag,startPage,size);
 
             for(int j =0; j<temp.size();j++){
+                urlList.add(temp.get(j));
+            }
+        }
+        log.warn(urlList);
+        return urlList;
+    }
+
+    public List<String> getImgUrlByHotTag(int starPage, int size){
+        List<TagList> tagList = tagService.getHotTag();
+        List<String> urlList = new ArrayList<>();
+        for(int i=0; i<tagList.size();i++){
+            String tag = tagList.get(i).getTagValue();
+            List<String> temp = getImgUrl(tag,starPage,size);
+
+            for(int j=0; j<temp.size();j++){
                 urlList.add(temp.get(j));
             }
         }
