@@ -52,18 +52,15 @@ public class BoardController {
     @GetMapping("/content/{boardNo}")
     public String content(@PathVariable("boardNo") int boardNo, Model model, @ModelAttribute("p") Page page, HttpServletResponse response, HttpServletRequest request) {
         Board board = boardService.selectOne(boardNo,response,request);
-
         model.addAttribute("b", board);
-
-
+        log.info("page: {}", page);
         return "board/board_content";
 
     }
 
-    // 글쓰기 페이지
+    // 글쓰기 등록 요청
     @GetMapping("/write")
-    public String write(Board board, Model model,
-                        HttpServletResponse response, HttpServletRequest request, @ModelAttribute("p") Page page) {
+    public String write(Board board, Model model, HttpServletResponse response, HttpServletRequest request, @ModelAttribute("p") Page page) {
         HttpSession session = request.getSession();
         Object securityContextObject = session.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
         if (securityContextObject != null) {
@@ -73,8 +70,8 @@ public class BoardController {
             System.out.println("현재 세션 정보 : " + user);
             model.addAttribute("a", user);
         }
-        model.addAttribute("p", page);
-        model.addAttribute("b", board);
+
+            model.addAttribute("b", board);
 
         return "board/board_write";
     }
@@ -123,15 +120,15 @@ public class BoardController {
     }
 
     // 특정 게시물에 붙은 첨부파일경로 리스트를 클라이언트에게 비동기 전송
-    /*
+
     @GetMapping("/file/{bno}")
     @ResponseBody
     public ResponseEntity<List<String>> getFiles(@PathVariable int bno) {
 
         List<String> files = boardService.getFiles(bno);
-        log.info("/board/file/{} GET! ASYNC - {}", bno, files);
+        log.info("Board File bno {} : files {} ", bno, files);
 
         return new ResponseEntity<>(files, HttpStatus.OK);
     }
-     */
+
 }

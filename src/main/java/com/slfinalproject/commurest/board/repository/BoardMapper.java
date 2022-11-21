@@ -33,5 +33,8 @@ public interface BoardMapper {
     // 글쓰기 파일 추가
     void addFile(String fileName);
 
+    // 게시물 파일경로 조회
+    List<String> fileNames(int bno);
+
 
 }

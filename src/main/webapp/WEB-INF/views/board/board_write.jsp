@@ -32,13 +32,13 @@
                     value="${a.user_name}" disabled>
 
             </div>
-            <div class="mb-4">.
+            <div class="mb-4">
                 <label for="title-input" class="form-label">글제목</label>
                 <input type="text" class="form-control" id="title-input" placeholder="제목" name="title">
             </div>
             <div class="mb-4">
                 <label for="exampleFormControlTextarea1" class="form-label">내용</label>
-                <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="30"></textarea>
+                <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="20"></textarea>
             </div>
 
             <!-- 첨부파일 드래그 앤 드롭 영역 -->

@@ -1,17 +1,17 @@
-/*@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);*/
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 body {
-    font: 100% / 1.414'Raleway', sans-serif;
+    font-family: 'Jeju Gothic', sans-serif;
 }
 
 .write-container {
-    width: 55%;
+    width: 60%;
     height: 40%;
-    margin: 12% auto 2%;
+    margin: 7% auto 5%;
     font-size: 2em;
 }
 
 .fileDrop {
-    width: 55%;
+    width: 60%;
     height: 10%;
     border: 1px dashed gray;
     display: flex;

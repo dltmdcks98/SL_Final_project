@@ -1,7 +1,6 @@
-/*@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);*/
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 body {
-    font: 100% / 1.414'Raleway', sans-serif;
-    font-size: 2em;
+    font-family: 'Jeju Gothic', sans-serif;
 
 }
 input[type=text], select, textarea {
@@ -26,7 +25,7 @@ button:hover {
     background-color: #45a049;
 }
 .content {
-    margin: 10% auto 5%;
+    margin: 5% auto 10%;
     width: 60%;
     height: 40%;
     border-radius: 5px;

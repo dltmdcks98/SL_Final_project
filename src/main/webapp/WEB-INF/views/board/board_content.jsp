@@ -9,10 +9,10 @@
 <body>
 <%@ include file="../include/header.jsp" %>
 
-<h1 class="main-title">자유 게시판</h1>
 
 <!-- 게시글 영역 begin -->
 <div class="content">
+    <h1 class="main-title">자유 게시판</h1>
     <label>
         <input type="hidden" name="boardNo" value="${b.boardNo}"> <!--hidden으로 숨길예정 test용-->
     </label>
@@ -126,7 +126,7 @@
     </div>
 </div>
 
-<%@ include file="../include/scripts.jsp"%>
+<%@ include file="./include/content.jsp"  %>
 <%@ include file="../include/reply.jsp"  %>
 <%@ include file="../include/footer.jsp" %>
 </body>

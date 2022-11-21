@@ -3,7 +3,9 @@
 CREATE TABLE file_upload (
     file_name VARCHAR(150),
     reg_date DATETIME DEFAULT current_timestamp,
-    bno int(10) NOT NULL
+    bno int(10) NOT NULL,
+    CONSTRAINT file_name PRIMARY KEY (file_name),
+    CONSTRAINT fk_file_upload FOREIGN KEY (bno) REFERENCES board (board_no) ON DELETE  CASCADE
 );
 
 ALTER TABLE file_upload

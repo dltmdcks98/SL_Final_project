@@ -1,5 +1,5 @@
- //현재 위치한 페이지에 active 스타일 부여하기
-    function appendPageActive() {
+//현재 위치한 페이지에 active 스타일 부여하기
+function appendPageActive() {
 
     // 현재 내가 보고 있는 페이지 넘버
     const curPageNum = '${pageMaker.page.pageNum}';
@@ -11,26 +11,27 @@
     const $ul = document.querySelector('.pagination');
 
     for (let $li of [...$ul.children]) {
-    if (curPageNum === $li.dataset.pageNum) {
-    $li.classList.add('active');
-    break;
-}
-}
+        if (curPageNum === $li.dataset.pageNum) {
+            $li.classList.add('active');
+            break;
+        }
+    }
 
 }
 
-    // 옵션태그 고정
-    function fixSearchOption() {
+// 옵션태그 고정
+function fixSearchOption() {
     const $select = document.getElementById('search-type');
 
     for (let $opt of [...$select.children]) {
-    if ($opt.value === '${s.type}') {
-    $opt.setAttribute('selected', 'selected');
-    break;
+        if ($opt.value === '${s.type}') {
+            $opt.setAttribute('selected', 'selected');
+            break;
+        }
+    }
 }
-}
-}
-    (function () {
+
+(function () {
     appendPageActive();
     fixSearchOption();
 })();

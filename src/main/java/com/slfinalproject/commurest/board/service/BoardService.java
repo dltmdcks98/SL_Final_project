@@ -35,6 +35,7 @@ public class BoardService {
     private final ReplyMapper replyMapper;
 
     // 게시글 등록
+    @Transactional
     public void insertService(Board board,
                                  HttpServletResponse response, HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -48,7 +49,7 @@ public class BoardService {
 
         board.setUserId(user.getUser_id());
 
-        boardMapper.insert(board);
+        boolean flag = boardMapper.insert(board);
         log.info("user_id : "+board.getUserId());
 
     }
@@ -82,11 +83,12 @@ public class BoardService {
         }
     }
 //====================================================================================================================//
-    // 게시글 작성
+    // 게시글 한건 상세보기
+    @Transactional
     public Board selectOne(int boardNo, HttpServletResponse response, HttpServletRequest request) {
         Board board=boardMapper.selectOne(boardNo);
         hitCount(boardNo, response, request);
-        return boardMapper.selectOne(boardNo);
+        return board;
     }
 
 //====================================================================================================================//
@@ -129,11 +131,11 @@ public class BoardService {
 //====================================================================================================================//
 
     // 첨부파일 가져오기
-    /*
-   public List<String> getFiles(Long bno) {
-        return boardMapper.addFile();
+
+   public List<String> getFiles(int bno) {
+        return boardMapper.fileNames(bno);
     }
-    */
+
 
 
 

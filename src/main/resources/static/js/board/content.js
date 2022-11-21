@@ -1,3 +1,4 @@
+
 const $listBtn = document.getElementById('list-btn');
 const $editBtn = document.getElementById('edit-btn');
 const $delBtn = document.getElementById('del-btn');
@@ -6,7 +7,6 @@ const $delBtn = document.getElementById('del-btn');
 
 //목록버튼
 $listBtn.onclick = e => {
-
     location.href = '/board?pageNum=${p.pageNum}&amount=${p.amount}';
 };
 
