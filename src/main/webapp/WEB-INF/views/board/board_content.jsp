@@ -27,6 +27,11 @@
         <textarea name="content" placeholder="내용작성" class="area-text">${b.content}</textarea>
     </div>
 
+    <!-- 파일 업로드 영역 begin -->
+    <div class="form-group">
+        <ul class="uploaded-list"></ul>
+    </div>
+    <!-- 파일 업로드 영역 end -->
 
     <div class="comments-list">
         <button id="list-btn" type="button">목록</button>
@@ -130,6 +135,7 @@
 
 <%@ include file="../include/scripts.jsp"%>
 <%@ include file="../include/reply.jsp"  %>
+<script src="/js/board/jquery_board_content.js" ></script>
 <%@ include file="../include/footer.jsp" %>
 </body>
 

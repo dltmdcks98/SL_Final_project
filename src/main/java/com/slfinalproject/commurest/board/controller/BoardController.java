@@ -22,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -84,9 +85,19 @@ public class BoardController {
     @PostMapping("/write")
     public String write(Board board, HttpServletResponse response, HttpServletRequest request,
                         @RequestParam("files") List<MultipartFile> fileList, RedirectAttributes ra) {
-//        log.info("tag test "+ board);
+        log.info("tag test "+ board);
+
+        if (fileList != null) {
+            List<String> fileNames = new ArrayList<>();
+            for (MultipartFile f : fileList) {
+                log.info("attachmented file-name: {}", f.getOriginalFilename());
+                fileNames.add(f.getOriginalFilename());
+            }
+            // board객체에 파일명 추가
+            board.setFileNames(fileNames);
+        }
+
         boolean flag = boardService.insertService(board, response, request);
-        // 게시물 등록에 성공하면 클라이언트에 성공메시지 전송
         if (flag) ra.addFlashAttribute("msg", "reg-success");
         return flag ? "redirect:/board" : "redirect:/";
     }
@@ -134,7 +145,7 @@ public class BoardController {
     public ResponseEntity<List<String>> getFiles(@PathVariable int bno) {
 
         List<String> files = boardService.getFiles(bno);
-        log.info("Board File bno {} : files {} ", bno, files);
+        log.info("bno: files {} ", bno, files);
 
         return new ResponseEntity<>(files, HttpStatus.OK);
     }

@@ -1,4 +1,3 @@
-// start JQuery
 $(document).ready(function () {
 
     function isImageFile(originFileName) {
@@ -44,7 +43,7 @@ $(document).ready(function () {
             $img.setAttribute('alt', originFileName);
 
             $a.append($img);
-            $a.innerHTML += '<span>' + originFileName + '</span';
+            $a.innerHTML += '<span>' + originFileName + '</span>';
 
             $('.uploaded-list').append($a);
 
@@ -88,20 +87,20 @@ $(document).ready(function () {
     // drop 이벤트
     $dropBox.on('drop', e => {
         e.preventDefault();
-        // console.log('드롭 이벤트 작동!');
+        console.log('드롭 이벤트 작동!');
 
         // 드롭된 파일 정보를 서버로 전송
 
         // 1. 드롭된 파일 데이터 읽기
         // console.log(e);
         const files = e.originalEvent.dataTransfer.files;
-        // console.log('drop file data: ', files);
+        console.log('drop file data: ', files);
 
         // 2. 읽은 파일 데이터를 input[type=file]태그에 저장
         const $fileInput = $('#ajax-file');
         $fileInput.prop('files', files);
 
-        // console.log($fileInput);
+        console.log($fileInput);
 
         // 3. 파일 데이터를 비동기 전송하기 위해서는 FormData객체가 필요
         const formData = new FormData();

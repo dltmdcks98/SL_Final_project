@@ -46,14 +46,12 @@ public class FileUtil {
      * @param uploadPath - 서버의 업로드 루트 디렉토리 (E:/sl_dev/upload)
      * @return - 업로드가 완료된 새로운 파일의 full path
      */
-    public static String uploadFile(MultipartFile file, String uploadPath) {
+    public static String uploadFiles(MultipartFile file, String uploadPath) {
 
         // 중복이 없는 파일명으로 변경하기
-        // ex) 상어.png -> 3dfsfjkdsfds-djksfaqwerij-dsjkfdkj_상어.png
         String newFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename(); // 중복이 없는 랜덤아이디 값 생성 +
 
-        // 업로드 경로를 변경
-        // E:/sl_dev/upload  ->  E:/sl_dev/upload/2022/08/01
+        // 업로드 경로를 변경 (경로가 없으면 생성)
         String newUploadPath = getNewUploadPath(uploadPath);
 
         // 파일 업로드 수행

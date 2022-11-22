@@ -19,4 +19,4 @@ ALTER TABLE file_upload
             ON DELETE CASCADE;
 
 select * from file_upload
-
+select * from board;
