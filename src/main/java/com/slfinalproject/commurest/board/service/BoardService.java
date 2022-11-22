@@ -118,7 +118,10 @@ public class BoardService {
     // 게시글 한건 상세보기
     @Transactional
     public Board selectOne(int boardNo, HttpServletResponse response, HttpServletRequest request) {
+
         Board board = boardMapper.selectOne(boardNo);
+        dateFormat(board);
+
         hitCount(boardNo, response, request);
         return board;
     }

@@ -71,6 +71,7 @@ public class AdminService implements UserDetailsService {
 
 
     public Admin selectOne2(int userId) {
+
         return adminMapper.selectOne2(userId);
     }
 

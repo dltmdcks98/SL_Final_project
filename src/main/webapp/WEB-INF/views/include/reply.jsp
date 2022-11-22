@@ -174,7 +174,8 @@
 
     // 댓글 등록 이벤트 처리 핸들러 등록 함수
     function makeReplyRegisterClickEvent() {
-        document.getElementById('replyAddBtn').onclick = makeReplyRegisterClickHandler;
+    //     document.getElementById('replyAddBtn').onclick=makeReplyRegisterClickHandler;
+        $('#replyAddBtn').addEventListener('click',makeReplyRegisterClickHandler());
     }
 
     // 댓글 등록 이벤트 처리 핸들러 함수
@@ -326,7 +327,7 @@
         // // 댓글 등록 버튼 클릭이벤트 처리
         // makeReplyRegisterClickEvent();
         console.log(currentAccount);
-        if(currentAccount!=''){
+        if(currentAccount!=' '){
             makeReplyRegisterClickEvent();
         }
 
