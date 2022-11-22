@@ -51,7 +51,7 @@ public class GalleryBoardService {
 //                JSONArray metatags = pagemap.getJSONArray("metatags");
 //                JSONObject metaData = metatags.getJSONObject(0);
 //                String url = metaData.getString("og:image");
-                log.info("no : "+i +" url :"+ url+" num :"+num);
+//                log.info("no : "+i +" url :"+ url+" num :"+num);
                 imageUrl.add(url);
             }
 

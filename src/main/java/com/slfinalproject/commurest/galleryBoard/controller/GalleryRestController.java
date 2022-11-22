@@ -6,7 +6,6 @@ import com.slfinalproject.commurest.tag.domain.Tag;
 import com.slfinalproject.commurest.tag.service.TagService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,11 +24,13 @@ public class GalleryRestController {
     private final TagService tagService;
 
     @GetMapping("")
-    public List<String> getUrl(int num, HttpSession session, Model model){
+    public List<String> getUrl(int num, HttpSession session){
         int size=10;
-        String tag = (String) model.getAttribute("tag");
+        String tag = (String) session.getAttribute("tag");
+        log.info("tag 값 확인 : {}",tag);
+
         Admin user = (Admin) session.getAttribute("user");
-        if(user !=null && tag==null){
+        if(user !=null && tag.isEmpty()){
             log.info("현재 세션 정보 : "+user);
             int user_id = user.getUser_id();
 
@@ -46,7 +47,7 @@ public class GalleryRestController {
         }
 
         if(tag!=null){
-            log.info("검색 tag 정보 :" + tag);
+            log.info("login 상태에서 검색 tag 정보 :" + tag);
             return galleryBoardService.getImgUrlByTag(tag,num,size);
         }
 
