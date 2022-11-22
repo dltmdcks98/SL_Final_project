@@ -30,6 +30,9 @@
         <div id="content-body" class="content-body">
             <textarea name="content" placeholder="내용작성" class="textArea" disabled>${b.content}</textarea>
         </div>
+        <div class="tagDiv">
+
+        </div>
 
 
 

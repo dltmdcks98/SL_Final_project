@@ -2,6 +2,7 @@ package com.slfinalproject.commurest.tag.repository;
 
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.repository.BoardMapper;
+import com.slfinalproject.commurest.tag.domain.Tag;
 import com.slfinalproject.commurest.tag.dto.TagList;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -40,5 +41,13 @@ class TagMapperTest {
         List<TagList> taglist = tagMapper.getHotTag();
         System.out.println(taglist);
         assertNotNull(taglist);
+    }
+
+    @Test
+    @DisplayName("게시글의 태그 리스트 출력")
+     void selectTagByBoardNo(){
+        List<Tag> tagList = tagMapper.getTagValueByBoardNo(131);
+        System.out.println(tagList);
+        assertNotNull(tagList);
     }
 }
