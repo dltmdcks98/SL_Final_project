@@ -30,7 +30,7 @@ public class GalleryRestController {
         log.info("tag 값 확인 : {}",tag);
 
         Admin user = (Admin) session.getAttribute("user");
-        if(user !=null && tag.isEmpty()){
+        if(user !=null && tag==null){
             log.info("현재 세션 정보 : "+user);
             int user_id = user.getUser_id();
 

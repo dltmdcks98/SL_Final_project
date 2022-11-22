@@ -13,7 +13,7 @@ CREATE TABLE tag (
                  ON DELETE CASCADE
 );
 
-INSERT INTO tag(tag_value,board_no) VALUES ('아이유',1);
+INSERT INTO tag(tag_value,user_id) VALUES ('이나경',18);
 
 INSERT INTO board(user_id, title, content) VALUES (11,'test','asdf');
 INSERT INTO tag(tag_value, board_no) VALUES ('test1', LAST_INSERT_ID());
