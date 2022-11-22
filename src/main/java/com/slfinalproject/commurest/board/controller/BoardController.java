@@ -87,7 +87,7 @@ public class BoardController {
     @PostMapping("/write")
     public String write(Board board, HttpServletResponse response, HttpServletRequest request,
                         @RequestParam("files") List<MultipartFile> fileList, RedirectAttributes ra) {
-//        log.info("tag test "+ board);
+        log.info("tag test "+ board);
         boolean flag = boardService.insertService(board, response, request);
         // 게시물 등록에 성공하면 클라이언트에 성공메시지 전송
         if (flag) ra.addFlashAttribute("msg", "reg-success");

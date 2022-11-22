@@ -13,7 +13,6 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.Cookie;
@@ -55,6 +54,10 @@ public class BoardService {
 
         // 게시글을 DB에 저장
         boolean flag = boardMapper.insert(board);
+        int boardno = tagMapper.getBoardNo();
+        for(int i=0; i< board.getTagList().size();i++){
+            tagMapper.setTagValueByBoardNo(board.getTagList().get(i),boardno);
+        }
         List<String> fileNames = board.getFileNames();
         if (fileNames != null && fileNames.size() > 0) {
             for (String fileName : fileNames) {
@@ -62,12 +65,7 @@ public class BoardService {
                 boardMapper.addFile(fileName);
             }
         }
-        int boardno = tagMapper.getBoardNo();
-        /*
-        for(int i=0; i< board.getTagList().size();i++){
-            tagMapper.setTagValueByBoardNo(board.getTagList().get(i),boardno);
-        }
-        */
+
         log.info("user_id : "+board.getUserId());
         return flag;
     }

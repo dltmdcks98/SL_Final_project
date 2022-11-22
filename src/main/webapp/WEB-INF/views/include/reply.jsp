@@ -118,7 +118,7 @@
                     "       <div class='offset-md-2 col-md-4 text-right'>";
 
                 //권한 확인
-                if (currentAccount == rep.userAccount || auth == 'ADMIN') {
+                if (currentAccount === rep.userAccount || auth === 'ROLE_ADMIN') {
                     tag += "         <a id='replyModBtn' class='btn btn-sm btn-outline-dark' data-bs-toggle='modal' data-bs-target='#replyModifyModal'>수정</a>&nbsp;" +
                         "         <a id='replyDelBtn' class='btn btn-sm btn-outline-dark' href='#'>삭제</a>";
                 }
