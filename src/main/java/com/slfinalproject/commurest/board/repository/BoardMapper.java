@@ -19,6 +19,9 @@ public interface BoardMapper {
 
     // 하나만 조회
 
+//    인기글 조회
+    List<Board> getHitBoard();
+    String findMemberByBoardNo(int boardNo);
     Board selectOne(int boardNo);
 
     // 전체 게시물 수 조회

@@ -1,6 +1,7 @@
 package com.slfinalproject.commurest.board.service;
 
 import com.slfinalproject.commurest.admin.domain.Admin;
+import com.slfinalproject.commurest.admin.repository.AdminMapper;
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.repository.BoardMapper;
 import com.slfinalproject.commurest.reply.repository.ReplyMapper;
@@ -33,6 +34,7 @@ public class BoardService {
     private final TagMapper tagMapper;
 
     private final ReplyMapper replyMapper;
+    private final AdminMapper adminMapper;
 
     // 게시글 등록
     @Transactional
@@ -180,5 +182,32 @@ public class BoardService {
     //   각 게시물의 댓글 수 조회
     public void getReplyCount(Board b) {
         b.setReplyCnt(replyMapper.getReplyCount(b.getBoardNo()));
+    }
+
+//    인기 게시글 조회
+    public List<Board> getHitBoard(){
+        List<Board> getHitBoard = boardMapper.getHitBoard();
+
+        for(Board b : getHitBoard){
+            titleConvert(b);
+            getUserName(b);
+            dateConvert(b);
+        }
+        return getHitBoard;
+    }
+    private void titleConvert(Board b){
+        String title = b.getTitle();
+        if(title.length()>10){
+            String temp = title.substring(0,9)+"...";
+            b.setTitle(temp);
+        }
+    }
+    public void getUserName(Board board){
+        board.setUserName(boardMapper.findMemberByBoardNo(board.getBoardNo()));
+    }
+    public void dateConvert(Board board){
+        Date date = board.getRegDate();
+        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd HH:mm");
+        board.setSimpleDate(sdf.format(date));
     }
 }

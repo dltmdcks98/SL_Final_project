@@ -31,7 +31,7 @@
 
                             <div class="row">
                                 <div class="tableWrapper">
-                                    <table class="tableList">
+                                    <table class="tableList hitTable">
                                         <thead class="thead">
                                         <tr>
                                             <th>번호</th>
@@ -44,59 +44,20 @@
                                         </thead>
 
                                         <tbody>
-                                        <tr>
-                                            <td>132131</td>
-                                            <td class="title">갤 오늘이 첨이라 물어볼라고...</td>
-
-                                            <td>ㅇㅇ</td>
-                                            <td>16:03</td>
-                                            <td>23</td>
-                                            <td>2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>132130</td>
-                                            <td class="title">뉴비 진로 질문</td>
-                                            <td>뉴우비</td>
-                                            <td>16:02</td>
-                                            <td>11</td>
-                                            <td>1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>132129</td>
-                                            <td class="title">메인 페이지 헤카테 못바꿈?</td>
-                                            <td>ㅇㅇ</td>
-                                            <td>16:01</td>
-                                            <td>686</td>
-                                            <td>123</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>1129</td>
-                                            <td class="title">메인 페이ㄷㅈㄱㄷㄱ지 헤카테 못바꿈?</td>
-                                            <td>ㅇㅈㄷㅈㅂㅇ</td>
-                                            <td>16:01</td>
-                                            <td>686</td>
-                                            <td>123</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>22</td>
-                                            <td class="title">대충 제목</td>
-                                            <td>작성자임ㅋ</td>
-                                            <td>15:22</td>
-                                            <td>1111</td>
-                                            <td>1</td>
-                                        </tr>
-
-
-
+                                        <c:forEach var="Board" items="${hitBoard}">
+                                            <tr>
+                                                <td><c:out value="${Board.boardNo}"/> </td>
+                                                <td class="title"><c:out value="${Board.title}"/></td>
+                                                <td><c:out value="${Board.userName}"/></td>
+                                                <td><c:out value="${Board.simpleDate}"/></td>
+                                                <td><c:out value="${Board.hit}"/></td>
+                                                <td><c:out value="${Board.recommend}"/></td>
+                                            </tr>
+                                        </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>
-
                             </div>
-
-
                     </div>
 
                     <div class="line transparent little"></div>

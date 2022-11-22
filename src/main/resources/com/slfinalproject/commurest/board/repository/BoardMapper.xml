@@ -14,6 +14,7 @@
 <!--        <result property="replyCount" column="replyCount"/>-->
     </resultMap>
 
+
     <!--한건 등록-->
     <insert id="insert">
         INSERT INTO board
@@ -86,16 +87,14 @@
         WHERE bno = #{bno}
     </select>
 
+<!--    인기글 조회  -->
+    <select id="getHitBoard" resultMap="boardMap">
+        SELECT * FROM board WHERE hit>5 ORDER BY hit DESC
+    </select>
 
-<!--    <select id="findMemberByBoardNo" resultType="com.project.web_prj.board.dto.ValidateMemberDTO">-->
-
-<!--        SELECT account, auth-->
-<!--        FROM tbl_member-->
-<!--        WHERE account = (-->
-<!--        SELECT account-->
-<!--        FROM tbl_board-->
-<!--        WHERE board_no = #{boardNo}-->
-<!--        )-->
-
-<!--    </select>-->
+    <select id="findMemberByBoardNo" resultType="string">
+        SELECT user_name FROM user_account WHERE user_id= (
+            SELECT user_id FROM board WHERE board_no=#{boardNo}
+        )
+    </select>
 </mapper>

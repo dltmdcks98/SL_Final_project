@@ -1,10 +1,13 @@
 package com.slfinalproject.commurest;
 
 
+import com.slfinalproject.commurest.board.domain.Board;
+import com.slfinalproject.commurest.board.service.BoardService;
 import com.slfinalproject.commurest.tag.dto.TagList;
 import com.slfinalproject.commurest.tag.service.TagService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpSession;
@@ -16,15 +19,14 @@ import java.util.List;
 public class HomeController {
 
     private final TagService tagService;
+    private final BoardService boardService;
     @GetMapping("/")
-    public String home(HttpSession session){
+    public String home(HttpSession session, Model model){
         List<TagList> getTagList = tagService.getHotTag();
-/*        List<String> tempList=null;
-        for(int i =0; i<getTagList.size(); i++){
-              tempList.add(getTagList.get(i).getTagValue());
-        }*/
-        System.out.println(getTagList);
         session.setAttribute("hotTagList",getTagList);
+
+        List<Board> getHitBoard = boardService.getHitBoard();
+        model.addAttribute("hitBoard",getHitBoard);
         return "index";
 
     }
