@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -45,8 +46,21 @@ public class AdminService implements UserDetailsService {
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         admin.setUser_pass(passwordEncoder.encode(admin.getUser_pass()));
-        admin.setManager("ADMIN");
 
+        // 카카오로 회원가입
+        if(admin.getUser_sex()=="k"){
+            admin.setManager("ROLE_KAKAO");
+            System.out.println("권한명 : "+admin.getManager());
+            System.out.println("sex : "+admin.getUser_sex());
+        }
+        else{
+
+            // 관리자용 회원가입
+            //admin.setManager("ROLE_ADMIN");
+            // 일반 유저용 회원가입
+            admin.setManager("ROLE_USER");
+
+        }
 
         return adminMapper.regist(admin);
     }
@@ -59,22 +73,31 @@ public class AdminService implements UserDetailsService {
         adminMapper.update(admin);
     }
 
+    @Transactional
+    public void nameUpdate(Admin admin) {
+        adminMapper.nameUpdate(admin);
+    }
+
     // 회원탈퇴 처리
     public void delete(Admin admin){
         adminMapper.delete(admin);
     }
 
 
-    public Admin selectOne(String admin) {
-        return adminMapper.selectOne(admin);
-    }
+//    public Admin selectOne(String admin) {
+//        return adminMapper.selectOne(admin);
+//    }
 
 
     public Admin selectOne2(int userId) {
+
         return adminMapper.selectOne2(userId);
     }
 
 
+    public Admin selectOne(String admin){
+        return adminMapper.selectOne(admin);
+    }
 
     // 현재 세션 정보 가져오기
     public Admin setLoginSession(HttpSession session) {
@@ -83,6 +106,7 @@ public class AdminService implements UserDetailsService {
         if (securityContextObject != null) {
             SecurityContext securityContext = (SecurityContext) securityContextObject;
             Authentication authentication = securityContext.getAuthentication();
+
             user = (Admin) authentication.getPrincipal();
 
             log.info("현재 세션 정보 : " + user);
@@ -95,11 +119,14 @@ public class AdminService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         log.info("## loadUserByUsername ##");
-        Admin admin = adminRepository.selectOne(username);
+        log.info("나 실행됐다!!");
+        Admin admin = adminMapper.selectOne(username);
         log.info("계정정보" + admin);
         if (admin != null) {
             admin.setAuthorities(Arrays.asList(new SimpleGrantedAuthority(admin.getManager())));
         }
+        log.info("setAuthorites 한 정보 : " + admin);
+
 
         return admin;
 

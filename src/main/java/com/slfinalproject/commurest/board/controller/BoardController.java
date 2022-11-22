@@ -51,19 +51,22 @@ public class BoardController {
 
     // 글 상세보기 페이지
     @GetMapping("/content/{boardNo}")
-    public String content(@PathVariable("boardNo") int boardNo,HttpServletResponse response, HttpServletRequest request, Model model, @ModelAttribute("p") Page page) {
-        Board board = boardService.selectOne(boardNo, response, request);
+    public String content(@PathVariable("boardNo") int boardNo, Model model, @ModelAttribute("p") Page page, HttpServletResponse response, HttpServletRequest request) {
+        Board board = boardService.selectOne(boardNo,response,request);
         Admin admin = adminService.selectOne2(board.getUserId());
+
         model.addAttribute("b", board);
         model.addAttribute("a", admin);
+
 
         return "board/board_content";
 
     }
 
-    // 글쓰기 등록 요청
+    // 글쓰기 페이지
     @GetMapping("/write")
-    public String write(Board board, Model model, HttpServletResponse response, HttpServletRequest request, @ModelAttribute("p") Page page) {
+    public String write(Board board, Model model,
+                        HttpServletResponse response, HttpServletRequest request, @ModelAttribute("p") Page page) {
         HttpSession session = request.getSession();
         Object securityContextObject = session.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
         if (securityContextObject != null) {
@@ -73,7 +76,7 @@ public class BoardController {
             System.out.println("현재 세션 정보 : " + user);
             model.addAttribute("a", user);
         }
-
+        model.addAttribute("p", page);
         model.addAttribute("b", board);
 
         return "board/board_write";

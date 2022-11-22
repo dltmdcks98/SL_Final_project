@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <html>
 <head>
     <%@ include file="../include/static-head.jsp" %>
@@ -48,6 +50,8 @@
                 <p class="menu-title">기본 정보 변경</p>
             </div>
 
+
+            <c:if test = "${not fn:contains(user.user_name,'kakao')}">
             <form id = "update-form" action="/update" method="post">
 
                 <div class="form-group">
@@ -58,6 +62,8 @@
                     <label>닉네임</label>
                     <input type="text" name="user_name" class="form-control"  placeholder="닉네임">
                 </div>
+
+
 
                 <div class="form-group">
                     <label class="fw">비밀번호</label>
@@ -74,14 +80,29 @@
                     <input type="radio" name="user_sex" value="m" > 남성
                     <input type="radio" name="user_sex"value="f"> 여성
                 </div>
+                <div class="form-group text-right">
+                    <button type="submit" class="btn btn-primary btn-block" id="regist-btn">변경</button>
+                </div>
+
+            </form>
+            </c:if>
+<c:if test = "${fn:contains(user.user_name,'kakao')}">
+            <form id = "update-form" action="/update-kakao" method="post">
+                <div class="form-group">
+                    <input type="hidden" name="user_id" class="form-control" value="${user.user_id}" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>닉네임</label>
+                    <input type="text" name="user_name" class="form-control"  placeholder="닉네임">
+                </div>
 
                 <div class="form-group text-right">
                     <button type="submit" class="btn btn-primary btn-block" id="regist-btn">변경</button>
                 </div>
 
             </form>
-
-
+</c:if>
         </div>
 
     </div>
