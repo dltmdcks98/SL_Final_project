@@ -45,7 +45,11 @@ public class AdminService implements UserDetailsService {
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         admin.setUser_pass(passwordEncoder.encode(admin.getUser_pass()));
-        admin.setManager("ADMIN");
+
+        // 관리자용 회원가입
+        //admin.setManager("ROLE_ADMIN");
+        // 일반 유저용 회원가입
+        admin.setManager("ROLE_USER");
 
 
         return adminMapper.regist(admin);
@@ -71,6 +75,7 @@ public class AdminService implements UserDetailsService {
 
 
     public Admin selectOne2(int userId) {
+
         return adminMapper.selectOne2(userId);
     }
 

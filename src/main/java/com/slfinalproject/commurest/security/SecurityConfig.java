@@ -18,12 +18,23 @@ public class SecurityConfig {
     @Autowired
     AdminService adminService;
 
+
+
+    // 기능 설명
+    // hasRole('role1')	 권한(role1)을 가지고 있는 경우
+    // hasAnyRole('role1', 'role2')	 권한들(role1, role2) 하나라도 가지고 있을 경우 (갯수는 제한없다)
+    // pemitAll	 권한 있든 말든 모두 접근 가능하다.
+    // denyAll	 권한 있든 말든 모두 접근 불가능하다.
+    // isAnonymous()	 Anonymous 사용자일 경우 (인증을 하지 않은 사용자)
+    // isRememberMe()	 Remember-me 기능으로 로그인한 사용자일 경우
+    // isAuthenticated()	 Anonymous 사용자가 아닐 경우 (인증을 한 사용자)
+    // isFullyAuthenticated()	 Anonymous 사용자가 아니고 Remember-me 기능으로 로그인 하지 않은 사용자 일 경우
     @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests() // 각 경로에 따른 권한 지정
-                .antMatchers("/", "/login", "/register", "/index", "/css/**", "/fonts/**", "/img/**", "/js/**", "/scripts/**", "/scss/**", "/src/**", "/gallery/**", "/ajax-gallery/**", "/board", "/board/content/**").permitAll() // 누구나 가능
+                .antMatchers("/", "/login", "/register", "/index", "/css/**", "/fonts/**", "/img/**", "/js/**", "/scripts/**", "/scss/**", "/src/**", "/gallery/**", "/ajax-gallery/**", "/board", "/board/content/**","/login/**").permitAll() // 누구나 가능
                 .antMatchers(HttpMethod.POST, "/admin/regist", "/admin/login", "/board/**", "/ajax/replies/**", "/update","userDelete").permitAll()
-                .antMatchers("/board/**").hasRole("ADMIN") // "admin"만 접근 가능, 테이블에 ROLE_권한명 으로 저장해야함
+                .antMatchers("/board/**","/mypage/**").hasAnyRole("ADMIN","USER") // "admin"만 접근 가능, 테이블에 ROLE_권한명 으로 저장해야함
                 .anyRequest().authenticated() // 로그인된 사용자가 요청을 수행할 때 필요
                 .and()
                 .formLogin()
