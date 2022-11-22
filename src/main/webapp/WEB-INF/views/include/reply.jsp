@@ -12,7 +12,6 @@
     const bno = '${b.boardNo}';
     // console.log('bno:', bno);
 
-
     // 댓글 요청 URL
     const URL = '/ajax/replies';
     const $pageUl = document.querySelector('.pagination');
@@ -28,21 +27,21 @@
         let day = dateObj.getDate();
         let hour = dateObj.getHours();
         let minute = dateObj.getMinutes();
-/*        //오전, 오후 시간체크
-        let ampm = '';
-        if (hour < 12 && hour >= 6) {
-            ampm = '오전';
-        } else if (hour >= 12 && hour < 21) {
-            ampm = '오후';
-            if (hour !== 12) {
-                hour -= 12;
-            }
-        } else if (hour >= 21 && hour <= 24) {
-            ampm = '밤';
-            hour -= 12;
-        } else {
-            ampm = '새벽';
-        }*/
+        /*        //오전, 오후 시간체크
+                let ampm = '';
+                if (hour < 12 && hour >= 6) {
+                    ampm = '오전';
+                } else if (hour >= 12 && hour < 21) {
+                    ampm = '오후';
+                    if (hour !== 12) {
+                        hour -= 12;
+                    }
+                } else if (hour >= 21 && hour <= 24) {
+                    ampm = '밤';
+                    hour -= 12;
+                } else {
+                    ampm = '새벽';
+                }*/
         //숫자가 1자리일 경우 2자리로 변환
         (month < 10) ? month = '0' + month: month;
         (day < 10) ? day = '0' + day: day;
@@ -149,7 +148,7 @@
         fetch(URL + '?boardNo=' + bno + '&pageNum=' + pageNum)
             .then(res => res.json())
             .then(replyMap => {
-                // console.log(replyMap.replyList);
+                console.log("댓글 목록 비동기 콘솔"+replyMap.replyList);
                 makeReplyDOM(replyMap);
             });
     }
@@ -174,8 +173,7 @@
 
     // 댓글 등록 이벤트 처리 핸들러 등록 함수
     function makeReplyRegisterClickEvent() {
-    //     document.getElementById('replyAddBtn').onclick=makeReplyRegisterClickHandler;
-        $('#replyAddBtn').addEventListener('click',makeReplyRegisterClickHandler());
+        document.getElementById('replyAddBtn').onclick = makeReplyRegisterClickHandler;
     }
 
     // 댓글 등록 이벤트 처리 핸들러 함수
@@ -327,7 +325,7 @@
         // // 댓글 등록 버튼 클릭이벤트 처리
         // makeReplyRegisterClickEvent();
         console.log(currentAccount);
-        if(currentAccount!=' '){
+        if(currentAccount!=''){
             makeReplyRegisterClickEvent();
         }
 
