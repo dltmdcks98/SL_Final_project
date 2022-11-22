@@ -27,21 +27,6 @@
         let day = dateObj.getDate();
         let hour = dateObj.getHours();
         let minute = dateObj.getMinutes();
-        /*        //오전, 오후 시간체크
-                let ampm = '';
-                if (hour < 12 && hour >= 6) {
-                    ampm = '오전';
-                } else if (hour >= 12 && hour < 21) {
-                    ampm = '오후';
-                    if (hour !== 12) {
-                        hour -= 12;
-                    }
-                } else if (hour >= 21 && hour <= 24) {
-                    ampm = '밤';
-                    hour -= 12;
-                } else {
-                    ampm = '새벽';
-                }*/
         //숫자가 1자리일 경우 2자리로 변환
         (month < 10) ? month = '0' + month: month;
         (day < 10) ? day = '0' + day: day;

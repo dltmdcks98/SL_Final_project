@@ -58,10 +58,15 @@ SELECT A.board_no, A.user_id, A.title, A.reg_date, A.hit, A.recommend, B.user_na
 FROM board A
          JOIN user_account B ON A.user_id = B.user_id
 WHERE A.user_id = 17
-ORDER BY board_no DESC
+ORDER BY board_no DESC;
 
 select * from board where user_id=17;
 
 select * from tag;
 
 SELECT COUNT(*) FROM board where user_id=17;
+
+SELECT * FROM board WHERE hit>5 ORDER BY hit DESC;
+SELECT user_name FROM user_account WHERE user_id=(
+    SELECT user_id FROM board WHERE board_no=131
+    );
