@@ -4,6 +4,7 @@ import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.repository.BoardMapper;
 import com.slfinalproject.commurest.reply.repository.ReplyMapper;
+import com.slfinalproject.commurest.tag.domain.Tag;
 import com.slfinalproject.commurest.tag.repository.TagMapper;
 import com.slfinalproject.commurest.util.paging.Page;
 import lombok.RequiredArgsConstructor;
@@ -20,10 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 @Log4j2
@@ -55,8 +53,10 @@ public class BoardService {
         // 게시글을 DB에 저장
         boolean flag = boardMapper.insert(board);
         int boardno = tagMapper.getBoardNo();
-        for(int i=0; i< board.getTagList().size();i++){
-            tagMapper.setTagValueByBoardNo(board.getTagList().get(i),boardno);
+        if(board.getTagList()!=null){
+            for(int i=0; i< board.getTagList().size();i++){
+                tagMapper.setTagValueByBoardNo(board.getTagList().get(i),boardno);
+            }
         }
         List<String> fileNames = board.getFileNames();
         if (fileNames != null && fileNames.size() > 0) {
@@ -118,6 +118,11 @@ public class BoardService {
     public Board selectOne(int boardNo, HttpServletResponse response, HttpServletRequest request) {
 
         Board board = boardMapper.selectOne(boardNo);
+        List<Tag> getTagList = tagMapper.getTagValueByBoardNo(boardNo);
+        List<String> tagList = new ArrayList<>();
+        for(Tag tag : getTagList)tagList.add(tag.getTagValue());
+
+        board.setTagList(tagList);
         dateFormat(board);
 
         hitCount(boardNo, response, request);

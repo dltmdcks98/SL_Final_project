@@ -1,9 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
     <%@ include file="../include/static-head.jsp" %>
     <link rel="stylesheet" href="/css/board/board_content.css">
+    <script src="/js/board/contentTag.js" defer></script>
 
 </head>
 <body>
@@ -30,9 +32,16 @@
         <div id="content-body" class="content-body">
             <textarea name="content" placeholder="내용작성" class="textArea" disabled>${b.content}</textarea>
         </div>
-        <div class="tagDiv">
-
+        <div class="tagDiv" id="tag">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16">
+                <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"/>
+                <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z"/>
+            </svg><label for="tag" class="tagLabel">Tag</label>
+            <c:forEach var="tag" items="${b.tagList}">
+                <a href="/gallery/search-tag?tag=${tag}"><div class="tagList">#<c:out value="${tag}"/></div></a>
+            </c:forEach>
         </div>
+
 
 
 

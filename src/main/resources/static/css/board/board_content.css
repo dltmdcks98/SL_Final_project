@@ -119,3 +119,28 @@ button:hover {
 .recommend-text {
     height: 100%;
 }
+
+/*tag */
+.tagDiv{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.tagDiv label{
+    margin:0 0.5rem 0 0;
+}
+.tagDiv .tagList{
+    border: none;
+    border-radius: 3rem;
+    padding: 0 0.5rem;
+}
+.tagDiv a{
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    line-height: 2rem;
+    color: #212529;
+}
+.tagDiv a:hover{
+    color: #F73F52;
+}

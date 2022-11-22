@@ -12,7 +12,6 @@ import org.jsoup.Jsoup;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -62,10 +61,10 @@ public class GalleryBoardService {
         return imageUrl;
     }
 
-    public List<String> getImgUrls(String tag, int startpage,int size){
+    public List<String> getImgUrls(String tag, int startPage,int size){
         List<String> tempurl = new ArrayList<>();
         String str = "";
-        for(int num = startpage; num <startpage+1; num++){
+        for(int num = startPage; num <startPage+1; num++){
             List<String> temp = getImgUrl(tag,num,size);
             for(int j=0; j<size; j++){ //검색 결과 list 분해
                 str = temp.get(j);
@@ -76,7 +75,7 @@ public class GalleryBoardService {
         return urls;
     }
 
-    @Transactional
+
     public List<String> getImgUrlsByUserId(int userId,int startPage, int size){
         List<Tag> tagList = tagService.getTagValueByUserId(userId);
         List<String> urlList = new ArrayList<>();
@@ -96,13 +95,13 @@ public class GalleryBoardService {
         List<TagList> tagList = tagService.getHotTag();
         List<String> urlList = new ArrayList<>();
         if(size==9){
-//            index 에서 인기 태그
+            log.info("index 에서 인기 태그");
             String firstTag = tagList.get(0).getTagValue();
             List<String> temp = getImgUrl(firstTag,startPage,size);
             for(String tag : temp) urlList.add(tag);
 
         }else{
-//            gallery에서 인기태그
+            log.info("gallery에서 인기태그");
             for(int i=0; i<tagList.size();i++){
                 String tag = tagList.get(i).getTagValue();
                 List<String> temp = getImgUrl(tag,startPage,size);
@@ -115,6 +114,18 @@ public class GalleryBoardService {
         log.warn(urlList);
         return urlList;
     }
+
+    public List <String> getImgUrlByTag(String tag, int startPage, int size){
+        List<String> urlList = new ArrayList<>();
+        List<String> temp = getImgUrl(tag,startPage,size);
+
+        for(int j =0; j<temp.size();j++){
+            urlList.add(temp.get(j));
+        }
+        log.warn(urlList);
+        return urlList;
+    }
+
 
 
 }

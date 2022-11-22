@@ -75,13 +75,3 @@ function setColor($tagInput){
 
 }
 
-function sendTag(value){
-    const tagValue ={
-        method:'GET',
-        body : value
-    }
-    fetch('/ajax-tag',tagValue)
-        .then(res => {
-            console.log(res);
-        });
-}

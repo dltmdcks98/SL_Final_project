@@ -1,7 +1,9 @@
 <script>
     const $block = document.querySelector('.block');
-    const URL = '/ajax-gallery/index';
+    <%--const URL = '/ajax-gallery/search-tag?tag=${hotTagList[0].tagValue}';--%>
     /*<img src="/img/img01.jpg" alt="Sample Article">*/
+    const URL = '/ajax-gallery/index';
+
 
     function getImg(){
         fetch(URL)
