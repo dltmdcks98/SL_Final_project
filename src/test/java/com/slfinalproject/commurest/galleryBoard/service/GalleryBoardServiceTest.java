@@ -1,5 +1,7 @@
 package com.slfinalproject.commurest.galleryBoard.service;
 
+import com.slfinalproject.commurest.board.domain.Board;
+import com.slfinalproject.commurest.board.service.BoardService;
 import com.slfinalproject.commurest.tag.domain.Tag;
 import com.slfinalproject.commurest.tag.service.TagService;
 import org.junit.jupiter.api.Assertions;
@@ -18,6 +20,9 @@ class GalleryBoardServiceTest {
     private GalleryBoardService galleryBoardService;
     @Autowired
     private TagService tagService;
+
+    @Autowired
+    private BoardService boardService;
 
     @Test
     @DisplayName("검색결과 출력 조회")
@@ -60,5 +65,12 @@ class GalleryBoardServiceTest {
             System.out.println(list.get(i));
         }
         Assertions.assertNotNull(list);
+    }
+
+    @Test
+    @DisplayName("댓글 많은 글 출력")
+    void getHotReplyBoard(){
+        List<Board> temp = boardService.getHotReplyBoard();
+        Assertions.assertNotNull(temp);
     }
 }

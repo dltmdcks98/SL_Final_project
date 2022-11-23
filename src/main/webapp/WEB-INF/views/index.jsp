@@ -22,7 +22,7 @@
 
                     <div class="line">
 
-                        <div><a href="/board">인기글</a></div>
+                        <div><a href="/board">많이 본 게시물</a></div>
 
                     </div>
 
@@ -45,7 +45,7 @@
 
                                         <tbody>
                                         <c:forEach var="Board" items="${hitBoard}">
-                                            <tr>
+                                            <tr onclick="location.href='/board/content/${Board.boardNo}'">
                                                 <td><c:out value="${Board.boardNo}"/> </td>
                                                 <td class="title"><c:out value="${Board.title}"/></td>
                                                 <td><c:out value="${Board.userName}"/></td>
@@ -75,7 +75,7 @@
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <h1 class="title-col">
-                                HOT 게시물
+                                댓글 많은 게시물
                                 <div class="carousel-nav" id="hot-news-nav">
                                     <div class="prev">
                                         <i class="ion-ios-arrow-left"></i>
@@ -86,35 +86,17 @@
                                 </div>
                             </h1>
                             <div class="body-col vertical-slider" data-max="4" data-nav="#hot-news-nav" data-item="article">
-
-
                                     <div class="tableWrapper">
                                         <table class="tableList">
                                           <tbody>
-                                            <tr>
-                                                <td class="title">여자 인증욤ㅋ [1823]</td>
-
-                                            </tr>
-                                            <tr>
-                                                <td class="title">뉴비 진로 질문 [32] </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="title">이거 뽑았는데 좋은건가요? [231]</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td class="title">(ㅎㅂ) 헉...뒷태..! [999]</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td class="title">대충 조회수, 댓글 많은 글 [12313]</td>
-                                            </tr>
-
+                                            <c:forEach var="Board" items="${hotReplyBoard}">
+                                                <tr onclick="location.href='/board/content/${Board.boardNo}'">
+                                                    <td class="title"><c:out value="${Board.title}"/> [${Board.replyCnt}]</td>
+                                                </tr>
+                                            </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
-
-
                             </div>
                         </div>
                     </div>
