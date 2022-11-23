@@ -1,6 +1,7 @@
 package com.slfinalproject.commurest.reply.repository;
 
 import com.slfinalproject.commurest.reply.domain.Reply;
+import com.slfinalproject.commurest.reply.dto.ReplyDTO;
 import com.slfinalproject.commurest.util.paging.Page;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -19,6 +20,7 @@ public interface ReplyMapper {
     int getReplyCount(int boardNo);
     Reply findOne(int replyNo);
 
+    List<ReplyDTO> getBoardNoByReplyCount();
 
 //  나의 댓글 조회하기
     List<Reply> findReplyByUserId(Page page, int userAccount);

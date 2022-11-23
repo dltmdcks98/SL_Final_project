@@ -1,6 +1,7 @@
 package com.slfinalproject.commurest.reply.repository;
 
 import com.slfinalproject.commurest.reply.domain.Reply;
+import com.slfinalproject.commurest.reply.dto.ReplyDTO;
 import com.slfinalproject.commurest.util.paging.Page;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,5 +35,12 @@ class ReplyMapperTest {
         int num = mapper.getReplyCount(19);
         assertEquals(1,num);
 
+    }
+
+    @Test
+    @DisplayName("댓글 많은 글 출력 ")
+    void getBoardNoByReplyCount(){
+        List<ReplyDTO> list = mapper.getBoardNoByReplyCount();
+        System.out.println(list.get(0).getBoardNo());
     }
 }

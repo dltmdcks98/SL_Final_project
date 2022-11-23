@@ -4,6 +4,7 @@ import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.admin.repository.AdminMapper;
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.repository.BoardMapper;
+import com.slfinalproject.commurest.reply.dto.ReplyDTO;
 import com.slfinalproject.commurest.reply.repository.ReplyMapper;
 import com.slfinalproject.commurest.tag.domain.Tag;
 import com.slfinalproject.commurest.tag.repository.TagMapper;
@@ -210,4 +211,17 @@ public class BoardService {
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd HH:mm");
         board.setSimpleDate(sdf.format(date));
     }
+
+    public List<Board> getHotReplyBoard(){
+        List<ReplyDTO> getReplyBoard = replyMapper.getBoardNoByReplyCount();
+        List<Board> boardList = new ArrayList<>();
+        for(ReplyDTO replyDTO : getReplyBoard){
+            log.info(replyDTO.getBoardNo());
+            Board board = boardMapper.selectOne(replyDTO.getBoardNo());
+            board.setReplyCnt(replyDTO.getReplyCount());
+            boardList.add(board);
+        }
+        return boardList;
+    }
+
 }

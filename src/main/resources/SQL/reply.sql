@@ -22,4 +22,4 @@ alter table reply
 DROP TABLE reply;
 select * from reply where board_no=63;
 
-select
+SELECT board_no, count(*) AS replyCount FROM reply GROUP BY board_no ORDER BY replyCount DESC;

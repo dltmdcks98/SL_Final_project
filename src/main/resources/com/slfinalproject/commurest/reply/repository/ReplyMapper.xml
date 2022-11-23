@@ -13,7 +13,10 @@
         <result property="userAccount" column="user_account" />
         <result property="boardNo" column="board_no" />
     </resultMap>
-
+    <resultMap id="replyDtoMap" type="com.slfinalproject.commurest.reply.dto.ReplyDTO">
+        <result property="boardNo" column="board_no"/>
+        <result property="replyCount" column="replyCount"/>
+    </resultMap>
     <insert id="save">
         INSERT INTO reply
         (reply_text, reply_writer, board_no, user_account)
@@ -55,12 +58,16 @@
         LIMIT #{page.start}, #{page.amount}
     </select>
 
+<!--    댓글 수 조회-->
     <select id="getReplyCount" resultType="int">
         SELECT COUNT(*)
         FROM reply
         WHERE board_no=#{boardNo}
     </select>
-
+<!-- 댓글이 많은 글 출력 -->
+    <select id="getBoardNoByReplyCount" resultMap="replyDtoMap">
+        SELECT board_no, count(*) AS replyCount FROM reply GROUP BY board_no ORDER BY replyCount DESC;
+    </select>
 <!--  나의 댓글 조회하기  -->
     <select id="findReplyByUserId" resultMap="replyMap">
         SELECT * FROM reply
