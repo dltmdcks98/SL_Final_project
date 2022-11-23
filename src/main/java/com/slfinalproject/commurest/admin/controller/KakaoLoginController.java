@@ -18,25 +18,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.Arrays;
-import java.util.UUID;
 
 @Controller
 @RequiredArgsConstructor
@@ -134,6 +127,9 @@ public class KakaoLoginController {
 
         log.info("??" + adminService.selectOne(kakaoProfile.getKakao_account().getEmail()));
         kakaoUser.setUser_email(kakaoProfile.getKakao_account().getEmail());
+        if(kakaoProfile.getKakao_account().getEmail()==null){
+            return "/member/kakaoLoginFail";
+        }
         kakaoUser.setUser_pass("111");
         kakaoUser.setUser_name("(kakao)" + randomName.nextString() + "님");
         kakaoUser.setUser_sex("k");
