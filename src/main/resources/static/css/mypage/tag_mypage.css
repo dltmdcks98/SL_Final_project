@@ -19,7 +19,6 @@
 }
 
 .input-tag{
-
     background: purple;
 }
 
@@ -47,8 +46,9 @@
     border-radius: 1rem;
 }
 
-.tag-item::before:hover{
+.tag-item:hover::before{
     opacity: 0;
+    transition: 0.5s;
 }
 .tag-item-delete{
     position: absolute;
