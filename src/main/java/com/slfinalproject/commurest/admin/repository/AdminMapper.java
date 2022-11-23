@@ -3,6 +3,8 @@ package com.slfinalproject.commurest.admin.repository;
 import com.slfinalproject.commurest.admin.domain.Admin;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface AdminMapper {
 
@@ -15,8 +17,11 @@ public interface AdminMapper {
     // 회원 수정
     void update(Admin admin);
 
+    void nameUpdate(Admin admin);
     // 회원 검색
     Admin selectOne(String admin);
+
+    List<Admin> selectAll(String admin);
 
     Admin selectOne2(int userId);
 

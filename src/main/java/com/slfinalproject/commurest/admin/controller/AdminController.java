@@ -24,8 +24,7 @@ public class AdminController {
     public String regist(Admin admin) {
         log.info("/admin/regist POST - param: {}", admin);
 
-        adminService.regist(admin);
-        return "redirect:/";
+        return adminService.regist(admin) ? "redirect:/" : "/error";
     }
 
     // 로그인페이지
