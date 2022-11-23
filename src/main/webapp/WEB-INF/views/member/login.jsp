@@ -5,6 +5,17 @@
 <head>
     <%@ include file="../include/static-head.jsp" %>
 </head>
+<style>
+
+.aaa{
+    padding-left: 5%;
+    border: none;
+    background: white;
+
+}
+
+
+</style>
 <body>
 <%@include file="../include/header.jsp" %>
 
@@ -39,9 +50,10 @@
                         <div class="title-line">
                             or
                         </div>
-                        <a href="#" class="btn btn-social btn-block facebook"><i class="ion-social-facebook"></i> Login
-                            with Facebook</a>
                     </form>
+                    <button  class = "aaa" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=eac6586e062e9e84f8798226d9ac9be8&redirect_uri=http://localhost:8182/login/kakao&response_type=code'" type="button" id="img_btn">
+                        <img src="/img/kakao_login_medium_wide.jpg">
+                    </button>
                 </div>
             </div>
         </div>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -24,8 +25,7 @@ public class AdminController {
     public String regist(Admin admin) {
         log.info("/admin/regist POST - param: {}", admin);
 
-        adminService.regist(admin);
-        return "redirect:/";
+        return adminService.regist(admin) ? "redirect:/" : "/error";
     }
 
     // 로그인페이지
@@ -33,7 +33,7 @@ public class AdminController {
     public String login(HttpServletRequest request) {
         String refer = request.getHeader("Referer");
         request.getSession().setAttribute("redirectURI", refer);
-        log.info("GET -로그인 시도");
+        log.info("GET -로그인 시도 refer : {}",refer);
         return "member/login";
     }
     @GetMapping("/login_success")
@@ -45,8 +45,11 @@ public class AdminController {
             session.setAttribute("user", user);
             log.info("세션에 넣은 값 확인 - " + user);
         }
+        String url =redirectURI.substring(21);
+        log.info(url);
 
-        return "redirect:" + redirectURI;
+        return "redirect:"+url;
+
     }
 
 
