@@ -6,10 +6,7 @@ import com.slfinalproject.commurest.tag.dto.TagList;
 import com.slfinalproject.commurest.tag.service.TagService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -37,5 +34,10 @@ public class TagRestController {
         Admin user = (Admin) session.getAttribute("user");
         List<Tag> userTag = tagService.getTagValueByUserId(user.getUser_id());
         return userTag;
+    }
+    @GetMapping("/tag-delete/{tagvalue}")
+    public String deleteTag(@PathVariable("tagvalue")String tag,HttpSession session){
+
+        return tagService.deleteTag(session.getAttribute("user"),tag);
     }
 }

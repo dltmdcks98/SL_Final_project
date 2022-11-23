@@ -47,7 +47,8 @@ function makeDOM(destination,tagValue,imgUrl){
 }
 function delTag(e){
     console.log(e.dataset.tag);
-    const URL = '/'
+    const URL = '/ajax-tag/tag-delete/'+e.dataset.tag;
+    console.log(URL);
 
 }
   (function (){
