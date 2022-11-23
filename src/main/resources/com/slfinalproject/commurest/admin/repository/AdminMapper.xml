@@ -13,8 +13,8 @@
 
     <insert id="regist">
         INSERT INTO user_account
-            (user_email, user_pass, user_name, user_birth,user_sex)
-        VALUES (#{user_email}, #{user_pass}, #{user_name}, #{user_birth}, #{user_sex})
+            (manager,user_email, user_pass, user_name, user_birth,user_sex)
+        VALUES (#{manager},#{user_email}, #{user_pass}, #{user_name}, #{user_birth}, #{user_sex})
     </insert>
 
     <delete id="delete">
@@ -27,9 +27,21 @@
         SET user_pass = #{user_pass}, user_name=#{user_name}, user_birth=#{user_birth}, user_sex=#{user_sex}
         WHERE user_id=#{user_id}
     </update>
+    <update id="nameUpdate">
+        UPDATE user_account
+        SET user_name=#{user_name}
+        where user_id=#{user_id}
+    </update>
     <select id = "selectOne"  resultType="com.slfinalproject.commurest.admin.domain.Admin">
         SELECT * from user_account where user_email=#{user_email}
     </select>
+
+    <select id = "selectAll"  resultType="com.slfinalproject.commurest.admin.domain.Admin">
+        SELECT * from user_account where user_email=#{user_email}
+    </select>
+
+
+
 
 
     <select id = "selectOne2"  resultType="com.slfinalproject.commurest.admin.domain.Admin">

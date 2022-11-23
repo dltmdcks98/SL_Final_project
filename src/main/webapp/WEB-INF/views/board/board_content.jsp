@@ -107,7 +107,7 @@
                 <div class="comments-list">
 
                     <button class="list-btn" id="list-btn" type="button">전체글</button>
-                    <c:if test="${user.user_id == b.userId}">
+                    <c:if test="${user.manager=='ROLE_ADMIN' || user.user_id == b.userId}">
                         <button id="edit-btn" type="button">글수정</button>
                         <button id="del-btn" type="button">글삭제</button>
                     </c:if>
