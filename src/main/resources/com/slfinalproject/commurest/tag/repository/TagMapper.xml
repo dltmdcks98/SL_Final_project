@@ -47,4 +47,8 @@
     <select id="getHotTag" resultMap="hotTag">
         SELECT tag_value, count(*) as count FROM tag WHERE user_id IS NULL GROUP BY tag_value ORDER BY count DESC LIMIT 0,6
     </select>
+
+    <delete id="deleteTag">
+        DELETE FROM tag WHERE user_id=#{userId} AND tag_value=#{tagValue}
+    </delete>
 </mapper>

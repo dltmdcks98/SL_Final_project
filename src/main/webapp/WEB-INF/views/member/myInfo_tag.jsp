@@ -48,54 +48,15 @@
             <div class="simple-info">
                 <p class="menu-title">관심사 설정</p>
             </div>
-                <label>현재 등록된 관심사 </label>
                 <div class="tag-contain">
-
+                    <label>현재 등록된 관심사 </label>
                     <div class="registed-tag tag-group">
-                        <div class="tag-item">
-                            <div class="tag-item-delete">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                                </svg>
-                            </div>
-                            <div class="tag-item-value">
-                                test
-                            </div>
-                        </div>
-                        <div class="tag-item">
-                            <div class="tag-item-delete">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                                </svg>
-                            </div>
-                            <div class="tag-item-value">
-                                test
-                            </div>
-                        </div>
+
                     </div>
 
                 <label>인기 있는 관심사</label>
                     <div class="popular-tag tag-group">
-                        <div class="tag-item">
-                            <div class="tag-item-delete">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                                </svg>
-                            </div>
-                            <div class="tag-item-value">
-                                test
-                            </div>
-                        </div>
-                        <div class="tag-item">
-                            <div class="tag-item-delete">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                                </svg>
-                            </div>
-                            <div class="tag-item-value">
-                                test
-                            </div>
-                        </div>
+
                     </div>
                 </div>
 
@@ -116,6 +77,7 @@
 </div>
     </section>
 <%@include file="../include/footer.jsp" %>
+<%@include file="include/mypageTag.jsp" %>
 </body>
 
 

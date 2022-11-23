@@ -19,4 +19,6 @@ public interface TagMapper {
 
     List<TagList> getHotTag();
 
+    boolean deleteTag(int userId, String tagValue);
+
 }

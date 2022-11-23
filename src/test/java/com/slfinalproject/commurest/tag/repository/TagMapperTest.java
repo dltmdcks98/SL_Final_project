@@ -8,6 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.util.Assert;
 
 import java.util.List;
 
@@ -49,5 +50,17 @@ class TagMapperTest {
         List<Tag> tagList = tagMapper.getTagValueByBoardNo(131);
         System.out.println(tagList);
         assertNotNull(tagList);
+    }
+
+    @Test
+    @DisplayName("태그 삭제 테스트")
+    void deleteTag(){
+        Assert.isTrue(tagMapper.deleteTag(18,"이나경"));
+    }
+
+    @Test
+    @DisplayName("userId 기반 태그 저장")
+    void setTagValueByUserId(){
+        Assert.isTrue(tagMapper.setTagValueByUserId("이나경",18));
     }
 }

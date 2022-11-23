@@ -7,6 +7,7 @@ import com.slfinalproject.commurest.tag.service.TagService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -62,6 +63,13 @@ public class GalleryRestController {
         int size = 9;
         log.info("rest gallery indexd 접근- GET ");
         return galleryBoardService.getImgUrlByHotTag(num,size);
+    }
 
+    @GetMapping("/{tag}")
+    public String getOneUrl(@PathVariable("tag") String tag){
+        log.info("getOneUrl - tag : {}",tag);
+        String oneUrl = galleryBoardService.getImgUrlByTag(tag,0,1).get(0);
+        log.info(oneUrl);
+        return oneUrl;
     }
 }
