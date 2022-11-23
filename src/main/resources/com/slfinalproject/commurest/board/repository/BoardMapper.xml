@@ -11,7 +11,7 @@
         <result property="regDate" column="reg_date"/>
         <result property="recommend" column="recommend"/>
         <result property="userName" column="user_name"/>
-<!--        <result property="replyCount" column="replyCount"/>-->
+        <result property="fileName" column="file_name"/>
     </resultMap>
 
     <!--한건 등록-->
@@ -76,26 +76,27 @@
         INSERT INTO file_upload
         (file_name, bno)
         VALUES
-        (#{fileName},  LAST_INSERT_ID())
+        (#{fileName}, LAST_INSERT_ID())
 
     </insert>
 
-    <select id="findFileNames" resultType="string">
+    <select id="fileNames" resultType="string">
         SELECT file_name
         FROM file_upload
         WHERE bno = #{bno}
     </select>
 
-
-<!--    <select id="findMemberByBoardNo" resultType="com.project.web_prj.board.dto.ValidateMemberDTO">-->
+    <!--수정, 삭제시 삭제할 수 있는 권한이 있는지-->
+<!--    <select id="findMemberByBoardNo" resultType="com.slfinalproject.commurest.board.dto.ValidateMemberDTO">-->
 
 <!--        SELECT account, auth-->
-<!--        FROM tbl_member-->
-<!--        WHERE account = (-->
+<!--        FROM member-->
+<!--        WHERE user_account = (-->
 <!--        SELECT account-->
-<!--        FROM tbl_board-->
+<!--        FROM board-->
 <!--        WHERE board_no = #{boardNo}-->
 <!--        )-->
 
 <!--    </select>-->
+
 </mapper>

@@ -22,6 +22,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.text.AttributedString;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -84,9 +86,9 @@ public class BoardController {
     @PostMapping("/write")
     public String write(Board board, HttpServletResponse response, HttpServletRequest request,
                         @RequestParam("files") List<MultipartFile> fileList, RedirectAttributes ra) {
-//        log.info("tag test "+ board);
+        log.info("tag test "+ board);
+
         boolean flag = boardService.insertService(board, response, request);
-        // 게시물 등록에 성공하면 클라이언트에 성공메시지 전송
         if (flag) ra.addFlashAttribute("msg", "reg-success");
         return flag ? "redirect:/board" : "redirect:/";
     }
@@ -97,6 +99,7 @@ public class BoardController {
         log.info("boardNo : {}",boardNo);
         Board board = boardService.findOneService(boardNo);
         model.addAttribute("board", board);
+//        model.addAttribute("validate", boardService.getMember(boardNo));
         return "board/board_edit";
     }
 
@@ -114,7 +117,7 @@ public class BoardController {
     public String remove(@ModelAttribute("boardNo") int boardNo, Model model) {
 
         log.info("controller request delete : {}", boardNo);
-
+//        model.addAttribute("validate", boardService.getMember(boardNo));
         return "board/board_remove";
     }
 
@@ -123,7 +126,6 @@ public class BoardController {
     @PostMapping("/remove")
     public String remove(int boardNo) {
         log.info("controller request delete POST : {}", boardNo);
-
         return boardService.remove(boardNo) ? "redirect:/board" : "redirect:/";
     }
 
@@ -134,7 +136,7 @@ public class BoardController {
     public ResponseEntity<List<String>> getFiles(@PathVariable int bno) {
 
         List<String> files = boardService.getFiles(bno);
-        log.info("Board File bno {} : files {} ", bno, files);
+        log.info("bno: files {} ", bno, files);
 
         return new ResponseEntity<>(files, HttpStatus.OK);
     }

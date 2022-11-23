@@ -31,10 +31,17 @@ button:hover {
     border-radius: 5px;
     /*background-color: #f2f2f2;*/
 }
+.uploaded-list {
+    display: flex;
+}
+.img-sizing {
+    display: block;
+    width: 50%;
+    height: 50%;
+}
 .comments-list * {
     margin: 2% 0.2%;
     float:right;
-
 }
 .content .content-body {
     height: 50%;

@@ -16,7 +16,6 @@ alter table user_account modify manager varchar(50);
 # 매니저 초기값을 N -> ROLE_admin 으로 바꿈
 alter table user_account alter column manager set default 'ROLE_ADMIN';
 
-
 select *from user_account;
 UPDATE user_account
 SET user_name='xxx2'

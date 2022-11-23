@@ -18,5 +18,5 @@ ALTER TABLE file_upload
             REFERENCES board (board_no)
             ON DELETE CASCADE;
 
-select * from file_upload
-
+select * from file_upload order by reg_date desc;
+select * from board;

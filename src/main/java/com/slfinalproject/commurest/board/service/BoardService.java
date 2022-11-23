@@ -2,6 +2,8 @@ package com.slfinalproject.commurest.board.service;
 
 import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.board.domain.Board;
+
+import com.slfinalproject.commurest.board.dto.ValidateMemberDTO;
 import com.slfinalproject.commurest.board.repository.BoardMapper;
 import com.slfinalproject.commurest.reply.repository.ReplyMapper;
 import com.slfinalproject.commurest.tag.repository.TagMapper;
@@ -63,11 +65,14 @@ public class BoardService {
             }
         }
         int boardno = tagMapper.getBoardNo();
+
         /*
         for(int i=0; i< board.getTagList().size();i++){
             tagMapper.setTagValueByBoardNo(board.getTagList().get(i),boardno);
         }
+
         */
+
         log.info("user_id : "+board.getUserId());
         return flag;
     }
@@ -83,7 +88,7 @@ public class BoardService {
         findDataMap.put("tc", boardMapper.getTotalCount());
         return findDataMap;
     }
-// 나의 게시글 조회
+    // 나의 게시글 조회
     public Map<String, Object> findAllServiceByUserId(Page page,int userId) {
 
         Map<String, Object> findDataMap = new HashMap<>();
@@ -162,17 +167,24 @@ public class BoardService {
 
 //====================================================================================================================//
 
-    // 첨부파일 가져오기
-
+   // 첨부파일 가져오기
    public List<String> getFiles(int bno) {
         return boardMapper.fileNames(bno);
     }
 
-
-
+    /*
+    public ValidateMemberDTO getMember(int boardNo) {
+        ValidateMemberDTO member = boardMapper.findMemberByBoardNo(boardNo);
+        if(member == null) member=new ValidateMemberDTO();
+        return member;
+    }
+     */
 
     //   각 게시물의 댓글 수 조회
     public void getReplyCount(Board b) {
         b.setReplyCnt(replyMapper.getReplyCount(b.getBoardNo()));
     }
+
+
 }
+
