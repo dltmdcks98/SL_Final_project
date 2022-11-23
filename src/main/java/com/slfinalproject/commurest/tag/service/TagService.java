@@ -41,4 +41,10 @@ public class TagService {
     public List<TagList> getHotTag(){
         return tagMapper.getHotTag();
     }
+
+    public List<Tag> getTagByKeyword(String keyword){
+        List<Tag> tagList = tagMapper.getTagByKeyword(keyword);
+        return tagList;
+    }
+
 }

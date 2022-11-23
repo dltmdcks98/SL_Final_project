@@ -1,6 +1,8 @@
 package com.slfinalproject.commurest;
 
 
+import com.slfinalproject.commurest.admin.domain.Admin;
+import com.slfinalproject.commurest.admin.service.AdminService;
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.service.BoardService;
 import com.slfinalproject.commurest.reply.service.ReplyService;
@@ -10,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -22,6 +25,8 @@ public class HomeController {
     private final TagService tagService;
     private final BoardService boardService;
     private final ReplyService replyService;
+    private final AdminService adminService;
+
     @GetMapping("/")
     public String home(HttpSession session, Model model){
         List<TagList> getTagList = tagService.getHotTag();
@@ -32,6 +37,9 @@ public class HomeController {
 
         List<Board> getHotReplyBoard = boardService.getHotReplyBoard();
         model.addAttribute("hotReplyBoard",getHotReplyBoard);
+
+
+
         return "index";
 
     }

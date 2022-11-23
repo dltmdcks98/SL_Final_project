@@ -17,6 +17,10 @@ public interface TagMapper {
     boolean setTagValueByBoardNo(String tagValue,int boardNo);
     boolean setTagValueByUserId(String tagValue,int userId);
 
+    List<Tag> getTagByKeyword(String keyword);
+
+
+
     List<TagList> getHotTag();
 
 }

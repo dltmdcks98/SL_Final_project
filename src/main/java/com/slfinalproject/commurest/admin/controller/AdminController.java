@@ -2,10 +2,12 @@ package com.slfinalproject.commurest.admin.controller;
 
 import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.admin.service.AdminService;
+import com.slfinalproject.commurest.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpServletRequest;
@@ -19,13 +21,15 @@ public class AdminController {
     @Autowired
     private final AdminService adminService;
 
+    @Autowired
+    private final BoardService boardService;
+
     // 회원가입 처리
     @PostMapping("/admin/regist")
     public String regist(Admin admin) {
         log.info("/admin/regist POST - param: {}", admin);
 
-        adminService.regist(admin);
-        return "redirect:/";
+        return adminService.regist(admin) ? "redirect:/" : "/error";
     }
 
     // 로그인페이지
@@ -36,6 +40,7 @@ public class AdminController {
         log.info("GET -로그인 시도");
         return "member/login";
     }
+
     @GetMapping("/login_success")
     public String loginSuccess(HttpSession session) {
         log.info("login success");
@@ -45,6 +50,7 @@ public class AdminController {
             session.setAttribute("user", user);
             log.info("세션에 넣은 값 확인 - " + user);
         }
+
 
         return "redirect:" + redirectURI;
     }

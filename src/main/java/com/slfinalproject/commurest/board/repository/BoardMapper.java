@@ -49,5 +49,10 @@ public interface BoardMapper {
     // 게시물 파일경로 조회
     List<String> fileNames(int bno);
 
+    // header 검색
+    List<Board> searchAll(Page page, String keyword);
+
+
+
 
 }

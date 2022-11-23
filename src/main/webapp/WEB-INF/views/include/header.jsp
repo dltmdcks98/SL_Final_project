@@ -15,14 +15,16 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-12">
-                        <form class="search" autocomplete="off">
+                        <form action="/search"  class="search" autocomplete="off">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input type="text" name="q" class="form-control" placeholder="Type something here">
+
+                                    <input id="keyword" type="text" name="keyword" class="form-control" placeholder="검색어를 입력하세요">
                                     <div class="input-group-btn">
                                         <button class="btn btn-primary"><i class="ion-search"></i></button>
                                     </div>
                                 </div>
+
                             </div>
                             <div class="help-block">
                                 <div>Popular Tag:</div>
@@ -106,7 +108,6 @@
         </div>
     </nav>
         <!-- End nav -->
-
 
 
 

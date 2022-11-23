@@ -75,7 +75,6 @@ public class BoardService {
 
     // 게시물 전체 조회 요청 페이징
     public Map<String, Object> findAllService(Page page) {
-
         Map<String, Object> findDataMap = new HashMap<>();
         List<Board> boardList = boardMapper.selectAll(page);
 
@@ -84,7 +83,34 @@ public class BoardService {
         findDataMap.put("tc", boardMapper.getTotalCount());
         return findDataMap;
     }
-// 나의 게시글 조회
+
+
+
+    // header 검색
+    public Map<String, Object> searchAll(Page page, String keyword){
+        Map<String, Object> findDataMap = new HashMap<>();
+        List<Board> boardList = boardMapper.searchAll(page, keyword);
+
+        for(Board board : boardList){
+            List<Tag> getTagList = tagMapper.getTagValueByBoardNo(board.getBoardNo());
+            List<String> tagList = new ArrayList<>();
+            for(Tag tag : getTagList)tagList.add(tag.getTagValue());
+            board.setTagList(tagList);
+        }
+
+
+
+        process(boardList);
+        findDataMap.put("b", boardList);
+        findDataMap.put("tc", boardMapper.getTotalCount());
+
+        return findDataMap;
+    }
+
+
+
+
+    // 나의 게시글 조회
     public Map<String, Object> findAllServiceByUserId(Page page,int userId) {
 
         Map<String, Object> findDataMap = new HashMap<>();
@@ -185,6 +211,8 @@ public class BoardService {
         b.setReplyCnt(replyMapper.getReplyCount(b.getBoardNo()));
     }
 
+
+
 //    인기 게시글 조회
     public List<Board> getHitBoard(){
         List<Board> getHitBoard = boardMapper.getHitBoard();
@@ -223,5 +251,7 @@ public class BoardService {
         }
         return boardList;
     }
+
+
 
 }

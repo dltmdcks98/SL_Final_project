@@ -1,6 +1,7 @@
 package com.slfinalproject.commurest.admin.domain;
 
 import com.slfinalproject.commurest.board.domain.Board;
+import lombok.Builder;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,6 +10,8 @@ import java.util.Date;
 
 @Data
 public class Admin implements UserDetails {
+
+
 
     private int user_id;
     private String manager;

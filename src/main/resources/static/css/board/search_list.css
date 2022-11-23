@@ -1,0 +1,36 @@
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+.tableList {
+    font-family: 'Jeju Gothic', sans-serif;
+    width: 100%;
+
+
+}
+.hr{
+    border-bottom: 1px solid #D7D6D6;
+    border-collapse: collapse;
+}
+
+
+.main-title{
+    color: #F73F52;
+    font-size: 2.3rem;
+    font-weight: bold;
+
+}
+.title{
+    font-size: 1.7rem;
+
+}
+.content{
+    font-size: 1.3rem;
+}
+.date{
+    text-align: justify;
+}
+
+
+.tr-hover:hover {
+    color: #3b5998;
+    cursor: pointer;
+}

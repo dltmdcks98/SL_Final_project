@@ -121,6 +121,12 @@ private final ReplyService replyService;
         s.invalidate();
         return "redirect:/";
     }
+    @PostMapping("/update-kakao")
+    public String nameUpdate(Admin admin, HttpSession s) {
+        adminService.nameUpdate(admin);
+        s.invalidate();
+        return "redirect:/";
+    }
 
 
     // 개인정보 수정 페이지 요청
