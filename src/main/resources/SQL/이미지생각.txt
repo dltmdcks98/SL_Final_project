@@ -1,0 +1,27 @@
+내가 생각하고 있는거
+
+1. 기존에 했던것처럼 index에 jquery 박고 .upload-controller에 div만들어서 입력받기
+    -> 근데 이렇게 하는게 맞나 싶음
+
+2. XML에 작성 bno(boardNo)를 통해 가져오기
+    <select id="findNewImage" resultMap="boardMap">
+            SELECT DISTINCT A.board_no, A.title, B.bno
+            FROM board A
+            JOIN file_upload B ON A.board_no = B.bno
+            ORDER BY  board_no DESC limit 3
+        </select>
+
+    이렇게 작성하면 상세보기의 boardNo와 bno가 같은 게시글에는 무조건 이미지가 있으니까
+    이미지를 가져올 수 있을까? 라는 생각
+
+
+2. XML에 작성 file_name + 절대경로 저장위치를 통해 가져오기
+    <select id="findNewImage" resultMap="boardMap">
+            SELECT DISTINCT A.board_no, A.title, B.bno, B.file_name
+            FROM board A
+            JOIN file_upload B ON A.board_no = B.bno
+            ORDER BY  board_no DESC limit 3
+        </select>
+
+    지금은 이게 가장 맞는거 같음
+    생각한게 이미지도 3개 불러오는거니까 그냥 절대경로에 저장한 위치 + 파일 저장 이름 박으면 출력되지 않을까?

@@ -71,7 +71,9 @@ SELECT user_name FROM user_account WHERE user_id=(
     SELECT user_id FROM board WHERE board_no=131
     );
 
-SELECT DISTINCT A.board_no, A.title, B.bno
+SELECT DISTINCT A.board_no, A.title, B.bno, B.file_name
 FROM board A
 JOIN file_upload B ON A.board_no = B.bno
 ORDER BY  board_no DESC limit 3;
+
+select * from file_upload order by reg_date desc;

@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
     <%@ include file="./include/static-head.jsp" %>
     <link rel="stylesheet" href="/css/board/board_list.css">
@@ -109,7 +109,7 @@
                         <article class="col-md-12 article-list">
                             <div class="inner">
                                 <figure>
-                                    <img src="/img/news/img11.jpg" alt="Sample Article">
+
                                 </figure>
                                 <div class="details">
                                     <div class="detail">

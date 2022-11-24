@@ -32,6 +32,11 @@
         <div id="content-body" class="content-body">
             <textarea name="content" placeholder="내용작성" class="textArea" disabled>${b.content}</textarea>
         </div>
+        <!-- 파일 업로드 영역 begin -->
+        <div class="form-group">
+            <ul class="uploaded-list"></ul>
+        </div>
+        <!-- 파일 업로드 영역 end -->
         <div class="tagDiv" id="tag">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16">
                 <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"/>
@@ -41,13 +46,6 @@
                 <a href="/gallery/search-tag?tag=${tag}"><div class="tagList">#<c:out value="${tag}"/></div></a>
             </c:forEach>
         </div>
-
-
-    <!-- 파일 업로드 영역 begin -->
-    <div class="form-group">
-        <ul class="uploaded-list"></ul>
-    </div>
-    <!-- 파일 업로드 영역 end -->
 
     </div>
     <!-- 게시글 영역 end -->

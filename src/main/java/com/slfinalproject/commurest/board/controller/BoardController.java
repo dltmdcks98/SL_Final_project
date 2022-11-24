@@ -137,7 +137,7 @@ public class BoardController {
     public ResponseEntity<List<String>> getFiles(@PathVariable int bno) {
 
         List<String> files = boardService.getFiles(bno);
-        log.info("bno: files {} ", bno, files);
+        log.info("bno : files {} ", bno, files);
 
         return new ResponseEntity<>(files, HttpStatus.OK);
     }
