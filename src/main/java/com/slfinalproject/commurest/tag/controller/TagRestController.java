@@ -37,9 +37,12 @@ public class TagRestController {
     }
     @GetMapping("/tag-delete/{tagvalue}")
     public String deleteTag(@PathVariable("tagvalue")String tag,HttpSession session){
+        log.info("태그 정보 : {}",tag);
+
         Admin admin = (Admin) session.getAttribute("user");
-        log.info(admin.getUser_id());
-        boolean result = tagService.deleteTag(admin.getUser_id(),tag);
+        int userId = admin.getUser_id();
+        log.info("사용자 정보 : {}",admin.getUser_id());
+        boolean result = tagService.deleteTag(userId,tag);
         log.info(result);
         return result ? "success-delete" : "fail-delete";
     }

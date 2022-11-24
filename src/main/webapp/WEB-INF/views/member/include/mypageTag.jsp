@@ -56,12 +56,10 @@ function makeDOM(destination,tagValue,imgUrl){
 
 function eventHandler() {
       document.querySelector('.tag-contain').onclick = e => {
-
           if (e.target.matches('.tag-item')) {
               toGallery(e);
               e.stopPropagation();
           } else if (e.target.matches('svg') || e.target.matches('path')){
-
               delTag(e.target.closest('span'));
               e.stopPropagation();
           }
@@ -70,13 +68,16 @@ function eventHandler() {
 
 
 function delTag(e){
-
-    const URL = '/ajax-tag/tag-delete/'+e.dataset.tag;
+    const tagValue = e.dataset.tag;
+    console.log(tagValue);
+    const URL = '/ajax-tag/tag-delete/'+tagValue;
     fetch(URL)
         .then(res => res.text())
         .then(result => {
-            if(result==='success-delete'){
+            if(result==='success-delete') {
                 e.parentNode.remove();
+            }else{
+                alert('관심사 삭제에 실패했습니다.');
             }
         });
 
@@ -89,6 +90,7 @@ function registerTag(){
             let inputTag = e.target.value;
             inputTag = subStringValue(inputTag);
             inputTag = subStringValue(inputTag);
+            console.log(inputTag);
             fetch('/ajax-tag/tag-regist/'+inputTag)
                 .then(res => res.text())
                 .then(result => {
@@ -96,7 +98,7 @@ function registerTag(){
                         e.target.value="";
                         getOneUrl($userTag,inputTag);
                     }else{
-                        alert("관심사 등록에 실패했습니다...");
+                        alert('관심사 등록에 실패했습니다...');
                     }
                 });
         }
