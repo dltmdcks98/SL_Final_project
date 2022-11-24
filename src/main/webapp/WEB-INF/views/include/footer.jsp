@@ -20,13 +20,12 @@
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="block">
-                    <h1 class="block-title">인기 태그<div class="right"><a href="#">더보기</a></div></h1>
+                    <h1 class="block-title">인기 태그</h1>
                     <div class="block-body">
                         <ul class="tags">
-                            <li><a href="#">HTML5</a></li>
-                            <li><a href="#">CSS3</a></li>
-                            <li><a href="#">Bootstrap 3</a></li>
-                            <li><a href="#">Web Design</a></li>
+                            <c:forEach var="TagList" items="${hotTagList}">
+                                <li><a href="#"><c:out value="${TagList.tagValue}"/></a></li>
+                            </c:forEach>
                         </ul>
                     </div>
                 </div>
@@ -34,97 +33,23 @@
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="block">
-                    <h1 class="block-title">추천글</h1>
+                    <h1 class="block-title">인기글</h1>
                     <div class="block-body">
                         <article class="article-mini">
                             <div class="inner">
-                                <figure>
-                                    <a href="#">
-                                        <img src="/img/news/img12.jpg" alt="Sample Article">
-                                    </a>
-                                </figure>
-                                <div class="padding">
-                                    <h1><a href="#">인기글1</a></h1>
-                                </div>
+                                <c:forEach var="Board" items="${hitBoard}">
+                                    <div onclick="location.href='/board/content/${Board.boardNo}'">
+                                        <div class="title"><c:out value="${Board.title}"/></div>
+                                        <div class="writer"><c:out value="${Board.userName}"/></div>
+
+                                    </div>
+                                </c:forEach>
                             </div>
                         </article>
-
-                        <a href="#" class="btn btn-magz white btn-block">더보기</a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-3 col-xs-12 col-sm-6">
-                <div class="block">
-                    <h1 class="block-title">팔로워</h1>
-                    <div class="block-body">
-                        <p>Follow us and stay in touch to get the latest news</p>
-                        <ul class="social trp">
-                            <li>
-                                <a href="https://ko-kr.facebook.com/" class="facebook">
-                                    <svg><rect width="0" height="0"/></svg>
-                                    <i class="ion-social-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://twitter.com/?lang=ko" class="twitter">
-                                    <svg><rect width="0" height="0"/></svg>
-                                    <i class="ion-social-twitter-outline"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.youtube.com/" class="youtube">
-                                    <svg><rect width="0" height="0"/></svg>
-                                    <i class="ion-social-youtube-outline"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://web.dev/googleplus/" class="googleplus">
-                                    <svg><rect width="0" height="0"/></svg>
-                                    <i class="ion-social-googleplus"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/" class="instagram">
-                                    <svg><rect width="0" height="0"/></svg>
-                                    <i class="ion-social-instagram-outline"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.tumblr.com/explore/trending?source=homepage_explore" class="tumblr">
-                                    <svg><rect width="0" height="0"/></svg>
-                                    <i class="ion-social-tumblr"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://dribbble.com/" class="dribbble">
-                                    <svg><rect width="0" height="0"/></svg>
-                                    <i class="ion-social-dribbble"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://kr.linkedin.com/" class="linkedin">
-                                    <svg><rect width="0" height="0"/></svg>
-                                    <i class="ion-social-linkedin"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://skype.daesung.com/main.asp" class="skype">
-                                    <svg><rect width="0" height="0"/></svg>
-                                    <i class="ion-social-skype"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.weather.go.kr/w/pop/rss-guide.dohtml" class="rss">
-                                    <svg><rect width="0" height="0"/></svg>
-                                    <i class="ion-social-rss"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
 
         </div>
         <div class="row">

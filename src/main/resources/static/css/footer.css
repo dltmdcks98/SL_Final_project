@@ -6,3 +6,7 @@ footer address {
     padding: 80px;
     color: white;
 }
+footer .row{
+    flex-direction: row;
+    justify-content: space-between;
+}

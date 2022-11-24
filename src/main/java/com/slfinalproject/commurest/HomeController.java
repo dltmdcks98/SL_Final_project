@@ -3,7 +3,6 @@ package com.slfinalproject.commurest;
 
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.service.BoardService;
-import com.slfinalproject.commurest.reply.service.ReplyService;
 import com.slfinalproject.commurest.tag.dto.TagList;
 import com.slfinalproject.commurest.tag.service.TagService;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +20,6 @@ public class HomeController {
 
     private final TagService tagService;
     private final BoardService boardService;
-    private final ReplyService replyService;
     @GetMapping("/")
     public String home(HttpSession session, Model model){
         List<TagList> getTagList = tagService.getHotTag();

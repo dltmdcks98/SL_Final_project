@@ -12,7 +12,7 @@
 
 <!-- header css -->
 <link rel="stylesheet" href="/css/header.css">
-
+<link rel="stylesheet" href="/css/footer.css">
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
