@@ -26,7 +26,7 @@ public class HomeController {
         session.setAttribute("hotTagList",getTagList);
 
         List<Board> getHitBoard = boardService.getHitBoard();
-        model.addAttribute("hitBoard",getHitBoard);
+        session.setAttribute("hitBoard",getHitBoard);
 
         List<Board> getHotReplyBoard = boardService.getHotReplyBoard();
         model.addAttribute("hotReplyBoard",getHotReplyBoard);
