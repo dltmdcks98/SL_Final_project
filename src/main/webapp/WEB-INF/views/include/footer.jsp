@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="block">
-                    <h1 class="block-title">회사 소개</h1>
+                    <h1 class="block-title">프로젝트 소개</h1>
                     <div class="block-body">
                         <figure class="foot-logo">
                             <img src="/img/logo-light.png" class="img-responsive" alt="Logo">
@@ -24,7 +24,7 @@
                     <div class="block-body">
                         <ul class="tags">
                             <c:forEach var="TagList" items="${hotTagList}">
-                                <li><a href="#"><c:out value="${TagList.tagValue}"/></a></li>
+                                <li><a href="/gallery/search-tag?tag=${TagList.tagValue}"><c:out value="${TagList.tagValue}"/></a></li>
                             </c:forEach>
                         </ul>
                     </div>
@@ -39,9 +39,8 @@
                             <div class="inner">
                                 <c:forEach var="Board" items="${hitBoard}">
                                     <div onclick="location.href='/board/content/${Board.boardNo}'">
-                                        <div class="title"><c:out value="${Board.title}"/></div>
-                                        <div class="writer"><c:out value="${Board.userName}"/></div>
-
+                                        <span class="title"><c:out value="${Board.title}"/></span>
+                                        <span class="writer"><c:out value="${Board.userName}"/></span>
                                     </div>
                                 </c:forEach>
                             </div>

@@ -10,3 +10,18 @@ footer .row{
     flex-direction: row;
     justify-content: space-between;
 }
+.article-mini .inner div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.article-mini .inner div:hover{
+    border: #F73F52 1px solid;
+    color: #FFFFFF;
+}
+
+.article-mini .inner div .title{
+    font-size: 2rem;
+    font-weight: 600;
+}

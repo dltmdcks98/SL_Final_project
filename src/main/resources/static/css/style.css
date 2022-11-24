@@ -3181,10 +3181,11 @@ footer.footer .copyright div i {
     padding: 0 3px;
 }
 footer.footer .article-mini {
-    margin-bottom: 23px;
+    /*margin-bottom: 23px;*/
 }
 footer.footer .article-mini .inner {
     border-bottom: 0;
+
 }
 footer.footer .article-mini h1 {
     font-size: 14px;

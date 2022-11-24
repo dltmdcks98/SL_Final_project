@@ -89,7 +89,7 @@
 
 <!--    인기글 조회  -->
     <select id="getHitBoard" resultMap="boardMap">
-        SELECT * FROM board WHERE hit>5 ORDER BY hit DESC
+        SELECT * FROM board WHERE hit>5 ORDER BY hit DESC LIMIT 0,5
     </select>
 
     <select id="findMemberByBoardNo" resultType="string">
