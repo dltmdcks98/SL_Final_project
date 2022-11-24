@@ -100,12 +100,13 @@ button:hover {
 
 .row-content {
     display: flex;
-    width: 60%;
+    width: 100%;
     margin: 3% auto 3%;
 }
 
 .recommend {
-    width: 100%;
+    width: 60%;
+    margin: 0 auto;
 }
 
 .card {
