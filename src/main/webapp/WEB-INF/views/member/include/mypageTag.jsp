@@ -56,12 +56,12 @@ function makeDOM(destination,tagValue,imgUrl){
 
 function eventHandler() {
       document.querySelector('.tag-contain').onclick = e => {
-          console.log('e.target:', e.target);
+
           if (e.target.matches('.tag-item')) {
               toGallery(e);
               e.stopPropagation();
           } else if (e.target.matches('svg') || e.target.matches('path')){
-              console.log('del-event');
+
               delTag(e.target.closest('span'));
               e.stopPropagation();
           }
@@ -70,7 +70,7 @@ function eventHandler() {
 
 
 function delTag(e){
-    console.log(e.dataset.tag);
+
     const URL = '/ajax-tag/tag-delete/'+e.dataset.tag;
     fetch(URL)
         .then(res => res.text())

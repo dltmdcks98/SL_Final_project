@@ -22,8 +22,8 @@
 .tag-item{
     display: flex;
     position: relative;
-    width: 15rem;
-    height: 10rem;
+    width: 20rem;
+    height: 15rem;
     margin-right: 3rem;
     padding: 0.7rem;
     margin-bottom: 2rem;
@@ -41,10 +41,13 @@
     width: 100%;
     height: 100%;
     background: #000000;
-    opacity: 0.5;
+    opacity: 0.3;
 
 }
-
+svg{
+    width: 2rem;
+    height: 2rem;
+}
 .tag-item:hover::before{
     opacity: 0;
     transition: 0.5s;
