@@ -67,7 +67,7 @@ button:hover {
 }
 
 .content {
-    margin: 0% auto 5%;
+    margin: 0 auto 5%;
     width: 60%;
     height: auto;
     border-radius: 5px;
@@ -79,8 +79,8 @@ button:hover {
 }
 .img-sizing {
     display: block;
-    width: 50%;
-    height: 50%;
+    width: 5%;
+    height: 5%;
 }
 .comments-list * {
     margin: 2% 0.2%;

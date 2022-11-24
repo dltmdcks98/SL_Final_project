@@ -50,5 +50,8 @@ public interface BoardMapper {
     // 게시물 파일경로 조회
     List<String> fileNames(int bno);
 
+    // 이미지가 들어가있는 최신 게시글 조회하기
+    List<Board> findNewImage();
+
 
 }

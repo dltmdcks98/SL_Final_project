@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<!DOCTYPE html>
 <html>
 <head>
     <%@ include file="./include/static-head.jsp" %>
@@ -101,69 +102,29 @@
                         </div>
                     </div>
                     <div class="line top">
-                        <div>Just Another News</div>
+                        <div>이미지 게시글</div>
                     </div>
+                    <c:forEach var="b" items="${findNewImage}">
                     <div class="row">
                         <article class="col-md-12 article-list">
                             <div class="inner">
                                 <figure>
-                                    <a href="#">
-                                        <img src="/img/news/img11.jpg" alt="Sample Article">
-                                    </a>
+                                    <img src="/img/news/img11.jpg" alt="Sample Article">
                                 </figure>
                                 <div class="details">
                                     <div class="detail">
                                         <div class="category">
-                                            <a href="#">Film</a>
+                                            <a href="/board">NEW</a>
                                         </div>
-                                        <div class="time">December 19, 2016</div>
                                     </div>
-                                    <h1><a href="#">Donec consequat arcu at ultrices sodales quam erat aliquet diam</a></h1>
-                                    <p>
-                                        Donec consequat, arcu at ultrices sodales, quam erat aliquet diam, sit amet interdum libero nunc accumsan nisi.
-                                    </p>
-                                    <footer>
-                                        <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>273</div></a>
-                                        <a class="btn btn-primary more" href="#">
-                                            <div>More</div>
-                                            <div><i class="ion-ios-arrow-thin-right"></i></div>
-                                        </a>
-                                    </footer>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="col-md-12 article-list">
-                            <div class="inner">
-                                <div class="badge">
-                                    Sponsored
-                                </div>
-                                <figure>
-                                    <a href="#">
-                                        <img src="/img/news/img02.jpg" alt="Sample Article">
-                                    </a>
-                                </figure>
-                                <div class="details">
-                                    <div class="detail">
-                                        <div class="category">
-                                            <a href="#">Travel</a>
-                                        </div>
-                                        <div class="time">December 18, 2016</div>
-                                    </div>
-                                    <h1><a href="#">Maecenas accumsan tortor ut velit pharetra mollis</a></h1>
-                                    <p>
-                                        Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat sollicitudin ut est. In fringilla dui.
-                                    </p>
-                                    <footer>
-                                        <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>4209</div></a>
-                                        <a class="btn btn-primary more" href="#">
-                                            <div>More</div>
-                                            <div><i class="ion-ios-arrow-thin-right"></i></div>
-                                        </a>
-                                    </footer>
+                                    <h1><a href="/board/content/${b.boardNo}">${b.title}</a></h1>
+
                                 </div>
                             </div>
                         </article>
                     </div>
+                    </c:forEach>
+
                 </div>
 
 

@@ -14,7 +14,7 @@
 
         location.href = '/board?pageNum=${p.pageNum}&amount=${p.amount}';
     };
-
+if($editBtn) {
     //수정버튼
     $editBtn.onclick = e => {
         if ($editBtn !== null) {
@@ -22,7 +22,9 @@
         }
 
     };
+}
 
+    if($delBtn) {
     //삭제버튼
     $delBtn.onclick = e => {
         if ($delBtn !== null) {
@@ -30,4 +32,5 @@
         }
 
     };
+    }
 </script>

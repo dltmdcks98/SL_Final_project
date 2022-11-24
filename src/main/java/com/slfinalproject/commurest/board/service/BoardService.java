@@ -177,6 +177,15 @@ public class BoardService {
         return boardMapper.fileNames(bno);
     }
 
+//====================================================================================================================//
+
+    // 최근에 쓴 이미지가 들어간 게시글 출력
+
+    public List<Board> findNewImage() {
+        return boardMapper.findNewImage();
+    }
+
+
 
 
 

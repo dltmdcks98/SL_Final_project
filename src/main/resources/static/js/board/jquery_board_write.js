@@ -43,7 +43,7 @@ $(document).ready(function () {
             $img.setAttribute('alt', originFileName);
 
             $a.append($img);
-            $a.innerHTML += '<span>' + originFileName + '</span';
+            $a.innerHTML += '<span>' + originFileName + '</span>';
 
             $('.uploaded-list').append($a);
 
@@ -117,7 +117,7 @@ $(document).ready(function () {
         };
         fetch('/ajax-upload', reqInfo)
             .then(res => {
-                //console.log(res.status);
+                console.log(res.status);
                 return res.json();
             })
             .then(fileNames => {

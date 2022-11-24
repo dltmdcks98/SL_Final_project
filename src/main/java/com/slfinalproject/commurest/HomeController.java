@@ -32,6 +32,10 @@ public class HomeController {
 
         List<Board> getHotReplyBoard = boardService.getHotReplyBoard();
         model.addAttribute("hotReplyBoard",getHotReplyBoard);
+
+        List<Board> findNewImage = boardService.findNewImage();
+        model.addAttribute("findNewImage", findNewImage);
+
         return "index";
 
     }

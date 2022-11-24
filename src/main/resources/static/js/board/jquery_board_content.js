@@ -9,6 +9,7 @@ $(document).ready(function () {
     // 파일의 확장자에 따른 렌더링 처리
     function checkExtType(fileName) {
 
+        console.log('checkExtType call');
         //원본 파일 명 추출
         let originFileName = fileName.substring(fileName.indexOf("_") + 1);
 
@@ -34,7 +35,7 @@ $(document).ready(function () {
             $img.setAttribute('alt', originFileName);
 
             $a.append($img);
-            $a.innerHTML += '<span>' + originFileName + '</span';
+            $a.innerHTML += '<span>' + originFileName + '</span>';
 
             $('.uploaded-list').append($a);
 
@@ -56,9 +57,13 @@ $(document).ready(function () {
 
     // 파일 목록 불러오기
     function showFileList() {
-        fetch('/board/file/' + bno)
+
+        console.log('showfilelist call')
+
+        fetch('/board/file/'+bno)
             .then(res => res.json())
             .then(fileNames => {
+                console.log('respons filelist');
                 showFileData(fileNames);
             });
     }
