@@ -31,10 +31,16 @@ public class AdminController {
     // 로그인페이지
     @GetMapping("/login")
     public String login(HttpServletRequest request) {
-        String refer = request.getHeader("Referer");
+        String refer = request.getHeader("Referer").substring(21);
+        if(refer.equals("/login")){
+            return (String) request.getSession().getAttribute("redirectURI");
+        }
         request.getSession().setAttribute("redirectURI", refer);
-        log.info("GET -로그인 시도 refer : {}",refer);
-        return "member/login";
+        if(request.getSession().getAttribute("user")==null){
+            log.info("GET -로그인 시도 refer : {}",refer);
+            return "member/login";
+        }
+        return refer;
     }
     @GetMapping("/login_success")
     public String loginSuccess(HttpSession session) {
@@ -45,10 +51,10 @@ public class AdminController {
             session.setAttribute("user", user);
             log.info("세션에 넣은 값 확인 - " + user);
         }
-        String url =redirectURI.substring(21);
-        log.info(url);
 
-        return "redirect:"+url;
+        log.info(redirectURI);
+
+        return "redirect:"+redirectURI;
 
     }
 

@@ -10,4 +10,5 @@ import lombok.*;
 public class TagList {
     private String tagValue;
     private int count;
+
 }

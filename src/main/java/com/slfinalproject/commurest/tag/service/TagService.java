@@ -37,8 +37,11 @@ public class TagService {
     public boolean setTagValueByUserId(String value ,int userId){
         return tagMapper.setTagValueByUserId(value,userId);
     }
-
+    public boolean deleteTag(int userId, String tagValue){
+        return tagMapper.deleteTag(userId,tagValue);
+    };
     public List<TagList> getHotTag(){
         return tagMapper.getHotTag();
     }
+    public List<TagList> getHotTagByUser(){return tagMapper.getHotTagByUser();}
 }

@@ -1,6 +1,6 @@
 .tag-group{
     width: 100%;
-    background: #00AFF0;
+    /*background: #00AFF0;*/
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -8,32 +8,30 @@
 }
 
 .registed-tag{
-
-    background:red;
-
+    /*background:red;*/
 }
 
 .popular-tag{
-
-    background: yellow;
+    /*background: yellow;*/
 }
 
 .input-tag{
-
-    background: purple;
+    /*background: purple;*/
 }
 
 .tag-item{
     display: flex;
     position: relative;
-    width: 15rem;
-    height: 10rem;
+    width: 20rem;
+    height: 15rem;
     margin-right: 3rem;
     padding: 0.7rem;
     margin-bottom: 2rem;
+    border-radius: 1rem;
 
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 .tag-item::before{
     content: '';
@@ -43,12 +41,16 @@
     width: 100%;
     height: 100%;
     background: #000000;
-    opacity: 0.5;
-    border-radius: 1rem;
-}
+    opacity: 0.3;
 
-.tag-item::before:hover{
+}
+svg{
+    width: 2rem;
+    height: 2rem;
+}
+.tag-item:hover::before{
     opacity: 0;
+    transition: 0.5s;
 }
 .tag-item-delete{
     position: absolute;
@@ -58,4 +60,34 @@
 .tag-item-value{
     font-weight: bold;
     color: #FFFFFF;
+}
+
+.input-tag-contain{
+    display: flex;
+    width: 100%;
+    height: 4rem;
+    border-radius: 2rem;
+    overflow: hidden;
+    background: #76767654;
+}
+.input-icon{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-left: 1rem;
+}
+.input-tag{
+    height: 100%;
+    width: 100%;
+    font-weight: 700;
+    color: #333;
+    background: none;
+    border: none;
+    padding-left: 1rem;
+}
+.input-tag:focus {
+    outline: none;
+}
+.input-tag:focus::placeholder{
+    opacity: 0;
 }

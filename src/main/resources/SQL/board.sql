@@ -70,3 +70,4 @@ SELECT * FROM board WHERE hit>5 ORDER BY hit DESC;
 SELECT user_name FROM user_account WHERE user_id=(
     SELECT user_id FROM board WHERE board_no=131
     );
+
