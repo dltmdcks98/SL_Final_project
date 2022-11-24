@@ -11,7 +11,7 @@
         <result property="regDate" column="reg_date"/>
         <result property="recommend" column="recommend"/>
         <result property="userName" column="user_name"/>
-<!--        <result property="replyCount" column="replyCount"/>-->
+        <result property="fileName" column="file_name"/>
     </resultMap>
 
 
@@ -77,11 +77,11 @@
         INSERT INTO file_upload
         (file_name, bno)
         VALUES
-        (#{fileName},  LAST_INSERT_ID())
+        (#{fileName}, LAST_INSERT_ID())
 
     </insert>
 
-    <select id="findFileNames" resultType="string">
+    <select id="fileNames" resultType="string">
         SELECT file_name
         FROM file_upload
         WHERE bno = #{bno}

@@ -74,28 +74,17 @@
 
 
 </div>
-<script>
-
-    document.myForm.addEventListener("keydown", evt => {
-        if ((evt.keyCode || evt.which) === 13) {
-            evt.preventDefault();
-        }
-    });
-</script>
     <%@ include file="../include/footer.jsp" %>
 
 
+<%--<script>--%>
 
-</div>
-
-<script>
-
-    document.myForm.addEventListener("keydown", evt => {
-        if ((evt.keyCode || evt.which) === 13) {
-            evt.preventDefault();
-        }
-    });
-</script>
+<%--    document.myForm.addEventListener("keydown", evt => {--%>
+<%--        if ((evt.keyCode || evt.which) === 13) {--%>
+<%--            evt.preventDefault();--%>
+<%--        }--%>
+<%--    });--%>
+<%--</script>--%>
 
 
 </body>

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/board/board_content.css">
     <script src="/js/board/contentTag.js" defer></script>
 
+    <script src="/js/board/jquery_board_content.js" defer ></script>
 </head>
 <body>
 <%@ include file="../include/header.jsp" %>
@@ -41,6 +42,22 @@
                 <a href="/gallery/search-tag?tag=${tag}"><div class="tagList">#<c:out value="${tag}"/></div></a>
             </c:forEach>
         </div>
+
+
+    <!-- 파일 업로드 영역 begin -->
+    <div class="form-group">
+        <ul class="uploaded-list"></ul>
+    </div>
+    <!-- 파일 업로드 영역 end -->
+
+    <div class="comments-list">
+        <button id="list-btn" type="button">목록</button>
+        <c:if test="${user.user_id == b.userId}">
+            <button id="edit-btn" type="button">수정</button>
+            <button id="del-btn" type="button">삭제</button>
+        </c:if>
+
+    </div>
 
 
 

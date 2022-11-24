@@ -1,4 +1,3 @@
-// start JQuery
 $(document).ready(function () {
 
     function isImageFile(originFileName) {
@@ -40,7 +39,7 @@ $(document).ready(function () {
 
             const $img = document.createElement('img');
             $img.classList.add('img-sizing');
-            $img.setAttribute('src', '/img/file_icon.jpg');
+            $img.setAttribute('src', '/img/hot_png');
             $img.setAttribute('alt', originFileName);
 
             $a.append($img);
@@ -130,4 +129,3 @@ $(document).ready(function () {
     });
 
 });
-// end jQuery

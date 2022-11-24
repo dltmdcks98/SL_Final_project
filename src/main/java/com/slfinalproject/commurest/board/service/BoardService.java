@@ -84,7 +84,7 @@ public class BoardService {
         findDataMap.put("tc", boardMapper.getTotalCount());
         return findDataMap;
     }
-// 나의 게시글 조회
+    // 나의 게시글 조회
     public Map<String, Object> findAllServiceByUserId(Page page,int userId) {
 
         Map<String, Object> findDataMap = new HashMap<>();
