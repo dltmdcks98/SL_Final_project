@@ -26,7 +26,7 @@ public class TagRestController {
 
     @GetMapping("/popular-tag")
     public List<TagList> getPopularTag(){
-        List<TagList> hotTag = tagService.getHotTag();
+        List<TagList> hotTag = tagService.getHotTagByUser();
         return hotTag;
     }
     @GetMapping("/user-tag")
@@ -37,8 +37,17 @@ public class TagRestController {
     }
     @GetMapping("/tag-delete/{tagvalue}")
     public String deleteTag(@PathVariable("tagvalue")String tag,HttpSession session){
-        boolean result = tagService.deleteTag((int) session.getAttribute("user"),tag);
+        Admin admin = (Admin) session.getAttribute("user");
+        log.info(admin.getUser_id());
+        boolean result = tagService.deleteTag(admin.getUser_id(),tag);
         log.info(result);
         return result ? "success-delete" : "fail-delete";
+    }
+    @GetMapping("/tag-regist/{tagValue}")
+    public String registTag(@PathVariable("tagValue")String tagValue, HttpSession session){
+        Admin admin = (Admin) session.getAttribute("user");
+        int userId = admin.getUser_id();
+        boolean result = tagService.setTagValueByUserId(tagValue,userId);
+        return result ? "success-insert" : "fail-insert";
     }
 }

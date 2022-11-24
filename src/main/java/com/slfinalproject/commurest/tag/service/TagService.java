@@ -43,4 +43,5 @@ public class TagService {
     public List<TagList> getHotTag(){
         return tagMapper.getHotTag();
     }
+    public List<TagList> getHotTagByUser(){return tagMapper.getHotTagByUser();}
 }

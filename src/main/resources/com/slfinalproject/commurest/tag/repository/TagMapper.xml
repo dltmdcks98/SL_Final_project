@@ -33,11 +33,11 @@
     </insert>
 
     <insert id="setTagValueByBoardNo">
-        INSERT INTO tag(tag_value,board_no) VALUES (#{tagValue},#{boardNo})
+        INSERT INTO tag(tag_value,board_no) VALUES (REPLACE(#{tagValue},' ', ''),#{boardNo})
     </insert>
 
     <insert id="setTagValueByUserId">
-        INSERT INTO tag(tag_value,user_id) VALUES (#{tagValue},${userId})
+        INSERT INTO tag(tag_value,user_id) VALUES (REPLACE(#{tagValue}, ' ', ''),${userId})
     </insert>
 
     <select id="getBoardNo" resultType="int">
@@ -48,7 +48,12 @@
         SELECT tag_value, count(*) as count FROM tag WHERE user_id IS NULL GROUP BY tag_value ORDER BY count DESC LIMIT 0,6
     </select>
 
+    <select id="getHotTagByUser" resultMap="hotTag">
+        SELECT tag_value, count(*) AS count FROM tag WHERE board_no IS NULL GROUP BY tag_value ORDER BY count DESC LIMIT 0,6
+    </select>
+
     <delete id="deleteTag">
         DELETE FROM tag WHERE user_id=#{userId} AND tag_value=#{tagValue}
     </delete>
+
 </mapper>
