@@ -63,28 +63,24 @@
 
                 <div class="row">
 
-
                     <div>
                         <nav class="page">
                             <ul class="pagination pagination-lg pagination-custom">
 
-                                <c:if test="${pageMaker.prev}">
-                                    <li class="page-item"><a class="page-link"
-                                                             href="/board?pageNum=${pageMaker.beginPage - 1}&amount=${pageMaker.page.amount}">◀</a>
+                                <c:if test="${myBoardPageMaker.prev}">
+                                    <li class="page-item"><a class="page-link" href="/mypage/myposting?pageNum=${myBoardPageMaker.beginPage - 1}&amount=${myBoardPageMaker.page.amount}">◀</a>
                                     </li>
                                 </c:if>
 
 
-                                <c:forEach var="n" begin="${pageMaker.beginPage}" end="${pageMaker.endPage}" step="1">
+                                <c:forEach var="n" begin="${myBoardPageMaker.beginPage}" end="${myBoardPageMaker.endPage}" step="1">
                                     <li data-page-num="${n}" class="page-item">
-                                        <a class="page-link"
-                                           href="/board?pageNum=${n}&amount=${pageMaker.page.amount}">${n}</a>
+                                        <a class="page-link" href="/mypage/myposting?pageNum=${n}&amount=${myBoardPageMaker.page.amount}">${n}</a>
                                     </li>
                                 </c:forEach>
 
-                                <c:if test="${pageMaker.next}">
-                                    <li class="page-item"><a class="page-link"
-                                                             href="/board?pageNum=${pageMaker.endPage + 1}&amount=${pageMaker.page.amount}">▶</a>
+                                <c:if test="${myBoardPageMaker.next}">
+                                    <li class="page-item"><a class="page-link" href="/mypage/myposting?pageNum=${myBoardPageMaker.endPage + 1}&amount=${myBoardPageMaker.page.amount}">▶</a>
                                     </li>
                                 </c:if>
 
@@ -104,12 +100,11 @@
 <%@include file="../include/footer.jsp" %>
 </body>
 <script>
-
     //현재 위치한 페이지에 active 스타일 부여하기
     function appendPageActive() {
 
         // 현재 내가 보고 있는 페이지 넘버
-        const curPageNum = '${pageMaker.page.pageNum}';
+        const curPageNum = '${myBoardPageMaker.page.pageNum}';
         console.log("현재페이지: ", curPageNum);
 
         // 페이지 li태그들을 전부 확인해서
@@ -126,21 +121,8 @@
 
     }
 
-    // 옵션태그 고정
-    function fixSearchOption() {
-        const $select = document.getElementById('search-type');
-
-        for (let $opt of [...$select.children]) {
-            if ($opt.value === '${s.type}') {
-                $opt.setAttribute('selected', 'selected');
-                break;
-            }
-        }
-    }
-    (function () {
+    (function (){
         appendPageActive();
-        fixSearchOption();
-
     })();
 
 </script>

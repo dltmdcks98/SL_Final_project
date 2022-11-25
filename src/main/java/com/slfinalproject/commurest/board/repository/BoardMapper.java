@@ -1,7 +1,6 @@
 package com.slfinalproject.commurest.board.repository;
 
 import com.slfinalproject.commurest.board.domain.Board;
-import com.slfinalproject.commurest.board.dto.ValidateMemberDTO;
 import com.slfinalproject.commurest.util.paging.Page;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -29,7 +28,7 @@ public interface BoardMapper {
     int getTotalCount();
 
     // 내 게시물 수 조회
-    int getTotalCountByUserId();
+    int getTotalCountByUserId(int userId);
 
 
     // 게시글 한건 수정

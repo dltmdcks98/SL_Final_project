@@ -85,14 +85,15 @@ public class BoardService {
         return findDataMap;
     }
     // 나의 게시글 조회
-    public Map<String, Object> findAllServiceByUserId(Page page,int userId) {
+    public Map<String, Object> findAllServiceByUserId(Page page, int userId) {
 
         Map<String, Object> findDataMap = new HashMap<>();
         List<Board> boardList = boardMapper.selectAllByUserId(page, userId);
-
+        int total = boardMapper.getTotalCountByUserId(userId);
+        log.info("total test : {}",total);
         process(boardList);
-        findDataMap.put("bList", boardList);
-        findDataMap.put("tc", boardMapper.getTotalCountByUserId());
+        findDataMap.put("myBoardList", boardList);
+        findDataMap.put("myBoardTotalCount", total);
         return findDataMap;
     }
 

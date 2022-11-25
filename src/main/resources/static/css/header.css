@@ -10,6 +10,11 @@ header {
     bottom: 0;
     left: 0;
 }
+
+.firstbar .container .row{
+    align-items: center;
+}
+
 .inner-header {
     margin: 20px auto;
     float: left;

@@ -13,7 +13,7 @@ public class Page {
     private int amount; // 페이지당 나올 게시물 개수
     public Page() {
         this.pageNum=1;
-        this.amount=20;
+        this.amount=10;
     }
     public int getStart() {
         return (pageNum-1)*amount;
@@ -25,15 +25,13 @@ public class Page {
         }
         this.pageNum=pageNum;
     }
-    /*
     public void setAmount(int amount) {
-        if(amount <20 || amount >100) {
-            this.amount=20;
+        if(amount <10 || amount >100) {
+            this.amount=10;
             return;
         }
         this.amount=amount;
     }
-     */
 
 }
 

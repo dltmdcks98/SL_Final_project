@@ -35,7 +35,7 @@
         SELECT * from board
         WHERE user_id = #{userId}
         ORDER BY board_no DESC
-        LIMIT 0, 10
+        LIMIT #{page.start}, #{page.amount}
     </select>
 
 

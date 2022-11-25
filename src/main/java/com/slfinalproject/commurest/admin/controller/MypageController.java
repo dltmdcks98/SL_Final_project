@@ -3,7 +3,6 @@ package com.slfinalproject.commurest.admin.controller;
 
 import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.admin.service.AdminService;
-import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.service.BoardService;
 import com.slfinalproject.commurest.reply.service.ReplyService;
 import com.slfinalproject.commurest.util.paging.Page;
@@ -11,18 +10,12 @@ import com.slfinalproject.commurest.util.paging.PageMaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 
@@ -33,11 +26,10 @@ public class MypageController {
     @Autowired
     private final AdminService adminService;
 
-@Autowired
-private final BoardService boardService;
 
-@Autowired
-private final ReplyService replyService;
+    private final BoardService boardService;
+
+    private final ReplyService replyService;
 
     // 마이페이지 요청
     @GetMapping("/mypage")
@@ -49,9 +41,9 @@ private final ReplyService replyService;
 
         PageMaker pageMaker = new PageMaker(
                 new Page(page.getPageNum(), page.getAmount())
-                , (Integer) boardMap.get("tc"));
+                , (Integer) boardMap.get("myBoardTotalCount"));
         log.info("페이지 정보 : {}",pageMaker);
-        model.addAttribute("bList", boardMap.get("bList"));
+        model.addAttribute("bList", boardMap.get("myBoardList"));
         model.addAttribute("rList", replies.get("rList"));
         model.addAttribute("pageMaker", pageMaker);
 
@@ -62,15 +54,15 @@ private final ReplyService replyService;
     // 내가쓴글 페이지 요청
     @GetMapping("/mypage/myposting")
     public String myPosting(@ModelAttribute("p") Page page, Model model, HttpSession session) {
-        Admin admin = adminService.setLoginSession(session);
+        Admin admin = (Admin) session.getAttribute("user");
         Map<String, Object> boardMap = boardService.findAllServiceByUserId(page, admin.getUser_id());
 
         PageMaker pageMaker = new PageMaker(
                 new Page(page.getPageNum(), page.getAmount())
-                , (Integer) boardMap.get("tc"));
+                , (int) boardMap.get("myBoardTotalCount"));
         log.info("페이지 정보 : {}",pageMaker);
-        model.addAttribute("bList", boardMap.get("bList"));
-        model.addAttribute("pageMaker", pageMaker);
+        model.addAttribute("bList", boardMap.get("myBoardList"));
+        model.addAttribute("myBoardPageMaker", pageMaker);
 
         return "member/myPosting";
     }
