@@ -1,7 +1,6 @@
 package com.slfinalproject.commurest.board.domain;
 
 
-import com.slfinalproject.commurest.tag.domain.Tag;
 import lombok.*;
 
 import java.sql.ResultSet;
@@ -42,6 +41,9 @@ public class Board {
 
    // 첨부파일들의 이름 목록
    private List<String> fileNames;
+
+   // 첨부파일의 이름 검색하기
+   private String fileName;
 
    private String tagValue;
 

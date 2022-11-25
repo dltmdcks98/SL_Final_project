@@ -20,3 +20,4 @@ ALTER TABLE file_upload
 
 select * from file_upload order by reg_date desc;
 select * from board;
+select * from file_upload order by file_name limit 3;

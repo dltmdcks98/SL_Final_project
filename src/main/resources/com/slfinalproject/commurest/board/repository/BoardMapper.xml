@@ -45,23 +45,35 @@
     </select>
 
 
+    <!-- sql 코드 조각 (반복되는 sql의 일부를 sql 태그를 이용하여 따로 빼버림 -->
+    <sql id="search">
+        <if test="type=='title'">WHERE title LIKE CONCAT('%', #{keyword}, '%')</if>
+        <if test="type=='userName'">WHERE user_name LIKE CONCAT('%', #{keyword}, '%')</if>
+        <if test="type=='content'">WHERE content LIKE CONCAT('%', #{keyword}, '%')</if>
+        <if test="type=='tc'">
+            WHERE title LIKE CONCAT('%', #{keyword}, '%')
+            OR content LIKE CONCAT('%', #{keyword}, '%')
+        </if>
+    </sql>
 
-    <!--한건 등록-->
+    <!-- 한건 등록-->
     <insert id="insert">
         INSERT INTO board
         (title, content, user_id)
         VALUES (#{title}, #{content}, #{userId})
     </insert>
-    <!--전체조회-->
+
+    <!-- 전체조회-->
     <select id="selectAll" resultMap="boardMap">
         SELECT A.board_no, A.user_id, A.title, A.reg_date, A.hit, A.recommend, B.user_name
         FROM board A
         JOIN user_account B ON A.user_id = B.user_id
+        <include refid="search"/>
         ORDER BY board_no DESC
         LIMIT #{start}, 20
     </select>
 
-<!--  나의 게시글 조회-->
+    <!-- 나의 게시글 조회-->
     <select id="selectAllByUserId" resultMap="boardMap">
         SELECT * from board
         WHERE user_id = #{userId}
@@ -71,38 +83,48 @@
 
 
 
-    <!--한건 조회-->
+    <!-- 한건 조회-->
     <select id="selectOne" resultMap="boardMap">
         select * from board where board_no = #{boardNo}
     </select>
 
-    <!--전체 게시글 수-->
+    <!-- 전체 게시글 수-->
     <select id="getTotalCount" resultType="int">
-        SELECT COUNT(*) FROM board
+        SELECT COUNT(A.board_no)  FROM board A
+        JOIN user_account B ON A.user_id= B.user_id
+        <if test="keyword != null">
+            <if test="type=='title'">WHERE A.title LIKE CONCAT('%', #{keyword}, '%')</if>
+            <if test="type=='userName'">WHERE B.user_name LIKE CONCAT('%', #{keyword}, '%')</if>
+            <if test="type=='content'">WHERE A.content LIKE CONCAT('%', #{keyword}, '%')</if>
+            <if test="type=='tc'">
+                WHERE A.title LIKE CONCAT('%', #{keyword}, '%')
+                OR A.content LIKE CONCAT('%', #{keyword}, '%')
+            </if>
+        </if>
     </select>
 
-<!--   나의 게시글 수 -->
+    <!-- 나의 게시글 수 -->
     <select id="getTotalCountByUserId" resultType="int">
         SELECT COUNT(*) FROM board where user_id=#{userId}
     </select>
 
-    <!--게시글 삭제-->
+    <!-- 게시글 삭제-->
     <delete id="remove">
         delete from board where board_no = #{boardNo}
     </delete>
 
-    <!--게시글 수정-->
+    <!-- 게시글 수정-->
     <update id="edit">
         update board set user_id = #{userId}, title = #{title}, content = #{content}
         where board_no = #{boardNo}
     </update>
 
-    <!--조회수 갱신-->
+    <!-- 조회수 갱신-->
     <update id="hitCount">
         update board set hit= hit+1 where board_no= #{boardNo}
     </update>
 
-    <!--  첨부파일 추가  -->
+    <!-- 첨부파일 추가  -->
     <insert id="addFile">
 
         INSERT INTO file_upload
@@ -112,13 +134,14 @@
 
     </insert>
 
+    <!-- 파일목록 가져오기 -->
     <select id="fileNames" resultType="string">
         SELECT file_name
         FROM file_upload
         WHERE bno = #{bno}
     </select>
 
-<!--    인기글 조회  -->
+    <!-- 인기글 조회  -->
     <select id="getHitBoard" resultMap="boardMap">
         SELECT * FROM board WHERE hit>5 ORDER BY hit DESC LIMIT 0,5
     </select>
@@ -128,4 +151,13 @@
             SELECT user_id FROM board WHERE board_no=#{boardNo}
         )
     </select>
+
+    <!-- 이미지가 들어가있는 최신 게시글 조회하기 -->
+    <select id="findNewImage" resultMap="boardMap">
+        SELECT DISTINCT A.board_no, A.title, B.bno, B.file_name
+        FROM board A
+        JOIN file_upload B ON A.board_no = B.bno
+        ORDER BY  board_no DESC limit 3
+    </select>
+
 </mapper>

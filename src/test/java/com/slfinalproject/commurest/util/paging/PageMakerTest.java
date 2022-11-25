@@ -13,6 +13,7 @@ class PageMakerTest {
     @Autowired
     BoardMapper boardMapper;
 
+    /*
     @Test
     void pageInfoTest() {
 
@@ -22,5 +23,7 @@ class PageMakerTest {
         System.out.println(pageMaker);
     }
 
+
+     */
 
 }

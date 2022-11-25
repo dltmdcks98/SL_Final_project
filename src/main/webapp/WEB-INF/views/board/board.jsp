@@ -42,40 +42,40 @@
                                 </tr>
                                 </thead>
 
-                                <tbody>
-                                <c:forEach var="b" items="${bList}">
-                                    <tr onclick="location.href='/board/content/${b.boardNo}?pageNum=${p.pageNum}&amount=${p.amount}'" >
-                                        <td>${b.boardNo}</td>
-                                        <td>${b.userName}</td>
-                                        <td class="title">${b.title} <c:if test="${b.replyCnt != 0}">[${b.replyCnt}]</c:if>
-                                        </td>
-                                        <td>${b.simpleDate}</td>
-                                        <td>${b.hit}</td>
-                                        <td>${b.recommend}</td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
+                                    <tbody>
+                                    <c:forEach var="b" items="${bList}">
+                                        <tr onclick="location.href='/board/content/${b.boardNo}?pageNum=${s.pageNum}&amount=${s.amount}'" >
+                                            <td>${b.boardNo}</td>
+                                            <td>${b.userName}</td>
+                                            <td class="title">${b.title} <c:if test="${b.replyCnt != 0}">[${b.replyCnt}]</c:if>
+                                            </td>
+                                            <td>${b.simpleDate}</td>
+                                            <td>${b.hit}</td>
+                                            <td>${b.recommend}</td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <nav class="page">
-                            <ul class="pagination pagination-lg pagination-custom">
+                        <div>
+                            <nav class="page">
+                                <ul class="pagination pagination-lg pagination-custom">
 
-                                <c:if test="${pageMaker.prev}">
-                                    <li class="page-item"><a class="page-link" href="/board?pageNum=${pageMaker.beginPage - 1}&amount=${pageMaker.page.amount}">◀</a></li>
-                                </c:if>
+                                    <c:if test="${pageMaker.prev}">
+                                        <li class="page-item"><a class="page-link" href="/board?pageNum=${pageMaker.beginPage - 1}&amount=${pageMaker.page.amount}&type=${s.type}&keyword=${s.keyword}">◀</a></li>
+                                    </c:if>
 
 
-                                <c:forEach var="n" begin="${pageMaker.beginPage}" end="${pageMaker.endPage}" step="1">
-                                    <li data-page-num="${n}" class="page-item">
-                                        <a class="page-link" href="/board?pageNum=${n}&amount=${pageMaker.page.amount}">${n}</a>
-                                    </li>
-                                </c:forEach>
+                                    <c:forEach var="n" begin="${pageMaker.beginPage}" end="${pageMaker.endPage}" step="1">
+                                        <li data-page-num="${n}" class="page-item">
+                                            <a class="page-link" href="/board?pageNum=${n}&amount=${pageMaker.page.amount}&type=${s.type}&keyword=${s.keyword}">${n}</a>
+                                        </li>
+                                    </c:forEach>
 
-                                <c:if test="${pageMaker.next}">
-                                    <li class="page-item"><a class="page-link" href="/board?pageNum=${pageMaker.endPage + 1}&amount=${pageMaker.page.amount}">▶</a></li>
-                                </c:if>
+                                    <c:if test="${pageMaker.next}">
+                                        <li class="page-item"><a class="page-link" href="/board?pageNum=${pageMaker.endPage + 1}&amount=${pageMaker.page.amount}&type=${s.type}&keyword=${s.keyword}">▶</a></li>
+                                    </c:if>
 
 
                             </ul>
@@ -90,18 +90,18 @@
                         <form action="/board" method="get">
 
 
-                            <select class="form-select" name="type" id="search-type">
-                                <option value="title">제목</option>
-                                <option value="content">내용</option>
-                                <option value="writer">작성자</option>
-                                <option value="tc">제목+내용</option>
-                            </select>
-                            <input type="text" class="form-controller" name="" value="">
+                                <select class="form-select" name="type" id="search-type">
+                                    <option value="title">제목</option>
+                                    <option value="content">내용</option>
+                                    <option value="userName">작성자</option>
+                                    <option value="tc">제목+내용</option>
+                                </select>
+                                <input type="text" class="form-controller" name="keyword" value="${s.keyword}">
 
-                            <button class="btn btn-primary" type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </form>
+                                <button class="btn btn-primary" type="submit" value="조회">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </form>
 
                     </div>
                 </div>

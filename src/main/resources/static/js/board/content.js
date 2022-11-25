@@ -11,18 +11,23 @@ $listBtn.onclick = e => {
     location.href = '/board?pageNum=${p.pageNum}&amount=${p.amount}';
 };
 
+if ($editBtn) {
 //수정버튼
-$editBtn.onclick = e => {
-    if ($editBtn !== null) {
-        location.href = '/board/edit?boardNo=${b.boardNo}';
-    }
+    $editBtn.onclick = e => {
+        if ($editBtn !== null) {
+            location.href = '/board/edit?boardNo=${b.boardNo}';
+        }
 
-};
+    };
+}
 
+
+if ($delBtn) {
 //삭제버튼
-$delBtn.onclick = e => {
-    if ($delBtn !== null) {
-        location.href = '/board/remove?boardNo=${b.boardNo}';
-    }
+    $delBtn.onclick = e => {
+        if ($delBtn !== null) {
+            location.href = '/board/remove?boardNo=${b.boardNo}';
+        }
 
-};
+    };
+}
