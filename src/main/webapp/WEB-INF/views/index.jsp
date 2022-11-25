@@ -69,15 +69,21 @@
                                     <c:forEach var="TagList" items="${hotTagList}">
                                         <li><a href="/gallery/search-tag?tag=${TagList.tagValue}"><c:out value="${TagList.tagValue}"/></a></li>
                                     </c:forEach>
-                                </ol>
-                                <div class="hotTagImg">
 
-                                </div>
+                                </ol>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <h1 class="title-col">
                                 댓글 많은 게시물
+                                <div class="carousel-nav" id="hot-news-nav">
+                                    <div class="prev">
+                                        <i class="ion-ios-arrow-left"></i>
+                                    </div>
+                                    <div class="next">
+                                        <i class="ion-ios-arrow-right"></i>
+                                    </div>
+                                </div>
                             </h1>
                             <div class="body-col vertical-slider" data-max="4" data-nav="#hot-news-nav" data-item="article">
                                     <div class="tableWrapper">
@@ -162,6 +168,8 @@
 
 
                 <%@include file="include/sidebar.jsp"%>
+
+
             </div>
         </div>
     </section>

@@ -1,6 +1,7 @@
 package com.slfinalproject.commurest.board.domain;
 
 
+import com.slfinalproject.commurest.tag.domain.Tag;
 import lombok.*;
 
 import java.sql.ResultSet;
@@ -24,6 +25,8 @@ public class Board {
    private int recommend;
    private String imageUrl;
 
+   private String keyword;
+
    private List<String> tagList;
 
    // 등록 날짜 포맷 변경
@@ -39,6 +42,10 @@ public class Board {
 
    // 첨부파일들의 이름 목록
    private List<String> fileNames;
+
+   private String tagValue;
+
+   private int boardCnt;
 
    public Board(ResultSet rs) throws SQLException {
       this.boardNo = rs.getInt("board_no");

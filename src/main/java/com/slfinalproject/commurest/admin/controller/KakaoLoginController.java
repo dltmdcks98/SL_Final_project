@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -48,7 +49,7 @@ public class KakaoLoginController {
 
 
     @GetMapping("/kakao")
-    public String kakaoOauthRedirect(@RequestParam String code, HttpSession session, Admin admin) {
+    public String kakaoOauthRedirect(@RequestParam String code, HttpSession session, Admin admin, HttpServletRequest request) {
 
         // POST 방식으로 key=value 데이터 요청(카카오쪽으로)
         RestTemplate rt = new RestTemplate();
@@ -143,16 +144,17 @@ public class KakaoLoginController {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(kakaoUser.getUsername(), kakaoUser.getPassword()));
         log.info("get username : " + kakaoUser.getUsername());
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        loginSuccess(session);
 
 
         Admin nameFInd = adminService.selectOne(kakaoProfile.getKakao_account().getEmail());
-        log.info("이름이 뭐고 : "+ nameFInd.getUser_name());
+        log.info("이름이 뭐고 : " + nameFInd.getUser_name());
         if (nameFInd.getUser_name().contains("kakao")) {
             return "/member/myInfo";
 
         }
-        return "redirect:/";
+      return loginSuccess(session);
+
+
     }
 
     public Admin setLoginSession(HttpSession session) {
@@ -167,6 +169,8 @@ public class KakaoLoginController {
     }
 
     public String loginSuccess(HttpSession session) {
+
+
         log.info("login success");
         String redirectURI = (String) session.getAttribute("redirectURI");
         Admin user = setLoginSession(session);
@@ -174,7 +178,7 @@ public class KakaoLoginController {
             session.setAttribute("user", user);
             log.info("세션에 넣은 값 확인 - " + user);
         }
-
+log.info("로그인석쎾싸ㅡ"+redirectURI);
         return "redirect:" + redirectURI;
     }
 
