@@ -66,14 +66,19 @@
     </select>
 <!-- 댓글이 많은 글 출력 -->
     <select id="getBoardNoByReplyCount" resultMap="replyDtoMap">
-        SELECT board_no, count(*) AS replyCount FROM reply GROUP BY board_no ORDER BY replyCount DESC;
+        SELECT board_no, count(*) AS replyCount FROM reply GROUP BY board_no ORDER BY replyCount DESC LIMIT 0, 5;
     </select>
 <!--  나의 댓글 조회하기  -->
     <select id="findReplyByUserId" resultMap="replyMap">
         SELECT * FROM reply
         WHERE user_account = #{userAccount}
         ORDER BY reply_no desc
---         LIMIT #{page.start}, #{page.amount} desc
+        LIMIT #{page.start}, #{page.amount}
+    </select>
+
+    <select id="getTotalCountReplyByUserId" resultType="int">
+        SELECT COUNT(*) FROM reply
+        WHERE user_account = #{userId}
     </select>
 
 

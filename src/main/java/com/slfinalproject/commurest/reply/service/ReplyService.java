@@ -34,8 +34,9 @@ public class ReplyService {
     public Map<String,Object> getAllByUserId(int userAccount, Page page){
         Map<String,Object> replyMap = new HashMap<>();
         List<Reply> replyList = replyMapper.findReplyByUserId(page, userAccount);
-
+        int totalCount = replyMapper.getTotalCountReplyByUserId(userAccount);
         replyMap.put("rList",replyList);
+        replyMap.put("rListTotalCount",totalCount);
         return replyMap;
     }
 

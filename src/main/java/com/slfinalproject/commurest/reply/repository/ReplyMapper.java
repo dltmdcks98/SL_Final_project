@@ -24,4 +24,5 @@ public interface ReplyMapper {
 
 //  나의 댓글 조회하기
     List<Reply> findReplyByUserId(Page page, int userAccount);
+    int getTotalCountReplyByUserId(int userId);
 }

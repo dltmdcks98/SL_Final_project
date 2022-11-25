@@ -62,28 +62,24 @@
 
                 <div class="row">
 
-
                     <div>
                         <nav class="page">
                             <ul class="pagination pagination-lg pagination-custom">
 
-                                <c:if test="${pageMaker.prev}">
-                                    <li class="page-item"><a class="page-link"
-                                                             href="/board?pageNum=${pageMaker.beginPage - 1}&amount=${pageMaker.page.amount}">◀</a>
+                                <c:if test="${myBoardPageMaker.prev}">
+                                    <li class="page-item"><a class="page-link" href="/mypage/mycomment?pageNum=${myBoardPageMaker.beginPage - 1}&amount=${myBoardPageMaker.page.amount}">◀</a>
                                     </li>
                                 </c:if>
 
 
-                                <c:forEach var="n" begin="${pageMaker.beginPage}" end="${pageMaker.endPage}" step="1">
+                                <c:forEach var="n" begin="${myBoardPageMaker.beginPage}" end="${myBoardPageMaker.endPage}" step="1">
                                     <li data-page-num="${n}" class="page-item">
-                                        <a class="page-link"
-                                           href="/board?pageNum=${n}&amount=${pageMaker.page.amount}">${n}</a>
+                                        <a class="page-link" href="/mypage/mycomment?pageNum=${n}&amount=${myBoardPageMaker.page.amount}">${n}</a>
                                     </li>
                                 </c:forEach>
 
-                                <c:if test="${pageMaker.next}">
-                                    <li class="page-item"><a class="page-link"
-                                                             href="/board?pageNum=${pageMaker.endPage + 1}&amount=${pageMaker.page.amount}">▶</a>
+                                <c:if test="${myBoardPageMaker.next}">
+                                    <li class="page-item"><a class="page-link" href="/mypage/mycomment?pageNum=${myBoardPageMaker.endPage + 1}&amount=${myBoardPageMaker.page.amount}">▶</a>
                                     </li>
                                 </c:if>
 
@@ -101,6 +97,7 @@
     </div>
 </section>
 <%@include file="../include/footer.jsp" %>
+<%@include file="./include/myPagePaging.jsp"%>
 </body>
 
 

@@ -43,4 +43,21 @@ class ReplyMapperTest {
         List<ReplyDTO> list = mapper.getBoardNoByReplyCount();
         System.out.println(list.get(0).getBoardNo());
     }
+    @Test
+    @DisplayName("댓글 250건이 삽입되어야한다")
+    void insertBoard() {
+
+        Reply reply;
+
+        for(int i=1; i<250; i++) {
+            reply = new Reply();
+            reply.setReplyWriter("lsc");
+            reply.setBoardNo(232+i);
+            reply.setUserAccount(51);
+            reply.setReplyText("내용"+i);
+            mapper.save(reply);
+
+        }
+    }
+
 }

@@ -23,3 +23,5 @@ DROP TABLE reply;
 select * from reply where board_no=63;
 
 SELECT board_no, count(*) AS replyCount FROM reply GROUP BY board_no ORDER BY replyCount DESC;
+
+SELECT board_no, count(*) AS replyCount FROM reply GROUP BY board_no  ORDER BY replyCount DESC LIMIT 0, 5 ;

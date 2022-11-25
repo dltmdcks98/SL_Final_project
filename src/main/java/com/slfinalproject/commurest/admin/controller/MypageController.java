@@ -71,11 +71,14 @@ public class MypageController {
     // 내가쓴 댓글페이지 요청
     @GetMapping("/mypage/mycomment")
     public String myComment(@ModelAttribute("p") Page page, Model model, HttpSession session) {
-        Admin admin = adminService.setLoginSession(session);
-        log.info(""+admin.getUser_id());
+        Admin admin = (Admin) session.getAttribute("user");
         Map<String, Object> replies = replyService.getAllByUserId(admin.getUser_id(),page);
-
+        PageMaker pageMaker = new PageMaker(
+                new Page(page.getPageNum(), page.getAmount())
+                , (int) replies.get("rListTotalCount"));
+        log.info("페이지 정보 : {}",pageMaker);
         model.addAttribute("rList", replies.get("rList"));
+        model.addAttribute("myBoardPageMaker", pageMaker);
 
         return "member/myComment";
     }
