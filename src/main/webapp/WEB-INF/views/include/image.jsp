@@ -47,8 +47,8 @@
             .then(res=>res.text())
             .then(getImgUrl=>{
                 hotTagImg.push({
-                   tagName : tagValue,
-                   tagImg : getImgUrl
+                    tagName : tagValue,
+                    tagImg : getImgUrl
                 });
             });
     }

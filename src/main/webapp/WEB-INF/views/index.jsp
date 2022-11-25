@@ -69,8 +69,10 @@
                                     <c:forEach var="TagList" items="${hotTagList}">
                                         <li><a href="/gallery/search-tag?tag=${TagList.tagValue}"><c:out value="${TagList.tagValue}"/></a></li>
                                     </c:forEach>
-
                                 </ol>
+                                <div class="hotTagImg">
+
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6">
