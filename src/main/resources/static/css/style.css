@@ -2302,6 +2302,7 @@ section .container {
 
 .body-col {
     margin-top: 30px;
+
 }
 
 .article-mini {
@@ -2352,7 +2353,8 @@ section .container {
 .tags-list {
     margin: 0;
     padding: 0;
-    padding-left: 15px;
+    width: 30%;
+
 }
 .tags-list li {
     padding: 5px;
@@ -2388,7 +2390,19 @@ section .container {
 .tags-list li a:hover:after {
     width: 100%;
 }
-
+.trending-tags .body-col{
+    display: flex;
+}
+.hotTagImg{
+    width: 70%;
+    padding-right: 1rem;
+    opacity: 0;
+}
+.hotTagImgShow{
+    opacity: 1;
+    background-size: cover;
+    transition: 0.5s;
+}
 aside {
     margin-bottom: 40px;
     display: inline-block;

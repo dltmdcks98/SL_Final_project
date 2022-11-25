@@ -69,21 +69,15 @@
                                     <c:forEach var="TagList" items="${hotTagList}">
                                         <li><a href="/gallery/search-tag?tag=${TagList.tagValue}"><c:out value="${TagList.tagValue}"/></a></li>
                                     </c:forEach>
-
                                 </ol>
+                                <div class="hotTagImg">
+
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <h1 class="title-col">
                                 댓글 많은 게시물
-                                <div class="carousel-nav" id="hot-news-nav">
-                                    <div class="prev">
-                                        <i class="ion-ios-arrow-left"></i>
-                                    </div>
-                                    <div class="next">
-                                        <i class="ion-ios-arrow-right"></i>
-                                    </div>
-                                </div>
                             </h1>
                             <div class="body-col vertical-slider" data-max="4" data-nav="#hot-news-nav" data-item="article">
                                     <div class="tableWrapper">
@@ -167,63 +161,7 @@
                 </div>
 
 
-                <div class="col-xs-6 col-md-4 sidebar" id="sidebar">
-                    <aside>
-                        <div class="aside-body">
-                            <div class="featured-author">
-                                <div class="featured-author-inner">
-                                    <div class="featured-author-cover">
-                                        <div class="badges">
-                                            <div class="badge-item"><i class="ion-star"></i> 인기 관심사</div>
-                                        </div>
-                                        <div class="featured-author-center">
-                                            <figure class="featured-author-picture">
-                                                <img src="/img/img01.jpg" alt="Sample Article">
-                                            </figure>
-                                            <div class="featured-author-info">
-                                                <h2 class="name">John Doe</h2>
-                                                <div class="desc"># 아이유</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="featured-author-body">
-                                        <div class="featured-author-count">
-                                            <div class="item">
-                                                <a href="#">
-                                                    <div class="name">게시글</div>
-                                                    <div class="value">208</div>
-                                                </a>
-                                            </div>
-                                            <div class="item">
-                                                <a href="#">
-                                                    <div class="name">댓글</div>
-                                                    <div class="value">3,729</div>
-                                                </a>
-                                            </div>
-                                            <div class="item">
-                                                <a href="#">
-                                                    <div class="icon">
-                                                        <div>더보기</div>
-                                                        <i class="ion-chevron-right"></i>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="featured-author-quote">
-                                            " <c:out value="${hotTagList[0].tagValue}"/> "
-                                        </div>
-                                        <div class="block">
-                                            <h2 class="block-title">Photos</h2>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </aside>
-
-                </div>
+                <%@include file="include/sidebar.jsp"%>
             </div>
         </div>
     </section>
