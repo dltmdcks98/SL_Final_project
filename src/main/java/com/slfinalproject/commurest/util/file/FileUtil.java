@@ -50,6 +50,7 @@ public class FileUtil {
 
         // 중복이 없는 파일명으로 변경하기
         // ex) 상어.png -> 3dfsfjkdsfds-djksfaqwerij-dsjkfdkj_상어.png
+        // randomUUID를 통해 중복이 없는 이름으로 바꿔준다
         String newFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename(); // 중복이 없는 랜덤아이디 값 생성 +
 
         // 업로드 경로를 변경

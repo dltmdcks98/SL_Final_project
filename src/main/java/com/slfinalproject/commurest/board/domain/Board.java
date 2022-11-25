@@ -40,6 +40,9 @@ public class Board {
    // 첨부파일들의 이름 목록
    private List<String> fileNames;
 
+   // 첨부파일의 이름 검색하기
+   private String fileName;
+
    public Board(ResultSet rs) throws SQLException {
       this.boardNo = rs.getInt("board_no");
       this.userId = rs.getInt("user_id");

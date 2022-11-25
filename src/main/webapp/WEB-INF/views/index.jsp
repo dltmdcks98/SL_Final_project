@@ -109,7 +109,8 @@
                         <article class="col-md-12 article-list">
                             <div class="inner">
                                 <figure>
-
+                                    <img src="/loadFile?fileName=${b.fileName}" alt="test">
+<%--                                <img src="D:/sl_stw/upload${b.fileNames}" alt="new upload">--%>
                                 </figure>
                                 <div class="details">
                                     <div class="detail">

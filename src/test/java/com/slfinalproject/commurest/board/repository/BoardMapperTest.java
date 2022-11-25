@@ -3,6 +3,7 @@ package com.slfinalproject.commurest.board.repository;
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.reply.dto.ReplyDTO;
 import com.slfinalproject.commurest.reply.repository.ReplyMapper;
+import com.slfinalproject.commurest.util.search.Search;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,21 @@ class BoardMapperTest {
             System.out.println(replyDTO.getBoardNo());
             System.out.println(mapper.selectOne(replyDTO.getBoardNo()));
         }
+    }
+
+    @Test
+    void findImage() {
+        List<Board> newImage = mapper.findNewImage();
+        for (Board board : newImage) {
+            System.out.println(board);
+        }
+    }
+
+    @Test
+    void search() {
+        Search search = new Search("userName","adad");
+        mapper.selectAll(search).forEach(System.out::println);
+
     }
 
 

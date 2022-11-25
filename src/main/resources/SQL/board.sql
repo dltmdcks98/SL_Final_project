@@ -76,4 +76,8 @@ FROM board A
 JOIN file_upload B ON A.board_no = B.bno
 ORDER BY  board_no DESC limit 3;
 
+
 select * from file_upload order by reg_date desc;
+SELECT A.board_no, A.title, A.content, A.user_id, B.user_name,
+       COUNT(*)  FROM board A
+                          JOIN user_account B ON A.user_id= B.user_id;

@@ -6,6 +6,7 @@ import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.service.BoardService;
 import com.slfinalproject.commurest.util.paging.Page;
 import com.slfinalproject.commurest.util.paging.PageMaker;
+import com.slfinalproject.commurest.util.search.Search;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
@@ -38,11 +39,11 @@ public class BoardController {
 
     // 게시판 메인 페이지
     @GetMapping("")
-    public String board(@ModelAttribute("p") Page page, Model model) {
-        Map<String, Object> boardMap = boardService.findAllService(page);
-
+    public String board(@ModelAttribute("s") Search search, Model model) {
+        Map<String, Object> boardMap = boardService.findAllService(search);
+//        log.info("return data - {}", boardMap);
         PageMaker pageMaker = new PageMaker(
-                new Page(page.getPageNum(), page.getAmount())
+                new Page(search.getPageNum(), search.getAmount())
                 , (Integer) boardMap.get("tc"));
         log.info("페이지 정보 : {}",pageMaker);
         model.addAttribute("bList", boardMap.get("bList"));
