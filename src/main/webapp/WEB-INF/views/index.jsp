@@ -66,7 +66,7 @@
                     <div class="line transparent little"></div>
                     <div class="row">
                         <div class="col-md-6 col-sm-6 trending-tags">
-                            <h1 class="title-col">인기 관심사</h1>
+                            <h1 class="title-col">인기 태그</h1>
                             <div class="body-col">
                                 <ol class="tags-list">
                                     <c:forEach var="TagList" items="${hotTagList}">
@@ -177,7 +177,7 @@
                                 <div class="featured-author-inner">
                                     <div class="featured-author-cover">
                                         <div class="badges">
-                                            <div class="badge-item"><i class="ion-star"></i> 이달의 인기태그</div>
+                                            <div class="badge-item"><i class="ion-star"></i> 인기 관심사</div>
                                         </div>
                                         <div class="featured-author-center">
                                             <figure class="featured-author-picture">

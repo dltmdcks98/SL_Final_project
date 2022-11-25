@@ -35,10 +35,10 @@
 function makeDOM(destination,tagValue,imgUrl){
     const $destination = destination;
     let item =
-        '<div class="tag-item" style="background-image: url('+imgUrl+'); background-size : cover;">';
+        '<div class="tag-item" style="background-image: url('+imgUrl+'); background-size : cover;" data-tag="'+tagValue+'">';
         if(destination===$userTag){
             item+=
-            '<span class="tag-item-delete" data-tag="'+tagValue+'">'+
+            '<span class="tag-item-delete">'+
                 '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">'+
                     '<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>'+
             '</span>';
@@ -60,7 +60,7 @@ function eventHandler() {
               toGallery(e);
               e.stopPropagation();
           } else if (e.target.matches('svg') || e.target.matches('path')){
-              delTag(e.target.closest('span'));
+              delTag(e.target.closest('div'));
               e.stopPropagation();
           }
       };
@@ -69,13 +69,13 @@ function eventHandler() {
 
 function delTag(e){
     const tagValue = e.dataset.tag;
-    console.log(tagValue);
+    console.log(e);
     const URL = '/ajax-tag/tag-delete/'+tagValue;
     fetch(URL)
         .then(res => res.text())
         .then(result => {
             if(result==='success-delete') {
-                e.parentNode.remove();
+                e.remove();
             }else{
                 alert('관심사 삭제에 실패했습니다.');
             }
@@ -105,7 +105,7 @@ function registerTag(){
     });
 }
 function toGallery(e){
-    const value = e.target.childNodes[0].dataset.tag;
+    const value = e.target.dataset.tag;
     window.location.href='/gallery/search-tag?tag='+value;
 
 }
