@@ -42,4 +42,10 @@ public class TagService {
         return tagMapper.getHotTag();
     }
     public List<TagList> getHotTagByUser(){return tagMapper.getHotTagByUser();}
+
+    public List<Tag> getTagByKeyword(String keyword){
+        List<Tag> tagList = tagMapper.getTagByKeyword(keyword);
+        return tagList;
+    }
+
 }

@@ -147,7 +147,7 @@ public class KakaoLoginController {
 
 
         Admin nameFInd = adminService.selectOne(kakaoProfile.getKakao_account().getEmail());
-        log.info("이름이 뭐고 : "+ nameFInd.getUser_name());
+        log.info("이름이 뭐고 : " + nameFInd.getUser_name());
         if (nameFInd.getUser_name().contains("kakao")) {
             return "/member/myInfo";
 

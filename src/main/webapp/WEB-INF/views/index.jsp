@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="/css/board/board_list.css">
 
 </head>
+<style>
+
+</style>
 
 <body>
     <%@ include file="./include/header.jsp"%>
@@ -166,7 +169,7 @@
                     </div>
                 </div>
 
-
+                <c:if test="${empty user}">
                 <div class="col-xs-6 col-md-4 sidebar" id="sidebar">
                     <aside>
                         <div class="aside-body">
@@ -224,6 +227,69 @@
                     </aside>
 
                 </div>
+
+                </c:if>
+
+                <c:if test="${not empty user}">
+                    <div class="col-xs-6 col-md-4 sidebar" id="sidebar">
+                        <aside>
+                            <div class="aside-body">
+                                <div class="featured-author">
+                                    <div class="featured-author-inner">
+                                        <div class="featured-author-cover">
+                                            <div class="badges">
+                                                <div class="badge-item"><i class="ion-star"></i> 프로필</div>
+                                            </div>
+                                            <div class="featured-author-center">
+                                                <figure class="featured-author-picture">
+                                                    <img src="/img/img01.jpg" alt="Sample Article">
+                                                </figure>
+                                                <div class="featured-author-info"><br>
+                                                    <div class="user-name">${user.user_name}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="featured-author-body">
+                                            <div class="featured-author-count">
+                                                <div class="item">
+                                                    <a href="#">
+                                                        <div class="name">게시글</div>
+                                                        <div class="value">121</div>
+                                                    </a>
+                                                </div>
+                                                <div class="item">
+                                                    <a href="#">
+                                                        <div class="name">댓글</div>
+                                                        <div class="value">3,729</div>
+                                                    </a>
+                                                </div>
+                                                <div class="item">
+                                                    <a href="#">
+                                                        <div class="icon">
+                                                            <div>더보기</div>
+                                                            <i class="ion-chevron-right"></i>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="featured-author-quote">
+                                                " <c:out value="${hotTagList[0].tagValue}"/> "
+                                            </div>
+                                            <div class="block">
+                                                <h2 class="block-title">Photos</h2>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </aside>
+
+                    </div>
+
+                </c:if>
+
             </div>
         </div>
     </section>

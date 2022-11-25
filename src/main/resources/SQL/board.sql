@@ -52,7 +52,7 @@ select * from board where board_no=249;
 select * from comment;
 select * from tag;
 select * from board where board_no=2;
-
+select * from board;
 
 SELECT A.board_no, A.user_id, A.title, A.reg_date, A.hit, A.recommend, B.user_name
 FROM board A
@@ -71,4 +71,68 @@ SELECT user_name FROM user_account WHERE user_id=(
     SELECT user_id FROM board WHERE board_no=131
     );
 
-SELECT * FROM board WHERE hit>5 ORDER BY hit DESC LIMIT 0,5;
+# 검색기능
+# 1. 제목에 검색어가 들어간 글들
+# 2. 내용에 검색어가 들어간 글들
+# 3. 태그에 검색어가 들어간 글들
+
+select  A.board_no, A.title, A.content, B.tag_value
+from board A
+    left outer join tag B ON A.board_no = B.board_no
+where A.title like '%아이유%' or A.content like '%아이유%' or B.tag_value like '%아이유%'
+order by board_no DESC;
+
+
+
+
+
+select  A.board_no, A.title, A.content, B.tag_value
+from board A
+         JOIN tag B ON A.board_no = B.board_no
+where A.title like '%아이유%'
+order by board_no DESC;
+
+select  distinct A.board_no, A.title, A.content, B.tag_value
+from board A
+         left outer join tag B ON A.board_no = B.board_no
+where A.title like '%아이유%' or A.content like '%아이유%' or B.tag_value like '%아이유%'
+group by A.board_no desc;
+
+
+# 내 게시물 수 가져오가
+select count(*) as count
+from board A
+join user_account B ON A.user_id=b.user_id
+where A.user_id=49;
+
+select count(*) as count
+from board
+where user_id=49;
+
+
+# 내 댓글 수 가져오기
+select count(*) as count
+from reply A
+join user_account B On A.user_account = B.user_id
+where A.user_account=49;
+
+select *
+from reply;
+
+
+
+
+      select *from user_account;
+
+select * from board where title like '%아이유%';
+
+select * from tag;
+
+select *
+from board;
+
+SELECT A.board_no, A.user_id, A.title, A.reg_date, A.hit, A.recommend, B.user_name
+FROM board A
+         JOIN user_account B ON A.user_id = B.user_id
+WHERE A.user_id = 17
+ORDER BY board_no DESC;

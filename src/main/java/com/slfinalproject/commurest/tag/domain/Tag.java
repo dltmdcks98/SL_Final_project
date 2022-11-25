@@ -12,4 +12,6 @@ public class Tag {
     private String tagValue;
     private int boardId;
     private int userId;
+    private String keyword;
+
 }
