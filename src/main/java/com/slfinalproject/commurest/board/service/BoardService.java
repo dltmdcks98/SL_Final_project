@@ -35,10 +35,9 @@ public class BoardService {
 
     private final BoardMapper boardMapper;
     private final TagMapper tagMapper;
-
     private final ReplyMapper replyMapper;
     private final AdminMapper adminMapper;
-
+    private final RecommendMapper recommendMapper;
 
     // 게시글 등록
     @Transactional
@@ -85,6 +84,7 @@ public class BoardService {
         List<Board> boardList = boardMapper.selectAll(search);
 
         process(boardList);
+
         findDataMap.put("bList", boardList);
         findDataMap.put("tc", boardMapper.getTotalCountSearch(search));
         return findDataMap;
@@ -203,6 +203,24 @@ public class BoardService {
         }
     }
 
+    // 추천
+    public void recommend(int boardNo) {
+        recommendMapper.recommend(boardNo);
+        recommendMapper.updateRecommend(boardNo);
+    }
+
+    // 추천 취소
+    public void deleteRecommend(int boardNo) {
+        recommendMapper.recommendCancel(boardNo);
+        recommendMapper.updateRecommend(boardNo);
+    }
+
+    // 추천 중복 방지
+    public int getRecommend(int boardNo, String userName){
+        return recommendMapper.getRecommend(boardNo, userName);
+    }
+
+
     // 첨부파일 가져오기
 
    public List<String> getFiles(int bno) {
@@ -263,5 +281,6 @@ public class BoardService {
         }
         return boardList;
     }
+
 
 }

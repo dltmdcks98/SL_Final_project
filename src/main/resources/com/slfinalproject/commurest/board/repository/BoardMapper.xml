@@ -72,7 +72,7 @@
         LEFT JOIN user_account B ON A.user_id = B.user_id
         LEFT JOIN tag C ON A.board_no = C.board_no
         <include refid="search"/>
-        ORDER BY board_no DESC
+        ORDER BY A.board_no DESC
         LIMIT #{start}, 20
     </select>
 
@@ -169,25 +169,6 @@
         FROM board A
         JOIN file_upload B ON A.board_no = B.bno
         ORDER BY  board_no DESC limit 3
-    </select>
-
-    <!-- 게시글 추천수 -->
-    <update id="updateRecommend" parameterType="int">
-        update board set
-        recommend = recommend+1
-        where bno = #{bno}
-    </update>
-
-    <!-- 게시글 추천취소 -->
-    <update id="updateRecommendCancel" parameterType="int">
-        update board set
-        recommend = recommend-1
-        where bno = #{bno}
-    </update>
-
-    <!-- 게시글 추천 중복방지 select문 -->
-    <select id="recommendCheck" resultType="int">
-        select count(*) from recommend where bno = #{bno} and user_id = #{userId}
     </select>
 
 </mapper>

@@ -2,16 +2,10 @@ package com.slfinalproject.commurest.recommend.domain;
 
 import lombok.*;
 
-@Setter
-@Getter
-@ToString
-@EqualsAndHashCode
-@NoArgsConstructor
-@AllArgsConstructor
+@Setter @Getter @ToString
+@NoArgsConstructor @AllArgsConstructor
 public class Recommend {
     private int recommendNo;
-    private int bno;
-    private int userId;
-    private int recommendCheck;
-    private String recommendDate;
+    private int boardNo;
+    private int userName;
 }

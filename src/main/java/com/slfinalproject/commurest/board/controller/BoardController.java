@@ -17,6 +17,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -37,7 +38,7 @@ import java.util.Map;
 public class BoardController {
     private final BoardService boardService;
     private final AdminService adminService;
-    private final RecommendService recommendService;
+
 
 
     // 게시판 메인 페이지
@@ -60,14 +61,12 @@ public class BoardController {
     public String content(@PathVariable("boardNo") int boardNo, Model model, @ModelAttribute("p") Page page, HttpServletResponse response, HttpServletRequest request) {
         Board board = boardService.selectOne(boardNo,response,request);
         Admin admin = adminService.selectOne2(board.getUserId());
-//        Recommend recommend = recommendService.updateRecommend(boardNo);
-//        model.addAttribute("recommend",);
         model.addAttribute("b", board);
         model.addAttribute("a", admin);
 
         return "board/board_content";
-
     }
+
 
     // 글쓰기 페이지
     @GetMapping("/write")

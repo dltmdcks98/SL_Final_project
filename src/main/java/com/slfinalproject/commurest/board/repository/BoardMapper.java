@@ -35,18 +35,13 @@ public interface BoardMapper {
 
 
     // 게시글 한건 수정
-
-
-
     boolean edit(Board board);
+
     //게시글 한건 삭제
-
     boolean remove(int boardNo);
+
     // 게시글 조회수 갱신
-
     void hitCount(int boardNo);
-
-    void updateRecommend(int boardNo);
 
     // 글쓰기 파일 추가
     void addFile(String fileName);
