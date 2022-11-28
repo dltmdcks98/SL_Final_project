@@ -104,7 +104,7 @@
                 </div>
               </div>
               <div class="featured-author-quote">
-                " <c:out value="${hotTagList[0].tagValue}"/> "
+                " <c:out value="${userTag}"/> "
               </div>
               <div class="block">
                 <h2 class="block-title">Photos</h2>
