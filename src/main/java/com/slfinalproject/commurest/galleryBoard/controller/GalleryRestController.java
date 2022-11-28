@@ -58,10 +58,14 @@ public class GalleryRestController {
     }
 
     @GetMapping("/index")
-    public List<String> indexImg(){
+    public List<String> indexImg(HttpSession session){
         int num=0;
         int size = 9;
-        log.info("rest gallery indexd 접근- GET ");
+        log.info("rest gallery index 접근- GET ");
+        if(session.getAttribute("userTag")!=null){
+            String userTagValue = (String) session.getAttribute("userTag");
+            return galleryBoardService.getImgUrlByTag(userTagValue,num,size);
+        }
         return galleryBoardService.getImgUrlByHotTag(num,size);
     }
 

@@ -4,7 +4,6 @@ import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.admin.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +16,7 @@ import javax.servlet.http.HttpSession;
 @RequiredArgsConstructor
 @Slf4j
 public class AdminController {
-    @Autowired
+
     private final AdminService adminService;
 
     // 회원가입 처리
@@ -47,6 +46,7 @@ public class AdminController {
         log.info("login success");
         String redirectURI = (String) session.getAttribute("redirectURI");
         Admin user = adminService.setLoginSession(session);
+
         if (user != null) {
             session.setAttribute("user", user);
             log.info("세션에 넣은 값 확인 - " + user);

@@ -12,14 +12,12 @@ public interface TagMapper {
     String getTagValue(int tagId);
     int getBoardNo();
     List<Tag> getTagValueByUserId(int userId);
+    String getRandomTagValueByUserId(int userId);
     List<Tag> getTagValueByBoardNo(int boardNo);
     boolean setTagValue(String tagValue);
     boolean setTagValueByBoardNo(String tagValue,int boardNo);
     boolean setTagValueByUserId(String tagValue,int userId);
-
     List<Tag> getTagByKeyword(String keyword);
-
-
 
     List<TagList> getHotTag();
     List<TagList> getHotTagByUser();

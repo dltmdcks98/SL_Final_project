@@ -2,7 +2,6 @@ package com.slfinalproject.commurest;
 
 
 import com.slfinalproject.commurest.admin.domain.Admin;
-import com.slfinalproject.commurest.admin.service.AdminService;
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.service.BoardService;
 import com.slfinalproject.commurest.tag.dto.TagList;
@@ -29,6 +28,7 @@ public class HomeController {
 
     private final TagService tagService;
     private final BoardService boardService;
+
     @GetMapping("/")
     public String home(HttpSession session, Model model){
         List<TagList> getTagList = tagService.getHotTag();
@@ -43,10 +43,17 @@ public class HomeController {
         List<Board> findNewImage = boardService.findNewImage();
         model.addAttribute("findNewImage", findNewImage);
 
+
+        if(session.getAttribute("user")!=null){
+            Admin admin = (Admin) session.getAttribute("user");
+            String userTagValue = tagService.getRandomTagValueByUserId(admin.getUser_id());
+            session.setAttribute("userTag",userTagValue);
+            log.info("userTag 확인 : {}",userTagValue);
+        }
+
         return "index";
 
     }
-
 
 
 
