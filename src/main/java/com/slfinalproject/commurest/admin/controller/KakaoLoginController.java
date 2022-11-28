@@ -169,6 +169,8 @@ public class KakaoLoginController {
     }
 
     public String loginSuccess(HttpSession session) {
+
+
         log.info("login success");
         String redirectURI = (String) session.getAttribute("redirectURI");
         Admin user = setLoginSession(session);
@@ -176,7 +178,10 @@ public class KakaoLoginController {
             session.setAttribute("user", user);
             log.info("세션에 넣은 값 확인 - " + user);
         }
-        log.info("로그인석쎾싸ㅡ"+redirectURI);
+        if(redirectURI==null){
+            return "redirect:/";
+        }
+log.info("로그인석쎾싸ㅡ"+redirectURI);
         return "redirect:" + redirectURI;
     }
 

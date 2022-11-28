@@ -34,8 +34,8 @@
                                 <thead class="thead">
                                 <tr>
                                     <th>번호</th>
-                                    <th>글쓴이</th>
                                     <th>제목</th>
+                                    <th>글쓴이</th>
                                     <th>작성일</th>
                                     <th>조회</th>
                                     <th>추천</th>
@@ -46,9 +46,9 @@
                                     <c:forEach var="b" items="${bList}">
                                         <tr onclick="location.href='/board/content/${b.boardNo}?pageNum=${s.pageNum}&amount=${s.amount}'" >
                                             <td>${b.boardNo}</td>
-                                            <td>${b.userName}</td>
                                             <td class="title">${b.title} <c:if test="${b.replyCnt != 0}">[${b.replyCnt}]</c:if>
                                             </td>
+                                            <td>${b.userName}</td>
                                             <td>${b.simpleDate}</td>
                                             <td>${b.hit}</td>
                                             <td>${b.recommend}</td>

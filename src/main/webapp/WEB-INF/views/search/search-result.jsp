@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="/css/board/search_list.css">
     <script src="/js/board/list.js" defer></script>
 </head>
+<style>
+
+</style>
 
 <body class="skin-orange">
 <%@ include file="../include/header.jsp" %>
@@ -44,9 +47,10 @@
 
                                     </c:if>
                                 </c:forEach>
-
                                 </tbody>
                             </table>
+                            <a>더보기</a>
+
                         </div>
                     </div>
                     <div>

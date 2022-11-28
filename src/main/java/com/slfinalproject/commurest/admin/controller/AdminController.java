@@ -52,6 +52,10 @@ public class AdminController {
             log.info("세션에 넣은 값 확인 - " + user);
         }
 
+        if(redirectURI==null){
+            return "index";
+        }
+
         log.info(redirectURI);
 
         return "redirect:"+redirectURI;

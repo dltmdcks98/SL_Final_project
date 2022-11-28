@@ -4,6 +4,7 @@
 <html lang="ko">
 <head>
     <%@ include file="../include/static-head.jsp" %>
+    <link rel="stylesheet" href="/css/board/board_list.css">
 </head>
 <style>
 
