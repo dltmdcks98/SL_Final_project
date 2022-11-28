@@ -37,6 +37,45 @@
         where A.title like CONCAT('%',#{keyword},'%') or A.content like CONCAT('%',#{keyword},'%') or B.tag_value like CONCAT('%',#{keyword},'%')
         group by A.board_no desc
     </select>
+
+<!--&lt;!&ndash;  제목으로 검색하기  &ndash;&gt;-->
+<!--    <select id="searchTitle" resultMap="boardMap2">-->
+<!--        select * from board where title like CONCAT('%',#{keyword},'%')-->
+<!--        group by board_no desc-->
+<!--    </select>-->
+
+<!--&lt;!&ndash;  내용으로 검색하기  &ndash;&gt;-->
+<!--    <select id="searchContent" resultMap="boardMap2">-->
+<!--        select * from board where content like CONCAT('%',#{keyword},'%')-->
+<!--        group by board_no desc-->
+<!--    </select>-->
+
+<!--&lt;!&ndash;  작성자로 검색하기  &ndash;&gt;-->
+<!--    <select id="searchWriter" resultMap="boardMap2">-->
+<!--        SELECT A.*, B.user_name-->
+<!--        FROM board A-->
+<!--        LEFT OUTER JOIN user_account B ON A.user_id = B.user_id-->
+<!--        where B.user_name like CONCAT('%',#{keyword},'%')-->
+<!--        group by A.board_no desc-->
+<!--    </select>-->
+
+<!--&lt;!&ndash;  제목+내용으로 검색하기  &ndash;&gt;-->
+<!--    <select id="searchTitleAndContent" resultMap="boardMap2">-->
+<!--        select * from board-->
+<!--        where title like CONCAT('%',#{keyword},'%') or content like CONCAT('%',#{keyword},'%')-->
+<!--        group by board_no desc-->
+<!--    </select>-->
+
+<!--&lt;!&ndash;  태그로 검색하기  &ndash;&gt;-->
+<!--    <select id="searchTag" resultMap="boardMap2">-->
+<!--        SELECT DISTINCT A.*, B.tag_value-->
+<!--        from board A-->
+<!--        left outer join tag B ON A.board_no = B.board_no-->
+<!--        where B.tag_value like CONCAT('%',#{keyword},'%')-->
+<!--        group by A.board_no desc-->
+<!--    </select>-->
+
+
 <!--  나의 게시글 수  -->
     <select id="selectCnt" resultMap="boardMap">
         select count(*) as count
@@ -52,6 +91,7 @@
         (title, content, user_id)
         VALUES (#{title}, #{content}, #{userId})
     </insert>
+
     <!--전체조회-->
     <select id="selectAll" resultMap="boardMap">
         SELECT A.board_no, A.user_id, A.title, A.reg_date, A.hit, A.recommend, B.user_name

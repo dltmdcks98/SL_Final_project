@@ -131,8 +131,11 @@ select * from tag;
 select *
 from board;
 
-SELECT A.board_no, A.user_id, A.title, A.reg_date, A.hit, A.recommend, B.user_name
+SELECT A.*, B.user_name
 FROM board A
          JOIN user_account B ON A.user_id = B.user_id
-WHERE A.user_id = 17
+WHERE A.user_id = 49
 ORDER BY board_no DESC;
+
+select * from board where title like '%아이유%'
+                                            group by board_no desc;

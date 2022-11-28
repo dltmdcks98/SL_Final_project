@@ -51,11 +51,6 @@
     <!-- 파일 업로드 영역 end -->
 
     <div class="comments-list">
-        <button id="list-btn" type="button">목록</button>
-        <c:if test="${user.user_id == b.userId}">
-            <button id="edit-btn" type="button">수정</button>
-            <button id="del-btn" type="button">삭제</button>
-        </c:if>
 
     </div>
 

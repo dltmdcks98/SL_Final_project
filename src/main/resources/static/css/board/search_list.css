@@ -30,7 +30,16 @@
 }
 
 
+.tr-hover {
+    color: #962411;
+}
 .tr-hover:hover {
-    color: #3b5998;
+    color: #46209A;
     cursor: pointer;
+}
+.date{
+    color:#4EB070;
+}
+.form-select{
+    width: 20%;
 }

@@ -19,9 +19,11 @@ public interface BoardMapper {
 
     // 하나만 조회
 
-//    인기글 조회
+    //    인기글 조회
     List<Board> getHitBoard();
+
     String findMemberByBoardNo(int boardNo);
+
     Board selectOne(int boardNo);
 
     // 전체 게시물 수 조회
@@ -32,7 +34,6 @@ public interface BoardMapper {
 
 
     // 게시글 한건 수정
-
 
 
     boolean edit(Board board);
@@ -52,7 +53,20 @@ public interface BoardMapper {
     // header 검색
     List<Board> searchAll(Page page, String keyword);
 
-
+//    //    제목으로 검색하기
+//    List<Board> searchTitle(Page page, String keyword);
+//
+//    //    내용으로 검색하기
+//    List<Board> searchContent(Page page, String keyword);
+//
+//    //    작성자로 검색하기
+//    List<Board> searchWriter(Page page, String keyword);
+//
+//    //    제목+내용으로 검색하기
+//    List<Board> searchTitleAndContent(Page page, String keyword);
+//
+//    //    태그로 검색하기
+//    List<Board> searchTag(Page page, String keyword);
 
 
 }
