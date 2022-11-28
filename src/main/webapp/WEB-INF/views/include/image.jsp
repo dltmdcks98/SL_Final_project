@@ -4,17 +4,17 @@
     const $tagsList = document.querySelector('.tags-list');
     let hotTagImg = [];
 
-    const URL = '/ajax-gallery/index';
+/*    const URL = '/ajax-gallery/index';
     function getImg(){
         fetch(URL)
-            .then(res => res.json())
-            .then(urls => {
+            .then(res => res.json());
+  /!*          .then(urls => {
                 for(let i=0; i< urls.length;i++){
                     $block.innerHTML+='<img src="'+urls[i]+'" onerror="this.style.display=`none`"/>';
                 }
 
-            });
-    }
+            })*!/;
+    }*/
 
     function tagListMouseOverEventHandler(){
         $tagsList.addEventListener('mouseover',e =>{
@@ -53,7 +53,7 @@
             });
     }
     (function (){
-        getImg();
+
         tagListMouseOverEventHandler();
         setTagImgUrl();
 

@@ -64,6 +64,9 @@ public class ReplyService {
     }
 
 
-//    댓글 많은 글 조회
+//    사용자 댓글 수
+    public int getTotalCountReplyByUserId(int userId){
+        return replyMapper.getTotalCountReplyByUserId(userId);
+    }
 
 }

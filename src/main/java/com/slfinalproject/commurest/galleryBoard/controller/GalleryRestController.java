@@ -57,23 +57,24 @@ public class GalleryRestController {
 
     }
 
-    @GetMapping("/index")
+/*    @GetMapping("/index")
     public List<String> indexImg(HttpSession session){
         int num=0;
         int size = 9;
         log.info("rest gallery index 접근- GET ");
         if(session.getAttribute("userTag")!=null){
             String userTagValue = (String) session.getAttribute("userTag");
+            session.setAttribute("userTagImgs",galleryBoardService.getImgUrlByTag(userTagValue,num,size));
             return galleryBoardService.getImgUrlByTag(userTagValue,num,size);
         }
+        session.setAttribute("userTagImgs",galleryBoardService.getImgUrlByHotTag(num,size));
         return galleryBoardService.getImgUrlByHotTag(num,size);
-    }
+    }*/
 
     @GetMapping("/{tag}")
     public String getOneUrl(@PathVariable("tag") String tag){
         log.info("getOneUrl - tag : {}",tag);
         String oneUrl = galleryBoardService.getImgUrlByTag(tag,0,1).get(0);
-        log.info(oneUrl);
         return oneUrl;
     }
 }

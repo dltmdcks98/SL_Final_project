@@ -34,6 +34,9 @@
 
                         <div class="block">
                             <h3 class="block-title">Hot Interests</h3>
+                            <c:forEach var="imgUrl" items="${userTagImgs}">
+                                <img src="${imgUrl}" onerror="this.style.display=`none`"/>
+                            </c:forEach>
                         </div>
 
                     </div>
@@ -72,13 +75,13 @@
                                 <div class="item">
                                     <a href="/mypage/myposting">
                                         <div class="name" >게시글</div>
-                                        <div class="value">208</div>
+                                        <div class="value"><c:out value="${userBoardCnt}"/></div>
                                     </a>
                                 </div>
                                 <div class="item">
                                     <a href='/mypage/mycomment'>
                                         <div class="name" >댓글</div>
-                                        <div class="value">3,729</div>
+                                        <div class="value"><c:out value="${userReplyCnt}"/> </div>
                                     </a>
                                 </div>
                                 <div class="item">
@@ -96,9 +99,10 @@
 
                         <div class="block">
                             <h3 class="block-title">My Interests</h3>
-
+                            <c:forEach var="imgUrl" items="${userTagImgs}">
+                                <img src="${imgUrl}" onerror="this.style.display=`none`"/>
+                            </c:forEach>
                         </div>
-
 
                     </div>
                 </div>
