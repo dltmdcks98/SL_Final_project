@@ -14,7 +14,6 @@ public interface BoardMapper {
     boolean insert(Board board);
 
     // 게시글 전체 조회 paging 처리
-//    List<Board> selectAll(Page page);
     List<Board> selectAll(Search search);
 
     // 나의 게시글 조회
