@@ -38,7 +38,6 @@ public class BoardService {
 
     private final ReplyMapper replyMapper;
     private final AdminMapper adminMapper;
-    private final RecommendMapper recommendMapper;
 
 
     // 게시글 등록

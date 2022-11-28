@@ -46,7 +46,7 @@
                 <a href="/gallery/search-tag?tag=${tag}"><div class="tagList">#<c:out value="${tag}"/></div></a>
             </c:forEach>
         </div>
-        <button type = "button" id = "btnRecommend">추천하기</button>
+        <button type="button" id="btnRecommend">추천하기</button>
 
     </div>
     <!-- 게시글 영역 end -->
