@@ -73,7 +73,6 @@ public class GalleryRestController {
     public String getOneUrl(@PathVariable("tag") String tag){
         log.info("getOneUrl - tag : {}",tag);
         String oneUrl = galleryBoardService.getImgUrlByTag(tag,0,1).get(0);
-        log.info(oneUrl);
         return oneUrl;
     }
 }
