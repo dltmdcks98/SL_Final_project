@@ -31,8 +31,14 @@ body {
 
 
 /*태그 입력 DIV*/
+.tagDivStart{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
 .tagLabel{
     font-size: 1.5rem;
+    margin-bottom: 0;
 }
 .tagDiv{
     width: 100%;
@@ -50,21 +56,13 @@ body {
     border: none;
     border-radius: 3rem;
     margin-bottom: 1rem;
-    overflow: hidden;
+    /*overflow: hidden;*/
     display: flex;
     align-items: center;
 }
 .tagInput{
-    width: 10rem;
+    width: auto;
 }
-/*.tagInput::after{
-    content: '';
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-}*/
 
 .tagDivInput:hover{
     background:#fd7e14;
@@ -97,4 +95,17 @@ body {
 
 .tagList ::placeholder{
     opacity: 0;
+}
+
+.warnTag{
+    position: relative;
+    border: 1px solid #dc3545 !important;
+}
+.warnTag::after{
+    content: '이미 입력한 태그입니다!';
+    position: absolute;
+    top: -3rem;
+    left: 0;
+    width: 16rem;
+    height: 100%;
 }

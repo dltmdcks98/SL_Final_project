@@ -89,7 +89,7 @@ function registerTag(){
         if(e.key=='Enter'){
             let inputTag = e.target.value;
             inputTag = subStringValue(inputTag);
-            inputTag = subStringValue(inputTag);
+            inputTag = subEmptyString(inputTag);
             console.log(inputTag);
             fetch('/ajax-tag/tag-regist/'+inputTag)
                 .then(res => res.text())
