@@ -219,7 +219,10 @@ public class BoardService {
         return boardMapper.findNewImage();
     }
 
-
+//  사용자 게시물 수 조회
+    public int getTotalCountByUserId(int uesrId){
+        return boardMapper.getTotalCountByUserId(uesrId);
+    }
 
     // 각 게시물의 댓글 수 조회
     public void getReplyCount(Board b) {
