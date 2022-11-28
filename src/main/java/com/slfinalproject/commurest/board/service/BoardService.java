@@ -84,8 +84,6 @@ public class BoardService {
         return findDataMap;
     }
 
-
-
     // header 검색
     public Map<String, Object> searchAll(Page page, String keyword){
         Map<String, Object> findDataMap = new HashMap<>();
@@ -98,16 +96,12 @@ public class BoardService {
             board.setTagList(tagList);
         }
 
-
-
         process(boardList);
         findDataMap.put("b", boardList);
         findDataMap.put("tc", boardMapper.getTotalCount());
 
         return findDataMap;
     }
-
-
 
 
     // 나의 게시글 조회

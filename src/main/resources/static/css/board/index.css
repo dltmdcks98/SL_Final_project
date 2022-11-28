@@ -1,0 +1,76 @@
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+a{
+    font-family: 'Jeju Gothic', sans-serif;
+}
+
+.featured-author-body2{
+    width: 88%;
+    height: 12%;
+    box-shadow: 0 0 3px #ddd;
+    margin-top: 10%;
+    position: relative;
+    z-index: 1;
+    border-radius: 3px;
+    background-color: #fff;
+    line-height: 20px;
+}
+
+.aaa {
+
+    border: none;
+    background: white;
+    margin-top: 2%;
+    margin-left: 3%;
+}
+.block-title{
+    font-family: 'Jeju Gothic', sans-serif;
+    text-align: center;
+}
+.block{
+    margin-top: 10%;
+}
+h4{
+    font-family: 'Jeju Gothic', sans-serif;
+    margin-left: 5%;
+    color: #a94442;
+}
+.myBtn{
+    font-family: 'Jeju Gothic', sans-serif;
+    background: #F73F52;
+    width: 15%;
+    color: white;
+    border: none;
+    margin-left: 3%;
+    border-radius: 0.3rem;
+
+}
+.form-group2 {
+    font-family: 'Jeju Gothic', sans-serif;
+    width: 100%;
+    padding-bottom: 1%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.myForm-email {
+    font-family: 'Jeju Gothic', sans-serif;
+    align-items: center;
+    width: 50%;
+    margin-left: 5%;
+    border: 1px solid #ced4da;
+    background: #F2F2F2;
+    border-radius: 0.3rem;
+}
+
+.myForm-pass {
+    align-items: center;
+    width: 50%;
+    margin-left: 5%;
+    margin-top: 1%;
+    border: 1px solid #ced4da;
+    background: #F2F2F2;
+    color: black;
+    border-radius: 0.3rem;
+}

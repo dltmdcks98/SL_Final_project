@@ -178,6 +178,9 @@ public class KakaoLoginController {
             session.setAttribute("user", user);
             log.info("세션에 넣은 값 확인 - " + user);
         }
+        if(redirectURI==null){
+            return "redirect:/";
+        }
 log.info("로그인석쎾싸ㅡ"+redirectURI);
         return "redirect:" + redirectURI;
     }

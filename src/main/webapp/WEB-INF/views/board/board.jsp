@@ -9,6 +9,10 @@
     <script src="/js/board/list.js"></script>
 </head>
 
+<style>
+
+</style>
+
 <body class="skin-orange">
 <%@ include file="../include/header.jsp" %>
 
@@ -34,8 +38,8 @@
                                 <thead class="thead">
                                 <tr>
                                     <th>번호</th>
-                                    <th>글쓴이</th>
                                     <th>제목</th>
+                                    <th>글쓴이</th>
                                     <th>작성일</th>
                                     <th>조회</th>
                                     <th>추천</th>
@@ -46,9 +50,9 @@
                                 <c:forEach var="b" items="${bList}">
                                     <tr onclick="location.href='/board/content/${b.boardNo}?pageNum=${p.pageNum}&amount=${p.amount}'" >
                                         <td>${b.boardNo}</td>
-                                        <td>${b.userName}</td>
                                         <td class="title">${b.title} <c:if test="${b.replyCnt != 0}">[${b.replyCnt}]</c:if>
                                         </td>
+                                        <td>${b.userName}</td>
                                         <td>${b.simpleDate}</td>
                                         <td>${b.hit}</td>
                                         <td>${b.recommend}</td>
@@ -87,7 +91,9 @@
                     <!-- 글쓰기 버튼 -->
 
                     <div class="search">
-                        <form action="/board" method="get">
+                        <form action="/board/board-search" method="get">
+                            <div class="form-group">
+                                <div class="input-group">
 
 
                             <select class="form-select" name="type" id="search-type">
@@ -95,12 +101,16 @@
                                 <option value="content">내용</option>
                                 <option value="writer">작성자</option>
                                 <option value="tc">제목+내용</option>
+                                <option value="tag">태그</option>
                             </select>
-                            <input type="text" class="form-controller" name="" value="">
 
-                            <button class="btn btn-primary" type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
+                                    <input id="keyword" type="text" name="keyword" class="form-control" placeholder="검색어를 입력하세요">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-primary"><i class="ion-search"></i></button>
+                                    </div>
+                                </div>
+
+                            </div>
                         </form>
 
                     </div>

@@ -64,6 +64,18 @@ td {
     height: auto;
     display: block;
 }*/
+
+.title{
+    color: #962411;
+}
+.title:hover{
+    color: #46209A;
+    cursor: pointer;
+}
+tbody td:nth-child(2){
+    width: 50%;
+}
+
 .block img{
     width: 30%;
     margin-right: 1rem;
