@@ -100,7 +100,7 @@ public class BoardService {
 
         process(boardList);
         findDataMap.put("bList", boardList);
-        findDataMap.put("tc", boardMapper.getTotalCount(search));
+        findDataMap.put("tc", boardMapper.getTotalCountSearch(search));
         return findDataMap;
     }
 

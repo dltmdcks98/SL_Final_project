@@ -28,7 +28,8 @@ public interface BoardMapper {
     Board selectOne(int boardNo);
 
     // 전체 게시물 수 조회
-    int getTotalCount(Search search);
+    int getTotalCount();
+    int getTotalCountSearch(Search search);
 
     // 내 게시물 수 조회
     int getTotalCountByUserId(int userId);

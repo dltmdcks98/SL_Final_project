@@ -90,6 +90,11 @@
 
     <!-- 전체 게시글 수-->
     <select id="getTotalCount" resultType="int">
+        SELECT COUNT(*)
+        FROM board
+    </select>
+    <!-- 전체 게시글 수-->
+    <select id="getTotalCountSearch" resultType="int">
         SELECT COUNT(A.board_no)  FROM board A
         JOIN user_account B ON A.user_id= B.user_id
         <if test="keyword != null">
