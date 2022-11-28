@@ -10,7 +10,11 @@
     <script src="/js/board/list.js" defer></script>
 </head>
 <style>
+.myMore:hover{
+    font-weight: bold;
+    cursor: pointer;
 
+}
 </style>
 
 <body class="skin-orange">
@@ -49,7 +53,7 @@
                                 </c:forEach>
                                 </tbody>
                             </table>
-                            <a>더보기</a>
+                            <a class="myMore" onclick="location.href='/board?type=title&keyword=${param.keyword}'">더보기</a>
 
                         </div>
                     </div>
@@ -59,7 +63,7 @@
 
                 </div>
 
-
+                <br>
                 <p class="hr"></p><br>
                     <div><p class="main-title" href="/">내용이 포함된 게시글</p></div><br>
 
@@ -87,6 +91,7 @@
                                 </c:forEach>
                                 </tbody>
                             </table>
+                            <a class="myMore" onclick="location.href='/board?type=content&keyword=${param.keyword}'">더보기</a>
                         </div>
                     </div>
                     <div>
@@ -95,6 +100,7 @@
 
                 </div>
                 <%--                                    태그로 찾기--%>
+                <br>
                 <p class="hr"></p><br>
                     <div><p class="main-title" href="/">태그가 포함된 게시글</p></div><br>
 
@@ -122,6 +128,7 @@
 
                                 </tbody>
                             </table>
+                            <a class="myMore" onclick="location.href='/board?type=tagValue&keyword=${param.keyword}'">더보기</a>
                         </div>
                     </div>
                     <div>
