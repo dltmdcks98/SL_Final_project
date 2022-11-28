@@ -77,20 +77,6 @@ public class BoardService {
     }
 
 
-    /*
-    // 게시물 전체 조회 요청 페이징
-    public Map<String, Object> findAllService(Page page) {
-
-        Map<String, Object> findDataMap = new HashMap<>();
-        List<Board> boardList = boardMapper.selectAll(page);
-
-        process(boardList);
-        findDataMap.put("bList", boardList);
-        findDataMap.put("tc", boardMapper.getTotalCount());
-        return findDataMap;
-    }
-
-     */
 
     // 게시물 전체 조회 요청 페이징 + 검색기능
     public Map<String, Object> findAllService(Search search) {
@@ -121,16 +107,12 @@ public class BoardService {
             board.setTagList(tagList);
         }
 
-
-
         process(boardList);
         findDataMap.put("b", boardList);
         findDataMap.put("tc", boardMapper.getTotalCount());
 
         return findDataMap;
     }
-
-
 
 
     // 나의 게시글 조회
