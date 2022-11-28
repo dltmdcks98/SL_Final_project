@@ -277,7 +277,6 @@ public class BoardService {
         List<ReplyDTO> getReplyBoard = replyMapper.getBoardNoByReplyCount();
         List<Board> boardList = new ArrayList<>();
         for(ReplyDTO replyDTO : getReplyBoard){
-            log.info(replyDTO.getBoardNo());
             Board board = boardMapper.selectOne(replyDTO.getBoardNo());
             board.setReplyCnt(replyDTO.getReplyCount());
             boardList.add(board);

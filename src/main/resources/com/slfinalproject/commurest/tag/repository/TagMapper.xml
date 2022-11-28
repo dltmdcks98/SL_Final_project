@@ -25,6 +25,9 @@
         SELECT tag_value,user_id FROM tag WHERE user_id=#{userId}
     </select>
 
+    <select id="getRandomTagValueByUserId" resultType="String">
+        SELECT tag_value FROM tag WHERE user_id=#{userId} ORDER BY RAND() LIMIT 1
+    </select>
     <select id="getTagValueByBoardNo" resultMap="tagMap">
         SELECT tag_value FROM tag WHERE board_no=#{boardNo}
     </select>

@@ -43,7 +43,13 @@ class TagMapperTest {
         System.out.println(taglist);
         assertNotNull(taglist);
     }
-
+    @Test
+    @DisplayName("사용자 태그 랜덤 선택")
+    void getRandomTagValueByUserId(){
+        String tagValue = tagMapper.getRandomTagValueByUserId(51);
+        System.out.println(tagValue);
+        assertNotNull(tagValue);
+    }
     @Test
     @DisplayName("게시글의 태그 리스트 출력")
      void selectTagByBoardNo(){

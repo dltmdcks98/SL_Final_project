@@ -24,15 +24,11 @@ public class TagService {
     public List<Tag> getTagValueByUserId(int userId){
         return tagMapper.getTagValueByUserId(userId);
     }
-
+    public String getRandomTagValueByUserId(int userId){return tagMapper.getRandomTagValueByUserId(userId);}
     public boolean setTagValue(String value){
         return tagMapper.setTagValue(value);
     }
-
-
-    public boolean setTagValueByBoardNo(String value,int boardNo){
-        return tagMapper.setTagValueByBoardNo(value,boardNo);
-    }
+    public boolean setTagValueByBoardNo(String value,int boardNo){return tagMapper.setTagValueByBoardNo(value,boardNo);}
 
     public boolean setTagValueByUserId(String value ,int userId){
         return tagMapper.setTagValueByUserId(value,userId);
