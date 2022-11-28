@@ -30,28 +30,19 @@
 
     <!-- 게시글 추천 시 Check를 1로 만들어서 중복방지-->
     <update id="updateLikeCheck">
-        update MP_LIKE set LIKECHECK = 1
-        where BNO = #{bno} and user_id = #{user_id}
+        update recommend set recommend_check = 1
+        where bno = #{bno} and user_id = #{user_id}
     </update>
 
     <!-- 게시글 추천취소 시 다시 0  -->
-    <update id="updateLikeCheckCancel">
-        update MP_LIKE set LIKECHECK = 0
-        where BNO = #{bno} and MEMBER_ID = #{memberId}
+    <update id="updateRecommendCheckCancel">
+        update recommend set recommend_check = 0
+        where bno = #{bno} and user_id = #{user_id}
     </update>
 
     <!-- 게시글 추천 중복방지 select문 -->
-    <select id="likeCheck" resultType="int">
-        select count(*) from MP_LIKE where BNO = #{bno} and MEMBER_ID = #{memberId}
+    <select id="recommendCheck" resultType="int">
+        select count(*) from recommend where bno = #{bno} and user_id = #{user_id}
     </select>
 
-    <!-- 게시글 추천 시 회원포인트 증가 -->
-    <update id="memberPointPlus">
-        update MP_MEMBER set MEMBER_POINT = MEMBER_POINT + 1 where MEMBER_ID = #{writerId}
-    </update>
-
-    <!-- 게시글 추천취소 시 회원포인트 감소 -->
-    <update id="memberPointDown">
-        update MP_MEMBER set MEMBER_POINT = MEMBER_POINT - 1 where MEMBER_ID = #{writerId}
-    </update>
 </mapper>

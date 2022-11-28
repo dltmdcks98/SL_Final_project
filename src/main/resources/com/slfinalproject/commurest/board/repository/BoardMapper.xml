@@ -92,6 +92,7 @@
     <select id="getTotalCount" resultType="int">
         SELECT COUNT(*)
         FROM board
+        <include refid="search"/>
     </select>
     <!-- 전체 게시글 수-->
     <select id="getTotalCountSearch" resultType="int">
