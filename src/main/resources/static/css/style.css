@@ -2407,6 +2407,8 @@ aside {
     margin-bottom: 40px;
     display: inline-block;
     width: 100%;
+    position: sticky;
+    top: 0;
 }
 aside:last-child {
     margin-bottom: 0;

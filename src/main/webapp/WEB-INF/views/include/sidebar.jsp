@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<link rel="stylesheet" href="/css/board/index.css">
 <c:if test="${empty user}">
     <div class="col-xs-6 col-md-4 sidebar" id="sidebar">
         <aside>
