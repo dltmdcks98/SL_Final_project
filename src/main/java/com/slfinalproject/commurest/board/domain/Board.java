@@ -49,6 +49,7 @@ public class Board {
 
    private int boardCnt;
 
+
    public Board(ResultSet rs) throws SQLException {
       this.boardNo = rs.getInt("board_no");
       this.userId = rs.getInt("user_id");

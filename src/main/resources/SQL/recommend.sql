@@ -8,4 +8,5 @@ CREATE TABLE recommend (
     REFERENCES user_account(user_id) ON DELETE CASCADE,
     CONSTRAINT fk_recommend_board FOREIGN KEY (bno) REFERENCES board (board_no) ON DELETE CASCADE
 );
-#
+#근데 user_id 어처피 user_name으로 하지않나?
+# user_name VARCHAR(50) NOT NULL

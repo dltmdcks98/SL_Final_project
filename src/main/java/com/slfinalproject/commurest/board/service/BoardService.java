@@ -4,6 +4,7 @@ import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.admin.repository.AdminMapper;
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.repository.BoardMapper;
+import com.slfinalproject.commurest.recommend.repository.RecommendMapper;
 import com.slfinalproject.commurest.reply.dto.ReplyDTO;
 import com.slfinalproject.commurest.reply.repository.ReplyMapper;
 import com.slfinalproject.commurest.tag.domain.Tag;
@@ -37,7 +38,7 @@ public class BoardService {
 
     private final ReplyMapper replyMapper;
     private final AdminMapper adminMapper;
-
+    private final RecommendMapper recommendMapper;
 
 
     // 게시글 등록
@@ -220,8 +221,6 @@ public class BoardService {
 
         }
     }
-
-
 
     // 첨부파일 가져오기
 

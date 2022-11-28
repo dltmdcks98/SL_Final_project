@@ -144,6 +144,13 @@ ORDER BY  board_no DESC limit 3;
 
 
 select * from file_upload order by reg_date desc;
-SELECT A.board_no, A.title, A.content, A.user_id, B.user_name,
-       COUNT(*)  FROM board A
-                          JOIN user_account B ON A.user_id= B.user_id;
+
+SELECT COUNT(A.board_no)  FROM board A
+                          LEFT JOIN user_account B ON A.user_id = B.user_id
+                          LEFT JOIN tag C ON A.board_no = C.board_no;
+
+SELECT A.board_no, A.user_id, A.title, A.reg_date, A.hit, A.recommend, B.user_name, C.tag_value
+FROM board A
+         LEFT JOIN user_account B ON A.user_id = B.user_id
+         LEFT JOIN tag C ON A.board_no = C.board_no
+        ORDER BY board_no DESC;
