@@ -4,8 +4,6 @@ import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.admin.service.AdminService;
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.service.BoardService;
-import com.slfinalproject.commurest.recommend.domain.Recommend;
-import com.slfinalproject.commurest.recommend.service.RecommendService;
 import com.slfinalproject.commurest.util.paging.Page;
 import com.slfinalproject.commurest.util.paging.PageMaker;
 import com.slfinalproject.commurest.util.search.Search;
@@ -37,7 +35,6 @@ import java.util.Map;
 public class BoardController {
     private final BoardService boardService;
     private final AdminService adminService;
-    private final RecommendService recommendService;
 
 
     // 게시판 메인 페이지
