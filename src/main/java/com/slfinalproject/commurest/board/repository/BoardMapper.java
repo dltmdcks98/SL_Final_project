@@ -46,6 +46,8 @@ public interface BoardMapper {
 
     void hitCount(int boardNo);
 
+    void updateRecommend(int boardNo);
+
     // 글쓰기 파일 추가
     void addFile(String fileName);
 

@@ -94,6 +94,7 @@
                                     <option value="title">제목</option>
                                     <option value="content">내용</option>
                                     <option value="userName">작성자</option>
+                                    <option value="tagValue">태그</option>
                                     <option value="tc">제목+내용</option>
                                 </select>
                                 <input type="text" class="form-controller" name="keyword" value="${s.keyword}">
