@@ -128,7 +128,7 @@
 
                                 </tbody>
                             </table>
-                            <a class="myMore" onclick="location.href='/board?type=tag&keyword=${param.keyword}'">더보기</a>
+                            <a class="myMore" onclick="location.href='/board?type=tagValue&keyword=${param.keyword}'">더보기</a>
                         </div>
                     </div>
                     <div>
