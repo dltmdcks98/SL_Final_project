@@ -143,6 +143,7 @@ public class BoardService {
         for (Board board : boardList) {
             dateFormat(board);
             getReplyCount(board);
+            chkNewBoard(board);
         }
     }
 
@@ -224,6 +225,16 @@ public class BoardService {
     // 각 게시물의 댓글 수 조회
     public void getReplyCount(Board b) {
         b.setReplyCnt(replyMapper.getReplyCount(b.getBoardNo()));
+    }
+    private void chkNewBoard(Board board){
+        long regTime = board.getRegDate().getTime();
+        long curTime = System.currentTimeMillis();
+
+        long dif = curTime - regTime;
+        long limitTime = 60 * 10 * 1000;
+        if(dif < limitTime){
+            board.setNewBoard(true);
+        }
     }
 
 
