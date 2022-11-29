@@ -16,7 +16,7 @@
                     <div class="col-md-3 col-sm-12">
                         <div class="brand">
                             <a href="/">
-                                <img src="/img/logo.png" alt="Magz Logo">
+                                <img src="/img/logo1.png" alt="Magz Logo">
                             </a>
                         </div>
                     </div>
