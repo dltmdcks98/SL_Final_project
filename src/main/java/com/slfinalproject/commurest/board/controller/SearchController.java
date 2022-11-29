@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 @Controller
@@ -25,7 +26,7 @@ public class SearchController {
     // header 검색
 
     @GetMapping("/search")
-    public String search(@RequestParam("keyword") String keyword, Model model, @ModelAttribute("p") Page page){
+    public String search(@RequestParam("keyword") String keyword, Model model, @ModelAttribute("p") Page page, HttpSession session){
         Map<String, Object> boardMap = boardService.searchAll(page, keyword);
         PageMaker pageMaker = new PageMaker(
                 new Page(page.getPageNum(), page.getAmount())
@@ -33,7 +34,8 @@ public class SearchController {
         log.info("페이지 정보 : {}",pageMaker);
         model.addAttribute("b", boardMap.get("b"));
         model.addAttribute("pageMaker", pageMaker);
-
+        session.setAttribute("redirectURIt","search-result");
+        session.setAttribute("keyword",java.net.URLEncoder.encode(keyword));
 
         return "/search/search-result";
     }

@@ -1,5 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style>
+    .block img {
+        width: 30%;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+    }
+</style>
 
 <link rel="stylesheet" href="/css/board/index.css">
 <c:if test="${empty user}">

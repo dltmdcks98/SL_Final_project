@@ -184,10 +184,13 @@ public class KakaoLoginController {
         log.info("login success");
         redirectURI = (String) session.getAttribute("redirectURI");
 
+
+
         if (redirectURI == null) {
             String refer = request.getHeader("Referer").substring(21);
             request.getSession().setAttribute("redirectURI", refer);
             redirectURI = (String) session.getAttribute("redirectURI");
+            log.info("ㅇㅇㅇㅇ : "+request.getHeader("Referer"));
         }
 
 
@@ -199,6 +202,16 @@ public class KakaoLoginController {
             session.removeAttribute("userTagImgs");
             session.setAttribute("userTagImgs",galleryBoardService.getImgUrlByTag(tagService.getRandomTagValueByUserId(user.getUser_id()),0,9));
             log.info("세션에 넣은 값 확인 - " + user);
+        }
+
+        if(session.getAttribute("redirectURIt")=="board"){
+            log.info("보드:"+session.getAttribute("redirectURIt"));
+            return "redirect:/board";
+        } else if (session.getAttribute("redirectURIt")=="search-result") {
+            String keyword = (String)session.getAttribute("keyword");
+            log.info("보드:"+session.getAttribute("redirectURIt"));
+            log.info(keyword);
+            return "redirect:/search?keyword="+keyword;
         }
 
 

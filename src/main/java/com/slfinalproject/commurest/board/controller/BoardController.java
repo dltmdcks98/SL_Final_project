@@ -34,7 +34,7 @@ public class BoardController {
 
     // 게시판 메인 페이지
     @GetMapping("")
-    public String board(@ModelAttribute("s") Search search, Model model, HttpServletRequest request) {
+    public String board(@ModelAttribute("s") Search search, Model model, HttpSession session) {
         Map<String, Object> boardMap = boardService.findAllService(search);
 //        log.info("return data - {}", boardMap);
         PageMaker pageMaker = new PageMaker(
@@ -43,6 +43,7 @@ public class BoardController {
         log.info("페이지 정보 : {}",pageMaker);
         model.addAttribute("bList", boardMap.get("bList"));
         model.addAttribute("pageMaker", pageMaker);
+        session.setAttribute("redirectURIt","board");
 
 
         return "board/board";
