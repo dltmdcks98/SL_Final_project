@@ -33,7 +33,9 @@ tbody td {
     padding: 10px;
     font-size: 15px;
     font-weight: 1;
+
 }
+
 th{
     text-align: center;
 }
@@ -44,8 +46,12 @@ td {
 
 .title {
     text-align: left;
+    display: flex;
+    align-items: center;
 }
-
+.title span{
+    margin-left: 1rem;
+}
 
 /*index 인기 태그 photos*/
 /*.gird{
@@ -74,7 +80,7 @@ td {
     cursor: pointer;
 }
 tbody td:nth-child(2){
-    width: 50%;
+    width: 100%;
 }
 
 .block img{
