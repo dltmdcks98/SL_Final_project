@@ -128,7 +128,7 @@ public class KakaoLoginController {
 
         log.info("??" + adminService.selectOne(kakaoProfile.getKakao_account().getEmail()));
         kakaoUser.setUser_email(kakaoProfile.getKakao_account().getEmail());
-        if(kakaoProfile.getKakao_account().getEmail()==null){
+        if (kakaoProfile.getKakao_account().getEmail() == null) {
             return "/member/kakaoLoginFail";
         }
         kakaoUser.setUser_pass("111");
@@ -152,7 +152,9 @@ public class KakaoLoginController {
             return "/member/myInfo";
 
         }
-      return loginSuccess(session);
+
+
+        return loginSuccess(session, request);
 
 
     }
@@ -168,20 +170,27 @@ public class KakaoLoginController {
         return user;
     }
 
-    public String loginSuccess(HttpSession session) {
-
-
+    public String loginSuccess(HttpSession session, HttpServletRequest request) {
+        String redirectURI = null;
         log.info("login success");
-        String redirectURI = (String) session.getAttribute("redirectURI");
+        redirectURI = (String) session.getAttribute("redirectURI");
+
+        if (redirectURI == null) {
+            String refer = request.getHeader("Referer").substring(21);
+            request.getSession().setAttribute("redirectURI", refer);
+            redirectURI = (String) session.getAttribute("redirectURI");
+        }
+
+
         Admin user = setLoginSession(session);
         if (user != null) {
             session.setAttribute("user", user);
             log.info("세션에 넣은 값 확인 - " + user);
         }
-        if(redirectURI==null){
-            return "redirect:/";
-        }
-log.info("로그인석쎾싸ㅡ"+redirectURI);
+
+
+        log.info("로그인석쎾싸ㅡ" + redirectURI);
+
         return "redirect:" + redirectURI;
     }
 

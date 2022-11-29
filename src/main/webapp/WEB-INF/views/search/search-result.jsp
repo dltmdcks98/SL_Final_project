@@ -140,7 +140,7 @@
 
             </div>
 
-
+            <%@include file="../include/sidebar.jsp"%>
         </div>
     </div>
 
