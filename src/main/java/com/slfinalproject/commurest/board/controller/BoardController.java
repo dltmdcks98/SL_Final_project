@@ -11,9 +11,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,8 +20,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.text.AttributedString;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -39,7 +34,7 @@ public class BoardController {
 
     // 게시판 메인 페이지
     @GetMapping("")
-    public String board(@ModelAttribute("s") Search search, Model model, HttpServletRequest request) {
+    public String board(@ModelAttribute("s") Search search, Model model, HttpSession session) {
         Map<String, Object> boardMap = boardService.findAllService(search);
 //        log.info("return data - {}", boardMap);
         PageMaker pageMaker = new PageMaker(
@@ -48,6 +43,7 @@ public class BoardController {
         log.info("페이지 정보 : {}",pageMaker);
         model.addAttribute("bList", boardMap.get("bList"));
         model.addAttribute("pageMaker", pageMaker);
+        session.setAttribute("redirectURIt","board");
 
 
         return "board/board";
@@ -70,14 +66,9 @@ public class BoardController {
     // 글쓰기 페이지
     @GetMapping("/write")
     public String write(Board board, Model model,
-                        HttpServletResponse response, HttpServletRequest request, @ModelAttribute("p") Page page) {
-        HttpSession session = request.getSession();
-        Object securityContextObject = session.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
-        if (securityContextObject != null) {
-            SecurityContext securityContext = (SecurityContext) securityContextObject;
-            Authentication authentication = securityContext.getAuthentication();
-            Admin user = (Admin) authentication.getPrincipal();
-            System.out.println("현재 세션 정보 : " + user);
+                         HttpSession session, @ModelAttribute("p") Page page) {
+        Admin user = (Admin) session.getAttribute("user");
+        if (user != null) {
             model.addAttribute("a", user);
         }
         model.addAttribute("p", page);
