@@ -49,6 +49,9 @@
                                         <tr onclick="location.href='/board/content/${b.boardNo}?pageNum=${s.pageNum}&amount=${s.amount}'" >
                                             <td>${b.boardNo}</td>
                                             <td class="title">${b.title} <c:if test="${b.replyCnt != 0}">[${b.replyCnt}]</c:if>
+                                                <c:if test="${b.newBoard}">
+                                                    <span class="badge badge-secondary">New</span>
+                                                </c:if>
                                             </td>
                                             <td>${b.userName}</td>
                                             <td>${b.simpleDate}</td>

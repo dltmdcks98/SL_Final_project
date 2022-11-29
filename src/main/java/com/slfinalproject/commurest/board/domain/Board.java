@@ -36,6 +36,7 @@ public class Board {
 
    // 게시판 전체 조회 userId -> userName 변경하기
    private String userName;
+   private boolean newBoard;
 
    private int replyCnt; //각 게시물의 댓글 수
 
