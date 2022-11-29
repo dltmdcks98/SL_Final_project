@@ -2,6 +2,10 @@ package com.slfinalproject.commurest.admin.controller;
 
 import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.admin.service.AdminService;
+import com.slfinalproject.commurest.board.service.BoardService;
+import com.slfinalproject.commurest.galleryBoard.service.GalleryBoardService;
+import com.slfinalproject.commurest.reply.service.ReplyService;
+import com.slfinalproject.commurest.tag.service.TagService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -18,7 +22,10 @@ import javax.servlet.http.HttpSession;
 public class AdminController {
 
     private final AdminService adminService;
-
+    private final GalleryBoardService galleryBoardService;
+    private final TagService tagService;
+    private final BoardService boardService;
+    private final ReplyService replyService;
     // 회원가입 처리
     @PostMapping("/admin/regist")
     public String regist(Admin admin) {
@@ -55,12 +62,13 @@ public class AdminController {
 
         if (user != null) {
             session.setAttribute("user", user);
-            log.info("세션에 넣은 값 확인 - " + user);
+            session.setAttribute("userBoardCnt",boardService.getTotalCountByUserId(user.getUser_id()));
+            session.setAttribute("userReplyCnt",replyService.getTotalCountReplyByUserId(user.getUser_id()));
+            session.removeAttribute("userTagImgs");
+            session.setAttribute("userTagImgs",galleryBoardService.getImgUrlByTag(tagService.getRandomTagValueByUserId(user.getUser_id()),0,9));
         }
 
 
-
-        log.info(redirectURI);
 
         return "redirect:"+redirectURI;
 

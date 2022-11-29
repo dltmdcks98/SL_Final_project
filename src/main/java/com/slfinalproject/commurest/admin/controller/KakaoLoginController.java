@@ -7,6 +7,10 @@ import com.slfinalproject.commurest.admin.domain.KakaoProfile;
 import com.slfinalproject.commurest.admin.domain.OAuthToken;
 import com.slfinalproject.commurest.admin.repository.AdminMapper;
 import com.slfinalproject.commurest.admin.service.AdminService;
+import com.slfinalproject.commurest.board.service.BoardService;
+import com.slfinalproject.commurest.galleryBoard.service.GalleryBoardService;
+import com.slfinalproject.commurest.reply.service.ReplyService;
+import com.slfinalproject.commurest.tag.service.TagService;
 import com.slfinalproject.commurest.util.RandomString;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -46,6 +50,11 @@ public class KakaoLoginController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+
+    private final GalleryBoardService galleryBoardService;
+    private final TagService tagService;
+    private final BoardService boardService;
+    private final ReplyService replyService;
 
 
     @GetMapping("/kakao")
@@ -185,6 +194,10 @@ public class KakaoLoginController {
         Admin user = setLoginSession(session);
         if (user != null) {
             session.setAttribute("user", user);
+            session.setAttribute("userBoardCnt",boardService.getTotalCountByUserId(user.getUser_id()));
+            session.setAttribute("userReplyCnt",replyService.getTotalCountReplyByUserId(user.getUser_id()));
+            session.removeAttribute("userTagImgs");
+            session.setAttribute("userTagImgs",galleryBoardService.getImgUrlByTag(tagService.getRandomTagValueByUserId(user.getUser_id()),0,9));
             log.info("세션에 넣은 값 확인 - " + user);
         }
 
