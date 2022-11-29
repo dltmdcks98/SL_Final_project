@@ -1,0 +1,93 @@
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+
+.tableList {
+    font-family: 'Jeju Gothic', sans-serif;
+    width: 100%;
+    border-bottom: 1px solid #29367c;
+    border-collapse: collapse;
+
+}
+
+tbody tr:hover {
+    background-color: #F1EFEF;
+}
+
+thead tr {
+    display: table-row;
+    border-style: groove hidden;
+    border-color: #81F7D8;
+}
+
+thead th {
+    font-weight: bold;
+}
+
+tbody tr {
+    border-color: #E7E6E6;
+    border: 1px;
+    border-style: groove hidden;
+}
+
+tbody td {
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 1;
+}
+th{
+    text-align: center;
+}
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+.title {
+    text-align: left;
+}
+
+
+/*index 인기 태그 photos*/
+/*.gird{
+    width: 100%;
+    margin: 0 auto;
+}
+.item {
+    margin-bottom: .9375rem;
+    border-radius: 0.25rem;
+    overflow: hidden;
+
+    float: left;
+}
+.item img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}*/
+
+.title{
+    color: #962411;
+}
+.title:hover{
+    color: #46209A;
+    cursor: pointer;
+}
+tbody td:nth-child(2){
+    width: 50%;
+}
+
+.block img{
+    width: 30%;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.user-name{
+    color: #7B2020;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 5%;
+    margin-bottom: 2%;
+}
+
