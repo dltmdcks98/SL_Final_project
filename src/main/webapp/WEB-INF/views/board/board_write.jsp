@@ -48,7 +48,7 @@
                     <span>Drop!</span>
                 </div>
                 <div class="uploadDiv">
-                    <input type="file" name="files" id="ajax-file" style="display:flex;">
+                    <input type="file" name="files" id="ajax-file">
                 </div>
                 <!-- 업로드된 파일의 썸네일을 보여줄 영역 -->
                 <div class="uploaded-list">

@@ -91,9 +91,8 @@ public class FileUtil {
         int m = now.getMonthValue();
         int d = now.getDayOfMonth();
 
-        // 폴더 생성
+        // 폴더 생성 -- api처리
         String[] dateInfo = {
-                //      y+""
                 String.valueOf(y)
                 , len2(m)
                 , len2(d)
@@ -101,14 +100,14 @@ public class FileUtil {
 
         String newUploadPath = uploadPath;
 
-        // File.separator : 운영체제에 맞는 디렉토리 경로구분문자를 생성
-        // 리눅스 : / ,  윈도우 : \
+
+
         for (String date : dateInfo) {
             newUploadPath += File.separator + date;
 
             // 해당 경로대로 폴더를 생성
             File dirName = new File(newUploadPath);
-            if (!dirName.exists()) dirName.mkdir(); // 만약 파일의 날짜 경로가 존재하지않으면 새로운 업로드 폴더를 만들어라
+            if (!dirName.exists()) dirName.mkdir(); // 파일의 날짜 경로가 존재하지않으면 새로운 업로드 폴더를 만듬
         }
 
         return newUploadPath;

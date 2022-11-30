@@ -3,6 +3,7 @@ package com.slfinalproject.commurest.admin.service;
 import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.admin.repository.AdminMapper;
 import com.slfinalproject.commurest.admin.repository.AdminRepository;
+import com.slfinalproject.commurest.board.repository.BoardMapper;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,13 +23,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class AdminService implements UserDetailsService {
     @Autowired
     private final AdminMapper adminMapper;
-
+    private final BoardMapper boardMapper;
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -132,6 +134,8 @@ public class AdminService implements UserDetailsService {
 
 
     }
-
+    public List<String> getFiles(int bno) {
+        return boardMapper.fileNames(bno);
+    }
 
 }

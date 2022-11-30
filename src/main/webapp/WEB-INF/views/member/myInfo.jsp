@@ -7,6 +7,7 @@
     <%@ include file="../include/static-head.jsp" %>
     <link rel="stylesheet" href="/css/board/myPage_boardList.css">
     <link rel="stylesheet" href="/css/mypage/mypage.css">
+    <script src="/js/board/jquery_board_write.js" defer ></script>
 </head>
 <style>
     .myinfo {
@@ -80,13 +81,28 @@
                     <input type="radio" name="user_sex" value="m" > 남성
                     <input type="radio" name="user_sex"value="f"> 여성
                 </div>
+
+                <!-- 첨부파일 드래그 앤 드롭 영역 -->
+                <div class="form-group">
+                    <div class="fileDrop">
+                        <span>DROP</span>
+                    </div>
+                    <div class="uploadDiv">
+                        <input type="file" name="files" id="ajax-file">
+                    </div>
+                    <!-- 업로드된 파일의 썸네일을 보여줄 영역 -->
+                    <div class="uploaded-list">
+
+                    </div>
+
                 <div class="form-group text-right">
                     <button type="submit" class="btn btn-primary btn-block" id="regist-btn">변경</button>
                 </div>
 
             </form>
             </c:if>
-<c:if test = "${fn:contains(user.user_name,'kakao')}">
+
+            <c:if test = "${fn:contains(user.user_name,'kakao')}">
             <form id = "update-form" action="/update-kakao" method="post">
                 <div class="form-group">
                     <input type="hidden" name="user_id" class="form-control" value="${user.user_id}" readonly>
@@ -96,6 +112,19 @@
                     <label>닉네임</label>
                     <input type="text" name="user_name" class="form-control"  placeholder="닉네임">
                 </div>
+
+                <!-- 첨부파일 드래그 앤 드롭 영역 -->
+                <div class="form-group">
+                    <div class="fileDrop">
+                        <span>DROP</span>
+                    </div>
+                    <div class="uploadDiv">
+                        <input type="file" name="files" id="ajax-file">
+                    </div>
+                    <!-- 업로드된 파일의 썸네일을 보여줄 영역 -->
+                    <div class="uploaded-list">
+
+                    </div>
 
                 <div class="form-group text-right">
                     <button type="submit" class="btn btn-primary btn-block" id="regist-btn">변경</button>

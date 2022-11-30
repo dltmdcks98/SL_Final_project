@@ -39,7 +39,7 @@ public class BoardService {
     private final ReplyMapper replyMapper;
     private final RecommendMapper recommendMapper;
     private final AdminMapper adminMapper;
-    private final RecommendMapper recommendMapper;
+
 
     // 게시글 등록
     @Transactional
@@ -91,22 +91,6 @@ public class BoardService {
         return findDataMap;
     }
 
-    // 추천
-    public void updateRecommend(Recommend recommend) {
-        recommendMapper.insertRecommend(recommend);
-        recommendMapper.updateRecommend(recommend.getBoardNo());
-    }
-
-    // 추천 취소
-    public void deleteRecommend(Recommend recommend) {
-        recommendMapper.deleteRecommend(recommend);
-        recommendMapper.updateRecommend(recommend.getBoardNo());
-    }
-
-    // 추천 중복 방지 0이면 빈하트, 1이면 꽉찬 하트
-    public int getRecommend(Recommend recommend){
-        return recommendMapper.getRecommend(recommend);
-    }
 
 
 

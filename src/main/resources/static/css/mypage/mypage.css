@@ -88,3 +88,17 @@
 .t1:nth-child(2){
     border-top: hidden;
 }
+
+.uploadDiv {
+    display: none;
+}
+
+.img-sizing {
+    display: block;
+    width: 5%;
+    height: 5%;
+}
+.uploaded-list {
+    display:flex;
+
+}
