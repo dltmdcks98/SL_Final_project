@@ -66,11 +66,13 @@ if($editBtn) {
 
     function setHeart(){
         console.log(${recommendedUser});
+
         if(${recommendedUser}){
             $titleDiv.innerHTML+=fillHeart;
         }else{
             $titleDiv.innerHTML+=emptyHeart;
         }
+
     }
 
     (function (){

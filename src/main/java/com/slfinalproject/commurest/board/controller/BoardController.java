@@ -58,11 +58,17 @@ public class BoardController {
         Board board = boardService.selectOne(boardNo,response,request);
         Admin admin = adminService.selectOne2(board.getUserId());
         int recommendCount = recommendService.countRecommendBYBoardNo(boardNo);
-        boolean recommendedUser = recommendService.confirmRecommend(boardNo, admin.getUser_id());
+
+        if(request.getSession().getAttribute("user")!=null){
+            Admin user = (Admin) request.getSession().getAttribute("user");
+            boolean recommendedUser = recommendService.confirmRecommend(boardNo,user.getUser_id());
+            model.addAttribute("recommendedUser",recommendedUser);
+        }
+
         board.setRecommend(recommendCount);
         model.addAttribute("b", board);
         model.addAttribute("a", admin);
-        model.addAttribute("recommendedUser",recommendedUser);
+
 
         return "board/board_content";
 
