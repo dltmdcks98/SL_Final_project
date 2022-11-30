@@ -13,7 +13,20 @@ CREATE TABLE board(
       REFERENCES user_account (user_id)
     ON DELETE CASCADE
 );
-use spring10;
+create table like_good(
+    like_id int(10) auto_increment,
+    board_no int(10) not null,
+    user_id int(10) not null,
+    constraint pk_like primary key (like_id),
+    constraint fk_like_board foreign key (board_no)
+            references board(board_no),
+    constraint fk_like_user_account foreign key (user_id)
+        references user_account(user_id)
+                 on delete cascade
+);
+drop table like_good;
+
+    use spring10;
 use finaldb;
 CREATE TABLE board (
                       board_no INT(10) AUTO_INCREMENT,
@@ -28,13 +41,16 @@ CREATE TABLE board (
                       CONSTRAINT pk_board PRIMARY KEY (board_no)
 );
 
-select * from board;
+select * from tag;
 select * from user_account;
+select * from board;
+select * from r
+
+
 delete from user_account where user_id='14';
 select *
 from user_account;
 insert into board(user_id, title, content)  values(8,'제목테스트','내용테스트');
-
 
 
 ALTER TABLE board ADD CONSTRAINT fk_board_user_account FOREIGN KEY (user_id)
@@ -154,3 +170,10 @@ FROM board A
          LEFT JOIN user_account B ON A.user_id = B.user_id
          LEFT JOIN tag C ON A.board_no = C.board_no
         ORDER BY board_no DESC;
+
+select *
+from board where user_id=49;
+
+
+
+
