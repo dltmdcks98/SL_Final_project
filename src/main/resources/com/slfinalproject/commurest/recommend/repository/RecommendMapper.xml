@@ -8,29 +8,29 @@
     <resultMap id="recommendMap" type="com.slfinalproject.commurest.recommend.domain.Recommend">
         <result property="recommendNo" column="recommend_no"/>
         <result property="boardNo" column="board_no"/>
-        <result property="userName" column="user_name"/>
+        <result property="user_id" column="userId"/>
     </resultMap>
 
-    <!-- 게시글 추천수 -->
-    <insert id="Recommend">
-        INSERT INTO recommend (board_no, user_name)
-        VALUES (#{boardNo}, #{userName})
+    <!-- 게시글 추천 -->
+    <insert id="insertRecommend">
+        INSERT INTO recommend (board_no, user_id)
+        VALUES (#{boardNo}, #{userId})
     </insert>
 
     <!-- 게시글 추천취소 -->
-    <delete id="RecommendCancel">
+    <delete id="deleteRecommend">
         DELETE FROM recommend
-        WHERE board_no = #{boardNo} AND user_name = #{userName}
+        WHERE board_no = #{boardNo} AND user_id = #{userId}
     </delete>
 
     <!-- 게시글 추천 수 -->
-    <select id="updateRecommend">
+    <update id="updateRecommend">
         UPDATE board SET
         recommend = (SELECT COUNT(*) FROM recommend WHERE board_no = #{boardNo})
         WHERE board_no = #{boardNo}
-    </select>
+    </update>
 
-    <!-- 중복방지 -->
+    <!-- 중복방지 0 또는 1이 나오는데 0이면 좋아요 안누름 1이면 좋아요 누름-->
     <select id="getRecommend" resultType="int">
         SELECT COUNT(recommend_no) FROM recommend WHERE board_no = #{boardNo} AND user_id = #{userId}
     </select>

@@ -46,7 +46,14 @@
                 <a href="/gallery/search-tag?tag=${tag}"><div class="tagList">#<c:out value="${tag}"/></div></a>
             </c:forEach>
         </div>
-        <button type="button" id="btnRecommend">추천하기</button>
+
+
+        <div style="text-align: right;">
+<%--            data-click="${heart.recommendFlag}"--%>
+            <a class="btn btn-outline-dark heart" >
+                <img id="heart" src="" style="height: 5%; width: 30px;">
+            </a>
+        </div>
 
     </div>
     <!-- 게시글 영역 end -->
@@ -151,6 +158,57 @@
     </div>
 
 </section>
+<script>
+    $(document).ready(function () {
+
+        <%--if ('${heart.recommentFlag}') {--%>
+        <%--    $("#heart").prop("src", "/img/like2.png");--%>
+        <%--    $(".heart").prop('name',heartval)--%>
+        <%--} else {--%>
+        <%--    console.log(heartval);--%>
+        <%--    $("#heart").prop("src", "/img/like1.png");--%>
+        <%--    $(".heart").prop('name',heartval)--%>
+        <%--}--%>
+
+        let heartval = '${heart}';
+        console.log("heart : ",heartval);
+
+        if(heartval>0) {
+            console.log(heartval);
+            $("#heart").prop("src", "/img/like2.png");
+            $(".heart").prop('name',heartval)
+        }
+        else {
+            console.log(heartval);
+            $("#heart").prop("src", "/img/like1.png");
+            $(".heart").prop('name',heartval)
+        }
+
+        $(".heart").on("click", function () {
+
+            let that = $(".heart");
+
+            let sendData = {'boardNo' : '${recommend.boardNo}','heart' : that.prop('name')};
+            $.ajax({
+                url :'/board/heart',
+                type :'POST',
+                data : sendData,
+                success : function(data){
+                    that.prop('name',data);
+                    if(data===1) {
+                        $('#heart').prop("src","/img/like2.png");
+                    }
+                    else{
+                        $('#heart').prop("src","/img/like1.png");
+                    }
+
+
+                }
+
+            });
+        });
+    });
+</script>
 <%@ include file="../include/scripts.jsp" %>
 <%@ include file="../include/reply.jsp" %>
 <%@ include file="../include/footer.jsp" %>

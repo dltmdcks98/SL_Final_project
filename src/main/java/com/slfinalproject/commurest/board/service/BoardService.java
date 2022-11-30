@@ -4,6 +4,7 @@ import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.admin.repository.AdminMapper;
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.repository.BoardMapper;
+import com.slfinalproject.commurest.recommend.domain.Recommend;
 import com.slfinalproject.commurest.recommend.repository.RecommendMapper;
 import com.slfinalproject.commurest.reply.dto.ReplyDTO;
 import com.slfinalproject.commurest.reply.repository.ReplyMapper;
@@ -82,7 +83,6 @@ public class BoardService {
 
         Map<String, Object> findDataMap = new HashMap<>();
         List<Board> boardList = boardMapper.selectAll(search);
-
         process(boardList);
 
         findDataMap.put("bList", boardList);
@@ -90,8 +90,22 @@ public class BoardService {
         return findDataMap;
     }
 
+    // 추천
+    public void updateRecommend(Recommend recommend) {
+        recommendMapper.insertRecommend(recommend);
+        recommendMapper.updateRecommend(recommend.getBoardNo());
+    }
 
+    // 추천 취소
+    public void deleteRecommend(Recommend recommend) {
+        recommendMapper.deleteRecommend(recommend);
+        recommendMapper.updateRecommend(recommend.getBoardNo());
+    }
 
+    // 추천 중복 방지 0이면 빈하트, 1이면 꽉찬 하트
+    public int getRecommend(Recommend recommend){
+        return recommendMapper.getRecommend(recommend);
+    }
 
 
 
@@ -203,22 +217,7 @@ public class BoardService {
         }
     }
 
-    // 추천
-    public void recommend(int boardNo) {
-        recommendMapper.recommend(boardNo);
-        recommendMapper.updateRecommend(boardNo);
-    }
 
-    // 추천 취소
-    public void deleteRecommend(int boardNo) {
-        recommendMapper.recommendCancel(boardNo);
-        recommendMapper.updateRecommend(boardNo);
-    }
-
-    // 추천 중복 방지
-    public int getRecommend(int boardNo, String userName){
-        return recommendMapper.getRecommend(boardNo, userName);
-    }
 
 
     // 첨부파일 가져오기
@@ -281,6 +280,7 @@ public class BoardService {
         }
         return boardList;
     }
+
 
 
 }

@@ -28,6 +28,29 @@
         <!--        <result property="replyCount" column="replyCount"/>-->
     </resultMap>
 
+    <!-- 게시글 추천 -->
+    <insert id="Recommend">
+        INSERT INTO recommend (board_no, user_id)
+        VALUES (#{boardNo}, #{userId})
+    </insert>
+
+    <!-- 게시글 추천취소 -->
+    <delete id="RecommendCancel">
+        DELETE FROM recommend
+        WHERE board_no = #{boardNo} AND user_id = #{userId}
+    </delete>
+
+    <!-- 게시글 추천 수 -->
+    <select id="updateRecommend">
+        UPDATE board SET
+        recommend = (SELECT COUNT(*) FROM recommend WHERE board_no = #{boardNo})
+        WHERE board_no = #{boardNo}
+    </select>
+
+    <!-- 중복방지 -->
+    <select id="getRecommend" resultType="int">
+        SELECT COUNT(recommend_no) FROM recommend WHERE board_no = #{boardNo} AND user_id = #{userId}
+    </select>
 
 
 <!--  통합검색  -->

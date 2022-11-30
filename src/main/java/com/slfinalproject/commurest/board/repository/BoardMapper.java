@@ -55,6 +55,11 @@ public interface BoardMapper {
     // header 검색
     List<Board> searchAll(Page page, String keyword);
 
+    void recommend(int boardNo);
+
+    // 게시글 추천취소
+
+
 
 
 

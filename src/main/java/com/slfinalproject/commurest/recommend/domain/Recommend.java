@@ -7,5 +7,6 @@ import lombok.*;
 public class Recommend {
     private int recommendNo;
     private int boardNo;
-    private int userName;
+    private int userId;
+    private int board_like;
 }

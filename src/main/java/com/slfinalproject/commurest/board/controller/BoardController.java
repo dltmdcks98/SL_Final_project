@@ -5,7 +5,7 @@ import com.slfinalproject.commurest.admin.service.AdminService;
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.service.BoardService;
 import com.slfinalproject.commurest.recommend.domain.Recommend;
-import com.slfinalproject.commurest.recommend.service.RecommendService;
+
 import com.slfinalproject.commurest.util.paging.Page;
 import com.slfinalproject.commurest.util.paging.PageMaker;
 import com.slfinalproject.commurest.util.search.Search;
@@ -15,9 +15,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
+
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,8 +27,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.text.AttributedString;
-import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
 
@@ -38,6 +38,7 @@ import java.util.Map;
 public class BoardController {
     private final BoardService boardService;
     private final AdminService adminService;
+
 
 
 
@@ -58,14 +59,66 @@ public class BoardController {
 
     // 글 상세보기 페이지
     @GetMapping("/content/{boardNo}")
-    public String content(@PathVariable("boardNo") int boardNo, Model model, @ModelAttribute("p") Page page, HttpServletResponse response, HttpServletRequest request) {
+    public String content(@PathVariable("boardNo") int boardNo ,Model model, @ModelAttribute("p") Page page, HttpServletResponse response, HttpServletRequest request, HttpSession session) {
         Board board = boardService.selectOne(boardNo,response,request);
         Admin admin = adminService.selectOne2(board.getUserId());
+        Admin user = adminService.setLoginSession(session);
+        int userId = user.getUser_id();
+
+        Recommend recommend = new Recommend();
+        recommend.setBoardNo(boardNo);
+        recommend.setUserId(userId);
+
+        session.setAttribute("boardNo",recommend);
+
+
+        log.info("recommend - {}", recommend);
+
+        int boardLike = boardService.getRecommend(recommend);
+//      boolean boardLike = boardService.getRecommend(recommend) == 1;
+//      recommend.setRecommendFlag(boardLike);
+        log.info("boardLike - {}", boardLike);
+
+
+
+        model.addAttribute("heart", boardLike);
         model.addAttribute("b", board);
         model.addAttribute("a", admin);
 
+
         return "board/board_content";
     }
+
+
+    @ResponseBody
+    @GetMapping("/heart")
+    public int heart(HttpServletRequest httpRequest, HttpSession session) throws Exception {
+
+        int heart = Integer.parseInt(httpRequest.getParameter("heart"));
+
+
+        Admin user = adminService.setLoginSession(session);
+        int userId = user.getUser_id();
+
+        Recommend recommend = new Recommend();
+//        recommend.setBoardNo(boardNo);
+        recommend.setUserId(userId);
+        System.out.println("heart : "+heart);
+        log.info("heart - {}", heart);
+
+
+        if(heart >= 1) {
+            boardService.deleteRecommend(recommend);
+            heart=0;
+        } else {
+            boardService.updateRecommend(recommend);
+            heart=1;
+        }
+
+        return heart;
+
+    }
+
 
 
     // 글쓰기 페이지
