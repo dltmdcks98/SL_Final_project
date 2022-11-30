@@ -36,4 +36,11 @@ class RecommendMapperTest {
         assertTrue(status);
     }
 
+    @Test
+    @DisplayName("좋아요 확인")
+    void confirmRecommend(){
+        int status = recommendMapper.confirmRecommend(477,51);
+        System.out.println(status);
+        assertTrue(status>0);
+    }
 }

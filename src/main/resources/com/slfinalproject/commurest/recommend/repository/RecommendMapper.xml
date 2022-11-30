@@ -25,4 +25,9 @@
     <select id="countRecommendBYBoardNo" resultType="int">
         SELECT COUNT(*) AS totalCount FROM recommend WHERE board_no=#{boardNo};
     </select>
+
+<!--    추천 확인-->
+    <select id="confirmRecommend" resultType="int">
+        SELECT COUNT(*) FROM recommend WHERE board_no=#{boardNo} AND user_id=#{userId}
+    </select>
 </mapper>

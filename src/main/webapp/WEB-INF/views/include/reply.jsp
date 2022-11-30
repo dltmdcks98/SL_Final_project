@@ -7,10 +7,10 @@
     // 로그인한 회원 계정명 -> 세션을 통해 얻고 있음
     const currentAccount = '${user.user_id}';
     const auth = '${user.manager}';
-    console.log(currentAccount,auth);
+
     //원본 글 번호
     const bno = '${b.boardNo}';
-    // console.log('bno:', bno);
+
 
     // 댓글 요청 URL
     const URL = '/ajax/replies';
@@ -19,7 +19,6 @@
     function formatDate(datetime) {
         //문자열 날짜 데이터를 날짜객체로 변환
         const dateObj = new Date(datetime);
-        // console.log(dateObj);
         //날짜객체를 통해 각 날짜 정보 얻기
         let year = dateObj.getFullYear();
         //1월이 0으로 설정되어있음.
@@ -65,7 +64,6 @@
 
         // 페이지태그 렌더링
 
-        console.log(tag,$pageUl);
         $pageUl.innerHTML = tag;
 
         // ul에 마지막페이지 번호 저장.
@@ -89,8 +87,7 @@
 
         } else {
             for (let rep of replyList) {
-                console.log("req : " +rep.userAccount);
-                console.log("user : "+currentAccount );
+
                 tag += "<div id='replyContent' class='card-body' data-replyId='" + rep.replyNo + "'>" +
                     "    <div class='row user-block'>" +
                     "       <span class='col-md-3'>" +
@@ -112,7 +109,7 @@
                     "    </div>" +
                     " </div>";
             }
-            console.log(tag);
+
         }
 
         // 댓글 목록에 생성된 DOM 추가
@@ -134,7 +131,6 @@
         fetch(URL + '?boardNo=' + bno + '&pageNum=' + pageNum)
             .then(res => res.json())
             .then(replyMap => {
-                console.log("댓글 목록 비동기 콘솔"+replyMap.replyList);
                 makeReplyDOM(replyMap);
             });
     }
@@ -144,13 +140,11 @@
         // 페이지 버튼 클릭이벤트 처리
         // const $pageUl = document.querySelector('.pagination');
         $pageUl.onclick = e => {
-            console.log(e);
             if (!e.target.matches('.page-item a')) return;
 
             e.preventDefault();
             // 누른 페이지 번호 가져오기
             const pageNum = e.target.getAttribute('href');
-            // console.log(pageNum);
 
             // 페이지 번호에 맞는 목록 비동기 요청
             showReplies(pageNum);
@@ -174,7 +168,7 @@
             replyText: $contentInput.value,
             boardNo: bno
         };
-        console.log(replyData);
+
 
         // POST요청을 위한 요청 정보 객체
         const reqInfo = {
@@ -240,7 +234,7 @@
     function makeReplyModAndDelHandler(e) {
 
         const rno = e.target.parentElement.parentElement.parentElement.dataset.replyid;
-        console.log('mod get rno: ', rno);
+
 
         e.preventDefault();
 
@@ -265,11 +259,10 @@
 
         document.getElementById('replyModBtn').onclick =
             e => {
-                // console.log('수정 완료 버튼 클릭!');
 
                 // 서버에 수정 비동기 요청 보내기
                 const rno = e.target.closest('.modal').dataset.rno;
-                console.log('mod post rno', rno);
+
 
                 const reqInfo = {
                     method: 'PUT',
@@ -308,9 +301,7 @@
         // 댓글 페이지 버튼 클릭이벤트 처리
         makePageButtonClickEvent();
 
-        // // 댓글 등록 버튼 클릭이벤트 처리
-        // makeReplyRegisterClickEvent();
-        console.log(currentAccount);
+
         if(currentAccount!=''){
             makeReplyRegisterClickEvent();
         }

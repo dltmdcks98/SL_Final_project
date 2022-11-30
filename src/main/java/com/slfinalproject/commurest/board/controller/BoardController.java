@@ -4,6 +4,7 @@ import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.admin.service.AdminService;
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.service.BoardService;
+import com.slfinalproject.commurest.recommend.service.RecommendService;
 import com.slfinalproject.commurest.util.paging.Page;
 import com.slfinalproject.commurest.util.paging.PageMaker;
 import com.slfinalproject.commurest.util.search.Search;
@@ -31,6 +32,8 @@ public class BoardController {
     private final BoardService boardService;
     private final AdminService adminService;
 
+    private final RecommendService recommendService;
+
 
     // 게시판 메인 페이지
     @GetMapping("")
@@ -54,10 +57,12 @@ public class BoardController {
     public String content(@PathVariable("boardNo") int boardNo, Model model, @ModelAttribute("p") Page page, HttpServletResponse response, HttpServletRequest request) {
         Board board = boardService.selectOne(boardNo,response,request);
         Admin admin = adminService.selectOne2(board.getUserId());
-//        Recommend recommend = recommendService.updateRecommend(boardNo);
-//        model.addAttribute("recommend",);
+        int recommendCount = recommendService.countRecommendBYBoardNo(boardNo);
+        boolean recommendedUser = recommendService.confirmRecommend(boardNo, admin.getUser_id());
+        board.setRecommend(recommendCount);
         model.addAttribute("b", board);
         model.addAttribute("a", admin);
+        model.addAttribute("recommendedUser",recommendedUser);
 
         return "board/board_content";
 

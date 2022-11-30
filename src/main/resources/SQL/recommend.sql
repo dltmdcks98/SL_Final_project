@@ -15,3 +15,6 @@ CREATE TABLE recommend (
 INSERT INTO recommend(board_no,user_id) VALUES (125,51);
 DELETE FROM recommend WHERE user_id=51;
 SELECT COUNT(*) AS totalCount FROM recommend WHERE board_no=126;
+
+
+SELECT * FROM recommend WHERE board_no=477 AND user_id=51;

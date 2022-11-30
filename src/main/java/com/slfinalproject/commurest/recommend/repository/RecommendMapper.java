@@ -10,5 +10,7 @@ public interface RecommendMapper {
 
     int countRecommendBYBoardNo(int boardNo);
 
+    int confirmRecommend(int boardNo, int userId);
+
 
 }
