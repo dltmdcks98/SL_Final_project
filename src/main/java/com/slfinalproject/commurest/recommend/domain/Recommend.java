@@ -9,9 +9,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Recommend {
+
     private int recommendNo;
     private int bno;
     private int userId;
-    private int recommendCheck;
-    private String recommendDate;
 }
