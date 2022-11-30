@@ -4,6 +4,7 @@ import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.admin.repository.AdminMapper;
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.repository.BoardMapper;
+import com.slfinalproject.commurest.recommend.repository.RecommendMapper;
 import com.slfinalproject.commurest.reply.dto.ReplyDTO;
 import com.slfinalproject.commurest.reply.repository.ReplyMapper;
 import com.slfinalproject.commurest.tag.domain.Tag;
@@ -36,6 +37,7 @@ public class BoardService {
     private final TagMapper tagMapper;
 
     private final ReplyMapper replyMapper;
+    private final RecommendMapper recommendMapper;
     private final AdminMapper adminMapper;
 
 
@@ -144,6 +146,7 @@ public class BoardService {
             dateFormat(board);
             getReplyCount(board);
             chkNewBoard(board);
+            getRecommendCnt(board);
         }
     }
 
@@ -235,6 +238,10 @@ public class BoardService {
         if(dif < limitTime){
             board.setNewBoard(true);
         }
+    }
+    private void getRecommendCnt(Board board){
+        int recommendCnt = recommendMapper.countRecommendBYBoardNo(board.getBoardNo());
+        board.setRecommend(recommendCnt);
     }
 
 

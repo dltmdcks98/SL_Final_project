@@ -18,8 +18,10 @@
     </label>
     <div class="content">
         <p class="boardH">자유게시판</p>
+        <div class="content-title-div">
+            <p class="content-title">${b.title}</p>
 
-        <p class="content-title">${b.title}</p>
+        </div>
         <div class="justify">
             <div class="content-content"> ${a.user_name} </div>
             <div>${b.simpleDate}</div>
@@ -46,7 +48,6 @@
                 <a href="/gallery/search-tag?tag=${tag}"><div class="tagList">#<c:out value="${tag}"/></div></a>
             </c:forEach>
         </div>
-        <button type="button" id="btnRecommend">추천하기</button>
 
     </div>
     <!-- 게시글 영역 end -->
