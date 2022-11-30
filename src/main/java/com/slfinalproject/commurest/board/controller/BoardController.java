@@ -4,8 +4,7 @@ import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.admin.service.AdminService;
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.service.BoardService;
-import com.slfinalproject.commurest.recommend.domain.Recommend;
-
+import com.slfinalproject.commurest.recommend.service.RecommendService;
 import com.slfinalproject.commurest.util.paging.Page;
 import com.slfinalproject.commurest.util.paging.PageMaker;
 import com.slfinalproject.commurest.util.search.Search;
@@ -13,12 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,7 +21,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
 
@@ -39,12 +32,12 @@ public class BoardController {
     private final BoardService boardService;
     private final AdminService adminService;
 
-
+    private final RecommendService recommendService;
 
 
     // 게시판 메인 페이지
     @GetMapping("")
-    public String board(@ModelAttribute("s") Search search, Model model) {
+    public String board(@ModelAttribute("s") Search search, Model model, HttpSession session) {
         Map<String, Object> boardMap = boardService.findAllService(search);
 //        log.info("return data - {}", boardMap);
         PageMaker pageMaker = new PageMaker(
@@ -53,85 +46,40 @@ public class BoardController {
         log.info("페이지 정보 : {}",pageMaker);
         model.addAttribute("bList", boardMap.get("bList"));
         model.addAttribute("pageMaker", pageMaker);
+        session.setAttribute("redirectURIt","board");
+
 
         return "board/board";
     }
 
     // 글 상세보기 페이지
     @GetMapping("/content/{boardNo}")
-    public String content(@PathVariable("boardNo") int boardNo ,Model model, @ModelAttribute("p") Page page, HttpServletResponse response, HttpServletRequest request, HttpSession session) {
+    public String content(@PathVariable("boardNo") int boardNo, Model model, @ModelAttribute("p") Page page, HttpServletResponse response, HttpServletRequest request) {
         Board board = boardService.selectOne(boardNo,response,request);
         Admin admin = adminService.selectOne2(board.getUserId());
-        Admin user = adminService.setLoginSession(session);
-        int userId = user.getUser_id();
+        int recommendCount = recommendService.countRecommendBYBoardNo(boardNo);
 
-        Recommend recommend = new Recommend();
-        recommend.setBoardNo(boardNo);
-        recommend.setUserId(userId);
+        if(request.getSession().getAttribute("user")!=null){
+            Admin user = (Admin) request.getSession().getAttribute("user");
+            boolean recommendedUser = recommendService.confirmRecommend(boardNo,user.getUser_id());
+            model.addAttribute("recommendedUser",recommendedUser);
+        }
 
-        session.setAttribute("boardNo",recommend);
-
-
-        log.info("recommend - {}", recommend);
-
-        int boardLike = boardService.getRecommend(recommend);
-//      boolean boardLike = boardService.getRecommend(recommend) == 1;
-//      recommend.setRecommendFlag(boardLike);
-        log.info("boardLike - {}", boardLike);
-
-
-
-        model.addAttribute("heart", boardLike);
+        board.setRecommend(recommendCount);
         model.addAttribute("b", board);
         model.addAttribute("a", admin);
 
 
         return "board/board_content";
-    }
-
-
-    @ResponseBody
-    @GetMapping("/heart")
-    public int heart(HttpServletRequest httpRequest, HttpSession session) throws Exception {
-
-        int heart = Integer.parseInt(httpRequest.getParameter("heart"));
-
-
-        Admin user = adminService.setLoginSession(session);
-        int userId = user.getUser_id();
-
-        Recommend recommend = new Recommend();
-//        recommend.setBoardNo(boardNo);
-        recommend.setUserId(userId);
-        System.out.println("heart : "+heart);
-        log.info("heart - {}", heart);
-
-
-        if(heart >= 1) {
-            boardService.deleteRecommend(recommend);
-            heart=0;
-        } else {
-            boardService.updateRecommend(recommend);
-            heart=1;
-        }
-
-        return heart;
 
     }
-
-
 
     // 글쓰기 페이지
     @GetMapping("/write")
     public String write(Board board, Model model,
-                        HttpServletResponse response, HttpServletRequest request, @ModelAttribute("p") Page page) {
-        HttpSession session = request.getSession();
-        Object securityContextObject = session.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
-        if (securityContextObject != null) {
-            SecurityContext securityContext = (SecurityContext) securityContextObject;
-            Authentication authentication = securityContext.getAuthentication();
-            Admin user = (Admin) authentication.getPrincipal();
-            System.out.println("현재 세션 정보 : " + user);
+                         HttpSession session, @ModelAttribute("p") Page page) {
+        Admin user = (Admin) session.getAttribute("user");
+        if (user != null) {
             model.addAttribute("a", user);
         }
         model.addAttribute("p", page);

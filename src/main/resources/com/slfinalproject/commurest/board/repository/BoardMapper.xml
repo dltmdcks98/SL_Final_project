@@ -28,29 +28,6 @@
         <!--        <result property="replyCount" column="replyCount"/>-->
     </resultMap>
 
-    <!-- 게시글 추천 -->
-    <insert id="Recommend">
-        INSERT INTO recommend (board_no, user_id)
-        VALUES (#{boardNo}, #{userId})
-    </insert>
-
-    <!-- 게시글 추천취소 -->
-    <delete id="RecommendCancel">
-        DELETE FROM recommend
-        WHERE board_no = #{boardNo} AND user_id = #{userId}
-    </delete>
-
-    <!-- 게시글 추천 수 -->
-    <select id="updateRecommend">
-        UPDATE board SET
-        recommend = (SELECT COUNT(*) FROM recommend WHERE board_no = #{boardNo})
-        WHERE board_no = #{boardNo}
-    </select>
-
-    <!-- 중복방지 -->
-    <select id="getRecommend" resultType="int">
-        SELECT COUNT(recommend_no) FROM recommend WHERE board_no = #{boardNo} AND user_id = #{userId}
-    </select>
 
 
 <!--  통합검색  -->
@@ -92,10 +69,10 @@
     <select id="selectAll" resultMap="boardMap">
         SELECT DISTINCT A.board_no, A.user_id, A.title, A.reg_date, A.hit, A.recommend, B.user_name, C.tag_value
         FROM board A
-        LEFT JOIN user_account B ON A.user_id = B.user_id
-        LEFT JOIN tag C ON A.board_no = C.board_no
+        LEFT outer JOIN user_account B ON A.user_id = B.user_id
+        LEFT outer JOIN tag C ON A.board_no = C.board_no
         <include refid="search"/>
-        ORDER BY A.board_no DESC
+        group BY A.board_no DESC
         LIMIT #{start}, 20
     </select>
 
@@ -192,6 +169,25 @@
         FROM board A
         JOIN file_upload B ON A.board_no = B.bno
         ORDER BY  board_no DESC limit 3
+    </select>
+
+    <!-- 게시글 추천수 -->
+    <update id="updateRecommend" parameterType="int">
+        update board set
+        recommend = recommend+1
+        where bno = #{bno}
+    </update>
+
+    <!-- 게시글 추천취소 -->
+    <update id="updateRecommendCancel" parameterType="int">
+        update board set
+        recommend = recommend-1
+        where bno = #{bno}
+    </update>
+
+    <!-- 게시글 추천 중복방지 select문 -->
+    <select id="recommendCheck" resultType="int">
+        select count(*) from recommend where bno = #{bno} and user_id = #{userId}
     </select>
 
 </mapper>

@@ -6,7 +6,8 @@
 <head>
     <%@ include file="../include/static-head.jsp" %>
     <link rel="stylesheet" href="/css/board/board_list.css">
-<%--    <script src="/js/board/list.js"></script>--%>
+    <link rel="stylesheet" href="/css/board/index.css">
+    <script src="/js/board/list.js"></script>
 </head>
 
 <body class="skin-orange">
@@ -47,6 +48,9 @@
                                         <tr onclick="location.href='/board/content/${b.boardNo}?pageNum=${s.pageNum}&amount=${s.amount}'" >
                                             <td>${b.boardNo}</td>
                                             <td class="title">${b.title} <c:if test="${b.replyCnt != 0}">[${b.replyCnt}]</c:if>
+                                                <c:if test="${b.newBoard}">
+                                                    <span class="badge badge-secondary">New</span>
+                                                </c:if>
                                             </td>
                                             <td>${b.userName}</td>
                                             <td>${b.simpleDate}</td>
@@ -115,49 +119,11 @@
             </div>
 
 
+            <%@include file="../include/sidebar.jsp"%>
         </div>
     </div>
 </section>
-<script>
-    //현재 위치한 페이지에 active 스타일 부여하기
-    function appendPageActive() {
 
-        // 현재 내가 보고 있는 페이지 넘버
-        const curPageNum = '${pageMaker.page.pageNum}';
-        console.log("현재페이지: ", curPageNum);
-
-        // 페이지 li태그들을 전부 확인해서
-        // 현재 위치한 페이지 넘버와 텍스트컨텐츠가 일치하는
-        // li를 찾아서 class active 부여
-        const $ul = document.querySelector('.pagination');
-
-        for (let $li of [...$ul.children]) {
-            if (curPageNum === $li.dataset.pageNum) {
-                $li.classList.add('active');
-                break;
-            }
-        }
-
-    }
-
-    // 옵션태그 고정
-    function fixSearchOption() {
-        const $select = document.getElementById('search-type');
-
-        for (let $opt of [...$select.children]) {
-            if ($opt.value === '${s.type}') {
-                $opt.setAttribute('selected', 'selected');
-                break;
-            }
-        }
-    }
-
-    (function () {
-        appendPageActive();
-        fixSearchOption();
-    })();
-
-</script>
 
 
 <%@ include file="../include/footer.jsp"%>

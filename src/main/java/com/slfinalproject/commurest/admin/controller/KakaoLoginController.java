@@ -7,6 +7,10 @@ import com.slfinalproject.commurest.admin.domain.KakaoProfile;
 import com.slfinalproject.commurest.admin.domain.OAuthToken;
 import com.slfinalproject.commurest.admin.repository.AdminMapper;
 import com.slfinalproject.commurest.admin.service.AdminService;
+import com.slfinalproject.commurest.board.service.BoardService;
+import com.slfinalproject.commurest.galleryBoard.service.GalleryBoardService;
+import com.slfinalproject.commurest.reply.service.ReplyService;
+import com.slfinalproject.commurest.tag.service.TagService;
 import com.slfinalproject.commurest.util.RandomString;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -46,6 +50,11 @@ public class KakaoLoginController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+
+    private final GalleryBoardService galleryBoardService;
+    private final TagService tagService;
+    private final BoardService boardService;
+    private final ReplyService replyService;
 
 
     @GetMapping("/kakao")
@@ -128,7 +137,7 @@ public class KakaoLoginController {
 
         log.info("??" + adminService.selectOne(kakaoProfile.getKakao_account().getEmail()));
         kakaoUser.setUser_email(kakaoProfile.getKakao_account().getEmail());
-        if(kakaoProfile.getKakao_account().getEmail()==null){
+        if (kakaoProfile.getKakao_account().getEmail() == null) {
             return "/member/kakaoLoginFail";
         }
         kakaoUser.setUser_pass("111");
@@ -152,7 +161,9 @@ public class KakaoLoginController {
             return "/member/myInfo";
 
         }
-      return loginSuccess(session);
+
+
+        return loginSuccess(session, request);
 
 
     }
@@ -168,20 +179,44 @@ public class KakaoLoginController {
         return user;
     }
 
-    public String loginSuccess(HttpSession session) {
-
-
+    public String loginSuccess(HttpSession session, HttpServletRequest request) {
+        String redirectURI = null;
         log.info("login success");
-        String redirectURI = (String) session.getAttribute("redirectURI");
+        redirectURI = (String) session.getAttribute("redirectURI");
+
+
+
+        if (redirectURI == null) {
+            String refer = request.getHeader("Referer").substring(21);
+            request.getSession().setAttribute("redirectURI", refer);
+            redirectURI = (String) session.getAttribute("redirectURI");
+            log.info("ㅇㅇㅇㅇ : "+request.getHeader("Referer"));
+        }
+
+
         Admin user = setLoginSession(session);
         if (user != null) {
             session.setAttribute("user", user);
+            session.setAttribute("userBoardCnt",boardService.getTotalCountByUserId(user.getUser_id()));
+            session.setAttribute("userReplyCnt",replyService.getTotalCountReplyByUserId(user.getUser_id()));
+            session.removeAttribute("userTagImgs");
+            session.setAttribute("userTagImgs",galleryBoardService.getImgUrlByTag(tagService.getRandomTagValueByUserId(user.getUser_id()),0,9));
             log.info("세션에 넣은 값 확인 - " + user);
         }
-        if(redirectURI==null){
-            return "redirect:/";
+
+        if(session.getAttribute("redirectURIt")=="board"){
+            log.info("보드:"+session.getAttribute("redirectURIt"));
+            return "redirect:/board";
+        } else if (session.getAttribute("redirectURIt")=="search-result") {
+            String keyword = (String)session.getAttribute("keyword");
+            log.info("보드:"+session.getAttribute("redirectURIt"));
+            log.info(keyword);
+            return "redirect:/search?keyword="+keyword;
         }
-log.info("로그인석쎾싸ㅡ"+redirectURI);
+
+
+        log.info("로그인석쎾싸ㅡ" + redirectURI);
+
         return "redirect:" + redirectURI;
     }
 

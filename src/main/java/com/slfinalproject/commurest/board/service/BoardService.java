@@ -37,6 +37,7 @@ public class BoardService {
     private final BoardMapper boardMapper;
     private final TagMapper tagMapper;
     private final ReplyMapper replyMapper;
+    private final RecommendMapper recommendMapper;
     private final AdminMapper adminMapper;
     private final RecommendMapper recommendMapper;
 
@@ -158,6 +159,8 @@ public class BoardService {
         for (Board board : boardList) {
             dateFormat(board);
             getReplyCount(board);
+            chkNewBoard(board);
+            getRecommendCnt(board);
         }
     }
 
@@ -234,11 +237,28 @@ public class BoardService {
         return boardMapper.findNewImage();
     }
 
-
+//  사용자 게시물 수 조회
+    public int getTotalCountByUserId(int uesrId){
+        return boardMapper.getTotalCountByUserId(uesrId);
+    }
 
     // 각 게시물의 댓글 수 조회
     public void getReplyCount(Board b) {
         b.setReplyCnt(replyMapper.getReplyCount(b.getBoardNo()));
+    }
+    private void chkNewBoard(Board board){
+        long regTime = board.getRegDate().getTime();
+        long curTime = System.currentTimeMillis();
+
+        long dif = curTime - regTime;
+        long limitTime = 60 * 10 * 1000;
+        if(dif < limitTime){
+            board.setNewBoard(true);
+        }
+    }
+    private void getRecommendCnt(Board board){
+        int recommendCnt = recommendMapper.countRecommendBYBoardNo(board.getBoardNo());
+        board.setRecommend(recommendCnt);
     }
 
 

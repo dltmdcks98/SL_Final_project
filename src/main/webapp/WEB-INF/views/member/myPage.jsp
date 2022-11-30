@@ -3,7 +3,7 @@
 <html>
 <head>
     <%@ include file="../include/static-head.jsp" %>
-    <link rel="stylesheet" href="/css/board/board_list.css">
+    <link rel="stylesheet" href="/css/board/myPage_boardList.css">
     <link rel="stylesheet" href="/css/mypage/mypage.css">
 
 </head>

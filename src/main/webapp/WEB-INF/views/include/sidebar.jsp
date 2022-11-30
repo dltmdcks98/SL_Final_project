@@ -1,5 +1,14 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style>
+    .block img {
+        width: 30%;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+    }
+</style>
+
+<link rel="stylesheet" href="/css/board/index.css">
 <c:if test="${empty user}">
     <div class="col-xs-6 col-md-4 sidebar" id="sidebar">
         <aside>
@@ -34,6 +43,9 @@
 
                         <div class="block">
                             <h3 class="block-title">Hot Interests</h3>
+                            <c:forEach var="imgUrl" items="${userTagImgs}">
+                                <img src="${imgUrl}" onerror="this.style.display=`none`"/>
+                            </c:forEach>
                         </div>
 
                     </div>
@@ -72,13 +84,13 @@
                                 <div class="item">
                                     <a href="/mypage/myposting">
                                         <div class="name" >게시글</div>
-                                        <div class="value">208</div>
+                                        <div class="value"><c:out value="${userBoardCnt}"/></div>
                                     </a>
                                 </div>
                                 <div class="item">
                                     <a href='/mypage/mycomment'>
                                         <div class="name" >댓글</div>
-                                        <div class="value">3,729</div>
+                                        <div class="value"><c:out value="${userReplyCnt}"/> </div>
                                     </a>
                                 </div>
                                 <div class="item">
@@ -96,9 +108,10 @@
 
                         <div class="block">
                             <h3 class="block-title">My Interests</h3>
-
+                            <c:forEach var="imgUrl" items="${userTagImgs}">
+                                <img src="${imgUrl}" onerror="this.style.display=`none`"/>
+                            </c:forEach>
                         </div>
-
 
                     </div>
                 </div>

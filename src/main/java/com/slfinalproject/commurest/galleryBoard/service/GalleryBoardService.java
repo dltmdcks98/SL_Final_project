@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Log4j2
@@ -29,6 +28,21 @@ public class GalleryBoardService {
     private String domain;
 
     private final TagService tagService;
+
+/*
+    public List<String> sideBarImg(){
+        int num=0;
+        int size = 9;
+        if(session.getAttribute("userTag")!=null){
+            String userTagValue = (String) session.getAttribute("userTag");
+            session.setAttribute("userTagImgs",getImgUrlByTag(userTagValue,num,size));
+            return getImgUrlByTag(userTagValue,num,size);
+        }
+        session.setAttribute("userTagImgs",getImgUrlByHotTag(num,size));
+        return getImgUrlByHotTag(num,size);
+    }
+*/
+
 
     public List<String> getImgUrl(String tag,int num,int size) {
         log.info("GalleryBoardService 진입, tag내용 : " +tag);
@@ -60,21 +74,6 @@ public class GalleryBoardService {
         }
         return imageUrl;
     }
-
-    public List<String> getImgUrls(String tag, int startPage,int size){
-        List<String> tempurl = new ArrayList<>();
-        String str = "";
-        for(int num = startPage; num <startPage+1; num++){
-            List<String> temp = getImgUrl(tag,num,size);
-            for(int j=0; j<size; j++){ //검색 결과 list 분해
-                str = temp.get(j);
-                tempurl.add(str);
-            }
-        }
-        List<String> urls = tempurl.stream().distinct().collect(Collectors.toList());
-        return urls;
-    }
-
 
     public List<String> getImgUrlsByUserId(int userId,int startPage, int size){
         List<Tag> tagList = tagService.getTagValueByUserId(userId);
@@ -111,7 +110,7 @@ public class GalleryBoardService {
                 }
             }
         }
-        log.warn(urlList);
+
         return urlList;
     }
 
@@ -122,7 +121,7 @@ public class GalleryBoardService {
         for(int j =0; j<temp.size();j++){
             urlList.add(temp.get(j));
         }
-        log.warn(urlList);
+
         return urlList;
     }
 

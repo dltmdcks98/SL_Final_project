@@ -1,20 +1,16 @@
 package com.slfinalproject.commurest.recommend.repository;
 
-import com.slfinalproject.commurest.recommend.domain.Recommend;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface RecommendMapper {
 
-    // 게시글 추천수
-    void insertRecommend(Recommend recommend);
+    boolean setRecommend(int boardNo, int userId);
+    boolean deleteRecommendByUserId(int boardNo, int userId);
 
-    // 게시글 추천취소
-    void deleteRecommend(Recommend recommend);
+    int countRecommendBYBoardNo(int boardNo);
 
-    void updateRecommend(int boardNo);
+    int confirmRecommend(int boardNo, int userId);
 
-    // 게시글 추천 중복방지
-    int getRecommend(Recommend recommend);
 
 }
