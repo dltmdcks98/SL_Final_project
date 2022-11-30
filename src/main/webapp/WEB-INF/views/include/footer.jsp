@@ -8,8 +8,8 @@
                 <div class="block">
                     <h1 class="block-title">프로젝트 소개</h1>
                     <div class="block-body">
-                        <figure class="foot-logo">
-                            <img src="/img/logo_footer.png" class="img-responsive" alt="Logo">
+                        <figure class="foot-logo" style="width: 80%;padding-left: 16%;">
+                            <img src="/img/logo-black3.png" class="img-responsive" alt="Logo">
                         </figure>
                         <p class="brand-description">
                             갤러리와 핀터레스트가 공존하는 사이트
