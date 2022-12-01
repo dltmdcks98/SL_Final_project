@@ -6,6 +6,18 @@
         margin-right: 1rem;
         margin-bottom: 1rem;
     }
+    .ff{
+        align-items: center;
+        display: flex;
+        width: 100%;
+        height: 100%;
+    }
+    .dd{
+        width: 40%;
+        height: 50px;
+        margin-left: 5%;
+    }
+
 </style>
 
 <link rel="stylesheet" href="/css/board/index.css">
@@ -19,19 +31,17 @@
                         <div class="featured-author-body2">
                             <div class="box-body">
                                 <h4>Login</h4>
-                                <form method="POST" action="/admin/login" name="myForm">
+                                <form method="POST" action="/admin/login" name="myForm" class="ff">
+
                                     <div class="form-group2">
                                         <input type="text" name="user_email" class="myForm-email">
+                                        <input type="password" name="user_pass" class="myForm-pass">
                                     </div>
-                                    <div>
-                                        <input type="password" name="user_pass"
-                                               class="myForm-pass">
-                                        <button name="button" class="myBtn">
-                                            로그인
-                                        </button>
+
+                                    <div class="dd">
+                                        <button name="button" class="myBtn"> 로그인 </button>
                                     </div>
-                                    <div>
-                                    </div>
+
                                 </form>
                                 <button class="aaa"
                                         onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=eac6586e062e9e84f8798226d9ac9be8&redirect_uri=http://localhost:8182/login/kakao&response_type=code'"

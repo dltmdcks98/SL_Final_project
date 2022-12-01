@@ -75,11 +75,7 @@
                     <input type="date" name="user_birth" class="form-control">
                 </div>
 
-                <div class="form-group">
-                    <label>성별</label><br>
-                    <input type="radio" name="user_sex" value="m" > 남성
-                    <input type="radio" name="user_sex"value="f"> 여성
-                </div>
+
                 <div class="form-group text-right">
                     <button type="submit" class="btn btn-primary btn-block" id="regist-btn">변경</button>
                 </div>
