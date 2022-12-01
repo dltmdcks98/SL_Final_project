@@ -254,6 +254,7 @@ public class BoardService {
             titleConvert(b);
             getUserName(b);
             dateConvert(b);
+            getRecommendCnt(b);
         }
         return getHitBoard;
     }
