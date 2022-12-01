@@ -41,27 +41,25 @@ public class FileUploadController {
             log.info("file-type: {}", file.getContentType());
             System.out.println("==================================================================");
 
-
-            // 서버에 업로드파일 저장
-
-
-
-            // 1. 세이브파일 객체 생성
-            //  - 첫번째 파라미터는 파일 저장경로 지정, 두번째 파일명지정
-        /*File f = new File(uploadPath, file.getOriginalFilename());
-
-        try {
-            file.transferTo(f);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
             FileUtil.uploadFile(file, UPLOAD_PATH);
         }
 
         return "redirect:/upload-form";
     }
 
+    @PostMapping("/profile-upload")
+    @ResponseBody
+    public ResponseEntity<List<String>> profileUpload(List<MultipartFile> files) {
+        List<String> fileNames = new ArrayList<>();
+
+        // 클라이언트가 전송한 파일 업로드하기
+        for (MultipartFile file : files) {
+            String fullPath = FileUtil.uploadFile(file, UPLOAD_PATH);
+            fileNames.add(fullPath);
+        }
+
+        return new ResponseEntity<>(fileNames, HttpStatus.OK);
+    }
     // 비동기 요청 파일 업로드 처리
     @PostMapping("/ajax-upload")
     @ResponseBody
@@ -105,13 +103,12 @@ public class FileUploadController {
 
             if (mediaType != null) {
                 headers.setContentType(mediaType);
-            } else { // 이미지가 아니면 다운로드 가능하게 설정
+            } else { // 이미지가 아니면 다운로드 가능
                 headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 
                 // 파일명을 원래대로 복구
                 fileName = fileName.substring(fileName.lastIndexOf("_") + 1);
 
-                // 파일명이 한글인 경우 인코딩 재설정
                 String encoding = new String(
                         fileName.getBytes("UTF-8"), "ISO-8859-1");
 

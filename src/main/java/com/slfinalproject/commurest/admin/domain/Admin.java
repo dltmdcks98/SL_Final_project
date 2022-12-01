@@ -1,17 +1,18 @@
 package com.slfinalproject.commurest.admin.domain;
 
 import com.slfinalproject.commurest.board.domain.Board;
-import lombok.Builder;
+
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class Admin implements UserDetails {
-
-
 
     private int user_id;
     private String manager;
@@ -30,6 +31,9 @@ public class Admin implements UserDetails {
     private boolean isCredentialIsNonExpired;
     private boolean isEnabled;
 
+    private int userId;
+    private String fileName;
+    private List<String> fileNames;
     private Collection<? extends GrantedAuthority> authorities;
 
     @Override

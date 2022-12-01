@@ -112,7 +112,18 @@ public class AdminService implements UserDetailsService {
             user = (Admin) authentication.getPrincipal();
 
             log.info("현재 세션 정보 : " + user);
+            List<String> fileNames = user != null ? user.getFileNames() : null;
+            if (fileNames != null && fileNames.size() > 0) {
+                for (String fileName : fileNames) {
+                    // 첨부파일 내용 DB에 저장
+                    boardMapper.addFile(fileName);
+                }
+            }
+
         }
+
+
+
         return user;
     }
 
@@ -134,8 +145,10 @@ public class AdminService implements UserDetailsService {
 
 
     }
-    public List<String> getFiles(int bno) {
-        return boardMapper.fileNames(bno);
+    // 이미지 가져오기
+    public List<String> getFiles(int userId) {
+        return adminMapper.insertProfile(userId);
     }
+
 
 }

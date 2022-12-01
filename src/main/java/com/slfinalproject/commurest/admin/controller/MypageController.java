@@ -10,13 +10,14 @@ import com.slfinalproject.commurest.util.paging.PageMaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -133,6 +134,15 @@ public class MypageController {
         }
 
         return "member/myInfo";
+    }
+    @GetMapping("/mypage/file/{userId}")
+    @ResponseBody
+    public ResponseEntity <List<String>> getFiles(@PathVariable int userId) {
+
+        List<String> files = adminService.getFiles(userId);
+        log.info("bno : files {} ", userId, files);
+
+        return new ResponseEntity<>(files, HttpStatus.OK);
     }
 
 }

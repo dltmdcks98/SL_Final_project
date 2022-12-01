@@ -31,6 +31,7 @@ WHERE user_id=8;
 
 DROP TABLE user_account;
 
+# ALTER TABLE user_account ADD COLUMN file VARCHAR(150);
 
 
 
