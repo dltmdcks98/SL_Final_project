@@ -88,3 +88,27 @@
 .t1:nth-child(2){
     border-top: hidden;
 }
+.openProfileDiv{
+    display: block;
+}
+.profileDiv{
+    width: 50%;
+    height: 30%;
+    display: none;
+}
+.profileDiv .uploadProfile{
+    height: 100%;
+    width: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+}
+.uploadDiv {
+    display: flex;
+}
+.show{
+    display: block;
+    transition: 0.5s;
+}

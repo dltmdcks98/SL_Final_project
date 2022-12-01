@@ -7,6 +7,7 @@
     <%@ include file="../include/static-head.jsp" %>
     <link rel="stylesheet" href="/css/board/myPage_boardList.css">
     <link rel="stylesheet" href="/css/mypage/mypage.css">
+
 </head>
 <style>
     .myinfo {
@@ -80,6 +81,19 @@
                     <input type="radio" name="user_sex" value="m" > 남성
                     <input type="radio" name="user_sex"value="f"> 여성
                 </div>
+
+                <label for="profileDiv">프로필 이미지 변경</label>
+                <span class="openProfileDiv">이미지를 변경하려면 클릭하세요</span>
+                <div class="form-group profileDiv" id="profileDiv">
+                    <div class="uploadProfile">
+                        <span>이미지를 이곳에 놓아주세요</span>
+                    </div>
+                    <div class="uploadDiv">
+                        <input type="file" name="files" id="ajax-file" style="display:flex;">
+                    </div>
+                </div>
+
+
                 <div class="form-group text-right">
                     <button type="submit" class="btn btn-primary btn-block" id="regist-btn">변경</button>
                 </div>
@@ -112,6 +126,7 @@
 </div>
 </section>
 <%@include file="../include/footer.jsp" %>
+<%@ include file="include/myPageProfile.jsp"%>
 </body>
 
 
