@@ -39,7 +39,7 @@ public class HomeController {
         List<Board> findNewImage = boardService.findNewImage();
         model.addAttribute("findNewImage", findNewImage);
 
-session.removeAttribute("redirectURIt");
+        session.removeAttribute("redirectURIt");
 
 
         if(session.getAttribute("user") == null){
