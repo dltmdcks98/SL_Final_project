@@ -20,7 +20,7 @@ import java.util.List;
 public class FileUploadController {
 
     // 업로드 파일 저장 경로
-    private static final String UPLOAD_PATH = "D:\\sl_stw\\upload";
+    private static final String UPLOAD_PATH = "/usr/local/upload";
 
     // upload-form.jsp로 포워딩하는 요청
     @GetMapping("/upload-form")
