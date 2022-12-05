@@ -1,5 +1,6 @@
 /src/main/resources/db_info.properties
 /src/main/resources/googleApi.properties
+/src/main/resources/awsdb_info.properties
 
 HELP.md
 .gradle
