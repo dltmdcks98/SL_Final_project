@@ -18,11 +18,11 @@ configurations {
 	}
 }
 
-war {
-	archiveName 'ROOT.war'
-}
 repositories {
 	mavenCentral()
+}
+war {
+	archiveName 'ROOT.war'
 }
 
 dependencies {
@@ -65,7 +65,7 @@ dependencies {
 
 }
 
-tasks.named('test') {
-
+tasks.named('test') { Task it ->
+//	useJUnitPlatform() 실무에서는 테스트를 다하고 지우고 빌드할것
 	exclude '**/*'
 }

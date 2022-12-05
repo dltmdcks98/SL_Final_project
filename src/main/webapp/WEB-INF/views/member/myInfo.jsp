@@ -193,10 +193,10 @@
         $(".file-upload").on('change', function(){
             readURL(this);
         });
-
-        // $(".upload-button").on('click', function() {
-        //     $(".file-upload").click();
-        // });
+        // 파일첨부로 하는건 이상해서 추후에 이미지 버튼하나 만들어서 클릭시 기존의 파일첨부를 누르는 이벤트
+        $(".upload-button").on('click', function() {
+            $(".file-upload").click();
+        });
 
         // 파일 업로드 이벤트
         // const $uploadFile = $('.insertFile');
