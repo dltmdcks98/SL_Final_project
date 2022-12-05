@@ -5,6 +5,9 @@ plugins {
 	id 'war'
 }
 
+bootWar.enabled = false; // bootWar와 충돌 방지
+war.enabled = true;
+
 group = 'com.slfinalproject'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
@@ -60,5 +63,6 @@ dependencies {
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+
+	exclude '**/*'
 }
