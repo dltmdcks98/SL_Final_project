@@ -37,7 +37,7 @@ public class AdminController {
     // 로그인페이지
     @GetMapping("/login")
     public String login(HttpServletRequest request) {
-        String refer = request.getHeader("Referer").substring(21);
+        String refer = request.getHeader("Referer").substring(7+request.getRemoteHost().length());
         if(refer.equals("/login")){
             return (String) request.getSession().getAttribute("redirectURI");
         }
@@ -54,7 +54,7 @@ public class AdminController {
         log.info("login success");
         redirectURI = (String) session.getAttribute("redirectURI");
         if(redirectURI==null){
-            String refer = request.getHeader("Referer").substring(21);
+            String refer = request.getHeader("Referer").substring(7+request.getRemoteHost().length());
             log.info("subString : {}",refer);
             request.getSession().setAttribute("redirectURI", refer);
             redirectURI = (String) session.getAttribute("redirectURI");
