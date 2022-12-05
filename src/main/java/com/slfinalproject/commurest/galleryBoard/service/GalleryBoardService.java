@@ -95,7 +95,14 @@ public class GalleryBoardService {
         List<String> urlList = new ArrayList<>();
         if(size==9){
             log.info("index 에서 인기 태그");
-            String firstTag = tagList.get(0).getTagValue();
+
+            String firstTag ="null";
+            try{
+                firstTag = tagList.get(0).getTagValue();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
             List<String> temp = getImgUrl(firstTag,startPage,size);
             for(String tag : temp) urlList.add(tag);
 

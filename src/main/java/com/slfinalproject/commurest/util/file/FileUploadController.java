@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -78,7 +77,14 @@ public class FileUploadController {
 
         return new ResponseEntity<>(fileNames, HttpStatus.OK);
     }
-
+    @PostMapping("/ajax-upload-profile")
+    @ResponseBody
+    public ResponseEntity<List<String>> ajaxUploadProfile(List<MultipartFile> files){
+        log.info("/ajax-upload-profile {}",files.get(0).getOriginalFilename());
+        List<String> list = new ArrayList<>();
+        list.add("test");
+        return new ResponseEntity<>(list,HttpStatus.OK);
+    }
     // 파일 데이터 로드 요청 처리
     @GetMapping("/loadFile")
     @ResponseBody
