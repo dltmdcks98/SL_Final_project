@@ -55,7 +55,8 @@ public class AdminController {
         redirectURI = (String) session.getAttribute("redirectURI");
         if(redirectURI==null){
             log.info("request.getRequestURL() = {}",request.getRequestURL());
-            String refer = request.getHeader("Referer").substring(7+request.getRemoteHost().length());
+            log.info("request.getRequestURI() = {}",request.getRequestURI());
+            String refer = request.getHeader("Referer").substring(request.getRequestURL().length()-request.getRequestURI().length());
             log.info("subString : {}",refer);
             request.getSession().setAttribute("redirectURI", refer);
             redirectURI = (String) session.getAttribute("redirectURI");
