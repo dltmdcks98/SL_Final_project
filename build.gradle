@@ -18,6 +18,9 @@ configurations {
 	}
 }
 
+war {
+	archiveName 'ROOT.war'
+}
 repositories {
 	mavenCentral()
 }
