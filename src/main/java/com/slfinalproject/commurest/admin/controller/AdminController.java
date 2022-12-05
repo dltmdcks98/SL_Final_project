@@ -51,10 +51,10 @@ public class AdminController {
     @GetMapping("/login_success")
     public String loginSuccess(HttpSession session, HttpServletRequest request) {
         String redirectURI = null;
-        log.info("login success");
+
         redirectURI = (String) session.getAttribute("redirectURI");
         if(redirectURI==null){
-            log.info("request.getRemoteHost().length() = {}",request.getRemoteHost().length());
+            log.info("request.getRemoteHost() = {}",request.getRemoteHost());
             String refer = request.getHeader("Referer").substring(7+request.getRemoteHost().length());
             log.info("subString : {}",refer);
             request.getSession().setAttribute("redirectURI", refer);
