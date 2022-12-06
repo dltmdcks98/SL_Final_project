@@ -22,15 +22,15 @@
 
         location.href = '/board?pageNum=${p.pageNum}&amount=${p.amount}';
     };
-if($editBtn) {
-    //수정버튼
-    $editBtn.onclick = e => {
-        if ($editBtn !== null) {
-            location.href = '/board/edit?boardNo=${b.boardNo}';
-        }
+    if($editBtn) {
+        //수정버튼
+        $editBtn.onclick = e => {
+            if ($editBtn !== null) {
+                location.href = '/board/edit?boardNo=${b.boardNo}';
+            }
 
-    };
-}
+        };
+    }
 
     if($delBtn) {
     //삭제버튼
