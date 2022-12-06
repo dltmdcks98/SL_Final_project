@@ -140,9 +140,12 @@ public class KakaoLoginController {
         if (kakaoProfile.getKakao_account().getEmail() == null) {
             return "/member/kakaoLoginFail";
         }
+
         kakaoUser.setUser_pass("111");
         kakaoUser.setUser_name("(kakao)" + randomName.nextString() + "님");
         kakaoUser.setUser_sex("k");
+
+
         // db에 카카오 계정 정보가 없다면
         if (adminService.selectOne(kakaoProfile.getKakao_account().getEmail()) == null) {
             log.info("회원가입을 합니다");

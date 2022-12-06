@@ -93,8 +93,7 @@
 
                             <div class="form-group text-right">
                                 <button type="submit" class="btn btn-primary btn-block" id="regist-btn">변경</button>
-                            </div>
-
+                            </div></div>
                     </form>
                 </c:if>
 
@@ -125,7 +124,7 @@
                             <div class="form-group text-right">
                                 <button type="submit" class="btn btn-primary btn-block" id="regist-btn">변경</button>
                             </div>
-
+                        </div>
                     </form>
                 </c:if>
             </div>
