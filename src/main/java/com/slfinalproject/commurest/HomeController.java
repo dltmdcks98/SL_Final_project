@@ -41,7 +41,6 @@ public class HomeController {
 
         session.removeAttribute("redirectURIt");
 
-
         if(session.getAttribute("user") == null){
             session.setAttribute("userTagImgs", galleryBoardService.getImgUrlByHotTag(0,9));
         }

@@ -29,27 +29,9 @@ public class GalleryBoardService {
 
     private final TagService tagService;
 
-/*
-    public List<String> sideBarImg(){
-        int num=0;
-        int size = 9;
-        if(session.getAttribute("userTag")!=null){
-            String userTagValue = (String) session.getAttribute("userTag");
-            session.setAttribute("userTagImgs",getImgUrlByTag(userTagValue,num,size));
-            return getImgUrlByTag(userTagValue,num,size);
-        }
-        session.setAttribute("userTagImgs",getImgUrlByHotTag(num,size));
-        return getImgUrlByHotTag(num,size);
-    }
-*/
-
-
     public List<String> getImgUrl(String tag,int num,int size) {
-        log.info("GalleryBoardService 진입, tag내용 : " +tag);
-
         List<String> imageUrl = new ArrayList<>();
         String searchUrl = "https://www.googleapis.com/customsearch/v1?key="+API+"&cx="+domain+"&searchType=image&filter=0&imgSize=large&q="+tag+"&start="+(num*10+1)+"&num="+size;
-        log.info("검색 url : "+ searchUrl);
         try {
             Connection.Response res = Jsoup.connect(
                             searchUrl)
@@ -94,8 +76,6 @@ public class GalleryBoardService {
         List<TagList> tagList = tagService.getHotTag();
         List<String> urlList = new ArrayList<>();
         if(size==9){
-            log.info("index 에서 인기 태그");
-
             String firstTag ="null";
             try{
                 firstTag = tagList.get(0).getTagValue();
@@ -107,7 +87,6 @@ public class GalleryBoardService {
             for(String tag : temp) urlList.add(tag);
 
         }else{
-            log.info("gallery에서 인기태그");
             for(int i=0; i<tagList.size();i++){
                 String tag = tagList.get(i).getTagValue();
                 List<String> temp = getImgUrl(tag,startPage,size);
