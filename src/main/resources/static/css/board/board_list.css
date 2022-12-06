@@ -26,8 +26,11 @@ tbody tr {
     border-color: #E7E6E6;
     border: 1px;
     border-style: groove hidden;
-}
 
+}
+tbody tr svg{
+
+}
 tbody td {
     padding: 10px;
     font-size: 15px;
