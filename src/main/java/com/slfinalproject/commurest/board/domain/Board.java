@@ -52,6 +52,7 @@ public class Board {
 
    private int boardCnt;
 
+   private boolean myRecommend;
 
 
    public Board(ResultSet rs) throws SQLException {

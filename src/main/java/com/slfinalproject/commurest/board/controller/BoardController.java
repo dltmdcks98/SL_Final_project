@@ -31,23 +31,19 @@ import java.util.Map;
 public class BoardController {
     private final BoardService boardService;
     private final AdminService adminService;
-
     private final RecommendService recommendService;
 
 
     // 게시판 메인 페이지
     @GetMapping("")
     public String board(@ModelAttribute("s") Search search, Model model, HttpSession session) {
-        Map<String, Object> boardMap = boardService.findAllService(search);
-//        log.info("return data - {}", boardMap);
+        Map<String, Object> boardMap = boardService.findAllService(search, session);
         PageMaker pageMaker = new PageMaker(
                 new Page(search.getPageNum(), search.getAmount())
                 , (Integer) boardMap.get("tc"));
-        log.info("페이지 정보 : {}",pageMaker);
         model.addAttribute("bList", boardMap.get("bList"));
         model.addAttribute("pageMaker", pageMaker);
         session.setAttribute("redirectURIt","board");
-
 
         return "board/board";
     }
@@ -93,7 +89,7 @@ public class BoardController {
     @PostMapping("/write")
     public String write(Board board, HttpServletResponse response, HttpServletRequest request,
                         @RequestParam("files") List<MultipartFile> fileList, RedirectAttributes ra) {
-        log.info("tag test "+ board);
+
         boolean flag = boardService.insertService(board, response, request);
         if (flag) ra.addFlashAttribute("msg", "reg-success");
         return flag ? "redirect:/board" : "redirect:/";
@@ -111,7 +107,7 @@ public class BoardController {
     // 수정 처리 요청
     @PostMapping("/edit")
     public String edit(Board board) {
-        log.info("controller request POST 요청 : {}", board);
+
         boolean flag = boardService.edit(board);
         return flag ? "redirect:/board/content/" + board.getBoardNo() : "redirect:/";
     }
