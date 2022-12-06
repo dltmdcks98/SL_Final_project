@@ -156,7 +156,6 @@
 <%@ include file="../include/scripts.jsp" %>
 <%@ include file="../include/reply.jsp" %>
 <%@ include file="../include/footer.jsp" %>
-<script src="/js/board/jquery_board_content.js" ></script>
 </body>
 
 

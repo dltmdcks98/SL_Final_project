@@ -6,15 +6,15 @@ $(document).ready(function () {
         return originFileName.match(pattern);
     }
 
-    // 파일의 확장자에 따른 렌더링 처리
+    // 렌더링 처리
     function checkExtType(fileName) {
 
         console.log('checkExtType call');
-        //원본 파일 명 추출
+
         let originFileName = fileName.substring(fileName.indexOf("_") + 1);
 
-        //확장자 추출후 이미지인지까지 확인
-        if (isImageFile(originFileName)) { // 파일이 이미지라면
+
+        if (isImageFile(originFileName)) {
 
             const $img = document.createElement('img');
             $img.classList.add('img-sizing');
@@ -48,8 +48,6 @@ $(document).ready(function () {
     // 드롭한 파일을 화면에 보여주는 함수
     function showFileData(fileNames) {
 
-        // 이미지인지? 이미지가 아닌지에 따라 구분하여 처리
-        // 이미지면 썸네일을 렌더링하고 아니면 다운로드 링크를 렌더링한다.
         for (let fileName of fileNames) {
             checkExtType(fileName);
         }
@@ -67,9 +65,5 @@ $(document).ready(function () {
                 showFileData(fileNames);
             });
     }
-
     showFileList();
-
-
-
 });

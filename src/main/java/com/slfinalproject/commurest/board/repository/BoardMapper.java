@@ -19,8 +19,6 @@ public interface BoardMapper {
     // 나의 게시글 조회
     List<Board> selectAllByUserId(Page page, int userId);
 
-    // 하나만 조회
-
     // 인기글 조회
     List<Board> getHitBoard();
     String findMemberByBoardNo(int boardNo);
@@ -55,9 +53,9 @@ public interface BoardMapper {
     // header 검색
     List<Board> searchAll(Page page, String keyword);
 
+    // 게시글 추천
     void recommend(int boardNo);
 
-    // 게시글 추천취소
 
 
 

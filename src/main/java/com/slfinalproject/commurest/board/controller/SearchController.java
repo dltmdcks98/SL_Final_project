@@ -20,7 +20,6 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class SearchController {
 
-    @Autowired
     private final BoardService boardService;
 
     // header 검색
@@ -31,7 +30,6 @@ public class SearchController {
         PageMaker pageMaker = new PageMaker(
                 new Page(page.getPageNum(), page.getAmount())
                 , (Integer) boardMap.get("tc"));
-        log.info("페이지 정보 : {}",pageMaker);
         model.addAttribute("b", boardMap.get("b"));
         model.addAttribute("pageMaker", pageMaker);
         session.setAttribute("redirectURIt","search-result");
@@ -39,6 +37,4 @@ public class SearchController {
 
         return "/search/search-result";
     }
-
-
 }

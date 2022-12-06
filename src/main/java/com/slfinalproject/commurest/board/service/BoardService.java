@@ -47,15 +47,12 @@ public class BoardService {
                               HttpServletResponse response, HttpServletRequest request) {
         HttpSession session = request.getSession();
         Object securityContextObject = session.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
-        //  if(securityContextObject !=null){
         SecurityContext securityContext = (SecurityContext) securityContextObject;
         Authentication authentication = securityContext.getAuthentication();
         Admin user = (Admin) authentication.getPrincipal();
-        //board.setUserId(user.getUser_id());
-        //   }
+
 
         board.setUserId(user.getUser_id());
-        log.info("tagList 테스트 "+ board.getTagList());
 
         // 게시글을 DB에 저장
         boolean flag = boardMapper.insert(board);
@@ -91,9 +88,6 @@ public class BoardService {
         return findDataMap;
     }
 
-
-
-
     // header 검색
     public Map<String, Object> searchAll(Page page, String keyword){
         Map<String, Object> findDataMap = new HashMap<>();
@@ -120,14 +114,11 @@ public class BoardService {
         Map<String, Object> findDataMap = new HashMap<>();
         List<Board> boardList = boardMapper.selectAllByUserId(page, userId);
         int total = boardMapper.getTotalCountByUserId(userId);
-        log.info("total test : {}",total);
         process(boardList);
         findDataMap.put("myBoardList", boardList);
         findDataMap.put("myBoardTotalCount", total);
         return findDataMap;
     }
-
-
 
     // 날짜 포맷 생성     == 이후에 추가로 할 것 : 당일날 작성한 글은 'HH:mm'만 나오고 다음날로 넘어가면(24:00) 가 되면 'yy-MM-dd'로 변경
     private void dateFormat(Board board) {
@@ -136,9 +127,7 @@ public class BoardService {
         board.setSimpleDate(sdf.format(date));
     }
 
-
-
-    // 날짜, 댓글, 조회수 ... 갱신? 목적 --> 지금은 날짜 포맷만 넣었음
+    // 날짜, 댓글, 조회수 갱신
     private void process(List<Board> boardList) {
         for (Board board : boardList) {
             dateFormat(board);
@@ -221,7 +210,7 @@ public class BoardService {
         return boardMapper.findNewImage();
     }
 
-//  사용자 게시물 수 조회
+    //  사용자 게시물 수 조회
     public int getTotalCountByUserId(int uesrId){
         return boardMapper.getTotalCountByUserId(uesrId);
     }
@@ -285,7 +274,4 @@ public class BoardService {
         }
         return boardList;
     }
-
-
-
 }

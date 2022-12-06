@@ -1,8 +1,9 @@
 function validateFormValue() {
+
     // 제목 입력태그
 
     const $titleInput = document.getElementById('title-input');
-    let flag = false; // 입력 했을시 true
+    let flag = false;
 
     console.log('t: ', $titleInput.value);
 
@@ -18,12 +19,10 @@ function validateFormValue() {
 const WriteBtn = document.getElementById('write_btn');
 
 WriteBtn.onclick = e => {
-    // 입력값을 제대로 채우지 않았는지 확인
     if (!validateFormValue()) {
         return;
     }
 
-    // 필수 입력값을 잘 채웠으면 폼을 서브밋한다.
     const $form = document.getElementById('write-form');
     $form.submit();
 };
