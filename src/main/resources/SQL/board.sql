@@ -6,7 +6,6 @@ CREATE TABLE board(
       hit INT(10) DEFAULT 0,
       reg_date DATETIME DEFAULT current_timestamp,
       recommend INT(10) DEFAULT 0,
-      image_url VARCHAR(200),
       tag_id VARCHAR(300),
       CONSTRAINT pk_board PRIMARY KEY (board_no),
       CONSTRAINT fk_board_user_account FOREIGN KEY (user_id)
@@ -174,6 +173,5 @@ FROM board A
 select *
 from board where user_id=49;
 
-
-
+SELECT * FROM board GROUP BY board_no DESC;
 

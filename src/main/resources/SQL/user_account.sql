@@ -1,6 +1,6 @@
 CREATE TABLE user_account(
     user_id INT(10) AUTO_INCREMENT,
-    manager VARCHAR(1) not null default 'N',
+    manager VARCHAR(50) not null default 'N',
     user_birth DATE,
     user_name VARCHAR(50) NOT NULL,
     user_pass VARCHAR(150) NOT NULL,
@@ -32,8 +32,6 @@ WHERE user_id=8;
 DROP TABLE user_account;
 
 # ALTER TABLE user_account ADD COLUMN file VARCHAR(150);
-
-
 
 
 
