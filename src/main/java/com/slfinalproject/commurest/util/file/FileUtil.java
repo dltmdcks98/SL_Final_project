@@ -34,27 +34,19 @@ public class FileUtil {
         return null;
     }
 
-
-
-    // 1. 사용자가 파일을 업로드했을 때 새로운 파일명을 생성해서
-    //    반환하고 해당 파일명으로 업로드하는 메서드
-    // ex) 사용자가 상어.jpg를 올렸으면 이름을 저장하기 전에 중복없는 이름으로 바꿈
-
     /**
      *
      * @param file - 클라이언트가 업로드한 파일 정보
-     * @param uploadPath - 서버의 업로드 루트 디렉토리 (E:/sl_dev/upload)
+     * @param uploadPath - 서버의 업로드 루트 디렉토리
      * @return - 업로드가 완료된 새로운 파일의 full path
      */
     public static String uploadFile(MultipartFile file, String uploadPath) {
 
-        // 중복이 없는 파일명으로 변경하기
-        // ex) 상어.png -> 3dfsfjkdsfds-djksfaqwerij-dsjkfdkj_상어.png
+        // 중복이 없는 파일명으로 변경
         // randomUUID를 통해 중복이 없는 이름으로 바꿔준다
         String newFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename(); // 중복이 없는 랜덤아이디 값 생성 +
 
         // 업로드 경로를 변경
-        // E:/sl_dev/upload  ->  E:/sl_dev/upload/2022/08/01
         String newUploadPath = getNewUploadPath(uploadPath);
 
         // 파일 업로드 수행
@@ -70,9 +62,6 @@ public class FileUtil {
         String fileFullPath = newUploadPath + File.separator + newFileName;
 
         // 풀 경로 - 루트 경로 문자열 생성
-        // full-path => E:/sl_dev/upload/2022/08/01/dfsdjfksfdkjs_상어.jpg
-        // res-path =>  /2022/08/01/dfsdjfksfdkjs_상어.jpg
-        // uploadPath => E:/sl_dev/upload
         String responseFilePath = fileFullPath.substring(uploadPath.length());
 
         return responseFilePath.replace("\\", "/");
@@ -91,9 +80,8 @@ public class FileUtil {
         int m = now.getMonthValue();
         int d = now.getDayOfMonth();
 
-        // 폴더 생성
+        // 폴더 생성 -- api처리
         String[] dateInfo = {
-                //      y+""
                 String.valueOf(y)
                 , len2(m)
                 , len2(d)
@@ -101,14 +89,14 @@ public class FileUtil {
 
         String newUploadPath = uploadPath;
 
-        // File.separator : 운영체제에 맞는 디렉토리 경로구분문자를 생성
-        // 리눅스 : / ,  윈도우 : \
+
+
         for (String date : dateInfo) {
             newUploadPath += File.separator + date;
 
             // 해당 경로대로 폴더를 생성
             File dirName = new File(newUploadPath);
-            if (!dirName.exists()) dirName.mkdir(); // 만약 파일의 날짜 경로가 존재하지않으면 새로운 업로드 폴더를 만들어라
+            if (!dirName.exists()) dirName.mkdir(); // 파일의 날짜 경로가 존재하지않으면 새로운 업로드 폴더를 만듬
         }
 
         return newUploadPath;

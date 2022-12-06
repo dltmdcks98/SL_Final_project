@@ -4,6 +4,7 @@ import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.admin.repository.AdminMapper;
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.repository.BoardMapper;
+import com.slfinalproject.commurest.recommend.domain.Recommend;
 import com.slfinalproject.commurest.recommend.repository.RecommendMapper;
 import com.slfinalproject.commurest.reply.dto.ReplyDTO;
 import com.slfinalproject.commurest.reply.repository.ReplyMapper;
@@ -35,7 +36,6 @@ public class BoardService {
 
     private final BoardMapper boardMapper;
     private final TagMapper tagMapper;
-
     private final ReplyMapper replyMapper;
     private final RecommendMapper recommendMapper;
     private final AdminMapper adminMapper;
@@ -84,14 +84,12 @@ public class BoardService {
 
         Map<String, Object> findDataMap = new HashMap<>();
         List<Board> boardList = boardMapper.selectAll(search);
-
         process(boardList);
+
         findDataMap.put("bList", boardList);
         findDataMap.put("tc", boardMapper.getTotalCountSearch(search));
         return findDataMap;
     }
-
-
 
 
 
@@ -206,6 +204,9 @@ public class BoardService {
         }
     }
 
+
+
+
     // 첨부파일 가져오기
 
    public List<String> getFiles(int bno) {
@@ -284,5 +285,7 @@ public class BoardService {
         }
         return boardList;
     }
+
+
 
 }

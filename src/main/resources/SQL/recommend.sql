@@ -13,9 +13,6 @@ create table recommend
 );
 
 
-#근데 user_id 어처피 user_name으로 하지않나?
-# user_name VARCHAR(50) NOT NULL
-
 
 INSERT INTO recommend(board_no,user_id) VALUES (125,51);
 DELETE FROM recommend WHERE user_id=51;

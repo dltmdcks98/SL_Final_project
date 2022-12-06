@@ -13,8 +13,6 @@ create table board
         foreign key (user_id) references user_account (user_id)
             on delete cascade
 );
-
-
 create table like_good(
     like_id int(10) auto_increment,
     board_no int(10) not null,
@@ -176,6 +174,5 @@ FROM board A
 select *
 from board where user_id=49;
 
-
-
+SELECT * FROM board GROUP BY board_no DESC;
 

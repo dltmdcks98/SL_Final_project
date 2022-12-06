@@ -21,8 +21,10 @@ public class Board {
    private String content;
    private int hit;
    private Date regDate;
+
    private int recommend;
-   private String imageUrl;
+
+   private String imageUrl; // 안쓸듯?
 
    private String keyword;
 
@@ -49,6 +51,7 @@ public class Board {
    private String tagValue;
 
    private int boardCnt;
+
 
 
    public Board(ResultSet rs) throws SQLException {

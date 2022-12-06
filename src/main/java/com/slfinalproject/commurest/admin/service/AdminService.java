@@ -3,6 +3,7 @@ package com.slfinalproject.commurest.admin.service;
 import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.admin.repository.AdminMapper;
 import com.slfinalproject.commurest.admin.repository.AdminRepository;
+import com.slfinalproject.commurest.board.repository.BoardMapper;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,13 +23,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class AdminService implements UserDetailsService {
     @Autowired
     private final AdminMapper adminMapper;
-
+    private final BoardMapper boardMapper;
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -110,7 +112,18 @@ public class AdminService implements UserDetailsService {
             user = (Admin) authentication.getPrincipal();
 
             log.info("현재 세션 정보 : " + user);
+            List<String> fileNames = user != null ? user.getFileNames() : null;
+            if (fileNames != null && fileNames.size() > 0) {
+                for (String fileName : fileNames) {
+                    // 첨부파일 내용 DB에 저장
+                    boardMapper.addFile(fileName);
+                }
+            }
+
         }
+
+
+
         return user;
     }
 
@@ -131,6 +144,10 @@ public class AdminService implements UserDetailsService {
         return admin;
 
 
+    }
+    // 이미지 가져오기
+    public List<String> getFiles(int userId) {
+        return adminMapper.insertProfile(userId);
     }
 
 

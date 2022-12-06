@@ -11,7 +11,6 @@ create table file_upload
             on delete cascade
 );
 
-
 ALTER TABLE file_upload
     ADD CONSTRAINT pk_file_name
         PRIMARY KEY (file_name);
