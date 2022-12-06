@@ -74,7 +74,7 @@ public class KakaoLoginController {
         // 카카오 RESTAPI 키
         params.add("client_id", "eac6586e062e9e84f8798226d9ac9be8");
         // 카카오 redirect 주소
-        params.add("redirect_uri", "http://13.113.19.114/login/kakao");
+        params.add("redirect_uri", "http://ec2-52-78-107-113.ap-northeast-2.compute.amazonaws.com/login/kakao");
         params.add("code", code);
 
         HttpEntity<MultiValueMap<String, String>> kakaoTokenRequest =
@@ -187,7 +187,7 @@ public class KakaoLoginController {
 
 
         if (redirectURI == null) {
-            String refer = request.getHeader("Referer").substring(21);
+            String refer = request.getHeader("Referer").substring(request.getRequestURL().length()-request.getRequestURI().length());
             request.getSession().setAttribute("redirectURI", refer);
             redirectURI = (String) session.getAttribute("redirectURI");
             log.info("ㅇㅇㅇㅇ : "+request.getHeader("Referer"));
