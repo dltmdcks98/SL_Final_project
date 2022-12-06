@@ -1,13 +1,16 @@
-CREATE TABLE comment (
-     comment_id INT(10) AUTO_INCREMENT,
-     user_id INT(10) NOT NULL,
-     c_content TEXT,
-     reg_date DATETIME DEFAULT current_timestamp,
-     recommend INT(10) DEFAULT 0,
-     CONSTRAINT pk_comment PRIMARY KEY (comment_id),
-     CONSTRAINT comment  FOREIGN KEY (user_id)
-     REFERENCES user_account (user_id)
+create table comment
+(
+    comment_id int(10) auto_increment
+        primary key,
+    user_id    int(10)                              not null,
+    c_content  text                                 null,
+    reg_date   datetime default current_timestamp() null,
+    recommend  int(10)  default 0                   null,
+    constraint comment
+        foreign key (user_id) references user_account (user_id)
 );
+
+
 
 
 DROP TABLE comment;

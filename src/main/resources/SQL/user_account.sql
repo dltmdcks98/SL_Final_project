@@ -1,14 +1,17 @@
-CREATE TABLE user_account(
-    user_id INT(10) AUTO_INCREMENT,
-    manager VARCHAR(50) not null default 'N',
-    user_birth DATE,
-    user_name VARCHAR(50) NOT NULL,
-    user_pass VARCHAR(150) NOT NULL,
-    user_email VARCHAR(100) NOT NULL,
-    reg_date DATETIME DEFAULT current_timestamp,
-    user_sex VARCHAR(1) NOT NULL,
-    CONSTRAINT pk_tbl_user PRIMARY KEY (user_id)
-    );
+create table user_account
+(
+    user_id    int(10) auto_increment
+        primary key,
+    manager    varchar(50)                          not null,
+    user_birth date                                 null,
+    user_name  varchar(50)                          not null,
+    user_pass  varchar(150)                         not null,
+    user_email varchar(100)                         not null,
+    reg_date   datetime default current_timestamp() null,
+    user_sex   varchar(1)                           not null
+);
+
+
 
 #매니저 타입 크기를 1->50으로 늘림
 alter table user_account modify manager varchar(50);
@@ -31,7 +34,8 @@ WHERE user_id=8;
 
 DROP TABLE user_account;
 
-# ALTER TABLE user_account ADD COLUMN file VARCHAR(150);
+
+
 
 
 

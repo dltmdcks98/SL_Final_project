@@ -18,6 +18,7 @@
     </label>
     <div class="content">
         <p class="boardH">자유게시판</p>
+
         <div class="content-title-div">
             <p class="content-title">${b.title}</p>
 
@@ -48,7 +49,6 @@
                 <a href="/gallery/search-tag?tag=${tag}"><div class="tagList">#<c:out value="${tag}"/></div></a>
             </c:forEach>
         </div>
-        <button type="button" id="btnRecommend">추천하기</button>
 
     </div>
     <!-- 게시글 영역 end -->
@@ -108,13 +108,13 @@
                 <!-- end reply content -->
             </div>
 
-                <div class="comments-list">
+            <div class="comments-list">
 
-                    <button class="list-btn" id="list-btn" type="button">전체글</button>
-                    <c:if test="${user.manager=='ROLE_ADMIN' || user.user_id == b.userId}">
-                        <button id="edit-btn" type="button">글수정</button>
-                        <button id="del-btn" type="button">글삭제</button>
-                    </c:if>
+                <button class="list-btn" id="list-btn" type="button">전체글</button>
+                <c:if test="${user.manager=='ROLE_ADMIN' || user.user_id == b.userId}">
+                    <button id="edit-btn" type="button">글수정</button>
+                    <button id="del-btn" type="button">글삭제</button>
+                </c:if>
 
             </div>
         </div>
@@ -156,7 +156,6 @@
 <%@ include file="../include/scripts.jsp" %>
 <%@ include file="../include/reply.jsp" %>
 <%@ include file="../include/footer.jsp" %>
-<script src="/js/board/jquery_board_content.js" ></script>
 </body>
 
 
