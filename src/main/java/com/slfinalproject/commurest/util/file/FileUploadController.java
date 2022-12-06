@@ -36,26 +36,6 @@ public class FileUploadController {
         log.info("/upload POST! - {}", fileList);
 
         for (MultipartFile file: fileList) {
-            log.info("file-name: {}", file.getName());
-            log.info("file-origin-name: {}", file.getOriginalFilename());
-            log.info("file-size: {}KB", (double) file.getSize() / 1024);
-            log.info("file-type: {}", file.getContentType());
-            System.out.println("==================================================================");
-
-
-            // 서버에 업로드파일 저장
-
-
-
-            // 1. 세이브파일 객체 생성
-            //  - 첫번째 파라미터는 파일 저장경로 지정, 두번째 파일명지정
-        /*File f = new File(uploadPath, file.getOriginalFilename());
-
-        try {
-            file.transferTo(f);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
 
             FileUtil.uploadFile(file, UPLOAD_PATH);
         }
