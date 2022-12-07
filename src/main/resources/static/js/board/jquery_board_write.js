@@ -9,7 +9,6 @@ $(document).ready(function () {
     // 파일의 확장자에 따른 렌더링 처리
     function checkExtType(fileName) {
 
-        //원본 파일 명 추출
         let originFileName = fileName.substring(fileName.indexOf("_") + 1);
 
 
@@ -21,8 +20,8 @@ $(document).ready(function () {
 
         $('#write-form').append($hiddenInput);
 
-        //확장자 추출후 이미지인지까지 확인
-        if (isImageFile(originFileName)) { // 파일이 이미지라면
+
+        if (isImageFile(originFileName)) {
 
             const $img = document.createElement('img');
             $img.classList.add('img-sizing');
@@ -30,8 +29,6 @@ $(document).ready(function () {
             $img.setAttribute('alt', originFileName);
             $('.uploaded-list').append($img);
         }
-
-        // 이미지가 아니라면 다운로드 링크를 생성
         else {
 
             const $a = document.createElement('a');
@@ -57,10 +54,9 @@ $(document).ready(function () {
 
 
 
-    // drag & drop 이벤트
+
     const $dropBox = $('.fileDrop');
 
-    // drag 진입 이벤트
     $dropBox.on('dragover dragenter', e => {
         e.preventDefault();
         $dropBox
@@ -68,7 +64,6 @@ $(document).ready(function () {
             .css('background', 'skyblue');
     });
 
-    // drag 탈출 이벤트
     $dropBox.on('dragleave', e => {
         e.preventDefault();
         $dropBox
@@ -76,18 +71,13 @@ $(document).ready(function () {
             .css('background', 'transparent');
     });
 
-    // drop 이벤트
     $dropBox.on('drop', e => {
         e.preventDefault();
-        // console.log(e);
-        // console.log('드롭 이벤트');
         const files = e.originalEvent.dataTransfer.files;
-        // console.log('drop file data: ', files);
 
         const $fileInput = $('#ajax-file');
         $fileInput.prop('files', files);
 
-        // console.log($fileInput);
 
         //  파일 데이터를 비동기 전송
         const formData = new FormData();
@@ -111,7 +101,5 @@ $(document).ready(function () {
 
                 showFileData(fileNames);
             });
-
     });
-
 });
