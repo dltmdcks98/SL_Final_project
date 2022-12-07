@@ -113,7 +113,6 @@ public class MypageController {
     // 개인정보 수정 처리 요청
     @PostMapping("/update")
     public String update(Admin admin, HttpSession s) {
-        log.info("업데이트한다? -> 기존 이름 : "+admin.getUser_name());
         adminService.update(admin);
         log.info("업데이트 했다!! -> 이름 : "+admin.getUser_name());
         s.invalidate();
@@ -123,7 +122,6 @@ public class MypageController {
 
     @PostMapping("/update-kakao")
     public String nameUpdate(Admin admin, HttpSession s) {
-        log.info("업데이트한다? -> 기존 이름 : "+admin.getUser_name());
         adminService.nameUpdate(admin);
         log.info("업데이트 했다!! -> 이름 : "+admin.getUser_name());
         s.invalidate();
