@@ -116,7 +116,7 @@
 
 
                             <div class="form-group text-right">
-                                <button type="submit" class="btn btn-primary btn-block" id="regist-btn">변경</button>
+                                <button type="submit" class="btn btn-primary btn-block" id="regist-btn2">변경</button>
                             </div>
                         </div>
                     </form>
