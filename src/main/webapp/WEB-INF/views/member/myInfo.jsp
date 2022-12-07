@@ -62,9 +62,8 @@
 
                         <div class="form-group">
                             <label>닉네임</label>
-                            <input type="text" name="user_name" class="form-control" placeholder="닉네임">
+                            <input type="text" name="user_name" class="form-control" placeholder="현재 닉네임 : ${user.user_name}">
                         </div>
-
 
                         <div class="form-group">
                             <label class="fw">비밀번호</label>
@@ -77,8 +76,6 @@
                         </div>
 
                         <div class="form-group">
-
-
                             <div class="form-group text-right">
                                 <button type="submit" class="btn btn-primary btn-block" id="regist-btn">변경</button>
                             </div>
@@ -94,12 +91,10 @@
 
                         <div class="form-group">
                             <label>닉네임</label>
-                            <input type="text" name="user_name" class="form-control" placeholder="닉네임">
+                            <input type="text" name="user_name" class="form-control" placeholder="현재 닉네임 : ${user.user_name}">
                         </div>
 
                         <div class="form-group">
-
-
                             <div class="form-group text-right">
                                 <button type="submit" class="btn btn-primary btn-block" id="regist-btn2">변경</button>
                             </div>

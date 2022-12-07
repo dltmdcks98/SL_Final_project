@@ -113,13 +113,19 @@ public class MypageController {
     // 개인정보 수정 처리 요청
     @PostMapping("/update")
     public String update(Admin admin, HttpSession s) {
+        log.info("업데이트한다? -> 기존 이름 : "+admin.getUser_name());
         adminService.update(admin);
+        log.info("업데이트 했다!! -> 이름 : "+admin.getUser_name());
         s.invalidate();
         return "redirect:/";
     }
+
+
     @PostMapping("/update-kakao")
     public String nameUpdate(Admin admin, HttpSession s) {
+        log.info("업데이트한다? -> 기존 이름 : "+admin.getUser_name());
         adminService.nameUpdate(admin);
+        log.info("업데이트 했다!! -> 이름 : "+admin.getUser_name());
         s.invalidate();
         return "redirect:/";
     }
@@ -135,14 +141,6 @@ public class MypageController {
 
         return "member/myInfo";
     }
-    @GetMapping("/mypage/file/{userId}")
-    @ResponseBody
-    public ResponseEntity <List<String>> getFiles(@PathVariable int userId) {
 
-        List<String> files = adminService.getFiles(userId);
-        log.info("bno : files {} ", userId, files);
-
-        return new ResponseEntity<>(files, HttpStatus.OK);
-    }
 
 }
