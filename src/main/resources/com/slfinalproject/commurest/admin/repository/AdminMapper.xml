@@ -25,9 +25,12 @@
 
     <update id="update">
         UPDATE user_account
-        SET user_pass = #{user_pass}, user_name=#{user_name}, user_birth=#{user_birth}, user_sex=#{user_sex}
+        SET user_pass = #{user_pass}, user_name=#{user_name}, user_birth=#{user_birth}
         WHERE user_id=#{userId}
     </update>
+
+
+
     <update id="nameUpdate">
         UPDATE user_account
         SET user_name=#{user_name}
