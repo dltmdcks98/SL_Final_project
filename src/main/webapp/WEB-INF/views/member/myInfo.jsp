@@ -77,12 +77,6 @@
                         </div>
 
                         <div class="form-group">
-                            <label>성별</label><br>
-                            <input type="radio" name="user_sex" value="m" > 남성
-                            <input type="radio" name="user_sex"value="f"> 여성
-                        </div>
-
-                        <div class="form-group">
 
                             <div class="insertFile circle">
                                 <img class="profile-pic" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg">
