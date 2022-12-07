@@ -38,7 +38,7 @@ public class BoardController {
     // 게시판 메인 페이지
     @GetMapping("")
     public String board(@ModelAttribute("s") Search search, Model model, HttpSession session) {
-        Map<String, Object> boardMap = boardService.findAllService(search);
+        Map<String, Object> boardMap = boardService.findAllService(search, session);
         PageMaker pageMaker = new PageMaker(
                 new Page(search.getPageNum(), search.getAmount())
                 , (Integer) boardMap.get("tc"));
@@ -130,7 +130,6 @@ public class BoardController {
     @GetMapping("/file/{bno}")
     @ResponseBody
     public ResponseEntity<List<String>> getFiles(@PathVariable int bno) {
-
         List<String> files = boardService.getFiles(bno);
         return new ResponseEntity<>(files, HttpStatus.OK);
     }

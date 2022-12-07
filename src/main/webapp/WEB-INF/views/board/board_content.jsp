@@ -49,7 +49,6 @@
             </c:forEach>
         </div>
         <button type="button" id="btnRecommend">추천하기</button>
-
     </div>
     <!-- 게시글 영역 end -->
 

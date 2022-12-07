@@ -6,6 +6,7 @@ import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.repository.BoardMapper;
 import com.slfinalproject.commurest.recommend.domain.Recommend;
 import com.slfinalproject.commurest.recommend.repository.RecommendMapper;
+import com.slfinalproject.commurest.recommend.service.RecommendService;
 import com.slfinalproject.commurest.reply.dto.ReplyDTO;
 import com.slfinalproject.commurest.reply.repository.ReplyMapper;
 import com.slfinalproject.commurest.tag.domain.Tag;
@@ -38,6 +39,7 @@ public class BoardService {
     private final TagMapper tagMapper;
     private final ReplyMapper replyMapper;
     private final RecommendMapper recommendMapper;
+    private final RecommendService recommendService;
     private final AdminMapper adminMapper;
 
 
@@ -77,12 +79,15 @@ public class BoardService {
 
 
     // 게시물 전체 조회 요청 페이징 + 검색기능
-    public Map<String, Object> findAllService(Search search) {
-
+    public Map<String, Object> findAllService(Search search, HttpSession session) {
         Map<String, Object> findDataMap = new HashMap<>();
         List<Board> boardList = boardMapper.selectAll(search);
-        process(boardList);
-
+        if(session.getAttribute("user")!=null){
+            Admin user = (Admin) session.getAttribute("user");
+            process(boardList,user);
+        }else{
+            process(boardList);
+        }
         findDataMap.put("bList", boardList);
         findDataMap.put("tc", boardMapper.getTotalCountSearch(search));
         return findDataMap;
@@ -134,6 +139,15 @@ public class BoardService {
             getReplyCount(board);
             chkNewBoard(board);
             getRecommendCnt(board);
+        }
+    }
+    private void process(List<Board> boardList,Admin admin) {
+        for (Board board : boardList) {
+            dateFormat(board);
+            getReplyCount(board);
+            chkNewBoard(board);
+            getRecommendCnt(board);
+            getRecommendByUserId(board,admin);
         }
     }
 
@@ -228,6 +242,9 @@ public class BoardService {
         if(dif < limitTime){
             board.setNewBoard(true);
         }
+    }
+    private void getRecommendByUserId(Board board, Admin user){
+        board.setMyRecommend(recommendService.confirmRecommend(board.getBoardNo(), user.getUser_id()));
     }
     private void getRecommendCnt(Board board){
         int recommendCnt = recommendMapper.countRecommendBYBoardNo(board.getBoardNo());

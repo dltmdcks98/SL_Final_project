@@ -76,25 +76,6 @@
                             <input type="date" name="user_birth" class="form-control">
                         </div>
 
-                        <div class="form-group">
-                            <label>성별</label><br>
-                            <input type="radio" name="user_sex" value="m" > 남성
-                            <input type="radio" name="user_sex"value="f"> 여성
-                        </div>
-
-                        <div class="form-group">
-
-                            <div class="insertFile circle">
-                                <img class="profile-pic" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg">
-                            </div>
-                            <div class="uploadDiv">
-                                <input class="file-upload" type="file" accept="image/*" name="files" id="ajax-file"/>
-                            </div>
-
-                            <div class="form-group text-right">
-                                <button type="submit" class="btn btn-primary btn-block" id="regist-btn">변경</button>
-                            </div>
-
                     </form>
                 </c:if>
 
@@ -110,22 +91,10 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="fileDrop Circle">
-                                <img class="profile-pic" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg">
-                                <input class="file-upload uploaded-list" type="file" accept="image/*"/>
-                            </div>
-                            <div class="uploadDiv">
-                                <input type="file" name="files" id="ajax-file">
-                            </div>
-                            <div class="uploaded-list ">
-
-                            </div>
-
-
                             <div class="form-group text-right">
                                 <button type="submit" class="btn btn-primary btn-block" id="regist-btn">변경</button>
                             </div>
-
+                        </div>
                     </form>
                 </c:if>
             </div>
