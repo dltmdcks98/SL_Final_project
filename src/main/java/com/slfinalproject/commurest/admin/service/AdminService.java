@@ -68,16 +68,16 @@ public class AdminService implements UserDetailsService {
     }
 
     // 업데이트 처리
-    @Transactional
-    public void update(Admin admin) {
+    public boolean update(Admin admin) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         admin.setUser_pass(passwordEncoder.encode(admin.getUser_pass()));
-        adminMapper.update(admin);
+        boolean flag = adminMapper.update(admin);
+        return flag;
     }
 
-    @Transactional
-    public void nameUpdate(Admin admin) {
-        adminMapper.nameUpdate(admin);
+    public boolean nameUpdate(Admin admin) {
+        boolean flag = adminMapper.nameUpdate(admin);
+        return flag;
     }
 
     // 회원탈퇴 처리

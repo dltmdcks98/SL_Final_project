@@ -15,9 +15,9 @@ public interface AdminMapper {
     void delete(Admin admin);
 
     // 회원 수정
-    void update(Admin admin);
+    boolean update(Admin admin);
 
-    void nameUpdate(Admin admin);
+    boolean nameUpdate(Admin admin);
     // 회원 검색
     Admin selectOne(String admin);
 

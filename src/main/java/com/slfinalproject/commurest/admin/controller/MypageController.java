@@ -114,7 +114,6 @@ public class MypageController {
     @PostMapping("/update")
     public String update(Admin admin, HttpSession s) {
         adminService.update(admin);
-        log.info("업데이트 했다!! -> 이름 : "+admin.getUser_name());
         s.invalidate();
         return "redirect:/";
     }
@@ -123,7 +122,6 @@ public class MypageController {
     @PostMapping("/update-kakao")
     public String nameUpdate(Admin admin, HttpSession s) {
         adminService.nameUpdate(admin);
-        log.info("업데이트 했다!! -> 이름 : "+admin.getUser_name());
         s.invalidate();
         return "redirect:/";
     }

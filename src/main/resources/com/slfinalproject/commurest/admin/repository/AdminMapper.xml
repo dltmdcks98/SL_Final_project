@@ -20,13 +20,13 @@
 
     <delete id="delete">
         DELETE FROM user_account
-        WHERE user_id=#{userId}
+        WHERE user_id=#{user_id}
     </delete>
 
     <update id="update">
         UPDATE user_account
         SET user_pass = #{user_pass}, user_name=#{user_name}, user_birth=#{user_birth}
-        WHERE user_id=#{userId}
+        WHERE user_id=#{user_id}
     </update>
 
 
@@ -34,7 +34,7 @@
     <update id="nameUpdate">
         UPDATE user_account
         SET user_name=#{user_name}
-        where user_id=#{userId}
+        where user_id=#{user_id}
     </update>
     <select id = "selectOne"  resultType="com.slfinalproject.commurest.admin.domain.Admin">
         SELECT * from user_account where user_email=#{user_email}
