@@ -129,9 +129,9 @@ public class MypageController {
     @GetMapping("/mypage/myinfo")
     public String myInfo(Model model,HttpSession session) {
         Admin user = adminService.setLoginSession(session);
-        if(user!=null){
-            session.setAttribute("user",user);
-        }
+        session.setAttribute("user",user);
+
+
 
         return "member/myInfo";
     }
