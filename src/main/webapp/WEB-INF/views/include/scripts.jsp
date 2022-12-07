@@ -67,6 +67,7 @@
         $titleDiv.click();
     });
 
+
     function setHeart(){
         console.log(${recommendedUser});
 
@@ -77,6 +78,7 @@
         }
 
     }
+
 
     (function (){
         setHeart();

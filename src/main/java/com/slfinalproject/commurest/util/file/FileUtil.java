@@ -23,6 +23,8 @@ public class FileUtil {
         mediaMap.put("JPG", MediaType.IMAGE_JPEG);
         mediaMap.put("GIF", MediaType.IMAGE_GIF);
         mediaMap.put("PNG", MediaType.IMAGE_PNG);
+        mediaMap.put("JFIF", MediaType.IMAGE_JPEG);
+
     }
 
     // 확장자를 알려주면 미디어타입을 리턴하는 메서드

@@ -134,8 +134,17 @@ public class MypageController {
         session.setAttribute("user",user);
 
 
-
         return "member/myInfo";
+    }
+
+    @GetMapping("/file/{userId}")
+    @ResponseBody
+    public ResponseEntity<List<String>> getFiles(@PathVariable int userId) {
+
+        List<String> files = adminService.getFiles(userId);
+        log.info("userId : files {} ", userId, files);
+
+        return new ResponseEntity<>(files, HttpStatus.OK);
     }
 
 

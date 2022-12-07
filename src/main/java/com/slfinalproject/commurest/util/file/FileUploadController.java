@@ -22,12 +22,6 @@ public class FileUploadController {
     // 업로드 파일 저장 경로
     private static final String UPLOAD_PATH = "/usr/local/upload";
 
-    // upload-form.jsp로 포워딩하는 요청
-    @GetMapping("/upload-form")
-    public String uploadForm() {
-        return "upload/upload-form";
-    }
-
     // 파일 업로드 처리를 위한 요청
     @PostMapping("/upload")
     public String upload(@RequestParam("file") List<MultipartFile> fileList) {

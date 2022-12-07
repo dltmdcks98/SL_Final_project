@@ -76,6 +76,14 @@
                         </div>
 
                         <div class="form-group">
+
+                            <div class="insertFile circle">
+                                <img class="profile-pic" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg">
+                            </div>
+                            <div class="uploadDiv">
+                                <input class="file-upload" type="file" accept="image/*" name="files" id="profile-upload"/>
+                            </div>
+
                             <div class="form-group text-right">
                                 <button type="submit" class="btn btn-primary btn-block" id="regist-btn">변경</button>
                             </div>
@@ -109,6 +117,8 @@
     </div>
 </section>
 
+
+<%@include file="include/myInfo.jsp" %>
 <%@include file="../include/footer.jsp" %>
 </body>
 
