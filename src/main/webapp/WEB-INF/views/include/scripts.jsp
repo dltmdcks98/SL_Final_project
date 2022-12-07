@@ -46,7 +46,7 @@
     $titleDiv.addEventListener('click',e => {
         console.log(e.target);
         console.log('버튼 클릭 이벤트 boardNo : '+${b.boardNo});
-        if(e.target.matches('svg')||e.target.matches('path')){
+        if(e.target.matches('svg')||e.target.matches('path')||e.target.matches('div.content-title-div')){
             fetch(recommendRegistURL+'?boardNo='+${b.boardNo})
                 .then(res => res.text())
                 .then(result => {
@@ -62,6 +62,9 @@
                 });
         }
 
+    });
+    $(".btnRecommend").on('click', function() {
+        $titleDiv.click();
     });
 
     function setHeart(){
