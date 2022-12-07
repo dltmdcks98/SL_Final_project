@@ -74,7 +74,7 @@ public class KakaoLoginController {
         // 카카오 RESTAPI 키
         params.add("client_id", "eac6586e062e9e84f8798226d9ac9be8");
         // 카카오 redirect 주소
-        params.add("redirect_uri", "http://localhost:8182/login/kakao");
+        params.add("redirect_uri", "http://ec2-52-78-107-113.ap-northeast-2.compute.amazonaws.com/login/kakao");
         params.add("code", code);
 
         HttpEntity<MultiValueMap<String, String>> kakaoTokenRequest =
@@ -140,9 +140,12 @@ public class KakaoLoginController {
         if (kakaoProfile.getKakao_account().getEmail() == null) {
             return "/member/kakaoLoginFail";
         }
+
         kakaoUser.setUser_pass("111");
         kakaoUser.setUser_name("(kakao)" + randomName.nextString() + "님");
         kakaoUser.setUser_sex("k");
+
+
         // db에 카카오 계정 정보가 없다면
         if (adminService.selectOne(kakaoProfile.getKakao_account().getEmail()) == null) {
             log.info("회원가입을 합니다");
@@ -187,7 +190,7 @@ public class KakaoLoginController {
 
 
         if (redirectURI == null) {
-            String refer = request.getHeader("Referer").substring(21);
+            String refer = request.getHeader("Referer").substring(request.getRequestURL().length()-request.getRequestURI().length());
             request.getSession().setAttribute("redirectURI", refer);
             redirectURI = (String) session.getAttribute("redirectURI");
             log.info("ㅇㅇㅇㅇ : "+request.getHeader("Referer"));

@@ -2201,10 +2201,9 @@ section .container {
     width: 100%;
 }
 .article-list figure {
-    width: 300px;
-    height: 195px;
+    width: 40%;
+    padding: 2%;
     overflow: hidden;
-    background-color: #000;
     float: left;
     display: inline-block;
     margin-bottom: 0;
@@ -2313,6 +2312,7 @@ section .container {
 .article-mini .inner {
     display: inline-block;
     height: 100%;
+    width: 50%;
 }
 .article-mini .padding {
     padding: 0 10px;
@@ -2402,6 +2402,7 @@ section .container {
     opacity: 1;
     background-size: cover;
     transition: 0.5s;
+    min-height: 15rem;
 }
 aside {
     margin-bottom: 40px;

@@ -16,7 +16,6 @@ import javax.sql.DataSource;
 @ComponentScan(basePackages = "com.slfinalproject.commurest")
 @PropertySource("classpath:awsdb_info.properties")
 public class DataBaseConfig {
-
     @Value("${local.db.username}")
     private String username;
 

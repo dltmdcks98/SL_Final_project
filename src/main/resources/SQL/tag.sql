@@ -1,17 +1,20 @@
 # 사용자, 게시글 과 fk 연결
-CREATE TABLE tag (
-     tag_id INT(10) AUTO_INCREMENT,
-     tag_value VARCHAR(300),
-     board_no INT(10),
-     user_id INT(10),
-     CONSTRAINT pk_tag PRIMARY KEY (tag_id),
-     CONSTRAINT fk_tag_board FOREIGN KEY (board_no)
-                 REFERENCES board(board_no)
-                 ON DELETE CASCADE,
-     CONSTRAINT fk_tag_user FOREIGN KEY (user_id)
-                 REFERENCES user_account(user_id)
-                 ON DELETE CASCADE
+create table tag
+(
+    tag_id    int(10) auto_increment
+        primary key,
+    tag_value varchar(300) null,
+    board_no  int(10)      null,
+    user_id   int(10)      null,
+    constraint fk_tag_board
+        foreign key (board_no) references board (board_no)
+            on delete cascade,
+    constraint fk_tag_user
+        foreign key (user_id) references user_account (user_id)
+            on delete cascade
 );
+
+
 
 INSERT INTO tag(tag_value,user_id) VALUES ('이나경',18);
 

@@ -1,18 +1,20 @@
-CREATE TABLE board(
-      board_no INT(10) AUTO_INCREMENT,
-      user_id INT(10) NOT NULL,
-      title VARCHAR(100) NOT NULL,
-      content TEXT,
-      hit INT(10) DEFAULT 0,
-      reg_date DATETIME DEFAULT current_timestamp,
-      recommend INT(10) DEFAULT 0,
-      image_url VARCHAR(200),
-      tag_id VARCHAR(300),
-      CONSTRAINT pk_board PRIMARY KEY (board_no),
-      CONSTRAINT fk_board_user_account FOREIGN KEY (user_id)
-      REFERENCES user_account (user_id)
-    ON DELETE CASCADE
+create table board
+(
+    board_no  int(10) auto_increment
+        primary key,
+    user_id   int(10)  default 0                   not null,
+    title     varchar(100)                         not null,
+    content   text                                 null,
+    hit       int(10)  default 0                   null,
+    reg_date  datetime default current_timestamp() null,
+    recommend int(10)  default 0                   null,
+    image_url varchar(200)                         null,
+    constraint fk_board_user_account
+        foreign key (user_id) references user_account (user_id)
+            on delete cascade
 );
+
+select *from file_upload;
 create table like_good(
     like_id int(10) auto_increment,
     board_no int(10) not null,
@@ -174,6 +176,5 @@ FROM board A
 select *
 from board where user_id=49;
 
-
-
+SELECT * FROM board GROUP BY board_no DESC;
 

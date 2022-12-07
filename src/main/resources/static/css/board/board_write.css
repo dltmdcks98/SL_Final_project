@@ -5,13 +5,12 @@ body {
 
 .write-container {
     width: 55%;
-    margin: 0% auto 150px;
+    margin: 0 auto 150px;
     font-size: 1.5em;
 }
 
 .fileDrop {
-    width: 600px;
-    height: 200px;
+    width: 35%;
     border: 1px dashed gray;
     display: flex;
     justify-content: center;
@@ -20,13 +19,17 @@ body {
 }
 
 .uploadDiv {
-    display: flex;
+    display: none;
 }
 
 .img-sizing {
     display: block;
-    width: 100px;
-    height: 100px;
+    width: 8%;
+    height: 8%;
+}
+.uploaded-list {
+    display:flex;
+
 }
 
 

@@ -6,7 +6,8 @@
 <mapper namespace="com.slfinalproject.commurest.admin.repository.AdminMapper">
 
     <resultMap type="com.slfinalproject.commurest.admin.domain.Admin" id="adminMap">
-            <id property="user_id" column="user_id"/>
+            <id property="userId" column="user_id"/>
+            <id property="fileName" column="file_name"/>
             <collection property="boardList" column="user_id" javaType="java.util.List"
                         ofType="com.slfinalproject.commurest.board.domain.Board" select="com.slfinalproject.commurest.board.domain.Board.selectByUserId"/>
     </resultMap>
@@ -19,18 +20,18 @@
 
     <delete id="delete">
         DELETE FROM user_account
-        WHERE user_id=#{user_id}
+        WHERE user_id=#{userId}
     </delete>
 
     <update id="update">
         UPDATE user_account
         SET user_pass = #{user_pass}, user_name=#{user_name}, user_birth=#{user_birth}, user_sex=#{user_sex}
-        WHERE user_id=#{user_id}
+        WHERE user_id=#{userId}
     </update>
     <update id="nameUpdate">
         UPDATE user_account
         SET user_name=#{user_name}
-        where user_id=#{user_id}
+        where user_id=#{userId}
     </update>
     <select id = "selectOne"  resultType="com.slfinalproject.commurest.admin.domain.Admin">
         SELECT * from user_account where user_email=#{user_email}
@@ -45,12 +46,20 @@
 
 
     <select id = "selectOne2"  resultType="com.slfinalproject.commurest.admin.domain.Admin">
-        SELECT * from user_account where user_id=#{user_id}
+        SELECT * from user_account where user_id=#{userId}
     </select>
 
+    <!-- 프로필 이미지 -->
+    <insert id="insertProfile">
+        INSERT INTO profile(user_id, file_name) VALUES(#{userId}, #{file_name})
+    </insert>
 
-
-
+    <!-- 파일목록 가져오기 -->
+    <select id="fileNames" resultType="string">
+        SELECT file_name
+        FROM profile
+        WHERE user_id = #{userId}
+    </select>
 
 
 

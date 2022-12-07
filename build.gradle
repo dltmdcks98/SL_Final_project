@@ -5,6 +5,9 @@ plugins {
 	id 'war'
 }
 
+bootWar.enabled = false; // bootWar와 충돌 방지
+war.enabled = true;
+
 group = 'com.slfinalproject'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
@@ -17,6 +20,9 @@ configurations {
 
 repositories {
 	mavenCentral()
+}
+war {
+	archiveName 'ROOT.war'
 }
 
 dependencies {
@@ -59,6 +65,7 @@ dependencies {
 
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
+tasks.named('test') { Task it ->
+//	useJUnitPlatform() 실무에서는 테스트를 다하고 지우고 빌드할것
+	exclude '**/*'
 }
