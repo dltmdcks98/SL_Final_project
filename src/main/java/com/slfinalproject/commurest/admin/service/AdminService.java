@@ -21,6 +21,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartRequest;
+
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.List;
@@ -112,22 +114,24 @@ public class AdminService implements UserDetailsService {
             user = (Admin) authentication.getPrincipal();
 
             log.info("현재 세션 정보 : " + user);
-            List<String> fileNames = user != null ? user.getFileNames() : null;
-            if (fileNames != null && fileNames.size() > 0) {
-                for (String fileName : fileNames) {
-                    // 첨부파일 내용 DB에 저장
-                    boardMapper.addFile(fileName);
-                }
-            }
 
         }
-
 
 
         return user;
     }
 
 
+    public void getFileNames(Admin admin) {
+        List<String> fileNames = admin.getFileNames();
+        log.info("fileNames - {} ", fileNames);
+        if (fileNames != null && fileNames.size() > 0) {
+            for (String fileName : fileNames) {
+                // 첨부파일 내용 DB에 저장
+                adminMapper.addFile(fileName);
+            }
+        }
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -146,8 +150,8 @@ public class AdminService implements UserDetailsService {
 
     }
     // 이미지 가져오기
-    public List<String> getFiles(int userId) {
-        return adminMapper.insertProfile(userId);
+    public List<String> getFiles(int user_id) {
+        return adminMapper.fileNames(user_id);
     }
 
 

@@ -20,7 +20,8 @@ import java.util.List;
 public class FileUploadController {
 
     // 업로드 파일 저장 경로
-    private static final String UPLOAD_PATH = "/usr/local/upload";
+    private static final String UPLOAD_PATH = "D:\\sl_stw\\upload";
+//    private static final String UPLOAD_PATH = "/usr/local/upload";
 
     // 파일 업로드 처리를 위한 요청
     @PostMapping("/upload")
@@ -44,6 +45,7 @@ public class FileUploadController {
     @ResponseBody
     public ResponseEntity<List<String>> profileUpload(List<MultipartFile> files) {
         List<String> fileNames = new ArrayList<>();
+        log.info("files  -{} ", files);
 
         // 클라이언트가 전송한 파일 업로드하기
         for (MultipartFile file : files) {
@@ -53,6 +55,8 @@ public class FileUploadController {
 
         return new ResponseEntity<>(fileNames, HttpStatus.OK);
     }
+
+
     // 비동기 요청 파일 업로드 처리
     @PostMapping("/ajax-upload")
     @ResponseBody
