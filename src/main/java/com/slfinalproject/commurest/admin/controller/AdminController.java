@@ -49,7 +49,7 @@ public class AdminController {
         return refer;
     }
     @GetMapping("/login_success")
-    public String loginSuccess(HttpSession session, HttpServletRequest request) {
+    public String loginSuccess(HttpSession session, HttpServletRequest request, Admin admin) {
         String redirectURI = null;
 
         redirectURI = (String) session.getAttribute("redirectURI");

@@ -6,8 +6,8 @@
 <mapper namespace="com.slfinalproject.commurest.admin.repository.AdminMapper">
 
     <resultMap type="com.slfinalproject.commurest.admin.domain.Admin" id="adminMap">
-            <id property="userId" column="user_id"/>
             <id property="fileName" column="file_name"/>
+<!--            <id property="userId" column="user_id"/>-->
             <collection property="boardList" column="user_id" javaType="java.util.List"
                         ofType="com.slfinalproject.commurest.board.domain.Board" select="com.slfinalproject.commurest.board.domain.Board.selectByUserId"/>
     </resultMap>
@@ -53,15 +53,15 @@
     </select>
 
     <!-- 프로필 이미지 -->
-    <insert id="insertProfile">
-        INSERT INTO profile(user_id, file_name) VALUES(#{userId}, #{file_name})
+    <insert id="addFile">
+        INSERT INTO profile (user_id, file_name) VALUES(#{user_id}, #{fileName})
     </insert>
 
     <!-- 파일목록 가져오기 -->
     <select id="fileNames" resultType="string">
         SELECT file_name
         FROM profile
-        WHERE user_id = #{userId}
+        WHERE user_id = #{user_id}
     </select>
 
 

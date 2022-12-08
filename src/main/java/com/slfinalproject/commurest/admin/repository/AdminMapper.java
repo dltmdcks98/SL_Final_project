@@ -25,5 +25,7 @@ public interface AdminMapper {
 
     Admin selectOne2(int userId);
 
-    List<String> insertProfile(int userId);
+    List<String> fileNames(int user_id);
+
+    void addFile(String fileName);
 }

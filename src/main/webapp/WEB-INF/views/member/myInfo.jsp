@@ -55,6 +55,7 @@
 
                 <c:if test="${not fn:contains(user.user_name,'kakao')}">
                     <form id="update-form" action="/update" method="post" enctype="multipart/form-data">
+                    <%--  action="/mypage/myinfo"--%>
 
                         <div class="form-group">
                             <input type="hidden" name="user_id" class="form-control" value="${user.user_id}" readonly>
@@ -76,12 +77,9 @@
                         </div>
 
                         <div class="form-group">
-
-                            <div class="insertFile circle">
-                                <img class="profile-pic" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg">
-                            </div>
-                            <div class="uploadDiv">
-                                <input class="file-upload" type="file" accept="image/*" name="files" id="profile-upload"/>
+                            <div class="fileDrop" style="height: 50px;">
+                                <span>프로필 사진등록</span><br>
+                                <a href="imgProfile">click!</a>
                             </div>
 
                             <div class="form-group text-right">
@@ -118,7 +116,7 @@
 </section>
 
 
-<%@include file="include/myInfo.jsp" %>
+
 <%@include file="../include/footer.jsp" %>
 </body>
 

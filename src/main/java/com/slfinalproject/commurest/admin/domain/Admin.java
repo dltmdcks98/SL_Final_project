@@ -31,9 +31,10 @@ public class Admin implements UserDetails {
     private boolean isCredentialIsNonExpired;
     private boolean isEnabled;
 
-    private int userId;
-    private String fileName;
+    // 첨부파일 이름 목록
     private List<String> fileNames;
+    // 첨부파일 이름 검색
+    private String fileName;
     private Collection<? extends GrantedAuthority> authorities;
 
     @Override

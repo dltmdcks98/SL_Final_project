@@ -3,7 +3,12 @@ CREATE TABLE profile(
     user_id INT(10) NOT NULL,
     file_name VARCHAR(150) NULL,
     CONSTRAINT fk_profile FOREIGN KEY (user_id) REFERENCES user_account (user_id) ON DELETE CASCADE
-
+);
+CREATE TABLE profile(
+    file_name VARCHAR(150) PRIMARY KEY,
+    user_id INT(10) NOT NULL,
+    CONSTRAINT fk_profile FOREIGN KEY (user_id) REFERENCES user_account (user_id) ON DELETE CASCADE
 );
 
 SELECT * FROM profile;
+drop table profile;
