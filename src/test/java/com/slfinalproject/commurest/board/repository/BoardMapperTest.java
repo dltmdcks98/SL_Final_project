@@ -20,15 +20,15 @@ class BoardMapperTest {
     ReplyMapper replyMapper;
 
     @Test
-    @DisplayName("게시물 250건이 삽입되어야한다")
+    @DisplayName("게시물 21건이 삽입되어야한다")
     void insertBoard() {
 
         Board board;
 
-        for(int i=1; i<250; i++) {
+        for(int i=1; i<21; i++) {
             board = new Board();
             board.setTitle("test"+i);
-            board.setUserId(51);
+            board.setUserId(20);
             board.setContent("내용"+i);
             mapper.insert(board);
 

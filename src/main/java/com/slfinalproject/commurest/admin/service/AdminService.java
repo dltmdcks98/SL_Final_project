@@ -128,7 +128,7 @@ public class AdminService implements UserDetailsService {
         if (fileNames != null && fileNames.size() > 0) {
             for (String fileName : fileNames) {
                 // 첨부파일 내용 DB에 저장
-                adminMapper.addFile(fileName);
+                adminMapper.addFile(fileName, admin.getUser_id());
             }
         }
     }
@@ -150,8 +150,8 @@ public class AdminService implements UserDetailsService {
 
     }
     // 이미지 가져오기
-    public List<String> getFiles(int user_id) {
-        return adminMapper.fileNames(user_id);
+    public List<String> getFiles(int userId) {
+        return adminMapper.fileNames(userId);
     }
 
 

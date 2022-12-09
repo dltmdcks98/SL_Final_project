@@ -1,6 +1,7 @@
 package com.slfinalproject.commurest.admin.repository;
 
 import com.slfinalproject.commurest.admin.domain.Admin;
+import com.slfinalproject.commurest.board.domain.Board;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -25,7 +26,9 @@ public interface AdminMapper {
 
     Admin selectOne2(int userId);
 
-    List<String> fileNames(int user_id);
+    List<String> fileNames(int userId);
 
-    void addFile(String fileName);
+    void addFile(String fileName, int userId);
+
+    List<Board> findProfile();
 }

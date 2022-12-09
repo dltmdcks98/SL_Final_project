@@ -138,25 +138,29 @@ public class MypageController {
 
     //프로필 사진 업로드 페이지
     @GetMapping("/mypage/imgProfile")
-    public String profile(Admin admin, Model model ) {
+    public String profile(Model model, HttpSession session) {
+        Admin admin = adminService.setLoginSession(session);
         model.addAttribute("admin", admin);
+        log.info("userId - {}" , admin.getUser_id());
         return "/member/imgProfile";
     }
     // 프로필 사진 업로드 처리
     @PostMapping("/mypage/imgProfile")
-    public String profileupload(Admin admin) {
+    public String profileupload(Admin admin, HttpSession session) {
+        Admin user =adminService.setLoginSession(session);
         adminService.getFileNames(admin);
-        return "redirect:/member/myInfo";
+        log.info("userId 업로드 처리 - {}" , admin.getUser_id());
+        return "/member/myInfo";
     }
 
 
 
-    @GetMapping("/file/{user_id}")
+    @GetMapping("/file/{userId}")
     @ResponseBody
-    public ResponseEntity<List<String>> getFiles(@PathVariable int user_id) {
+    public ResponseEntity<List<String>> getFiles(@PathVariable int userId) {
 
-        List<String> files = adminService.getFiles(user_id);
-        log.info("/board/file/{} GETMAPPING - {}", user_id, files);
+        List<String> files = adminService.getFiles(userId);
+        log.info("/board/file/{} GETMAPPING - {}", userId, files);
 
         return new ResponseEntity<>(files, HttpStatus.OK);
     }

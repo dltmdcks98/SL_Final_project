@@ -13,7 +13,8 @@ create table board
         foreign key (user_id) references user_account (user_id)
             on delete cascade
 );
-
+alter table user_account ADD COLUMN file_name varchar(150);
+alter table user_account drop COLUMN file_name;
 select *from file_upload;
 create table like_good(
     like_id int(10) auto_increment,
@@ -46,7 +47,7 @@ CREATE TABLE board (
 select * from tag;
 select * from user_account;
 select * from board;
-select * from r
+
 
 
 delete from user_account where user_id='14';
@@ -175,6 +176,7 @@ FROM board A
 
 select *
 from board where user_id=49;
-
+select count(board_no) from board;
 SELECT * FROM board GROUP BY board_no DESC;
 
+delete from board where user_id=51;
