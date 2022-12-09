@@ -53,8 +53,8 @@
                 </div>
 
 
-                <c:if test="${not fn:contains(user.user_name,'kakao')}">
-                    <form id="update-form" action="/update" method="post" enctype="multipart/form-data">
+                <c:if test="${not fn:contains(user.user_sex,'k')}">
+                    <form id="update-form" action="/update" method="post" enctype="multipart/form-data" onsubmit="return check()">
 
                         <div class="form-group">
                             <input type="hidden" name="user_id" class="form-control" value="${user.user_id}" readonly>
@@ -62,17 +62,13 @@
 
                         <div class="form-group">
                             <label>닉네임</label>
-                            <input type="text" name="user_name" class="form-control" placeholder="현재 닉네임 : ${user.user_name}">
+                            <input type="text" id="user_name" name="user_name" class="form-control"
+                                   placeholder="현재 닉네임 : ${user.user_name}">
                         </div>
 
                         <div class="form-group">
                             <label class="fw">비밀번호</label>
-                            <input type="password" name="user_pass" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label>생년월일</label>
-                            <input type="date" name="user_birth" class="form-control">
+                            <input type="password" id="user_pass" name="user_pass" class="form-control">
                         </div>
 
                         <div class="form-group">
@@ -80,10 +76,12 @@
                                 <button type="submit" class="btn btn-primary btn-block" id="regist-btn">변경</button>
                             </div>
                         </div>
+
+
                     </form>
                 </c:if>
 
-                <c:if test="${fn:contains(user.user_name,'kakao')}">
+                <c:if test="${fn:contains(user.user_sex,'k')}">
                     <form id="update-form" action="/update-kakao" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <input type="hidden" name="user_id" class="form-control" value="${user.user_id}" readonly>
@@ -91,7 +89,8 @@
 
                         <div class="form-group">
                             <label>닉네임</label>
-                            <input type="text" name="user_name" class="form-control" placeholder="현재 닉네임 : ${user.user_name}">
+                            <input type="text" name="user_name" class="form-control"
+                                   placeholder="현재 닉네임 : ${user.user_name}">
                         </div>
 
                         <div class="form-group">
@@ -111,6 +110,28 @@
 
 <%@include file="../include/footer.jsp" %>
 </body>
+<script>
+    function check() {
+        var userName = document.getElementById("user_name");
+        var userPass = document.getElementById("user_pass");
 
+        if (userName.value == "") {
+            alert("닉네임을 입력하세요");
+            userName.focus();
+            return false;
+        }
+        if (userName.value.length > 10) {
+            alert("닉네임을 10글자 이하로 입력하세요");
+            userName.focus();
+            return false;
+        }
+        if (userPass.value == "") {
+            alert("비밀번호를 입력하세요");
+            userPass.focus();
+            return false;
+        }
+
+    }
+</script>
 
 </html>

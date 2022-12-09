@@ -60,7 +60,7 @@
         LEFT outer JOIN tag C ON A.board_no = C.board_no
         <include refid="search"/>
         group BY A.board_no DESC
-        LIMIT #{start}, 20
+        LIMIT #{start}, 10
     </select>
 
     <!-- 나의 게시글 조회-->

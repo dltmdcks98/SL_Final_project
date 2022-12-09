@@ -74,7 +74,7 @@ public class KakaoLoginController {
         // 카카오 RESTAPI 키
         params.add("client_id", "eac6586e062e9e84f8798226d9ac9be8");
         // 카카오 redirect 주소
-        params.add("redirect_uri", "http://localhost:8182/login/kakao");
+        params.add("redirect_uri", "http://13.113.19.114/login/kakao");
         params.add("code", code);
 
         HttpEntity<MultiValueMap<String, String>> kakaoTokenRequest =
