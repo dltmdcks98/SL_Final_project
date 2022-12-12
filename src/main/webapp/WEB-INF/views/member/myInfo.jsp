@@ -7,7 +7,6 @@
     <%@ include file="../include/static-head.jsp" %>
     <link rel="stylesheet" href="/css/board/myPage_boardList.css">
     <link rel="stylesheet" href="/css/mypage/mypage.css">
-    <%--    <script src="/js/board/jquery_board_write.js" defer ></script>--%>
 </head>
 <style>
     .myinfo {
@@ -77,9 +76,15 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="fileDrop" style="height: 50px;">
-                                <span>프로필 사진등록</span><br>
-                                <a href="imgProfile">click!</a>
+                            <div class="insertFile circle">
+                                <figure class="featured-author-picture">
+                                    <c:forEach var="a" items="${findProfile}">
+                                        <img src="/loadFile?fileName=${a.fileName}" alt="profile">
+                                    </c:forEach>
+                                </figure>
+                            </div>
+                            <div class="fileDrop" style="height: 50px;" >
+                                <a href="imgProfile"><span>프로필 사진 등록</span></a>
                             </div>
 
                             <div class="form-group text-right">

@@ -133,6 +133,8 @@ public class MypageController {
     public String myInfo(Model model, HttpSession session) {
         Admin user = adminService.setLoginSession(session);
         session.setAttribute("user", user);
+        List<Admin> findProfile = adminService.findProfile();
+        model.addAttribute("findProfile", findProfile);
         return "member/myInfo";
     }
 
