@@ -30,5 +30,5 @@ public interface AdminMapper {
 
     void addFile(String fileName, int userId);
 
-    List<Board> findProfile();
+    List<Admin> findProfile();
 }

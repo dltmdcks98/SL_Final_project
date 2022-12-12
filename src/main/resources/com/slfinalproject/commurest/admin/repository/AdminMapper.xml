@@ -12,10 +12,15 @@
                         ofType="com.slfinalproject.commurest.board.domain.Board" select="com.slfinalproject.commurest.board.domain.Board.selectByUserId"/>
     </resultMap>
 
+    <resultMap type="com.slfinalproject.commurest.admin.domain.Admin" id="adminMap2">
+            <result property="fileName" column="file_name"/>
+            <result property="userId" column="user_id"/>
+
+    </resultMap>
+
     <!-- 프로필 이미지 -->
     <insert id="addFile">
         INSERT INTO profile (file_name, user_id) VALUES (#{fileName}, #{userId})
-#         INSERT INTO profile (file_name, user_id) VALUES(#{fileName}, LAST_INSERT_ID())
     </insert>
 
     <!-- 파일목록 가져오기 -->
@@ -26,11 +31,17 @@
     </select>
 
     <!-- 프로필 이미지 조회 -->
-    <select id="findProfile" resultMap="adminMap">
+    <select id="findProfile" resultMap="adminMap2">
         SELECT DISTINCT A.user_id, B.user_id, B.file_name
         FROM user_account A
-                 JOIN finaldb.profile B ON A.user_id = B.user_id
+                 JOIN profile B ON A.user_id = B.user_id
+                GROUP BY file_name DESC;
     </select>
+
+    <!-- 프로필 이미지 업데이트   -->
+    <update id="updateProfile">
+#         UPDATE profile SET
+    </update>
 
 
     <insert id="regist">

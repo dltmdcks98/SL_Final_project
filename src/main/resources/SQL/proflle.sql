@@ -4,7 +4,7 @@ CREATE TABLE profile(
 );
 
 SELECT * FROM profile;
-delete  from profile where user_id=0;
+delete  from profile where user_id=20;
 drop table profile;
 
 SELECT DISTINCT A.user_id, B.user_id, B.file_name

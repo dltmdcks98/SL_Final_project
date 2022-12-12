@@ -24,6 +24,7 @@ delete from user_account where manager='ROLE_KAKAO';
 select *from user_account;
 
 
+
 select * from tag;
 
 
