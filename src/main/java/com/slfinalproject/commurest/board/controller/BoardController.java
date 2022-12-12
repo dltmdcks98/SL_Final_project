@@ -44,7 +44,8 @@ public class BoardController {
         model.addAttribute("bList", boardMap.get("bList"));
         model.addAttribute("pageMaker", pageMaker);
         session.setAttribute("redirectURIt","board");
-
+        List<Admin> findProfile = adminService.findProfile();
+        model.addAttribute("findProfile", findProfile);
         return "board/board";
     }
 

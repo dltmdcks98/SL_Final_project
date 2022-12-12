@@ -56,10 +56,10 @@
     <select id="selectAll" resultMap="boardMap">
         SELECT DISTINCT A.board_no, A.user_id, A.title, A.reg_date, A.hit, A.recommend, B.user_name, C.tag_value
         FROM board A
-        LEFT outer JOIN user_account B ON A.user_id = B.user_id
-        LEFT outer JOIN tag C ON A.board_no = C.board_no
+        LEFT JOIN user_account B ON A.user_id = B.user_id
+        LEFT JOIN tag C ON A.board_no = C.board_no
         <include refid="search"/>
-        group BY A.board_no DESC
+        ORDER BY A.board_no DESC
         LIMIT #{start}, #{amount}
     </select>
 

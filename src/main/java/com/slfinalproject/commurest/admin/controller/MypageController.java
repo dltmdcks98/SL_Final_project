@@ -147,7 +147,7 @@ public class MypageController {
     // 프로필 사진 업로드 처리
     @PostMapping("/mypage/imgProfile")
     public String profileupload(Admin admin, HttpSession session) {
-        Admin user =adminService.setLoginSession(session);
+        Admin user = adminService.setLoginSession(session);
         adminService.getFileNames(admin);
         log.info("userId 업로드 처리 - {}" , admin.getUser_id());
         return "/member/myInfo";

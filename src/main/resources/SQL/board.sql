@@ -180,3 +180,12 @@ select count(board_no) from board;
 SELECT * FROM board GROUP BY board_no DESC;
 
 delete from board where user_id=51;
+
+SELECT DISTINCT A.board_no, A.user_id, A.title, A.reg_date, A.hit, A.recommend, B.user_name, C.tag_value
+FROM board A
+         LEFT JOIN user_account B ON A.user_id = B.user_id
+         LEFT JOIN tag C ON A.board_no = C.board_no
+         ORDER BY A.board_no DESC;
+
+SELECT  user_id, file_name
+FROM user_account WHERE user_id ='20';

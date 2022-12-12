@@ -51,6 +51,7 @@ public class FileUploadController {
         for (MultipartFile file : files) {
             String fullPath = FileUtil.uploadFile(file, UPLOAD_PATH);
             fileNames.add(fullPath);
+
         }
 
         return new ResponseEntity<>(fileNames, HttpStatus.OK);
