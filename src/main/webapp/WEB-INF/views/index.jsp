@@ -104,9 +104,7 @@
                         <article class="col-md-12 article-list">
                             <div class="inner">
                                 <figure>
-<%--                                    <img src="/loadFile?fileName=${b.fileName}" alt="NEW IMAGE!" style="">--%>
-                                    <div style="background-image: url('/loadFile?fileName=${b.fileName}')">
-                                    </div>
+                                    <img src="/loadFile?fileName=${b.fileName}" alt="NEW IMAGE!">
                                 </figure>
                                 <div class="details">
                                     <div class="detail">

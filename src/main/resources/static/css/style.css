@@ -2523,12 +2523,8 @@ aside .ads figcaption {
     width: 100%;
     height: 178px;
 }
-/*.article-fw figure img {
+.article-fw figure img {
     width: 100%;
-}*/
-.article-fw figure div {
-    width: 100%;
-    background-size: cover;
 }
 .article-fw .details h1 {
     margin: 0;
