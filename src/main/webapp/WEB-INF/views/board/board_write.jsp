@@ -45,7 +45,7 @@
             <!-- 첨부파일 드래그 앤 드롭 영역 -->
             <div class="form-group">
                 <div class="fileDrop">
-                    <span>Drop!</span>
+                    <span>이미지를 넣을 수 있어요</span>
                 </div>
                 <div class="uploadDiv">
                     <input type="file" name="files" id="ajax-file">
