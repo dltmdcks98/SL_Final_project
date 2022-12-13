@@ -56,7 +56,6 @@ public class BoardService {
         //   }
 
         board.setUserId(user.getUser_id());
-        log.info("tagList 테스트 "+ board.getTagList());
 
         // 게시글을 DB에 저장
         boolean flag = boardMapper.insert(board);
@@ -70,11 +69,10 @@ public class BoardService {
         if (fileNames != null && fileNames.size() > 0) {
             for (String fileName : fileNames) {
                 // 첨부파일 내용 DB에 저장
-                boardMapper.addFile(fileName);
+                boardMapper.addFileInBoard(fileName ,boardno);
             }
         }
 
-        log.info("user_id : "+board.getUserId());
         return flag;
     }
 

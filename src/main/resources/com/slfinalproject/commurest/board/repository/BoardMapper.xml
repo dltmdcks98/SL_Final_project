@@ -114,12 +114,17 @@
 
     <!-- 첨부파일 추가  -->
     <insert id="addFile">
-
         INSERT INTO file_upload
         (file_name, bno)
         VALUES
         (#{fileName}, LAST_INSERT_ID())
-
+    </insert>
+    <!-- 첨부파일 추가  -->
+    <insert id="addFileInBoard">
+        INSERT INTO file_upload
+        (file_name, bno)
+        VALUES
+        (#{fileName}, #{boardNo})
     </insert>
 
     <!-- 파일목록 가져오기 -->
