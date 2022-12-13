@@ -81,7 +81,7 @@ public class BoardService {
 
 
     // 게시물 전체 조회 요청 페이징 + 검색기능
-    public Map<String, Object> findAllService(Search search, HttpSession session) {
+    public Map<String, Object>  findAllService(Search search, HttpSession session) {
         Map<String, Object> findDataMap = new HashMap<>();
         List<Board> boardList = boardMapper.selectAll(search);
         if(session.getAttribute("user")!=null){
