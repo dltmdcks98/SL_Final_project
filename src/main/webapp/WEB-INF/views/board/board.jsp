@@ -26,12 +26,6 @@
 
                 </div>
 
-                <ul class="amount">
-                    <li><a class="btn btn-danger" href="/board?amount=10">10</a></li>
-                    <li><a class="btn btn-danger" href="/board?amount=20">20</a></li>
-                    <li><a class="btn btn-danger" href="/board?amount=30">30</a></li>
-                </ul>
-
                 <div class="row">
 
                     <div class="row">

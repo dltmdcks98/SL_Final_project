@@ -86,19 +86,9 @@
     </select>
     <!-- 전체 게시글 수-->
     <select id="getTotalCountSearch" resultType="int">
-        SELECT DISTINCT COUNT(A.board_no)  FROM board A
-        LEFT JOIN user_account B ON A.user_id = B.user_id
-        LEFT JOIN tag C ON A.board_no = C.board_no
-        <if test="keyword != null">
-            <if test="type=='title'">WHERE A.title LIKE CONCAT('%', #{keyword}, '%')</if>
-            <if test="type=='userName'">WHERE B.user_name LIKE CONCAT('%', #{keyword}, '%')</if>
-            <if test="type=='content'">WHERE A.content LIKE CONCAT('%', #{keyword}, '%')</if>
-            <if test="type=='tagValue'">WHERE C.tag_value LIKE CONCAT('%', #{keyword}, '%')</if>
-            <if test="type=='tc'">
-                WHERE A.title LIKE CONCAT('%', #{keyword}, '%')
-                OR A.content LIKE CONCAT('%', #{keyword}, '%')
-            </if>
-        </if>
+        SELECT COUNT(*)
+        FROM board
+        <include refid="search"/>
     </select>
 
     <!-- 나의 게시글 수 -->
