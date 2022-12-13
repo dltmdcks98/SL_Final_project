@@ -10,6 +10,20 @@
     <script src="/js/board/list.js" defer></script>
 </head>
 
+<style>
+
+.input-group{
+    width: 85%;
+}
+.form-select{
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+</style>
+
 <body class="skin-orange">
 <%@ include file="../include/header.jsp" %>
 
@@ -108,27 +122,29 @@
                         <form action="/board" method="get">
 
 
-                                <select class="form-select" name="type" id="search-type">
-                                    <option value="title">제목</option>
-                                    <option value="content">내용</option>
-                                    <option value="userName">작성자</option>
-                                    <option value="tagValue">태그</option>
-                                    <option value="tc">제목+내용</option>
-                                </select>
-                                <input type="text" class="form-controller" name="keyword" value="${s.keyword}">
 
-                                <button class="btn btn-primary" type="submit" value="조회">
-                                    <i class="fas fa-search"></i>
-                                </button>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <select class="form-select" name="type" id="search-type">
+                                            <option value="title">제목</option>
+                                            <option value="content">내용</option>
+                                            <option value="userName">작성자</option>
+                                            <option value="tagValue">태그</option>
+                                            <option value="tc">제목+내용</option>
+                                        </select>
+
+                                        <input value="${s.keyword}" type="text" name="keyword" class="form-control" placeholder="검색어를 입력하세요" style="width: 70%;">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-primary" type="submit" value="조회"><i class="ion-search"></i></button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
                             </form>
 
                     </div>
                 </div>
-
-
-
-
-
 
             </div>
 
