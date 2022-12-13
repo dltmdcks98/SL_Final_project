@@ -2210,6 +2210,8 @@ section .container {
 }
 .article-list figure img {
     width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 .article-list .details {
     padding: 5px;
@@ -2525,8 +2527,6 @@ aside .ads figcaption {
 }
 .article-fw figure img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 .article-fw .details h1 {
     margin: 0;
