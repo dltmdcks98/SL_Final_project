@@ -142,7 +142,7 @@
 
     <!-- 이미지가 들어가있는 최신 게시글 조회하기 -->
     <select id="findNewImage" resultMap="boardMap">
-        SELECT DISTINCT A.board_no, A.title, B.bno, B.file_name
+        SELECT A.board_no, A.title, B.bno, B.file_name
         FROM board A
         JOIN file_upload B ON A.board_no = B.bno
         ORDER BY  board_no DESC limit 3
