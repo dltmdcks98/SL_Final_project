@@ -3047,7 +3047,8 @@ footer.footer .block .block-title:after {
     background-color: #F73F52;
 }
 footer.footer .block .block-body {
-    margin-top: 30px;
+    margin: 2rem auto 0;
+    width: 95%;
 }
 footer.footer .block .block-body.no-margin {
     margin: 0;
