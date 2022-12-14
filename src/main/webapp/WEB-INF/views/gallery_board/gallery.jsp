@@ -53,10 +53,6 @@
                     <span class="fa fa-download" aria-hidden="true"></span>
                     <span class="sr-only">Download</span>
                 </a>
-                <a class="js-heart m-r" href="#" aria-label="Like">
-                    <span class="fa fa-heart" aria-hidden="true"></span>
-                    <span class="sr-only">Like</span>
-                </a>
             </div>
 <%--            end img footer--%>
         </div>
