@@ -1,7 +1,6 @@
 package com.slfinalproject.commurest.board.repository;
 
 import com.slfinalproject.commurest.board.domain.Board;
-
 import com.slfinalproject.commurest.util.paging.Page;
 import com.slfinalproject.commurest.util.search.Search;
 import org.apache.ibatis.annotations.Mapper;
@@ -43,6 +42,7 @@ public interface BoardMapper {
 
     // 글쓰기 파일 추가
     void addFile(String fileName);
+    void addFileInBoard(String fileName, int boardNo);
 
     // 게시물 파일경로 조회
     List<String> fileNames(int bno);

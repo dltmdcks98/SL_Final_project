@@ -56,10 +56,10 @@
     <select id="selectAll" resultMap="boardMap">
         SELECT DISTINCT A.board_no, A.user_id, A.title, A.reg_date, A.hit, A.recommend, B.user_name, C.tag_value
         FROM board A
-        LEFT JOIN user_account B ON A.user_id = B.user_id
-        LEFT JOIN tag C ON A.board_no = C.board_no
+        LEFT outer JOIN user_account B ON A.user_id = B.user_id
+        LEFT outer JOIN tag C ON A.board_no = C.board_no
         <include refid="search"/>
-        ORDER BY A.board_no DESC
+        group BY A.board_no DESC
         LIMIT #{start}, #{amount}
     </select>
 
@@ -86,19 +86,9 @@
     </select>
     <!-- 전체 게시글 수-->
     <select id="getTotalCountSearch" resultType="int">
-        SELECT DISTINCT COUNT(A.board_no)  FROM board A
-        LEFT JOIN user_account B ON A.user_id = B.user_id
-        LEFT JOIN tag C ON A.board_no = C.board_no
-        <if test="keyword != null">
-            <if test="type=='title'">WHERE A.title LIKE CONCAT('%', #{keyword}, '%')</if>
-            <if test="type=='userName'">WHERE B.user_name LIKE CONCAT('%', #{keyword}, '%')</if>
-            <if test="type=='content'">WHERE A.content LIKE CONCAT('%', #{keyword}, '%')</if>
-            <if test="type=='tagValue'">WHERE C.tag_value LIKE CONCAT('%', #{keyword}, '%')</if>
-            <if test="type=='tc'">
-                WHERE A.title LIKE CONCAT('%', #{keyword}, '%')
-                OR A.content LIKE CONCAT('%', #{keyword}, '%')
-            </if>
-        </if>
+        SELECT COUNT(*)
+        FROM board
+        <include refid="search"/>
     </select>
 
     <!-- 나의 게시글 수 -->
@@ -124,12 +114,17 @@
 
     <!-- 첨부파일 추가  -->
     <insert id="addFile">
-
         INSERT INTO file_upload
         (file_name, bno)
         VALUES
         (#{fileName}, LAST_INSERT_ID())
-
+    </insert>
+    <!-- 첨부파일 추가  -->
+    <insert id="addFileInBoard">
+        INSERT INTO file_upload
+        (file_name, bno)
+        VALUES
+        (#{fileName}, #{boardNo})
     </insert>
 
     <!-- 파일목록 가져오기 -->
@@ -152,7 +147,7 @@
 
     <!-- 이미지가 들어가있는 최신 게시글 조회하기 -->
     <select id="findNewImage" resultMap="boardMap">
-        SELECT DISTINCT A.board_no, A.title, B.bno, B.file_name
+        SELECT A.board_no, A.title, B.bno, B.file_name
         FROM board A
         JOIN file_upload B ON A.board_no = B.bno
         ORDER BY  board_no DESC limit 3

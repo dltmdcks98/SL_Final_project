@@ -24,7 +24,6 @@ public class Board {
 
    private int recommend;
 
-   private String imageUrl;
 
    private String keyword;
 
