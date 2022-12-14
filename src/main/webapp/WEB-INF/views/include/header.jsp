@@ -24,7 +24,6 @@
                         <form action="/search"  class="search" autocomplete="off">
                             <div class="form-group">
                                 <div class="input-group">
-
                                     <input id="keyword" type="text" name="keyword" class="form-control" placeholder="검색어를 입력하세요">
                                     <div class="input-group-btn">
                                         <button class="btn btn-primary"><i class="ion-search"></i></button>
@@ -67,13 +66,8 @@
 
     <nav class="menu">
         <div class="container">
-            <div class="brand">
-                <a href="/">
-                    <img src="/img/logo.png" alt="Magz Logo">
-                </a>
-            </div>
             <div class="mobile-toggle">
-                <a href="#" data-toggle="menu" data-target="#menu-list"><i class="ion-navicon-round"></i></a>
+                <a href="#" data-toggle="active" data-target="#sidebar"><i class="ion-navicon-round"></i></a>
             </div>
             <div class="mobile-toggle">
                 <a href="#" data-toggle="sidebar" data-target="#sidebar"><i class="ion-ios-arrow-left"></i></a>
@@ -114,8 +108,12 @@
         </div>
     </nav>
         <!-- End nav -->
-
-
-
-
 <!-- //header -->
+<script>
+    const mobileToggle = document.querySelector('.mobile-toggle a');
+    mobileToggle.addEventListener('click',e=>{
+        document.querySelector('.sidebar').classList.toggle('active')
+        e.preventDefault();
+
+    });
+</script>
