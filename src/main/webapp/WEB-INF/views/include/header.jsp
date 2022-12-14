@@ -66,11 +66,6 @@
 
     <nav class="menu">
         <div class="container">
-            <div class="brand">
-                <a href="/">
-                    <img src="/img/logo.png" alt="Magz Logo">
-                </a>
-            </div>
             <div class="mobile-toggle">
                 <a href="#" data-toggle="menu" data-target="#menu-list"><i class="ion-navicon-round">
 
