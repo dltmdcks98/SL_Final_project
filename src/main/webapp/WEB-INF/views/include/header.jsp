@@ -67,9 +67,7 @@
     <nav class="menu">
         <div class="container">
             <div class="mobile-toggle">
-                <a href="#" data-toggle="menu" data-target="#menu-list"><i class="ion-navicon-round">
-
-                </i></a>
+                <a href="#" data-toggle="active" data-target="#sidebar"><i class="ion-navicon-round"></i></a>
             </div>
             <div class="mobile-toggle">
                 <a href="#" data-toggle="sidebar" data-target="#sidebar"><i class="ion-ios-arrow-left"></i></a>
@@ -110,8 +108,12 @@
         </div>
     </nav>
         <!-- End nav -->
-
-
-
-
 <!-- //header -->
+<script>
+    const mobileToggle = document.querySelector('.mobile-toggle a');
+    mobileToggle.addEventListener('click',e=>{
+        document.querySelector('.sidebar').classList.toggle('active')
+        e.preventDefault();
+
+    });
+</script>
