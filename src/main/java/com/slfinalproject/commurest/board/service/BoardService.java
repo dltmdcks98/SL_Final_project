@@ -60,16 +60,17 @@ public class BoardService {
         // 게시글을 DB에 저장
         boolean flag = boardMapper.insert(board);
         int boardno = tagMapper.getBoardNo();
-        if(board.getTagList()!=null){
-            for(int i=0; i< board.getTagList().size();i++){
-                tagMapper.setTagValueByBoardNo(board.getTagList().get(i),boardno);
-            }
-        }
+
         List<String> fileNames = board.getFileNames();
         if (fileNames != null && fileNames.size() > 0) {
             for (String fileName : fileNames) {
                 // 첨부파일 내용 DB에 저장
-                boardMapper.addFileInBoard(fileName ,boardno);
+                boardMapper.addFile(fileName);
+            }
+        }
+        if(board.getTagList()!=null){
+            for(int i=0; i< board.getTagList().size();i++){
+                tagMapper.setTagValueByBoardNo(board.getTagList().get(i),boardno);
             }
         }
 

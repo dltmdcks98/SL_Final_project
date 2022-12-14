@@ -10,3 +10,4 @@ drop table profile;
 SELECT DISTINCT A.user_id, B.user_id, B.file_name
 FROM user_account A
          JOIN finaldb.profile B ON A.user_id = B.user_id
+
