@@ -6,38 +6,7 @@
     <link rel="stylesheet" href="/css/mypage/profile.css">
 
 </head>
-<style>
-    body {
-        font-family: 'Jeju Gothic', sans-serif;
-    }
-    .mymain-container {
-        height: 60%;
-        margin: 2% 23% 10% 23%;
-    }
-    .form-group {
-        width: 100%;
-        height: auto;
-    }
-    .fileDrop {
-        text-align: center;
-        height: 10%;
-        width: 100%;
-        border: 2px solid greenyellow;
-    }
-    .uploaded-list {
-        width: 100%;
-        height: 100%;
-        vertical-align: middle;
-    }
-    .uploaded-list img, svg {
-        width: 100%;
-        height: auto;
-        background-size: cover;
-    }
-    .uploadDiv {
-        display: none;
-    }
-</style>
+
 <body>
 <%@include file="../include/header.jsp" %>
 <section>
