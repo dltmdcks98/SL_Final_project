@@ -7,7 +7,7 @@
     <%@ include file="../include/static-head.jsp" %>
     <link rel="stylesheet" href="/css/board/board_list.css">
     <link rel="stylesheet" href="/css/board/index.css">
-    <script src="/js/board/list.js" defer></script>
+<%--    <script src="/js/board/list.js" defer></script>--%>
 </head>
 
 <body class="skin-orange">
@@ -129,6 +129,7 @@
 
 
             <%@include file="../include/sidebar.jsp"%>
+            <%@include file="../include/list.jsp"%>
         </div>
     </div>
 </section>

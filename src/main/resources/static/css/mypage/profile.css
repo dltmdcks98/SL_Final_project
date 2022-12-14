@@ -3,6 +3,13 @@
 body {
     font-family: 'Jeju Gothic', sans-serif;
 }
-section {
+.mymain-container {
     height: 60%;
+    margin: auto 20% 0 20%;
+}
+.fileDrop {
+    text-align: center;
+    height: 50%;
+    width: 100%;
+    border: 2px solid greenyellow;
 }

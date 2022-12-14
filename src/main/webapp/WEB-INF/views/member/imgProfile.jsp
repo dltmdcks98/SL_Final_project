@@ -6,29 +6,60 @@
     <link rel="stylesheet" href="/css/mypage/profile.css">
 
 </head>
-
+<style>
+    body {
+        font-family: 'Jeju Gothic', sans-serif;
+    }
+    .mymain-container {
+        height: 60%;
+        margin: 2% 23% 10% 23%;
+    }
+    .form-group {
+        width: 100%;
+        height: auto;
+    }
+    .fileDrop {
+        text-align: center;
+        height: 10%;
+        width: 100%;
+        border: 2px solid greenyellow;
+    }
+    .uploaded-list {
+        width: 100%;
+        height: 100%;
+        vertical-align: middle;
+    }
+    .uploaded-list img, svg {
+        width: 100%;
+        height: auto;
+        background-size: cover;
+    }
+    .uploadDiv {
+        display: none;
+    }
+</style>
 <body>
 <%@include file="../include/header.jsp" %>
 <section>
     <div class="mymain-container">
         <form id="profile-form" action="/mypage/imgProfile" method="post" enctype="multipart/form-data">
 
-            <div class="form-group">
+            <div class="form-group-none">
                 <input type="hidden" name="user_id" class="form-control" value="${admin.user_id}" readonly>
             </div>
 
             <div class="form-group">
                 <!-- 업로드된 파일의 썸네일을 보여줄 영역 -->
-                <div class="uploaded-list" style="width: 100px; height: 100px;">
+                <div class="uploaded-list" >
 
                 </div>
 
-                <div class="fileDrop" style="height: 50px;">
-                    <span>Drop!</span>
+                <div class="fileDrop">
+                    <span>Image Drop!</span>
                 </div>
 
                 <div class="uploadDiv">
-                    <input type="file" name="files" id="profile-file" style=" display: none;">
+                    <input type="file" name="files" id="profile-file">
                 </div>
 
                 <%-- <div class="insertFile circle">--%>
