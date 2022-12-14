@@ -112,8 +112,14 @@
 <script>
     const mobileToggle = document.querySelector('.mobile-toggle a');
     mobileToggle.addEventListener('click',e=>{
-        document.querySelector('.sidebar').classList.toggle('active')
+        e.stopImmediatePropagation();
+        document.querySelector('.sidebar').classList.toggle('active');
         e.preventDefault();
+
+    });
+
+    document.addEventListener('click',e=>{
+        document.querySelector('.sidebar').classList.remove('active');
 
     });
 </script>
