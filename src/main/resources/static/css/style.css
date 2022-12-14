@@ -2766,7 +2766,7 @@ aside .ads figcaption {
 
     .sidebar {
         position: fixed;
-        top: 39%;
+        bottom: 0;
         right: -100%;
         height: 60%;
         width: 50%;
