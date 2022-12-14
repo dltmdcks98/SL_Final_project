@@ -8,6 +8,19 @@
     <link rel="stylesheet" href="/css/board/board_content.css">
     <script src="/js/board/contentTag.js" defer></script>
 </head>
+<style>
+    @media (max-width: 500px){
+        .content{
+            width: 90%;
+        }
+        .recommend{
+            width: 90%;
+        }
+        .col-md-3 > .form-group{
+            width: 100%;
+        }
+    }
+</style>
 <body>
 <%@ include file="../include/header.jsp" %>
 
