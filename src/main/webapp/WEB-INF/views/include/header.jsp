@@ -24,7 +24,6 @@
                         <form action="/search"  class="search" autocomplete="off">
                             <div class="form-group">
                                 <div class="input-group">
-
                                     <input id="keyword" type="text" name="keyword" class="form-control" placeholder="검색어를 입력하세요">
                                     <div class="input-group-btn">
                                         <button class="btn btn-primary"><i class="ion-search"></i></button>
@@ -73,7 +72,9 @@
                 </a>
             </div>
             <div class="mobile-toggle">
-                <a href="#" data-toggle="menu" data-target="#menu-list"><i class="ion-navicon-round"></i></a>
+                <a href="#" data-toggle="menu" data-target="#menu-list"><i class="ion-navicon-round">
+
+                </i></a>
             </div>
             <div class="mobile-toggle">
                 <a href="#" data-toggle="sidebar" data-target="#sidebar"><i class="ion-ios-arrow-left"></i></a>

@@ -2314,7 +2314,7 @@ section .container {
 .article-mini .inner {
     display: inline-block;
     height: 100%;
-    width: 50%;
+    width: 100%;
 }
 .article-mini .padding {
     padding: 0 10px;
