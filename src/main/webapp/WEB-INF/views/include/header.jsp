@@ -5,90 +5,6 @@
     li{
         font-family: 'Jeju Gothic', sans-serif;
     }
-@media (max-width: 414px) {
-    .form-group{
-        width: fit-content;
-    }
-
-}
-
-
-    @keyframes box-ani {
-        0% { transform: translate(800px, 0); }
-        100% { transform: translate(0px, 0px); }
-    }
-    .ani {
-        animation-name: box-ani;
-        animation: box-ani 2.3s;
-    }
-
-    .toggle_box {
-        display: flex;
-        align-items: center;
-        z-index: -1;
-        margin-top: 20px;
-    }
-
-    #custom_input {
-        display: none;
-    }
-
-    #custom_input + label.toggle_btn_label {
-        position: relative;
-        width: 8rem;
-        height: 3rem;
-    }
-
-    #custom_input + label.toggle_btn_label > span {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: 40px;
-        background-color: #ccc;
-
-        transition: all .4s;
-
-    }
-
-    #custom_input + label.toggle_btn_label > span:before {
-        display: flex;
-        position: absolute;
-        height: 2.5rem;
-        width: fit-content;
-        padding: 0 1rem;
-        left: 0.25rem;
-        bottom: 0.25rem;
-        border-radius: 20px;
-        background-color: #fff;
-
-        content: "<";
-        align-items: center;
-        font-weight: bold;
-        color: rgb(29, 29, 29);
-
-        -webkit-transition: all .4s;
-        transition: all .4s;
-    }
-
-    #custom_input:checked + label.toggle_btn_label > span {
-        background-color: black;
-    }
-
-    #custom_input:checked + label.toggle_btn_label > span:before {
-        -webkit-transform: translateX(calc(7.5rem - 100%));
-        -ms-transform: translateX(calc(7.5rem - 100%));
-        transform: translateX(calc(7.5rem - 100%));
-        right: 0.25rem;
-        bottom: 0.25rem;
-        content: ">";
-    }
-
-    #custom_input:disabled + label.toggle_btn_label {
-        display: none;
-    }
 
 </style>
 
@@ -105,7 +21,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-12">
-                        <form action="/search"  class="search" autocomplete="off">
+                        <form action="/search"  class="search" autocoㄹ - Clone_Project - 3mplete="off">
                             <div class="form-group">
                                 <div class="input-group">
                                     <input id="keyword" type="text" name="keyword" class="form-control" placeholder="검색어를 입력하세요">
@@ -150,28 +66,18 @@
 
     <nav class="menu">
         <div class="container">
-            <div class = ani id="ani_id">
-                <ul id ="sideside" class="" style="display: none">
+            <div class = "ani">
+                <ul>
                     <li><a href="/">Home</a></li>
-                    <li class="dropdown magz-dropdown">
                     <li><a href="/board">Board</a></li>
                     <li><a href="/gallery">Gallery</a></li>
                 </ul>
             </div>
-            <div class="brand">
-                <a href="/">
-                    <img src="/img/logo.png" alt="Magz Logo">
-                </a>
+            <div class="mobile-toggle sideMenu">
+                <a href="#"><i class="ion-navicon-round"></i></a>
             </div>
-
-            <div class="mobile-toggle">
-                <a href="#" data-toggle="active" data-target="#sidebar"><i class="ion-navicon-round"></i></a>
-            </div>
-            <div class="mobile-toggle">
-                <input type="checkbox" id="custom_input" class = "sidebarr" onclick="openSide();" data-toggle="sidebar" data-target="#sidebar" style="color: #F73F52"/>
-                <label for="custom_input" class="toggle_btn_label">
-                    <span></span>
-                </label>
+            <div class="mobile-toggle openMenu">
+                <a href="#"><i class="ion-ios-arrow-left arrow"></i></a>
             </div>
 
             <div id="menu-list">
@@ -210,34 +116,35 @@
         </div>
     </nav>
         <!-- End nav -->
-<script>
-    function openSide(){
-        document.getElementById("sideside").style.display="block";
-        document.getElementById("ani_id").style.display="block";
-        document.getElementById("custom_input").setAttribute("onClick","closeSide()");
-    }
-    function closeSide(){
-        document.getElementById("sideside").style.display="none";
-        document.getElementById("ani_id").style.display="none";
-        document.getElementById("custom_input").setAttribute("onClick","openSide()");
-    }
-
-</script>
-
-
 
 <!-- //header -->
 <script>
-    const mobileToggle = document.querySelector('.mobile-toggle a');
-    mobileToggle.addEventListener('click',e=>{
+    const sideMenu = document.querySelector('.sideMenu a');
+    const openMenu = document.querySelector('.openMenu a');
+    const openMenuIcon = document.querySelector('.openMenu a i');
+    const menuList = document.querySelector('.ani');
+    openMenu.addEventListener('click', e=>{
+        e.stopImmediatePropagation();
+        menuList.classList.toggle('openMenu');
+        openMenuIcon.classList.toggle('rotateArrow');
+        e.preventDefault();
+    });
+
+    sideMenu.addEventListener('click',e=>{
         e.stopImmediatePropagation();
         document.querySelector('.sidebar').classList.toggle('active');
         e.preventDefault();
 
     });
-
     document.addEventListener('click',e=>{
-        document.querySelector('.sidebar').classList.remove('active');
+        console.log(e.target);
+        if(!$(e.target).hasClass('sidebar') && !$(e.target).parents().hasClass('sidebar')){
+            document.querySelector('.sidebar').classList.remove('active');
+        }
 
     });
+
+    (function (){
+        openMenu.lastChild.before()
+    })();
 </script>

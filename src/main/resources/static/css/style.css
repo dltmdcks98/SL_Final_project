@@ -2741,6 +2741,9 @@ aside .ads figcaption {
 }
 
 @media screen and (max-width: 768px) {
+    .form-group{
+        width: fit-content;
+    }
     .with-sidebar .sidebar {
         display: none;
     }
@@ -2756,8 +2759,7 @@ aside .ads figcaption {
         margin-bottom: 30px;
     }
     footer.footer .line {
-        margin: 0;
-        margin-bottom: 30px;
+        margin: 0 0 30px;
     }
 
     .divider-top {
@@ -2782,7 +2784,6 @@ aside .ads figcaption {
         right: 0;
     }
     .sidebar .sidebar-title {
-        margin: 0 -15px;
         height: 53px;
         text-align: center;
         border-bottom: 1px solid #f2f2f2;
@@ -2790,7 +2791,7 @@ aside .ads figcaption {
         font-weight: 700;
         line-height: 55px;
         font-family: 'Raleway', sans-serif;
-        margin-bottom: 30px;
+        margin: 0 -15px 30px;
     }
 
     .trending-tags {
@@ -2925,8 +2926,35 @@ aside .ads figcaption {
         display: block;
         margin: 10px auto;
     }
+
+    .ani{
+        position: absolute;
+        display: inline;
+        width: 70%;
+        right: -100%;
+        z-index: 1000;
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+    }
+    .openMenu{
+        right: auto;
+    }
+    .arrow{
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+    }
+    .rotateArrow:before{
+        transform: rotate(180deg);
+    }
 }
 @media screen and (max-width: 425px) {
+    .form-group{
+        width: fit-content;
+    }
     .article-list figure {
         width: 100%;
         height: 200px;
@@ -2987,6 +3015,9 @@ aside .ads figcaption {
     }
 }
 @media screen and (max-width: 320px) {
+    .form-group{
+        width: fit-content;
+    }
     nav.menu ul.nav-list {
         width: 290px;
         right: -350px;
