@@ -125,6 +125,7 @@
     const menuList = document.querySelector('.ani');
     openMenu.addEventListener('click', e=>{
         e.stopImmediatePropagation();
+        $(menuList).fadeToggle(100);
         menuList.classList.toggle('openMenu');
         openMenuIcon.classList.toggle('rotateArrow');
         e.preventDefault();
@@ -143,8 +144,12 @@
         }
 
     });
+    document.addEventListener('scroll',()=>{
+        menuList.setAttribute('style','')
+    });
 
     (function (){
+        $(menuList).fadeOut();
         openMenu.lastChild.before()
     })();
 </script>
