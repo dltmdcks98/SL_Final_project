@@ -66,7 +66,7 @@
 
     <nav class="menu">
         <div class="container">
-            <div class = "ani">
+            <div class = "mobile-toggle ani">
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="/board">Board</a></li>
