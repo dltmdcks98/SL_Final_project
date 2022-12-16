@@ -66,7 +66,7 @@
 
     <nav class="menu">
         <div class="container">
-            <div class = "ani">
+            <div class = "mobile-toggle ani">
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="/board">Board</a></li>
@@ -125,7 +125,8 @@
     const menuList = document.querySelector('.ani');
     openMenu.addEventListener('click', e=>{
         e.stopImmediatePropagation();
-        $(menuList).fadeToggle(500);
+        // $(menuList).fadeToggle(500);
+        menuList.classList.toggle('showMenu');
         menuList.classList.toggle('openMenu');
         openMenuIcon.classList.toggle('rotateArrow');
         e.preventDefault();
@@ -146,8 +147,9 @@
     });
 
 
+
     (function (){
-        menuList.setAttribute('style','display:none');
+        // menuList.setAttribute('style','display:none');
 
     })();
 </script>

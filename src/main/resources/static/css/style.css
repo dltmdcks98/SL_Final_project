@@ -2926,19 +2926,30 @@ aside .ads figcaption {
     .sidebar.active {
         right: 0;
     }
-    .ani{
+    .menu .container .ani{
         position: relative;
-        display: inline;
+        display: none;
         width: fit-content;
         right: -100%;
+        float: left;
         z-index: 1000;
         overflow: auto;
+        opacity: 0;
         transition: all 0.5s;
         -webkit-transition: all 0.5s;
         -o-transition: all 0.5s;
         -moz-transition: all 0.5s;
     }
-    .openMenu{
+    .menu .container .ani ul li a{
+        display: inline;
+        font-weight: normal;
+        font-size: 1.5rem;
+    }
+    .menu .container .ani.showMenu{
+        opacity: 1;
+        display: inline-block;
+    }
+    .menu .container .ani.openMenu{
         right: 0;
     }
     .rotateArrow:before{
