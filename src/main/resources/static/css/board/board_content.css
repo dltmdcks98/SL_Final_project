@@ -164,5 +164,14 @@ button:hover {
 }
 
 section .content .file-div{
-
+    height: fit-content;
+    width: 100%;
+}
+section .content .file-div ul{
+    height: fit-content;
+    width: 100%;
+}
+section .content .file-div ul img{
+    height: fit-content;
+    object-fit: contain;
 }
