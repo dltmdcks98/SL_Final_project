@@ -16,7 +16,7 @@
                     <div class="col-md-3 col-sm-12">
                         <div class="brand">
                             <a href="/">
-                                <img src="/img/logo1.png" alt="Magz Logo">
+                                <img src="/img/logo1.png" alt="Commurest Logo">
                             </a>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
 
     <nav class="menu">
         <div class="container">
-            <div class = "mobile-toggle ani">
+            <div class = "ani">
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="/board">Board</a></li>
@@ -144,12 +144,10 @@
         }
 
     });
-    document.addEventListener('scroll',()=>{
-        menuList.setAttribute('style','')
-    });
+
 
     (function (){
-        $(menuList).fadeOut();
-        openMenu.lastChild.before()
+        menuList.setAttribute('style','display:none');
+
     })();
 </script>
