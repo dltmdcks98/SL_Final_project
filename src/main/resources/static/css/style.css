@@ -2929,7 +2929,7 @@ aside .ads figcaption {
     .ani{
         position: relative;
         display: inline-block;
-        width: 65%;
+        width: fit-content;
         right: -100%;
         z-index: 1000;
         overflow: auto;
