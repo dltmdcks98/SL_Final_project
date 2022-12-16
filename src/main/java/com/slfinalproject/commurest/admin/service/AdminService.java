@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,7 +20,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartRequest;
 
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
@@ -121,16 +119,31 @@ public class AdminService implements UserDetailsService {
         return user;
     }
 
-
+    // 프로필 업로드
     public void getFileNames(Admin admin) {
         List<String> fileNames = admin.getFileNames();
-        log.info("fileNames - {} ", fileNames);
+        log.info("fileNames insert! - {} ", fileNames);
         if (fileNames != null && fileNames.size() > 0) {
             for (String fileName : fileNames) {
                 // 첨부파일 내용 DB에 저장
                 adminMapper.addFile(fileName, admin.getUser_id());
             }
         }
+    }
+
+    // 프로필 수정
+    public void updateFileNames(Admin admin) {
+        List<String> fileNames = admin.getFileNames();
+        log.info("fileName update! - {} ", fileNames);
+        if (fileNames != null && fileNames.size() > 0) {
+            for (String fileName : fileNames) {
+                // 첨부파일 내용 DB 수정
+                adminMapper.updateFile(fileName, admin.getUser_id());
+            }
+        }
+    }
+    public boolean checkProfile(int userId) {
+        return adminMapper.checkProfile(userId);
     }
 
     @Override
@@ -150,7 +163,7 @@ public class AdminService implements UserDetailsService {
 
     }
     // 이미지 가져오기
-    public List<String> getFiles(int userId) {
+    public String getFiles(int userId) {
         return adminMapper.fileNames(userId);
     }
 

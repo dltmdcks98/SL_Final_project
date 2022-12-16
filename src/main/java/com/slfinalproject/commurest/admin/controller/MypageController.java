@@ -6,6 +6,7 @@ import com.slfinalproject.commurest.admin.repository.AdminMapper;
 import com.slfinalproject.commurest.admin.service.AdminService;
 import com.slfinalproject.commurest.board.service.BoardService;
 import com.slfinalproject.commurest.reply.service.ReplyService;
+import com.slfinalproject.commurest.util.file.FileUploadController;
 import com.slfinalproject.commurest.util.paging.Page;
 import com.slfinalproject.commurest.util.paging.PageMaker;
 import lombok.RequiredArgsConstructor;
@@ -143,25 +144,30 @@ public class MypageController {
     public String profile(Model model, HttpSession session) {
         Admin admin = adminService.setLoginSession(session);
         model.addAttribute("admin", admin);
-        log.info("userId - {}" , admin.getUser_id());
+
+        List<Admin> findProfile = adminService.findProfile();
+        model.addAttribute("findProfile", findProfile);
+        boolean flag= adminService.checkProfile(admin.getUserId());
         return "/member/imgProfile";
     }
     // 프로필 사진 업로드 처리
     @PostMapping("/mypage/imgProfile")
-    public String profileupload(Admin admin, HttpSession session) {
-        Admin user = adminService.setLoginSession(session);
-        adminService.getFileNames(admin);
+    public String profileupload(Admin admin) {
+        boolean flag= adminService.checkProfile(admin.getUser_id());
+        if(!flag) {
+            adminService.getFileNames(admin);
+        } else {
+            adminService.updateFileNames(admin);
+        }
         log.info("userId 업로드 처리 - {}" , admin.getUser_id());
         return "/member/myInfo";
     }
 
-
-
     @GetMapping("/file/{userId}")
     @ResponseBody
-    public ResponseEntity<List<String>> getFiles(@PathVariable int userId) {
+    public ResponseEntity<String> getFiles(@PathVariable int userId) {
 
-        List<String> files = adminService.getFiles(userId);
+        String files = adminService.getFiles(userId);
         log.info("/board/file/{} GETMAPPING - {}", userId, files);
 
         return new ResponseEntity<>(files, HttpStatus.OK);
