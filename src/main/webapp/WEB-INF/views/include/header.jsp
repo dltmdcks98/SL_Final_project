@@ -125,8 +125,7 @@
     const menuList = document.querySelector('.ani');
     openMenu.addEventListener('click', e=>{
         e.stopImmediatePropagation();
-        $(menuList).fadeToggle(1);
-        menuList.classList.toggle('showMenu');
+        $(menuList).fadeToggle(100);
         menuList.classList.toggle('openMenu');
         openMenuIcon.classList.toggle('rotateArrow');
         e.preventDefault();
