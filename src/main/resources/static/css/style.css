@@ -2741,6 +2741,9 @@ aside .ads figcaption {
 }
 
 @media screen and (max-width: 768px) {
+    .form-group{
+        width: fit-content;
+    }
     .with-sidebar .sidebar {
         display: none;
     }
@@ -2756,33 +2759,14 @@ aside .ads figcaption {
         margin-bottom: 30px;
     }
     footer.footer .line {
-        margin: 0;
-        margin-bottom: 30px;
+        margin: 0 0 30px;
     }
 
     .divider-top {
         margin-top: 50px;
     }
 
-    .sidebar {
-        position: fixed;
-        bottom: 0;
-        right: -100%;
-        height: 60%;
-        width: 50%;
-        z-index: 2001;
-        background-color: #fff;
-        overflow: auto;
-        transition: all 0.5s;
-        -webkit-transition: all 0.5s;
-        -o-transition: all 0.5s;
-        -moz-transition: all 0.5s;
-    }
-    .sidebar.active {
-        right: 0;
-    }
     .sidebar .sidebar-title {
-        margin: 0 -15px;
         height: 53px;
         text-align: center;
         border-bottom: 1px solid #f2f2f2;
@@ -2790,7 +2774,7 @@ aside .ads figcaption {
         font-weight: 700;
         line-height: 55px;
         font-family: 'Raleway', sans-serif;
-        margin-bottom: 30px;
+        margin: 0 -15px 30px;
     }
 
     .trending-tags {
@@ -2925,8 +2909,57 @@ aside .ads figcaption {
         display: block;
         margin: 10px auto;
     }
+    .sidebar {
+        position: fixed;
+        bottom: 0;
+        right: -100%;
+        height: 60%;
+        width: 50%;
+        z-index: 2001;
+        background-color: #fff;
+        overflow: auto;
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+    }
+    .sidebar.active {
+        right: 0;
+    }
+    .menu .container .ani{
+        position: relative;
+        display: none;
+        width: fit-content;
+        right: -100%;
+        float: left;
+        z-index: 1000;
+        overflow: auto;
+        opacity: 0;
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+    }
+    .menu .container .ani ul li a{
+        display: inline;
+        font-weight: normal;
+        font-size: 1.5rem;
+    }
+    .menu .container .ani.showMenu{
+        opacity: 1;
+        display: inline-block;
+    }
+    .menu .container .ani.openMenu{
+        right: 0;
+    }
+    .rotateArrow:before{
+        transform: rotate(180deg);
+    }
 }
 @media screen and (max-width: 425px) {
+    .form-group{
+        width: fit-content;
+    }
     .article-list figure {
         width: 100%;
         height: 200px;
@@ -2987,6 +3020,9 @@ aside .ads figcaption {
     }
 }
 @media screen and (max-width: 320px) {
+    .form-group{
+        width: fit-content;
+    }
     nav.menu ul.nav-list {
         width: 290px;
         right: -350px;

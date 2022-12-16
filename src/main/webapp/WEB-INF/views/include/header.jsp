@@ -16,12 +16,12 @@
                     <div class="col-md-3 col-sm-12">
                         <div class="brand">
                             <a href="/">
-                                <img src="/img/logo1.png" alt="Magz Logo">
+                                <img src="/img/logo1.png" alt="Commurest Logo">
                             </a>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-12">
-                        <form action="/search"  class="search" autocomplete="off">
+                        <form action="/search"  class="search" autocoㄹ - Clone_Project - 3mplete="off">
                             <div class="form-group">
                                 <div class="input-group">
                                     <input id="keyword" type="text" name="keyword" class="form-control" placeholder="검색어를 입력하세요">
@@ -66,12 +66,20 @@
 
     <nav class="menu">
         <div class="container">
-            <div class="mobile-toggle">
-                <a href="#" data-toggle="active" data-target="#sidebar"><i class="ion-navicon-round"></i></a>
+            <div class = "mobile-toggle ani">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/board">Board</a></li>
+                    <li><a href="/gallery">Gallery</a></li>
+                </ul>
             </div>
-            <div class="mobile-toggle">
-                <a href="#" data-toggle="sidebar" data-target="#sidebar"><i class="ion-ios-arrow-left"></i></a>
+            <div class="mobile-toggle sideMenu">
+                <a href="#"><i class="ion-navicon-round"></i></a>
             </div>
+            <div class="mobile-toggle openMenu">
+                <a href="#"><i class="ion-ios-arrow-left arrow"></i></a>
+            </div>
+
             <div id="menu-list">
                 <ul class="nav-list">
                     <li class="for-tablet nav-title"><a>Menu</a></li>
@@ -108,18 +116,40 @@
         </div>
     </nav>
         <!-- End nav -->
+
 <!-- //header -->
 <script>
-    const mobileToggle = document.querySelector('.mobile-toggle a');
-    mobileToggle.addEventListener('click',e=>{
+    const sideMenu = document.querySelector('.sideMenu a');
+    const openMenu = document.querySelector('.openMenu a');
+    const openMenuIcon = document.querySelector('.openMenu a i');
+    const menuList = document.querySelector('.ani');
+    openMenu.addEventListener('click', e=>{
+        e.stopImmediatePropagation();
+        // $(menuList).fadeToggle(500);
+        menuList.classList.toggle('showMenu');
+        menuList.classList.toggle('openMenu');
+        openMenuIcon.classList.toggle('rotateArrow');
+        e.preventDefault();
+    });
+
+    sideMenu.addEventListener('click',e=>{
         e.stopImmediatePropagation();
         document.querySelector('.sidebar').classList.toggle('active');
         e.preventDefault();
 
     });
-
     document.addEventListener('click',e=>{
-        document.querySelector('.sidebar').classList.remove('active');
+        console.log(e.target);
+        if(!$(e.target).hasClass('sidebar') && !$(e.target).parents().hasClass('sidebar')){
+            document.querySelector('.sidebar').classList.remove('active');
+        }
 
     });
+
+
+
+    (function (){
+        // menuList.setAttribute('style','display:none');
+
+    })();
 </script>
