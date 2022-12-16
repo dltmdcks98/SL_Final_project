@@ -1868,7 +1868,6 @@ article footer .btn-primary:focus {
 }
 .menu .mobile-toggle {
     font-size: 32px;
-    line-height: 0;
     float: right;
     margin-left: 20px;
     display: none;

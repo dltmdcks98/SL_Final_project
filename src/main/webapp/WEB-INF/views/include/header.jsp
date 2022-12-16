@@ -5,6 +5,23 @@
     li{
         font-family: 'Jeju Gothic', sans-serif;
     }
+    @media (max-width: 414px) {
+        .form-group{
+            width: fit-content;
+        }
+
+
+    }
+
+
+    @keyframes box-ani {
+        0% { transform: translate(100%, 0); }
+        100% { transform: translate(0px, 0px); }
+    }
+    .ani {
+        animation-name: box-ani;
+        animation: box-ani 1s;
+    }
 
 </style>
 
@@ -21,7 +38,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-12">
-                        <form action="/search"  class="search" autocoㄹ - Clone_Project - 3mplete="off">
+                        <form action="/search"  class="search" autocomplete="off">
                             <div class="form-group">
                                 <div class="input-group">
                                     <input id="keyword" type="text" name="keyword" class="form-control" placeholder="검색어를 입력하세요">
@@ -66,18 +83,26 @@
 
     <nav class="menu">
         <div class="container">
-            <div class = "mobile-toggle ani">
-                <ul>
+
+            <div class = "ani" id="ani_id">
+                <ul id ="sideside" class="" style="display: none">
                     <li><a href="/">Home</a></li>
+                    <li class="dropdown magz-dropdown">
                     <li><a href="/board">Board</a></li>
                     <li><a href="/gallery">Gallery</a></li>
                 </ul>
+            </div>
+
+            <div class="brand">
+                <a href="/">
+                    <img src="/img/logo.png" alt="Magz Logo">
+                </a>
             </div>
             <div class="mobile-toggle sideMenu">
                 <a href="#"><i class="ion-navicon-round"></i></a>
             </div>
             <div class="mobile-toggle openMenu">
-                <a href="#"><i class="ion-ios-arrow-left arrow"></i></a>
+                <a id = "custom_input"class = "sidebarr" onclick="openSide();" data-toggle="sidebar" data-target="#sidebar" style="color: #F73F52;text-decoration: none"><</a>
             </div>
 
             <div id="menu-list">
@@ -152,4 +177,14 @@
         $(menuList).fadeOut();
         openMenu.lastChild.before()
     })();
+
+
+    function openSide(){
+        document.getElementById("sideside").style.display="block";
+        document.getElementById("custom_input").setAttribute("onClick","closeSide()");
+    }
+    function closeSide(){
+        document.getElementById("sideside").style.display="none";
+        document.getElementById("custom_input").setAttribute("onClick","openSide()");
+    }
 </script>
