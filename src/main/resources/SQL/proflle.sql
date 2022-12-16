@@ -2,12 +2,13 @@ CREATE TABLE profile(
     file_name VARCHAR(150) PRIMARY KEY,
     user_id INT(10) NOT NULL
 );
-
+use finaldb;
 SELECT * FROM profile;
-delete  from profile where user_id=20;
+delete from profile where user_id=20;
 drop table profile;
 
-SELECT DISTINCT A.user_id, B.user_id, B.file_name
-FROM user_account A
-         JOIN finaldb.profile B ON A.user_id = B.user_id
+SELECT IF(COUNT(*) = 1, 1, 0) FROM profile where user_id=20;
+SELECT COUNT(*) FROM profile where user_id=20;
+
+
 

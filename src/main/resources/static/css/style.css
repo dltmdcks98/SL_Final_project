@@ -2925,19 +2925,27 @@ aside .ads figcaption {
     .sidebar.active {
         right: 0;
     }
-    .ani{
+    .menu .container .ani{
         position: relative;
         display: inline-block;
-        width: 70%;
-        right: -100%;
+        width: fit-content;
+        right: -10rem;
+        float: left;
         z-index: 1000;
         overflow: auto;
+
         transition: all 0.5s;
         -webkit-transition: all 0.5s;
         -o-transition: all 0.5s;
         -moz-transition: all 0.5s;
     }
-    .openMenu{
+    .menu .container .ani ul li a{
+        display: inline;
+        font-weight: normal;
+        font-size: 1.5rem;
+    }
+
+    .menu .container .ani.openMenu{
         right: 0;
     }
     .rotateArrow:before{
@@ -3933,6 +3941,7 @@ blockquote {
 }
 .featured-author .featured-author-cover .featured-author-picture img {
     width: 100%;
+    height: 100%;
 }
 .featured-author .featured-author-cover .featured-author-info .name {
     font-size: 18px;

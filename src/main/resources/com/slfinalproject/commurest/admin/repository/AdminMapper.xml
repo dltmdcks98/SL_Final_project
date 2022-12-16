@@ -13,15 +13,25 @@
     </resultMap>
 
     <resultMap type="com.slfinalproject.commurest.admin.domain.Admin" id="adminMap2">
+            <result property="fileNo" column="file_no"/>
             <result property="fileName" column="file_name"/>
             <result property="userId" column="user_id"/>
 
     </resultMap>
 
+    <!-- 프로필 이미지 -->
+    <insert id="addFile">
+        INSERT INTO profile (file_name, user_id) VALUES (#{fileName}, #{userId})
+    </insert>
+
     <!-- 프로필 이미지 업데이트   -->
-    <update id="addFile">
+    <update id="updateFile">
         UPDATE profile SET file_name=#{fileName} WHERE user_id=#{userId}
     </update>
+
+    <select id="checkProfile" resultType="boolean">
+        SELECT IF(COUNT(*) = 1, 1, 0) FROM profile where user_id =#{userId}
+    </select>
 
     <!-- 파일목록 가져오기 -->
     <select id="fileNames" resultType="string">
@@ -35,8 +45,9 @@
         SELECT DISTINCT A.user_id, B.user_id, B.file_name
         FROM user_account A
                  JOIN profile B ON A.user_id = B.user_id
-                GROUP BY file_name DESC;
+                ORDER BY file_name DESC;
     </select>
+
 
 
 
