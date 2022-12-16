@@ -2928,7 +2928,7 @@ aside .ads figcaption {
     }
     .ani{
         position: relative;
-        display: inline-block;
+        display: inline;
         width: fit-content;
         right: -100%;
         z-index: 1000;
