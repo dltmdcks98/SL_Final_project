@@ -33,7 +33,7 @@
                     <div class="col-md-3 col-sm-12">
                         <div class="brand">
                             <a href="/">
-                                <img src="/img/logo1.png" alt="Magz Logo">
+                                <img src="/img/logo1.png" alt="Commurest Logo">
                             </a>
                         </div>
                     </div>
@@ -150,7 +150,8 @@
     const menuList = document.querySelector('.ani');
     openMenu.addEventListener('click', e=>{
         e.stopImmediatePropagation();
-        $(menuList).fadeToggle(500);
+        // $(menuList).fadeToggle(500);
+        menuList.classList.toggle('showMenu');
         menuList.classList.toggle('openMenu');
         openMenuIcon.classList.toggle('rotateArrow');
         e.preventDefault();
@@ -169,13 +170,12 @@
         }
 
     });
-    document.addEventListener('scroll',()=>{
-        menuList.setAttribute('style','')
-    });
+
+
 
     (function (){
-        $(menuList).fadeOut();
-        openMenu.lastChild.before()
+        // menuList.setAttribute('style','display:none');
+
     })();
 
 
