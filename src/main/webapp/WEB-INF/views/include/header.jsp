@@ -19,9 +19,12 @@
         100% { transform: translate(0px, 0px); }
     }
     .ani {
+
         animation-name: box-ani;
         animation: box-ani 1s;
     }
+
+
 
 </style>
 
@@ -102,7 +105,7 @@
                 <a href="#"><i class="ion-navicon-round"></i></a>
             </div>
             <div class="mobile-toggle openMenu">
-                <a id = "custom_input"class = "sidebarr" onclick="openSide();" data-toggle="sidebar" data-target="#sidebar" style="color: #F73F52;text-decoration: none"><</a>
+                <a id = "custom_input"class = "sidebarr" onclick="openSide();" style="color: #F73F52;text-decoration: none"><</a>
             </div>
 
             <div id="menu-list">
@@ -179,6 +182,7 @@
     })();
 
 
+
     function openSide(){
         document.getElementById("sideside").style.display="block";
         document.getElementById("custom_input").setAttribute("onClick","closeSide()");
@@ -187,4 +191,5 @@
         document.getElementById("sideside").style.display="none";
         document.getElementById("custom_input").setAttribute("onClick","openSide()");
     }
+
 </script>
