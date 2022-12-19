@@ -29,8 +29,6 @@ public class AdminController {
     // 회원가입 처리
     @PostMapping("/admin/regist")
     public String regist(Admin admin) {
-        log.info("/admin/regist POST - param: {}", admin);
-
         return adminService.regist(admin) ? "redirect:/" : "/error";
     }
 
@@ -43,7 +41,6 @@ public class AdminController {
         }
         request.getSession().setAttribute("redirectURI", refer);
         if(request.getSession().getAttribute("user")==null){
-            log.info("GET -로그인 시도 refer : {}",refer);
             return "member/login";
         }
         return refer;
@@ -88,7 +85,6 @@ public class AdminController {
 
     @GetMapping("/logout")
     public String logout(HttpSession s) {
-        log.info("/logout GET!");
         s.invalidate();
         return "redirect:/";
     }
