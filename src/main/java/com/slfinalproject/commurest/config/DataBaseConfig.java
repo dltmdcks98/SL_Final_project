@@ -23,7 +23,6 @@ public class DataBaseConfig {
     private String password;
     @Value("${local.db.url}")
     private String url;
-
     @Bean
     public DataSource dataSource(){
         HikariConfig config = new HikariConfig();

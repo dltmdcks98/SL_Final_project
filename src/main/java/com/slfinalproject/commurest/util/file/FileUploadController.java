@@ -20,7 +20,6 @@ import java.util.List;
 public class FileUploadController {
 
     // 업로드 파일 저장 경로
-
      private static final String UPLOAD_PATH = "/usr/local/upload";
 
     // 파일 업로드 처리를 위한 요청
