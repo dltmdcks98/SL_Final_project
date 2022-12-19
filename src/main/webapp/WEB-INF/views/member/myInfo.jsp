@@ -78,7 +78,7 @@
                                     </c:forEach>
                                 </figure>
                             </div>
-                            <div class="fileDrop" style="height: 50px;" >
+                            <div class="fileDrop">
                                 <a href="imgProfile"><span>프로필 사진 등록</span></a>
                             </div>
 
@@ -102,6 +102,16 @@
                         </div>
 
                         <div class="form-group">
+                            <div class="insertFile circle">
+                                <figure class="featured-author-picture">
+                                    <c:forEach var="a" items="${findProfile}">
+                                        <img src="/loadFile?fileName=${a.fileName}" alt="profile">
+                                    </c:forEach>
+                                </figure>
+                            </div>
+                            <div class="fileDrop">
+                                <a href="imgProfile"><span>프로필 사진 등록</span></a>
+                            </div>
                             <div class="form-group text-right">
                                 <button type="submit" class="btn btn-primary btn-block" id="regist-btn2">변경</button>
                             </div>
