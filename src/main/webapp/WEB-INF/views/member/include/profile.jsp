@@ -80,7 +80,7 @@
                 method: 'POST',
                 body: formData
             };
-            fetch('/profile-upload', reqInfo)
+            fetch('/mypage/imgProfile', reqInfo)
                 .then(res => {
                     console.log("status : ", res.status);
                     return res.json();

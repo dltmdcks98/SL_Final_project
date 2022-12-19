@@ -139,10 +139,8 @@ public class MypageController {
         int userid = admin.getUserId();
         model.addAttribute("admin", admin);
 
-        List<Admin> findProfile = adminService.findProfile();
-        model.addAttribute("findProfile", findProfile);
-        boolean flag= adminService.checkProfile(admin.getUserId());
-        return "/member/imgProfile";
+        boolean flag= adminService.updateProfile("",userid);
+        return flag? "success":"fail";
     }
 /*    // 프로필 사진 업로드 처리
     @PostMapping("/mypage/imgProfile")
