@@ -2,8 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
 
-    $(document).ready(function () {
-
         function isImageFile(originFileName) {
         //정규표현식
             const pattern = /jpg$|gif$|png$/i;
@@ -23,7 +21,6 @@
             $hiddenInput.setAttribute('value', fileName);
 
             $('#profile-form').append($hiddenInput);
-            console.log("hidden :", $hiddenInput);
 
             if (isImageFile(originFileName)) {
 
@@ -31,7 +28,7 @@
                 $img.classList.add('img-sizing');
                 $img.setAttribute('src', '/loadFile?fileName=' + fileName);
                 $img.setAttribute('alt', originFileName);
-                $('.uploaded-list').append($img);
+                $('.fileDrop').append($img);
             }
         }
 
@@ -90,9 +87,8 @@
                 })
                 .then(fileNames => {
                     console.log(fileNames);
-
                     showFileData(fileNames);
                 });
         });
-    });
+
 </script>

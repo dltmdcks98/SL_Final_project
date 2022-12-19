@@ -21,8 +21,8 @@ public class FileUploadController {
 
     // 업로드 파일 저장 경로
 
-     private static final String UPLOAD_PATH = "/usr/local/upload";
-
+//     private static final String UPLOAD_PATH = "/usr/local/upload";
+        private static final String UPLOAD_PATH="D:\\upload";
 
     // 파일 업로드 처리를 위한 요청
     @PostMapping("/upload")
@@ -77,14 +77,7 @@ public class FileUploadController {
 
         return new ResponseEntity<>(fileNames, HttpStatus.OK);
     }
-    @PostMapping("/ajax-upload-profile")
-    @ResponseBody
-    public ResponseEntity<List<String>> ajaxUploadProfile(List<MultipartFile> files){
-        log.info("/ajax-upload-profile {}",files.get(0).getOriginalFilename());
-        List<String> list = new ArrayList<>();
-        list.add("test");
-        return new ResponseEntity<>(list,HttpStatus.OK);
-    }
+
     // 파일 데이터 로드 요청 처리
     @GetMapping("/loadFile")
     @ResponseBody

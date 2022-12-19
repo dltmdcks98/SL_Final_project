@@ -1,7 +1,6 @@
 package com.slfinalproject.commurest.admin.repository;
 
 import com.slfinalproject.commurest.admin.domain.Admin;
-import com.slfinalproject.commurest.board.domain.Board;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -36,5 +35,8 @@ public interface AdminMapper {
 
     boolean checkProfile(int userId);
 
+
+    //프로필 업데이트
+    boolean updateProfile(String profile, int userId);
 
 }

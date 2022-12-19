@@ -7,6 +7,7 @@
     <%@ include file="../include/static-head.jsp" %>
     <link rel="stylesheet" href="/css/board/myPage_boardList.css">
     <link rel="stylesheet" href="/css/mypage/mypage.css">
+
 </head>
 <style>
     .myinfo {
@@ -71,20 +72,25 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="insertFile circle">
+       <%--                     <div class="insertFile circle ">
                                 <figure class="featured-author-picture">
                                     <c:forEach var="a" items="${findProfile}">
                                         <img src="/loadFile?fileName=${a.fileName}" alt="profile">
                                     </c:forEach>
                                 </figure>
                             </div>
+--%>
                             <div class="fileDrop">
-                                <a href="imgProfile"><span>프로필 사진 등록</span></a>
+                                <span>Image Drop!</span>
+                            </div>
+                            <div class="uploadDiv">
+                                <input type="file" name="files" id="profile-file">
                             </div>
 
                             <div class="form-group text-right">
-                                <button type="submit" class="btn btn-primary btn-block" id="regist-btn">변경</button>
+                                <button type="submit" class="btn btn-primary btn-block" id="regist-btn1">변경</button>
                             </div>
+
                         </div>
                     </form>
                 </c:if>
@@ -109,12 +115,18 @@
                                     </c:forEach>
                                 </figure>
                             </div>
+
                             <div class="fileDrop">
-                                <a href="imgProfile"><span>프로필 사진 등록</span></a>
+                                <span>Image Drop!</span>
+                            </div>
+
+                            <div class="uploadDiv">
+                                <input type="file" name="files" id="profile-file">
                             </div>
                             <div class="form-group text-right">
-                                <button type="submit" class="btn btn-primary btn-block" id="regist-btn2">변경</button>
+                                <button type="submit" class="btn btn-primary btn-block" id="regist-btn1">변경</button>
                             </div>
+
                         </div>
                     </form>
                 </c:if>
@@ -125,7 +137,7 @@
 
     </div>
 </section>
-
+<%@include file="include/profile.jsp" %>
 <%@include file="../include/footer.jsp" %>
 </body>
 <script>

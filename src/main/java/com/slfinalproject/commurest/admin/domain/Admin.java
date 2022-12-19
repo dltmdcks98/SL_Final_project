@@ -1,11 +1,9 @@
 package com.slfinalproject.commurest.admin.domain;
 
 import com.slfinalproject.commurest.board.domain.Board;
-
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 
 import java.util.Collection;
 import java.util.Date;
@@ -22,6 +20,10 @@ public class Admin implements UserDetails {
     private String user_name;
     private Date reg_date;
     private String user_sex;
+
+    //프로필 설정
+    private String profile;
+
 
     private Board board;
 

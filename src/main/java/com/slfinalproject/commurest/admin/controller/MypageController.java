@@ -2,22 +2,18 @@ package com.slfinalproject.commurest.admin.controller;
 
 
 import com.slfinalproject.commurest.admin.domain.Admin;
-import com.slfinalproject.commurest.admin.repository.AdminMapper;
 import com.slfinalproject.commurest.admin.service.AdminService;
 import com.slfinalproject.commurest.board.service.BoardService;
 import com.slfinalproject.commurest.reply.service.ReplyService;
-import com.slfinalproject.commurest.util.file.FileUploadController;
 import com.slfinalproject.commurest.util.paging.Page;
 import com.slfinalproject.commurest.util.paging.PageMaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -137,8 +133,10 @@ public class MypageController {
 
     //프로필 사진 업로드 페이지
     @GetMapping("/mypage/imgProfile")
+    @ResponseBody
     public String profile(Model model, HttpSession session) {
-        Admin admin = adminService.setLoginSession(session);
+        Admin admin = (Admin) session.getAttribute("user");
+        int userid = admin.getUserId();
         model.addAttribute("admin", admin);
 
         List<Admin> findProfile = adminService.findProfile();
@@ -146,7 +144,7 @@ public class MypageController {
         boolean flag= adminService.checkProfile(admin.getUserId());
         return "/member/imgProfile";
     }
-    // 프로필 사진 업로드 처리
+/*    // 프로필 사진 업로드 처리
     @PostMapping("/mypage/imgProfile")
     public String profileupload(Admin admin) {
         boolean flag= adminService.checkProfile(admin.getUser_id());
@@ -156,7 +154,7 @@ public class MypageController {
             adminService.updateFileNames(admin);
         }
         return "/member/myInfo";
-    }
+    }*/
 
     @GetMapping("/file/{userId}")
     @ResponseBody

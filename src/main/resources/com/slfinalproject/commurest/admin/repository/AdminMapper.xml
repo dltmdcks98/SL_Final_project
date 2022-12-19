@@ -35,8 +35,8 @@
 
     <!-- 파일목록 가져오기 -->
     <select id="fileNames" resultType="string">
-        SELECT file_name
-        FROM profile
+        SELECT profile
+        FROM user_account
         WHERE user_id = #{userId}
     </select>
 
@@ -48,7 +48,9 @@
                 ORDER BY file_name DESC;
     </select>
 
-
+    <update id="updateProfile">
+        UPDATE user_account SET profile = #{profile} where user_id=#{userId};
+    </update>
 
 
 
