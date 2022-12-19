@@ -26,12 +26,15 @@ public interface AdminMapper {
 
     Admin selectOne2(int userId);
 
-    List<String> fileNames(int userId);
+    String fileNames(int userId);
 
     void addFile(String fileName, int userId);
 
+    void updateFile(String fileName, int userId);
     // 프로필 이미지 등록
     List<Admin> findProfile();
+
+    boolean checkProfile(int userId);
 
 
 }

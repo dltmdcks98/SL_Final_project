@@ -7,7 +7,6 @@
     <%@ include file="../include/static-head.jsp" %>
     <link rel="stylesheet" href="/css/board/board_list.css">
     <link rel="stylesheet" href="/css/board/index.css">
-<%--    <script src="/js/board/list.js" defer></script>--%>
 </head>
 
 <style>

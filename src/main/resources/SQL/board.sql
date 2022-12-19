@@ -188,3 +188,8 @@ LEFT JOIN (SELECT DISTINCT board_no FROM tag C) C ON A.board_no = C.board_no;
 SELECT * FROM board GROUP BY board_no DESC;
 
 
+SELECT DISTINCT A.board_no, A.title, B.bno, B.file_name
+FROM board A
+         INNER JOIN file_upload B ON A.board_no = B.bno
+GROUP BY  board_no
+ORDER BY  board_no DESC limit 3
