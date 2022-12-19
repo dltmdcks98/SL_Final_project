@@ -88,8 +88,8 @@ button:hover {
 }
 .img-sizing {
     display: block;
-    width: 5%;
-    height: 5%;
+    width: 30%;
+    margin: 0 auto;
 }
 .comments-list * {
     margin: 2% 0.2%;
@@ -161,4 +161,14 @@ button:hover {
 }
 .tagDiv a:hover{
     color: #F73F52;
+}
+
+section .content .file-div{
+    height: fit-content;
+    width: 100%;
+    overflow: auto;
+}
+section .content .file-div ul{
+    height: fit-content;
+    width: 100%;
 }

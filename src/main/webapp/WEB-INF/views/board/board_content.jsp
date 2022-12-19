@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -9,7 +9,10 @@
     <script src="/js/board/contentTag.js" defer></script>
 </head>
 <style>
-    @media (max-width: 500px){
+    #hideSideBar{
+        display : none;
+    }
+    @media (max-width: 768px){
         .content{
             width: 90%;
         }
@@ -18,6 +21,10 @@
         }
         .col-md-3 > .form-group{
             width: 100%;
+        }
+
+        #hideSideBar{
+            display : inline-block;
         }
     }
 </style>
@@ -48,7 +55,7 @@
             <textarea name="content" placeholder="내용작성" class="textArea" disabled>${b.content}</textarea>
         </div>
         <!-- 파일 업로드 영역 begin -->
-        <div class="form-group">
+        <div class="form-group file-div">
             <ul class="uploaded-list"></ul>
         </div>
         <!-- 파일 업로드 영역 end -->
@@ -160,13 +167,17 @@
                 </div>
             </div>
         </div>
-
     </div>
-
+    <div id="hideSideBar">
+        <%@include file="../include/sidebar.jsp"%>
+    </div>
 </section>
+
+
 <%@ include file="../include/scripts.jsp" %>
 <%@ include file="../include/reply.jsp" %>
 <%@ include file="../include/footer.jsp" %>
+
 <script src="/js/board/jquery_board_content.js"></script>
 </body>
 
