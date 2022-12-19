@@ -29,11 +29,11 @@ public class FileUploadController {
         log.info("/upload POST! - {}", fileList);
 
         for (MultipartFile file: fileList) {
-            log.info("file-name: {}", file.getName());
+/*            log.info("file-name: {}", file.getName());
             log.info("file-origin-name: {}", file.getOriginalFilename());
             log.info("file-size: {}KB", (double) file.getSize() / 1024);
             log.info("file-type: {}", file.getContentType());
-            System.out.println("==================================================================");
+            System.out.println("==================================================================");*/
 
             FileUtil.uploadFile(file, UPLOAD_PATH);
         }
