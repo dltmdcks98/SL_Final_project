@@ -52,8 +52,6 @@ public class AdminService implements UserDetailsService {
         // 카카오로 회원가입
         if(admin.getUser_sex()=="k"){
             admin.setManager("ROLE_KAKAO");
-            System.out.println("권한명 : "+admin.getManager());
-            System.out.println("sex : "+admin.getUser_sex());
         }
         else{
 
@@ -85,12 +83,6 @@ public class AdminService implements UserDetailsService {
         adminMapper.delete(admin);
     }
 
-
-//    public Admin selectOne(String admin) {
-//        return adminMapper.selectOne(admin);
-//    }
-
-
     public Admin selectOne2(int userId) {
 
         return adminMapper.selectOne2(userId);
@@ -111,8 +103,6 @@ public class AdminService implements UserDetailsService {
 
             user = (Admin) authentication.getPrincipal();
 
-            log.info("현재 세션 정보 : " + user);
-
         }
 
 
@@ -122,7 +112,6 @@ public class AdminService implements UserDetailsService {
     // 프로필 업로드
     public void getFileNames(Admin admin) {
         List<String> fileNames = admin.getFileNames();
-        log.info("fileNames insert! - {} ", fileNames);
         if (fileNames != null && fileNames.size() > 0) {
             for (String fileName : fileNames) {
                 // 첨부파일 내용 DB에 저장
@@ -134,7 +123,6 @@ public class AdminService implements UserDetailsService {
     // 프로필 수정
     public void updateFileNames(Admin admin) {
         List<String> fileNames = admin.getFileNames();
-        log.info("fileName update! - {} ", fileNames);
         if (fileNames != null && fileNames.size() > 0) {
             for (String fileName : fileNames) {
                 // 첨부파일 내용 DB 수정
@@ -148,15 +136,10 @@ public class AdminService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        log.info("## loadUserByUsername ##");
-        log.info("나 실행됐다!!");
         Admin admin = adminMapper.selectOne(username);
-        log.info("계정정보" + admin);
         if (admin != null) {
             admin.setAuthorities(Arrays.asList(new SimpleGrantedAuthority(admin.getManager())));
         }
-        log.info("setAuthorites 한 정보 : " + admin);
-
 
         return admin;
 

@@ -98,10 +98,6 @@ public class KakaoLoginController {
             throw new RuntimeException(e);
         }
 
-
-        System.out.println(oAuthToken.getAccess_token());
-
-
         RestTemplate rt2 = new RestTemplate();
 
         // 요청하는 데이터 타입 지정
@@ -121,7 +117,6 @@ public class KakaoLoginController {
                 String.class
         );
 
-        System.out.println(response2.getBody());
 
         ObjectMapper objectMapper2 = new ObjectMapper();
         KakaoProfile kakaoProfile = null;
@@ -149,18 +144,14 @@ public class KakaoLoginController {
 
         // db에 카카오 계정 정보가 없다면
         if (adminService.selectOne(kakaoProfile.getKakao_account().getEmail()) == null) {
-            log.info("회원가입을 합니다");
             adminService.regist(kakaoUser);
         }
 
-        log.info("로그인을 합니다");
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(kakaoUser.getUsername(), kakaoUser.getPassword()));
-        log.info("get username : " + kakaoUser.getUsername());
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
 
         Admin nameFInd = adminService.selectOne(kakaoProfile.getKakao_account().getEmail());
-        log.info("이름이 뭐고 : " + nameFInd.getUser_name());
 
         if (nameFInd.getUser_name().contains("kakao")) {
             loginSuccess(session, request);
@@ -182,13 +173,11 @@ public class KakaoLoginController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         user = (Admin) authentication.getPrincipal();
 
-        log.info("현재 세션 정보 : " + user);
         return user;
     }
 
     public String loginSuccess(HttpSession session, HttpServletRequest request) {
         String redirectURI = null;
-        log.info("login success");
         redirectURI = (String) session.getAttribute("redirectURI");
 
 
@@ -197,7 +186,6 @@ public class KakaoLoginController {
             String refer = request.getHeader("Referer").substring(request.getRequestURL().length()-request.getRequestURI().length());
             request.getSession().setAttribute("redirectURI", refer);
             redirectURI = (String) session.getAttribute("redirectURI");
-            log.info("ㅇㅇㅇㅇ : "+request.getHeader("Referer"));
         }
 
 
@@ -208,22 +196,14 @@ public class KakaoLoginController {
             session.setAttribute("userReplyCnt",replyService.getTotalCountReplyByUserId(user.getUser_id()));
             session.removeAttribute("userTagImgs");
             session.setAttribute("userTagImgs",galleryBoardService.getImgUrlByTag(tagService.getRandomTagValueByUserId(user.getUser_id()),0,9));
-            log.info("세션에 넣은 값 확인 - " + user);
         }
 
         if(session.getAttribute("redirectURIt")=="board"){
-            log.info("보드:"+session.getAttribute("redirectURIt"));
             return "redirect:/board";
         } else if (session.getAttribute("redirectURIt")=="search-result") {
             String keyword = (String)session.getAttribute("keyword");
-            log.info("보드:"+session.getAttribute("redirectURIt"));
-            log.info(keyword);
             return "redirect:/search?keyword="+keyword;
         }
-
-
-        log.info("로그인석쎾싸ㅡ" + redirectURI);
-
         return "redirect:" + redirectURI;
     }
 
