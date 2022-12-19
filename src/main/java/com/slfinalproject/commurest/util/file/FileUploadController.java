@@ -23,6 +23,7 @@ public class FileUploadController {
 
      private static final String UPLOAD_PATH = "/usr/local/upload";
 
+
     // 파일 업로드 처리를 위한 요청
     @PostMapping("/upload")
     public String upload(@RequestParam("file") List<MultipartFile> fileList) {

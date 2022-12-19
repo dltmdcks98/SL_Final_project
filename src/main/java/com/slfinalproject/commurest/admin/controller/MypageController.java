@@ -38,14 +38,12 @@ public class MypageController {
     @GetMapping("/mypage")
     public String myPage(@ModelAttribute("p") Page page, Model model, HttpSession session) {
         Admin admin = adminService.setLoginSession(session);
-        log.info("" + admin.getUser_id());
         Map<String, Object> replies = replyService.getAllByUserId(admin.getUser_id(), page);
         Map<String, Object> boardMap = boardService.findAllServiceByUserId(page, admin.getUser_id());
 
         PageMaker pageMaker = new PageMaker(
                 new Page(page.getPageNum(), page.getAmount())
                 , (Integer) boardMap.get("myBoardTotalCount"));
-        log.info("페이지 정보 : {}", pageMaker);
         model.addAttribute("bList", boardMap.get("myBoardList"));
         model.addAttribute("rList", replies.get("rList"));
         model.addAttribute("pageMaker", pageMaker);
@@ -63,7 +61,6 @@ public class MypageController {
         PageMaker pageMaker = new PageMaker(
                 new Page(page.getPageNum(), page.getAmount())
                 , (int) boardMap.get("myBoardTotalCount"));
-        log.info("페이지 정보 : {}", pageMaker);
         model.addAttribute("bList", boardMap.get("myBoardList"));
         model.addAttribute("myBoardPageMaker", pageMaker);
 
@@ -79,7 +76,6 @@ public class MypageController {
         PageMaker pageMaker = new PageMaker(
                 new Page(page.getPageNum(), page.getAmount())
                 , (int) replies.get("rListTotalCount"));
-        log.info("페이지 정보 : {}", pageMaker);
         model.addAttribute("rList", replies.get("rList"));
         model.addAttribute("myBoardPageMaker", pageMaker);
 
@@ -159,7 +155,6 @@ public class MypageController {
         } else {
             adminService.updateFileNames(admin);
         }
-        log.info("userId 업로드 처리 - {}" , admin.getUser_id());
         return "/member/myInfo";
     }
 
@@ -168,7 +163,6 @@ public class MypageController {
     public ResponseEntity<String> getFiles(@PathVariable int userId) {
 
         String files = adminService.getFiles(userId);
-        log.info("/board/file/{} GETMAPPING - {}", userId, files);
 
         return new ResponseEntity<>(files, HttpStatus.OK);
     }
