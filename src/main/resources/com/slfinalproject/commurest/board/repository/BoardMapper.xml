@@ -156,9 +156,10 @@
 
     <!-- 이미지가 들어가있는 최신 게시글 조회하기 -->
     <select id="findNewImage" resultMap="boardMap">
-        SELECT A.board_no, A.title, B.bno, B.file_name
+        SELECT DISTINCT A.board_no, A.title, B.bno, B.file_name
         FROM board A
-        JOIN file_upload B ON A.board_no = B.bno
+        INNER JOIN file_upload B ON A.board_no = B.bno
+        GROUP BY  board_no
         ORDER BY  board_no DESC limit 3
     </select>
 
