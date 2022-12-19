@@ -45,7 +45,9 @@ public class FileUtil {
 
         // 중복이 없는 파일명으로 변경
         // randomUUID를 통해 중복이 없는 이름으로 바꿔준다
-        String newFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename(); // 중복이 없는 랜덤아이디 값 생성 +
+        //정규식을 통해 특수문자가 들어간 file명을 변경
+        String fileName = file.getOriginalFilename().replaceAll("[^ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9.]", "");
+        String newFileName = UUID.randomUUID() + "_" + fileName; // 중복이 없는 랜덤아이디 값 생성 +
 
         // 업로드 경로를 변경
         String newUploadPath = getNewUploadPath(uploadPath);

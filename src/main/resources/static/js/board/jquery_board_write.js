@@ -52,9 +52,6 @@ $(document).ready(function () {
         }
     }
 
-
-
-
     const $dropBox = $('.fileDrop');
 
     $dropBox.on('dragover dragenter', e => {
@@ -93,12 +90,9 @@ $(document).ready(function () {
         };
         fetch('/ajax-upload', reqInfo)
             .then(res => {
-                console.log("status : ",res.status);
                 return res.json();
             })
             .then(fileNames => {
-                console.log(fileNames);
-
                 showFileData(fileNames);
             });
     });

@@ -59,13 +59,9 @@ dependencies {
 	//gson (JSON 파싱 라이브러리)
 	implementation 'com.google.code.gson:gson:2.8.9'
 
-
-	// https://mvnrepository.com/artifact/com.jfinal/cos 나중에 파일 업로드때 씀 `
-	//	implementation 'com.jfinal:cos:2022.2'
-
 }
 
 tasks.named('test') { Task it ->
-//	useJUnitPlatform() 실무에서는 테스트를 다하고 지우고 빌드할것
-	exclude '**/*'
+	useJUnitPlatform() //실무에서는 테스트를 다하고 지우고 빌드할것
+//	exclude '**/*'
 }
