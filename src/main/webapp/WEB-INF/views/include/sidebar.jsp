@@ -44,7 +44,7 @@
 
                                 </form>
                                 <button class="aaa"
-                                        onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=eac6586e062e9e84f8798226d9ac9be8&redirect_uri=http://13.113.19.114/login/kakao&response_type=code'"
+                                        onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=eac6586e062e9e84f8798226d9ac9be8&redirect_uri=http://ec2-52-78-107-113.ap-northeast-2.compute.amazonaws.com/login/kakao/login/kakao&response_type=code'"
                                         type="button" id="img_btn">
                                     <img src="/img/kakao_login_medium_wide.jpg">
                                 </button>
