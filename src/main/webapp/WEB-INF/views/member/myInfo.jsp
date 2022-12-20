@@ -146,6 +146,10 @@
                             </div>
                         </div>
 
+                        <div class="form-group text-right">
+                            <button type="submit" class="btn btn-primary btn-block" id="regist-btn1">변경</button>
+                        </div>
+
                     </form>
                 </c:if>
             </div>
