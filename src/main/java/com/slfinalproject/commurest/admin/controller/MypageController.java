@@ -9,14 +9,13 @@ import com.slfinalproject.commurest.util.paging.Page;
 import com.slfinalproject.commurest.util.paging.PageMaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -124,44 +123,13 @@ public class MypageController {
     // 개인정보 수정 페이지 요청
     @GetMapping("/mypage/myinfo")
     public String myInfo(Model model, HttpSession session) {
-        Admin user = adminService.setLoginSession(session);
-        session.setAttribute("user", user);
-        List<Admin> findProfile = adminService.findProfile();
-        model.addAttribute("findProfile", findProfile);
+        Admin user = (Admin) session.getAttribute("user");
+
+        if(user.getProfile()!=null){
+            String profile = adminService.getProfile(user.getUser_id());
+            model.addAttribute("profile", profile);
+        }
         return "member/myInfo";
     }
-
-    //프로필 사진 업로드 페이지
-    @GetMapping("/mypage/imgProfile")
-    @ResponseBody
-    public String profile(Model model, HttpSession session) {
-        Admin admin = (Admin) session.getAttribute("user");
-        int userid = admin.getUserId();
-        model.addAttribute("admin", admin);
-
-        boolean flag= adminService.updateProfile("",userid);
-        return flag? "success":"fail";
-    }
-/*    // 프로필 사진 업로드 처리
-    @PostMapping("/mypage/imgProfile")
-    public String profileupload(Admin admin) {
-        boolean flag= adminService.checkProfile(admin.getUser_id());
-        if(!flag) {
-            adminService.getFileNames(admin);
-        } else {
-            adminService.updateFileNames(admin);
-        }
-        return "/member/myInfo";
-    }*/
-
-    @GetMapping("/file/{userId}")
-    @ResponseBody
-    public ResponseEntity<String> getFiles(@PathVariable int userId) {
-
-        String files = adminService.getFiles(userId);
-
-        return new ResponseEntity<>(files, HttpStatus.OK);
-    }
-
 
 }

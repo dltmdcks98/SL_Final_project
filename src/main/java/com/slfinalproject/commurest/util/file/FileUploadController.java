@@ -1,15 +1,20 @@
 package com.slfinalproject.commurest.util.file;
 
+import com.slfinalproject.commurest.admin.domain.Admin;
+import com.slfinalproject.commurest.admin.service.AdminService;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -24,18 +29,16 @@ public class FileUploadController {
 //     private static final String UPLOAD_PATH = "/usr/local/upload";
         private static final String UPLOAD_PATH="D:\\upload";
 
+        @Autowired
+        private AdminService adminService;
+
+
     // 파일 업로드 처리를 위한 요청
     @PostMapping("/upload")
     public String upload(@RequestParam("file") List<MultipartFile> fileList) {
         log.info("/upload POST! - {}", fileList);
 
         for (MultipartFile file: fileList) {
-/*            log.info("file-name: {}", file.getName());
-            log.info("file-origin-name: {}", file.getOriginalFilename());
-            log.info("file-size: {}KB", (double) file.getSize() / 1024);
-            log.info("file-type: {}", file.getContentType());
-            System.out.println("==================================================================");*/
-
             FileUtil.uploadFile(file, UPLOAD_PATH);
         }
 
@@ -44,18 +47,32 @@ public class FileUploadController {
 
     @PostMapping("/profile-upload")
     @ResponseBody
-    public ResponseEntity<List<String>> profileUpload(List<MultipartFile> files) {
+    @Transactional
+    public ResponseEntity<List<String>> profileUpload(List<MultipartFile> files, HttpSession session) throws Exception {
         List<String> fileNames = new ArrayList<>();
-        log.info("files  -{} ", files);
+        Admin user = (Admin) session.getAttribute("user");
 
         // 클라이언트가 전송한 파일 업로드하기
+        String fullPath = null;
         for (MultipartFile file : files) {
-            String fullPath = FileUtil.uploadFile(file, UPLOAD_PATH);
+            fullPath = FileUtil.uploadFile(file, UPLOAD_PATH);
             fileNames.add(fullPath);
-
+        }
+        String fileName = fileNames.get(0);
+        int userId = user.getUser_id();
+        String beforeProfile= null;
+        if(!adminService.getProfile(userId).isEmpty()){
+            beforeProfile = adminService.getProfile(userId);
         }
 
-        return new ResponseEntity<>(fileNames, HttpStatus.OK);
+        if(adminService.updateProfile(fileName,userId)){
+            deleteFile(beforeProfile);
+            session.removeAttribute("profile");
+            session.setAttribute("profile",fileName);
+            return new ResponseEntity<>(fileNames, HttpStatus.OK);
+        }
+
+        return  new ResponseEntity<>(fileNames, HttpStatus.BAD_REQUEST);
     }
 
 

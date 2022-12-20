@@ -22,7 +22,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -103,18 +102,19 @@ public class AdminService implements UserDetailsService {
 
         }
 
-
         return user;
     }
 
 
-    // 프로필 수정
+    //프로필 사진 조회
+    public String getProfile(int userId) {
+        return adminMapper.getProfile(userId);
+    }
+    // 프로필 사진 수정
     public boolean updateProfile(String profile, int userId) {
        boolean status =  adminMapper.updateProfile(profile,userId);
+
        return status;
-    }
-    public boolean checkProfile(int userId) {
-        return adminMapper.checkProfile(userId);
     }
 
     @Override
@@ -127,15 +127,6 @@ public class AdminService implements UserDetailsService {
         return admin;
 
 
-    }
-    // 이미지 가져오기
-    public String getFiles(int userId) {
-        return adminMapper.fileNames(userId);
-    }
-
-    // 프로필 사진 등록
-    public List<Admin> findProfile() {
-        return adminMapper.findProfile();
     }
 
 

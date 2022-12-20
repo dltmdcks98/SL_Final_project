@@ -17,11 +17,10 @@ class AdminServiceTest {
     @Test
     @DisplayName("get profile")
     void getFile() {
-        String str = adminService.getFiles(6);
+        String str = adminService.getProfile(1);
         assertNotNull(str);
         System.out.println(str);
     }
-
     @Test
     @DisplayName("update profile")
     void updateFile(){
