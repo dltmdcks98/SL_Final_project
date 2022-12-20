@@ -17,7 +17,7 @@
 <div class="wrap">
     <!-- 게시글 영역 begin -->
     <div class="write-container">
-        <form action="/board/edit" method="post" class="myForm">
+        <form action="/board/edit?boardNo=${board.boardNo}" method="post" class="myForm">
 
 
             <div class="mb-4">

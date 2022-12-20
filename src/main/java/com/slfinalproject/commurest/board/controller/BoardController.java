@@ -54,6 +54,7 @@ public class BoardController {
         return "board/board";
     }
 
+
     // 글 상세보기 페이지
     @GetMapping("/content/{boardNo}")
     public String content(@PathVariable("boardNo") int boardNo, Model model, @ModelAttribute("p") Page page, HttpServletResponse response, HttpServletRequest request) {
@@ -87,6 +88,7 @@ public class BoardController {
         model.addAttribute("p", page);
         model.addAttribute("b", board);
 
+
         return "board/board_write";
     }
 
@@ -97,7 +99,10 @@ public class BoardController {
         Board board = boardService.selectOne(boardNo, response, request);
         model.addAttribute("a", user);
         model.addAttribute("board", board);
-        session.setAttribute("bn", board.getBoardNo());
+        model.addAttribute("bn", board.getBoardNo());
+
+
+
         return "board/board_edit";
     }
 
@@ -115,9 +120,9 @@ public class BoardController {
 
     // 수정 처리 요청
     @PostMapping("/edit")
-    public String edit(Board board, HttpSession session) {
-        Object obj = session.getAttribute("bn");
-        int boardNo = (int) obj;
+    public String edit(@RequestParam int boardNo, Board board, Model model) {
+        board.setBoardNo(boardNo);
+        log.info("boardNo Edit : "+boardNo);
         boolean flag = boardService.edit(board, boardNo);
         return flag ? "redirect:/board/content/" + board.getBoardNo() : "redirect:/";
     }
