@@ -48,15 +48,10 @@ public class BoardService {
                               HttpServletResponse response, HttpServletRequest request) {
         HttpSession session = request.getSession();
         Object securityContextObject = session.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
-        //  if(securityContextObject !=null){
         SecurityContext securityContext = (SecurityContext) securityContextObject;
         Authentication authentication = securityContext.getAuthentication();
         Admin user = (Admin) authentication.getPrincipal();
-        //board.setUserId(user.getUser_id());
-        //   }
-
         board.setUserId(user.getUser_id());
-
         // 게시글을 DB에 저장
         boolean flag = boardMapper.insert(board);
         int boardno = tagMapper.getBoardNo();
@@ -70,13 +65,23 @@ public class BoardService {
         }
         if(board.getTagList()!=null){
             for(int i=0; i< board.getTagList().size();i++){
+                log.info("보드갯리;스트 : "+board.getTagList()+" 보드번호 : "+boardno);
                 tagMapper.setTagValueByBoardNo(board.getTagList().get(i),boardno);
             }
         }
 
         return flag;
     }
+    // 게시글 수정 요청
 
+    public boolean edit(Board board, int boardNo) {
+
+        for(int i=0; i< board.getTagList().size();i++){
+            tagMapper.updateTag(board.getTagList().get(i),boardNo);
+        }
+        boolean flag = boardMapper.edit(board);
+        return flag;
+    }
 
 
     // 게시물 전체 조회 요청 페이징 + 검색기능
@@ -183,11 +188,7 @@ public class BoardService {
     }
 
 
-    // 게시글 수정 요청
 
-    public boolean edit(Board board) {
-        return boardMapper.edit(board);
-    }
 
 
     @Transactional

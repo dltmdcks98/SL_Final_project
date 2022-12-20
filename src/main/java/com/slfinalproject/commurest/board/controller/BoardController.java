@@ -5,6 +5,9 @@ import com.slfinalproject.commurest.admin.service.AdminService;
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.service.BoardService;
 import com.slfinalproject.commurest.recommend.service.RecommendService;
+import com.slfinalproject.commurest.tag.domain.Tag;
+import com.slfinalproject.commurest.tag.repository.TagMapper;
+import com.slfinalproject.commurest.tag.service.TagService;
 import com.slfinalproject.commurest.util.paging.Page;
 import com.slfinalproject.commurest.util.paging.PageMaker;
 import com.slfinalproject.commurest.util.search.Search;
@@ -16,11 +19,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -37,13 +42,13 @@ public class BoardController {
     // 게시판 메인 페이지
     @GetMapping("")
     public String board(@ModelAttribute("s") Search search, Model model, HttpSession session) {
-        Map<String, Object> boardMap = boardService.findAllService(search ,session);
+        Map<String, Object> boardMap = boardService.findAllService(search, session);
         PageMaker pageMaker = new PageMaker(
                 new Page(search.getPageNum(), search.getAmount())
                 , (Integer) boardMap.get("tc"));
         model.addAttribute("bList", boardMap.get("bList"));
         model.addAttribute("pageMaker", pageMaker);
-        session.setAttribute("redirectURIt","board");
+        session.setAttribute("redirectURIt", "board");
         List<Admin> findProfile = adminService.findProfile();
         model.addAttribute("findProfile", findProfile);
         return "board/board";
@@ -52,14 +57,14 @@ public class BoardController {
     // 글 상세보기 페이지
     @GetMapping("/content/{boardNo}")
     public String content(@PathVariable("boardNo") int boardNo, Model model, @ModelAttribute("p") Page page, HttpServletResponse response, HttpServletRequest request) {
-        Board board = boardService.selectOne(boardNo,response,request);
+        Board board = boardService.selectOne(boardNo, response, request);
         Admin admin = adminService.selectOne2(board.getUserId());
         int recommendCount = recommendService.countRecommendBYBoardNo(boardNo);
 
-        if(request.getSession().getAttribute("user")!=null){
+        if (request.getSession().getAttribute("user") != null) {
             Admin user = (Admin) request.getSession().getAttribute("user");
-            boolean recommendedUser = recommendService.confirmRecommend(boardNo,user.getUser_id());
-            model.addAttribute("recommendedUser",recommendedUser);
+            boolean recommendedUser = recommendService.confirmRecommend(boardNo, user.getUser_id());
+            model.addAttribute("recommendedUser", recommendedUser);
         }
 
         board.setRecommend(recommendCount);
@@ -74,7 +79,7 @@ public class BoardController {
     // 글쓰기 페이지
     @GetMapping("/write")
     public String write(Board board, Model model,
-                         HttpSession session, @ModelAttribute("p") Page page) {
+                        HttpSession session, @ModelAttribute("p") Page page) {
         Admin user = (Admin) session.getAttribute("user");
         if (user != null) {
             model.addAttribute("a", user);
@@ -83,6 +88,17 @@ public class BoardController {
         model.addAttribute("b", board);
 
         return "board/board_write";
+    }
+
+    // 게시글 수정 화면 요청
+    @GetMapping("/edit")
+    public String edit(int boardNo, Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+        Admin user = (Admin) session.getAttribute("user");
+        Board board = boardService.selectOne(boardNo, response, request);
+        model.addAttribute("a", user);
+        model.addAttribute("board", board);
+        session.setAttribute("bn", board.getBoardNo());
+        return "board/board_edit";
     }
 
     // 글 쓰기 처리
@@ -96,20 +112,13 @@ public class BoardController {
         return flag ? "redirect:/board" : "redirect:/";
     }
 
-    // 게시글 수정 화면 요청
-    @GetMapping("/edit")
-    public String edit(int boardNo, Model model) {
-        log.info("boardNo : {}",boardNo);
-        Board board = boardService.findOneService(boardNo);
-        model.addAttribute("board", board);
-        return "board/board_edit";
-    }
 
     // 수정 처리 요청
     @PostMapping("/edit")
-    public String edit(Board board) {
-
-        boolean flag = boardService.edit(board);
+    public String edit(Board board, HttpSession session) {
+        Object obj = session.getAttribute("bn");
+        int boardNo = (int) obj;
+        boolean flag = boardService.edit(board, boardNo);
         return flag ? "redirect:/board/content/" + board.getBoardNo() : "redirect:/";
     }
 
@@ -143,7 +152,6 @@ public class BoardController {
 
         return new ResponseEntity<>(files, HttpStatus.OK);
     }
-
 
 
 }
