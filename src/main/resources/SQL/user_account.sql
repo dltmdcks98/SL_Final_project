@@ -23,7 +23,8 @@ delete from user_account where manager='ROLE_KAKAO';
 
 select *from user_account;
 
-
+select * from user_account;
+UPDATE user_account SET profile = 'testt' where user_id=6;
 
 select * from tag;
 

@@ -1,23 +1,30 @@
 package com.slfinalproject.commurest.admin.service;
 
-import com.slfinalproject.commurest.admin.repository.AdminMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 class AdminServiceTest {
 
     @Autowired
-    AdminMapper adminMapper;
+    AdminService adminService;
 
     @Test
-    @DisplayName("")
+    @DisplayName("get profile")
     void getFile() {
-
+        String str = adminService.getProfile(1);
+        assertNotNull(str);
+        System.out.println(str);
+    }
+    @Test
+    @DisplayName("update profile")
+    void updateFile(){
+        assertTrue(adminService.updateProfile("tetettet",6));
     }
 
 }

@@ -1,15 +1,12 @@
 package com.slfinalproject.commurest.admin.domain;
 
 import com.slfinalproject.commurest.board.domain.Board;
-
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 @Data
 public class Admin implements UserDetails {
@@ -22,7 +19,8 @@ public class Admin implements UserDetails {
     private String user_name;
     private Date reg_date;
     private String user_sex;
-
+    //프로필 설정
+    private String profile;
     private Board board;
 
     private int failCnt;
@@ -31,11 +29,7 @@ public class Admin implements UserDetails {
     private boolean isCredentialIsNonExpired;
     private boolean isEnabled;
 
-    private int userId;
-    // 첨부파일 이름 목록
-    private List<String> fileNames;
-    // 첨부파일 이름 검색
-    private String fileName;
+
     private Collection<? extends GrantedAuthority> authorities;
 
     @Override

@@ -5,9 +5,6 @@ import com.slfinalproject.commurest.admin.service.AdminService;
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.service.BoardService;
 import com.slfinalproject.commurest.recommend.service.RecommendService;
-import com.slfinalproject.commurest.tag.domain.Tag;
-import com.slfinalproject.commurest.tag.repository.TagMapper;
-import com.slfinalproject.commurest.tag.service.TagService;
 import com.slfinalproject.commurest.util.paging.Page;
 import com.slfinalproject.commurest.util.paging.PageMaker;
 import com.slfinalproject.commurest.util.search.Search;
@@ -19,13 +16,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -42,15 +37,13 @@ public class BoardController {
     // 게시판 메인 페이지
     @GetMapping("")
     public String board(@ModelAttribute("s") Search search, Model model, HttpSession session) {
-        Map<String, Object> boardMap = boardService.findAllService(search, session);
+        Map<String, Object> boardMap = boardService.findAllService(search ,session);
         PageMaker pageMaker = new PageMaker(
                 new Page(search.getPageNum(), search.getAmount())
                 , (Integer) boardMap.get("tc"));
         model.addAttribute("bList", boardMap.get("bList"));
         model.addAttribute("pageMaker", pageMaker);
         session.setAttribute("redirectURIt", "board");
-        List<Admin> findProfile = adminService.findProfile();
-        model.addAttribute("findProfile", findProfile);
         return "board/board";
     }
 
