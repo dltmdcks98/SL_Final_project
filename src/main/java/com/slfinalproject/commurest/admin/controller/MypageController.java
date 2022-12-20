@@ -134,8 +134,8 @@ public class MypageController {
     public String myInfo(Model model, HttpSession session) {
         Admin user = adminService.setLoginSession(session);
         session.setAttribute("user", user);
-        List<Admin> findProfile = adminService.findProfile();
-        model.addAttribute("findProfile", findProfile);
+//        List<Admin> findProfile = adminService.findProfile();
+//        model.addAttribute("findProfile", findProfile);
         return "member/myInfo";
     }
 
@@ -145,8 +145,8 @@ public class MypageController {
         Admin admin = adminService.setLoginSession(session);
         model.addAttribute("admin", admin);
 
-        List<Admin> findProfile = adminService.findProfile();
-        model.addAttribute("findProfile", findProfile);
+//        List<Admin> findProfile = adminService.findProfile();
+//        model.addAttribute("findProfile", findProfile);
         boolean flag= adminService.checkProfile(admin.getUserId());
         return "/member/imgProfile";
     }
@@ -159,17 +159,14 @@ public class MypageController {
         } else {
             adminService.updateFileNames(admin);
         }
-        log.info("userId 업로드 처리 - {}" , admin.getUser_id());
         return "/member/myInfo";
     }
+
 
     @GetMapping("/file/{userId}")
     @ResponseBody
     public ResponseEntity<String> getFiles(@PathVariable int userId) {
-
         String files = adminService.getFiles(userId);
-        log.info("/board/file/{} GETMAPPING - {}", userId, files);
-
         return new ResponseEntity<>(files, HttpStatus.OK);
     }
 

@@ -20,7 +20,8 @@ import java.util.List;
 public class FileUploadController {
 
     // 업로드 파일 저장 경로
-    private static final String UPLOAD_PATH = "/usr/local/upload";
+    private static final String UPLOAD_PATH = "D:\\sl_stw\\upload";
+//    private static final String UPLOAD_PATH = "/usr/local/upload";
 
 
 
@@ -137,7 +138,8 @@ public class FileUploadController {
     }
 
     // 서버에 있는 파일 삭제 요청처리
-    @DeleteMapping("/deleteFile")
+    @GetMapping("/deleteFile")
+    @ResponseBody
     public ResponseEntity<String> deleteFile(String fileName) throws Exception {
 
         try {

@@ -1,4 +1,17 @@
 $(document).ready(function () {
+    const $fileDiv = document.querySelector('.fileDiv');
+    const $fileInput = document.querySelector('.fileInput');
+
+
+
+    // 파일을 올릴때마다 증가
+    $fileDiv.addEventListener('div', e=> {
+        e.target.setAttribute('size', e.target.value.length+1);
+    })
+
+    // 현재 문제 : 파일 업로드 할 경우 한번당 하나의 배열로 생성이 된다 그래서 각각 x버튼을 못주고있음
+    // 삭제를 해도 히든에 남아있어서 삭제가안됨 -> if문으로 deleteImg하지않은 파일만 전송 이런식으로 하고 싶음
+
 
     function isImageFile(originFileName) {
         //정규표현식
@@ -21,16 +34,20 @@ $(document).ready(function () {
         $('#write-form').append($hiddenInput);
 
 
+
+            
         if (isImageFile(originFileName)) {
 
             const $img = document.createElement('img');
             $img.classList.add('img-sizing');
             $img.setAttribute('src', '/loadFile?fileName=' + fileName);
             $img.setAttribute('alt', originFileName);
+
             $('.uploaded-list').append($img);
+            deleteImg(fileName);
+
         }
         else {
-
             const $a = document.createElement('a');
             $a.setAttribute('href', '/loadFile?fileName=' + fileName);
 
@@ -40,20 +57,34 @@ $(document).ready(function () {
             $img.setAttribute('alt', originFileName);
 
             $a.append($img);
+
             $a.innerHTML += '<span>' + originFileName + '</span>';
 
             $('.uploaded-list').append($a);
+
         }
     }
-    function showFileData(fileNames) {
+    function deleteImg(fileName) {
+        $fileDiv.addEventListener('click', e => {
+            if(e.target.matches('img')) {
+                console.log(fileName);
+                fetch('/deleteFile?fileName='+fileName)
+                    .then(res => res.text())
+                    .then(satus=>{
+                        console.log(satus)
+                    });
+                $('.uploaded-list').remove();
+            }
+        })
+    }
 
+
+    function showFileData(fileNames) {
         for (let fileName of fileNames) {
+            console.log("파일", fileNames.length);
             checkExtType(fileName);
         }
     }
-
-
-
 
     const $dropBox = $('.fileDrop');
 
@@ -74,7 +105,8 @@ $(document).ready(function () {
     $dropBox.on('drop', e => {
         e.preventDefault();
         const files = e.originalEvent.dataTransfer.files;
-
+        e.target.setAttribute('name','imgList');
+        console.log(e.target.setAttribute)
         const $fileInput = $('#ajax-file');
         $fileInput.prop('files', files);
 
@@ -84,6 +116,7 @@ $(document).ready(function () {
 
         for (let file of $fileInput[0].files) {
             formData.append('files', file);
+            console.log(formData.append);
         }
 
         // 비동기 요청 전송
@@ -103,3 +136,4 @@ $(document).ready(function () {
             });
     });
 });
+

@@ -50,9 +50,12 @@
                 <div class="uploadDiv">
                     <input type="file" name="files" id="ajax-file">
                 </div>
-                <!-- 업로드된 파일의 썸네일을 보여줄 영역 -->
-                <div class="uploaded-list">
+                <div class="fileDiv">
+                    <!-- 업로드된 파일의 썸네일을 보여줄 영역 -->
+                    <div class="fileInput uploaded-list">
 
+                    </div>
+                    <span>이미지 클릭시 삭제됩니다</span>
                 </div>
             </div>
             <div class="tagDivStart">
@@ -79,18 +82,6 @@
 
 </div>
     <%@ include file="../include/footer.jsp" %>
-
-
-<%--<script>--%>
-
-<%--    document.myForm.addEventListener("keydown", evt => {--%>
-<%--        if ((evt.keyCode || evt.which) === 13) {--%>
-<%--            evt.preventDefault();--%>
-<%--        }--%>
-<%--    });--%>
-<%--</script>--%>
-
-
 </body>
 
 </html>

@@ -122,7 +122,6 @@ public class AdminService implements UserDetailsService {
     // 프로필 업로드
     public void getFileNames(Admin admin) {
         List<String> fileNames = admin.getFileNames();
-        log.info("fileNames insert! - {} ", fileNames);
         if (fileNames != null && fileNames.size() > 0) {
             for (String fileName : fileNames) {
                 // 첨부파일 내용 DB에 저장
@@ -134,7 +133,6 @@ public class AdminService implements UserDetailsService {
     // 프로필 수정
     public void updateFileNames(Admin admin) {
         List<String> fileNames = admin.getFileNames();
-        log.info("fileName update! - {} ", fileNames);
         if (fileNames != null && fileNames.size() > 0) {
             for (String fileName : fileNames) {
                 // 첨부파일 내용 DB 수정
@@ -168,9 +166,10 @@ public class AdminService implements UserDetailsService {
     }
 
     // 프로필 사진 등록
-    public List<Admin> findProfile() {
-        return adminMapper.findProfile();
+    public List<Admin> findProfile(int userId) {
+        return adminMapper.findProfile(userId);
     }
+
 
 
 }

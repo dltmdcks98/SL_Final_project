@@ -41,15 +41,19 @@
     </select>
 
     <!-- 프로필 이미지 조회 -->
+<!--    <select id="findProfile" resultMap="adminMap2">-->
+<!--        SELECT A.user_id, B.user_id, B.file_name-->
+<!--        FROM user_account A-->
+<!--        JOIN profile B ON A.user_id = B.user_id-->
+<!--    </select>-->
+
     <select id="findProfile" resultMap="adminMap2">
-        SELECT DISTINCT A.user_id, B.user_id, B.file_name
+        SELECT A.user_id, B.user_id, B.file_name
         FROM user_account A
-                 JOIN profile B ON A.user_id = B.user_id
-                ORDER BY file_name DESC;
+        JOIN profile B ON A.user_id = B.user_id
+        WHERE A.user_id = #{userId}
+
     </select>
-
-
-
 
 
     <insert id="regist">
