@@ -9,22 +9,25 @@
     <script src="/js/board/contentTag.js" defer></script>
 </head>
 <style>
-    #hideSideBar{
-        display : none;
+    #hideSideBar {
+        display: none;
     }
-    @media (max-width: 768px){
-        .content{
+
+    @media (max-width: 768px) {
+        .content {
             width: 90%;
         }
-        .recommend{
+
+        .recommend {
             width: 90%;
         }
-        .col-md-3 > .form-group{
+
+        .col-md-3 > .form-group {
             width: 100%;
         }
 
-        #hideSideBar{
-            display : inline-block;
+        #hideSideBar {
+            display: inline-block;
         }
     }
 </style>
@@ -60,12 +63,16 @@
         </div>
         <!-- 파일 업로드 영역 end -->
         <div class="tagDiv" id="tag">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag"
+                 viewBox="0 0 16 16">
                 <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"/>
                 <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z"/>
-            </svg><label for="tag" class="tagLabel">Tag</label>
+            </svg>
+            <label for="tag" class="tagLabel">Tag</label>
             <c:forEach var="tag" items="${b.tagList}">
-                <a href="/gallery/search-tag?tag=${tag}"><div class="tagList">#<c:out value="${tag}"/></div></a>
+                <a href="/gallery/search-tag?tag=${tag}">
+                    <div class="tagList">#<c:out value="${tag}"/></div>
+                </a>
             </c:forEach>
         </div>
     </div>
@@ -126,13 +133,13 @@
                 <!-- end reply content -->
             </div>
 
-                <div class="comments-list">
+            <div class="comments-list">
 
-                    <button class="list-btn" id="list-btn" type="button">전체글</button>
-                    <c:if test="${user.manager=='ROLE_ADMIN' || user.user_id == b.userId}">
-                        <button id="edit-btn" type="button">글수정</button>
-                        <button id="del-btn" type="button">글삭제</button>
-                    </c:if>
+                <button class="list-btn" id="list-btn" type="button">전체글</button>
+                <c:if test="${user.manager=='ROLE_ADMIN' || user.user_id == b.userId}">
+                    <button id="edit-btn" type="button">글수정</button>
+                    <button id="del-btn" type="button">글삭제</button>
+                </c:if>
 
             </div>
         </div>
@@ -169,7 +176,7 @@
         </div>
     </div>
     <div id="hideSideBar">
-        <%@include file="../include/sidebar.jsp"%>
+        <%@include file="../include/sidebar.jsp" %>
     </div>
 </section>
 

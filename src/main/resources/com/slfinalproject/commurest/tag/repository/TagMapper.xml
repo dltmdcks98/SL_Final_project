@@ -28,6 +28,7 @@
     <select id="getRandomTagValueByUserId" resultType="String">
         SELECT tag_value FROM tag WHERE user_id=#{userId} ORDER BY RAND() LIMIT 1
     </select>
+
     <select id="getTagValueByBoardNo" resultMap="tagMap">
         SELECT tag_value FROM tag WHERE board_no=#{boardNo}
     </select>
@@ -38,6 +39,12 @@
     <insert id="setTagValueByBoardNo">
         INSERT INTO tag(tag_value,board_no) VALUES (REPLACE(#{tagValue},' ', ''),#{boardNo})
     </insert>
+
+    <update id="updateTag">
+        update tag set tag_value=#{tagValue}
+        where board_no=#{boardNo}
+    </update>
+
 
     <insert id="setTagValueByUserId">
         INSERT INTO tag(tag_value,user_id) VALUES (REPLACE(#{tagValue}, ' ', ''),${userId})

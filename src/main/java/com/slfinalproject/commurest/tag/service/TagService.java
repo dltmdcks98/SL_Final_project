@@ -24,6 +24,8 @@ public class TagService {
     public List<Tag> getTagValueByUserId(int userId){
         return tagMapper.getTagValueByUserId(userId);
     }
+
+
     public String getRandomTagValueByUserId(int userId){return tagMapper.getRandomTagValueByUserId(userId);}
     public boolean setTagValue(String value){
         return tagMapper.setTagValue(value);
