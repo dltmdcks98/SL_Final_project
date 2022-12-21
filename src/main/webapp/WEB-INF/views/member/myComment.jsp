@@ -8,7 +8,7 @@
 </head>
 <style>
     .comment {
-        background-color: #3b4890;
+        background-color: #F73F52;
         color: white;
     }
 </style>
