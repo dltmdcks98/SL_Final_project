@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 
 <html>
 <head>
@@ -53,7 +53,7 @@
                 </div>
 
 
-                <c:if test="${not fn:contains(user.user_sex,'k')}">
+                <c:if test="${'k' ne user.user_name}">
                     <form id="update-form" action="/update" method="post" onsubmit="return check()">
 
                         <div class="form-group">
@@ -106,7 +106,7 @@
 
                 </c:if>
 
-                <c:if test="${fn:contains(user.user_sex,'k')}">
+                <c:if test="${'k' eq user.user_name}">
                     <form id="update-form" action="/update-kakao" method="post" >
                         <div class="form-group">
                             <input type="hidden" name="user_id" class="form-control" value="${user.user_id}" readonly>

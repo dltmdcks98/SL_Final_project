@@ -140,7 +140,6 @@
 
 
     (function (){
-        // menuList.setAttribute('style','display:none');
         $(menuList).fadeOut();
 
 
