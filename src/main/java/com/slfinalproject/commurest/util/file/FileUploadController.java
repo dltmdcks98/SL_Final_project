@@ -65,8 +65,10 @@ public class FileUploadController {
         }
 
         if(adminService.updateProfile(fileName,userId)){
-            deleteFile(beforeProfile);
-            session.removeAttribute("profile");
+            if (beforeProfile!=null) {
+                deleteFile(beforeProfile);
+                session.removeAttribute("profile");
+            }
             session.setAttribute("profile",fileName);
             return new ResponseEntity<>(fileNames, HttpStatus.OK);
         }
