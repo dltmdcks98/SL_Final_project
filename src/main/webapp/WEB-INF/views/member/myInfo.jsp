@@ -54,7 +54,6 @@
 
 
                 <c:if test="${'k' ne user.user_sex}">
-                asdf
                     <form id="update-form" action="/update" method="post" onsubmit="return check()">
 
                         <div class="form-group">
@@ -98,12 +97,12 @@
                                 <input type="file" name="files" id="profile-file" accept=".jpg,.png">
                             </div>
                         </div>
-                    </form>
+
                         <div class="form-group text-right">
                             <button type="submit" class="btn btn-primary btn-block" id="regist-btn1">변경</button>
                         </div>
 
-
+                    </form>
 
                 </c:if>
 
@@ -146,12 +145,12 @@
                                 <input type="file" name="files" id="profile-file" accept=".jpg,.png">
                             </div>
                         </div>
-                    </form>
+
                         <div class="form-group text-right">
                             <button type="submit" class="btn btn-primary btn-block" id="regist-btn1">변경</button>
                         </div>
 
-
+                    </form>
                 </c:if>
             </div>
 
