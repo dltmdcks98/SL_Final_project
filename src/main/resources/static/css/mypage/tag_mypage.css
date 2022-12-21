@@ -1,23 +1,13 @@
 .tag-group{
     width: 100%;
-    /*background: #00AFF0;*/
+    height: 45%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     margin-bottom: 3rem;
+    overflow: auto;
 }
 
-.registed-tag{
-    /*background:red;*/
-}
-
-.popular-tag{
-    /*background: yellow;*/
-}
-
-.input-tag{
-    /*background: purple;*/
-}
 
 .tag-item{
     display: flex;

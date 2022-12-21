@@ -17,15 +17,13 @@
         background-color: #F73F52;
         color: white;
     }
-    .over{
-        overflow: scroll;
-    }
+
 </style>
 
 <body>
 <%@include file="../include/header.jsp" %>
 
-<section class="over">
+<section>
     <div class="mymain-container">
 
 
