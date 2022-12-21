@@ -1,23 +1,13 @@
 $(document).ready(function () {
-    const $fileDiv = document.querySelector('.fileDiv');
-    const $fileInput = document.querySelector('.fileInput');
-
-
-
-    // 파일을 올릴때마다 증가
-    $fileDiv.addEventListener('div', e=> {
-        e.target.setAttribute('size', e.target.value.length+1);
-    })
-
-    // 현재 문제 : 파일 업로드 할 경우 한번당 하나의 배열로 생성이 된다 그래서 각각 x버튼을 못주고있음
-    // 삭제를 해도 히든에 남아있어서 삭제가안됨 -> if문으로 deleteImg하지않은 파일만 전송 이런식으로 하고 싶음
-
+    let seq = 0; // 이미지 번호
+    const $fileDiv = document.querySelector('.uploaded-list');
 
     function isImageFile(originFileName) {
         //정규표현식
         const pattern = /jpg$|gif$|png$/i;
         return originFileName.match(pattern);
     }
+
 
     // 파일의 확장자에 따른 렌더링 처리
     function checkExtType(fileName) {
@@ -31,58 +21,78 @@ $(document).ready(function () {
         $hiddenInput.setAttribute('name', 'fileNames');
         $hiddenInput.setAttribute('value', fileName);
 
+        $hiddenInput.dataset.imgNumber = '' + ++seq;
+
+
+
         $('#write-form').append($hiddenInput);
-
-
-
             
         if (isImageFile(originFileName)) {
 
-            const $img = document.createElement('img');
+            const $img = document.createElement('div');
+            let url ='/loadFile?fileName=' + fileName;
             $img.classList.add('img-sizing');
-            $img.setAttribute('src', '/loadFile?fileName=' + fileName);
+            $img.setAttribute("style", "background-image:url(" + url + ");background-size:cover;");
             $img.setAttribute('alt', originFileName);
+            $img.dataset.imgNumber = $hiddenInput.dataset.imgNumber;
+
+            // console.log(url);
+            // console.log("img : ",$img);
 
             $('.uploaded-list').append($img);
-            deleteImg(fileName);
+            deleteImg();
+
+
 
         }
-        else {
-            const $a = document.createElement('a');
-            $a.setAttribute('href', '/loadFile?fileName=' + fileName);
-
-            const $img = document.createElement('img');
-            $img.classList.add('img-sizing');
-            $img.setAttribute('src', '/img/hot_png');
-            $img.setAttribute('alt', originFileName);
-
-            $a.append($img);
-
-            $a.innerHTML += '<span>' + originFileName + '</span>';
-
-            $('.uploaded-list').append($a);
-
-        }
+        // else {
+        //     const $a = document.createElement('a');
+        //     $a.setAttribute('href', '/loadFile?fileName=' + fileName);
+        //
+        //     const $img = document.createElement('img');
+        //     $img.classList.add('img-sizing');
+        //     $img.setAttribute('src', '/img/hot_png');
+        //     $img.setAttribute('alt', originFileName);
+        //
+        //     $a.append($img);
+        //
+        //     $a.innerHTML += '<span>' + originFileName + '</span>';
+        //
+        //     $('.uploaded-list').append($a);
+        //
+        // }
     }
-    function deleteImg(fileName) {
-        $fileDiv.addEventListener('click', e => {
-            if(e.target.matches('img')) {
-                console.log(fileName);
-                fetch('/deleteFile?fileName='+fileName)
+
+    function deleteImg() {
+        $fileDiv.onclick = e => {
+            e.stopPropagation(); // 이벤트 전파 방지
+            if(e.target.matches('div')) {
+                const delTarget = e.target.closest('.img-sizing');
+
+                // console.log("deleteImg Target : ", delTarget);
+                // console.log("deleteImg Target : ", delTarget.dataset.imgNumber);
+
+                const findHidden = document.querySelector('input[data-img-number="' + delTarget.dataset.imgNumber + '"]');
+                // console.log('findHidden:', findHidden);
+                // console.log('findHidden:', findHidden.value);
+
+                fetch('/deleteFile?fileName='+ findHidden.value, { method: 'GET' })
                     .then(res => res.text())
                     .then(satus=>{
                         console.log(satus)
                     });
-                $('.uploaded-list').remove();
+                delTarget.remove();
+                findHidden.remove();
             }
-        })
+        };
     }
+
 
 
     function showFileData(fileNames) {
         for (let fileName of fileNames) {
-            console.log("파일", fileNames.length);
             checkExtType(fileName);
+            console.log("fileName : ",fileName);
         }
     }
 
@@ -105,8 +115,6 @@ $(document).ready(function () {
     $dropBox.on('drop', e => {
         e.preventDefault();
         const files = e.originalEvent.dataTransfer.files;
-        e.target.setAttribute('name','imgList');
-        console.log(e.target.setAttribute)
         const $fileInput = $('#ajax-file');
         $fileInput.prop('files', files);
 
@@ -115,6 +123,7 @@ $(document).ready(function () {
         const formData = new FormData();
 
         for (let file of $fileInput[0].files) {
+
             formData.append('files', file);
             console.log(formData.append);
         }
@@ -131,7 +140,6 @@ $(document).ready(function () {
             })
             .then(fileNames => {
                 console.log(fileNames);
-
                 showFileData(fileNames);
             });
     });

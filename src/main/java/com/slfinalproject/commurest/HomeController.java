@@ -42,9 +42,6 @@ public class HomeController {
         List<Board> findNewImage = boardService.findNewImage();
         model.addAttribute("findNewImage", findNewImage);
 
-        List<Admin> findProfile = adminService.findProfile(admin.getUserId());
-        log.info("findProfile user - {}", findProfile);
-        model.addAttribute("findProfile", findProfile);
 
         session.removeAttribute("redirectURIt");
 

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Log4j2
-@Controller
+@RestController
 public class FileUploadController {
 
     // 업로드 파일 저장 경로
@@ -62,7 +63,7 @@ public class FileUploadController {
 
     // 비동기 요청 파일 업로드 처리
     @PostMapping("/ajax-upload")
-    @ResponseBody
+//    @ResponseBody
     public ResponseEntity<List<String>> ajaxUpload(List<MultipartFile> files) {
 
         log.info("/ajax-upload POST! - {}", files.get(0).getOriginalFilename());
@@ -139,9 +140,11 @@ public class FileUploadController {
 
     // 서버에 있는 파일 삭제 요청처리
     @GetMapping("/deleteFile")
-    @ResponseBody
+//    @ResponseBody
+
     public ResponseEntity<String> deleteFile(String fileName) throws Exception {
 
+        log.info("/deleteFile DELETE REQ!! - {}" + fileName);
         try {
             //파일 삭제
             File delFile = new File(UPLOAD_PATH + fileName);
@@ -155,6 +158,4 @@ public class FileUploadController {
         }
 
     }
-
-
 }
