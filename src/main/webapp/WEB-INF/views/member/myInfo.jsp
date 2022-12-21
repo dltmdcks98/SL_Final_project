@@ -94,7 +94,7 @@
                             </div>
 
                             <div class="uploadDiv">
-                                <input type="file" name="files" id="profile-file" accept=".jpg,.png">
+                                <input type="file" name="files" id="profile-file" accept=".jpg,.png" disabled>
                             </div>
                         </div>
 
@@ -142,7 +142,7 @@
                             </div>
 
                             <div class="uploadDiv">
-                                <input type="file" name="files" id="profile-file" accept=".jpg,.png">
+                                <input type="file" name="files" id="profile-file" accept=".jpg,.png" disabled>
                             </div>
                         </div>
 
