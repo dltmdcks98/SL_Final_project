@@ -8,6 +8,9 @@
     width: 80%;
     height: 80%;
 }
+.test .right-container .row{
+    margin: 0;
+}
 .left-container {
     float: left;
     width: 20%;
@@ -32,13 +35,15 @@
 .home-title {
     font-size: 2rem;
     font-weight: bold;
-    border-top: hidden;
+    border-top:hidden;
+    width: 30%;
     color: #FA5858;
 }
 .tableList tr{
     width: 100%;
 }
 .tableList tr:first-child{
+    height: 5rem;
     border-bottom: 2px #F73F52 solid;
 }
 .tableList td {
@@ -77,21 +82,22 @@
     color: #FA5858;
 }
 .t1 {
-
-}
-.t1:nth-child(2){
-    border: hidden;
-    line-height: 2.5rem;
     width: 100%;
+    border-top:hidden;
     display: flex;
-    justify-content : flex-end;
-    align-items:center;
+    float: none;
+    justify-content: flex-end;
 }
-.t1:nth-child(2) input{
-    width: 50%;
+
+.t1 input{
+    height: 3rem;
+    width: 60%;
+    box-sizing: border-box;
 }
-.t1:nth-child(2) button{
-    padding: .7rem 2rem;
+.t1 button{
+    height: 3rem;
+    width: 5rem;
+    padding: 0;
 
 }
 .openProfileDiv{
