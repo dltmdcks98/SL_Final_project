@@ -77,9 +77,6 @@
 
                         <div class="featured-author-body">
                             <div class="featured-author-cover">
-<%--                                <div class="badges">
-                                    <div class="badge-item"><i class="ion-star"></i> 프로필</div>
-                                </div>--%>
                                 <div class="featured-author-center">
                                     <figure class="featured-author-picture">
                                         <c:if test="${not empty profile}">
@@ -143,3 +140,21 @@
     </div>
 
 </c:if>
+
+<script>
+
+    sideMenu.addEventListener('click',e=>{
+        e.stopImmediatePropagation();
+        document.querySelector('.sidebar').classList.toggle('active');
+        e.preventDefault();
+
+    });
+    document.addEventListener('click',e=>{
+        console.log(e.target);
+        if(!$(e.target).hasClass('sidebar') && !$(e.target).parents().hasClass('sidebar')){
+            document.querySelector('.sidebar').classList.remove('active');
+        }
+
+    });
+
+</script>

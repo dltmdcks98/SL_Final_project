@@ -16,6 +16,7 @@
 
 <body>
 <%@include file="../include/header.jsp" %>
+
 <section>
     <div class="mymain-container">
         <div class="test">
@@ -82,6 +83,7 @@
         </div>
     </div>
 </section>
+
 <%@include file="../include/footer.jsp" %>
 
 
