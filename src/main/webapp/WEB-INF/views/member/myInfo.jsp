@@ -70,7 +70,7 @@
                             <label class="fw">비밀번호</label>
                             <input type="password" id="user_pass" name="user_pass" class="form-control">
                         </div>
-                    </form>
+
                         <label for="fileDrop" class="profileLabel">
                             프로필 설정
                         </label>
@@ -97,7 +97,7 @@
                                 <input type="file" name="files" id="profile-file" accept=".jpg,.png">
                             </div>
                         </div>
-
+                    </form>
                         <div class="form-group text-right">
                             <button type="submit" class="btn btn-primary btn-block" id="regist-btn1">변경</button>
                         </div>
@@ -117,7 +117,7 @@
                             <input type="text" name="user_name" class="form-control"
                                    placeholder="현재 닉네임 : ${user.user_name}">
                         </div>
-                    </form>
+
                         <label for="fileDrop" class="profileLabel">
                             프로필 설정
                         </label>
@@ -145,7 +145,7 @@
                                 <input type="file" name="files" id="profile-file" accept=".jpg,.png">
                             </div>
                         </div>
-
+                    </form>
                         <div class="form-group text-right">
                             <button type="submit" class="btn btn-primary btn-block" id="regist-btn1">변경</button>
                         </div>
