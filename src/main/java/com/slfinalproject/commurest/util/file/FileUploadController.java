@@ -27,6 +27,7 @@ public class FileUploadController {
     // 업로드 파일 저장 경로
 
      private static final String UPLOAD_PATH = "/usr/local/upload";
+//        private static final String UPLOAD_PATH="D:\\upload";
 
         @Autowired
         private AdminService adminService;
@@ -59,14 +60,13 @@ public class FileUploadController {
         }
         String fileName = fileNames.get(0);
         int userId = user.getUser_id();
-        String beforeProfile= null;
-        if(!adminService.getProfile(userId).isEmpty()){
-            beforeProfile = adminService.getProfile(userId);
-        }
+        String beforeProfile= adminService.getProfile(userId);
 
         if(adminService.updateProfile(fileName,userId)){
-            deleteFile(beforeProfile);
-            session.removeAttribute("profile");
+            if (beforeProfile!=null) {
+                deleteFile(beforeProfile);
+                session.removeAttribute("profile");
+            }
             session.setAttribute("profile",fileName);
             return new ResponseEntity<>(fileNames, HttpStatus.OK);
         }

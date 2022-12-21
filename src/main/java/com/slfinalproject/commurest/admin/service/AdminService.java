@@ -108,6 +108,7 @@ public class AdminService implements UserDetailsService {
 
     //프로필 사진 조회
     public String getProfile(int userId) {
+        if(adminMapper.getProfile(userId)==null || adminMapper.getProfile(userId).isEmpty())return null;
         return adminMapper.getProfile(userId);
     }
     // 프로필 사진 수정

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 
 <html>
 <head>
@@ -22,7 +22,7 @@
 </style>
 
 <body>
-<%@include file="../include/header.jsp" %>
+<%@include file="../include/header.jsp"%>
 <section>
     <div class="mymain-container">
 
@@ -47,13 +47,13 @@
                 <div class="info-menu" onclick="location.href='/mypage/myinfo_drop'"> 회원 탈퇴</div>
             </div>
 
-            <form class="menu-content">
+            <div class="menu-content">
                 <div class="simple-info">
                     <p class="menu-title">기본 정보 변경</p>
                 </div>
 
 
-                <c:if test="${not fn:contains(user.user_sex,'k')}">
+                <c:if test="${'k' ne user.user_sex}">
                     <form id="update-form" action="/update" method="post" onsubmit="return check()">
 
                         <div class="form-group">
@@ -71,10 +71,11 @@
                             <input type="password" id="user_pass" name="user_pass" class="form-control">
                         </div>
 
-                        <label for="fileDrop" class="profileLabel">
+                        <label for="profileContain" class="profileLabel">
                             프로필 설정
                         </label>
-                        <div class="profileContain">
+
+                        <div class="profileContain" id="profileContain">
                             <c:if test="${not empty profile}">
                                 <div class="img-sizing beforeProfile">
                                     <img src="/loadFile?fileName=${profile}" alt="profile">
@@ -89,12 +90,12 @@
                                 </div>
                             </c:if>
 
-                            <div class="fileDrop" id="fileDrop">
+                            <div class="fileDrop">
                                 <span class="profileLabel">프로필로 설정할 이미지를 넣어주세요</span>
                             </div>
 
                             <div class="uploadDiv">
-                                <input type="file" name="files" id="profile-file" accept=".jpg,.png">
+                                <input type="file" name="files" id="profile-file" accept=".jpg,.png" disabled>
                             </div>
                         </div>
 
@@ -103,11 +104,10 @@
                         </div>
 
                     </form>
-
                 </c:if>
 
-                <c:if test="${fn:contains(user.user_sex,'k')}">
-                    <form id="update-form" action="/update-kakao" method="post" >
+                <c:if test="${'k' eq user.user_sex}">
+                    <form id="update-form" action="/update-kakao" method="post">
                         <div class="form-group">
                             <input type="hidden" name="user_id" class="form-control" value="${user.user_id}" readonly>
                         </div>
@@ -118,11 +118,11 @@
                                    placeholder="현재 닉네임 : ${user.user_name}">
                         </div>
 
-                        <label for="fileDrop" class="profileLabel">
+                        <label for="profileContain" class="profileLabel">
                             프로필 설정
                         </label>
 
-                        <div class="profileContain">
+                        <div class="profileContain" id="profileContain">
                             <c:if test="${not empty profile}">
                                 <div class="img-sizing beforeProfile">
                                     <img src="/loadFile?fileName=${profile}" alt="profile">
@@ -137,12 +137,12 @@
                                 </div>
                             </c:if>
 
-                            <div class="fileDrop" id="fileDrop">
+                            <div class="fileDrop">
                                 <span class="profileLabel">프로필로 설정할 이미지를 넣어주세요</span>
                             </div>
 
                             <div class="uploadDiv">
-                                <input type="file" name="files" id="profile-file" accept=".jpg,.png">
+                                <input type="file" name="files" id="profile-file" accept=".jpg,.png" disabled>
                             </div>
                         </div>
 
@@ -153,9 +153,7 @@
                     </form>
                 </c:if>
             </div>
-
         </div>
-
 
     </div>
 </section>

@@ -15,7 +15,7 @@
                         targetImg = item.tagImg;
                     }
                 });
-                console.log(targetImg);
+
                 $hotTagImg.style.backgroundImage='url('+targetImg+')';
                 $hotTagImg.classList.add('hotTagImgShow');
             }
@@ -25,7 +25,7 @@
     function setTagImgUrl(){
         for(let $li of [...$tagsList.children]){
             getOneUrl($li.children[0].innerHTML);
-            console.log(hotTagImg);
+
         }
     }
 

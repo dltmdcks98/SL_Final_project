@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script>
 
+<script>
         function isImageFile(originFileName) {
         //정규표현식
             const pattern = /jpg$|gif$|png$/i;
@@ -31,14 +31,12 @@
         $dropBox.on('dragover dragenter', e => {
             e.preventDefault();
             $dropBox
-                .css('border-color', '#690153')
                 .css('background', 'skyblue');
         });
 
         $dropBox.on('dragleave', e => {
             e.preventDefault();
             $dropBox
-                .css('border-color', '#077133')
                 .css('background', 'transparent');
         });
 
@@ -55,7 +53,6 @@
 
             for (let file of $fileInput[0].files) {
                 formData.append('files', file);
-                console.log("file 비동기 : ",file);
             }
 
             // 비동기 요청 전송
@@ -68,7 +65,6 @@
                     return res.json();
                 })
                 .then(fileNames => {
-                    console.log(fileNames);
                     if (confirm("프로필을 변경하시겠어요?")) {
                         checkExtType(fileNames);
                     }

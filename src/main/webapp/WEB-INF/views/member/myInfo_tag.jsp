@@ -24,6 +24,7 @@
 
 <body>
 <%@include file="../include/header.jsp" %>
+
 <section class="over">
     <div class="mymain-container">
 
