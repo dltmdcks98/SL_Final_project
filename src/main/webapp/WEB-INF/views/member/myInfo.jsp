@@ -47,7 +47,7 @@
                 <div class="info-menu" onclick="location.href='/mypage/myinfo_drop'"> 회원 탈퇴</div>
             </div>
 
-            <form class="menu-content">
+            <div class="menu-content">
                 <div class="simple-info">
                     <p class="menu-title">기본 정보 변경</p>
                 </div>
@@ -71,10 +71,11 @@
                             <input type="password" id="user_pass" name="user_pass" class="form-control">
                         </div>
 
-                        <label for="fileDrop" class="profileLabel">
+                        <label for="profileContain" class="profileLabel">
                             프로필 설정
                         </label>
-                        <div class="profileContain">
+
+                        <div class="profileContain" id="profileContain">
                             <c:if test="${not empty profile}">
                                 <div class="img-sizing beforeProfile">
                                     <img src="/loadFile?fileName=${profile}" alt="profile">
@@ -89,7 +90,7 @@
                                 </div>
                             </c:if>
 
-                            <div class="fileDrop" id="fileDrop">
+                            <div class="fileDrop">
                                 <span class="profileLabel">프로필로 설정할 이미지를 넣어주세요</span>
                             </div>
 
@@ -97,13 +98,12 @@
                                 <input type="file" name="files" id="profile-file" accept=".jpg,.png" disabled>
                             </div>
                         </div>
-                    </form>
+
                         <div class="form-group text-right">
                             <button type="submit" class="btn btn-primary btn-block" id="regist-btn1">변경</button>
                         </div>
 
-
-
+                    </form>
                 </c:if>
 
                 <c:if test="${'k' eq user.user_sex}">
@@ -118,11 +118,11 @@
                                    placeholder="현재 닉네임 : ${user.user_name}">
                         </div>
 
-                        <label for="fileDrop" class="profileLabel">
+                        <label for="profileContain" class="profileLabel">
                             프로필 설정
                         </label>
 
-                        <div class="profileContain">
+                        <div class="profileContain" id="profileContain">
                             <c:if test="${not empty profile}">
                                 <div class="img-sizing beforeProfile">
                                     <img src="/loadFile?fileName=${profile}" alt="profile">
@@ -137,7 +137,7 @@
                                 </div>
                             </c:if>
 
-                            <div class="fileDrop" id="fileDrop">
+                            <div class="fileDrop">
                                 <span class="profileLabel">프로필로 설정할 이미지를 넣어주세요</span>
                             </div>
 
@@ -145,17 +145,15 @@
                                 <input type="file" name="files" id="profile-file" accept=".jpg,.png" disabled>
                             </div>
                         </div>
-                    </form>
+
                         <div class="form-group text-right">
                             <button type="submit" class="btn btn-primary btn-block" id="regist-btn1">변경</button>
                         </div>
 
-
+                    </form>
                 </c:if>
             </div>
-
         </div>
-
 
     </div>
 </section>

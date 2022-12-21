@@ -106,6 +106,7 @@ public class MypageController {
     // 개인정보 수정 처리 요청
     @PostMapping("/update")
     public String update(Admin admin, HttpSession s) {
+        log.info(String.valueOf(admin));
         adminService.update(admin);
         s.invalidate();
         return "redirect:/";
