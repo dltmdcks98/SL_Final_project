@@ -37,7 +37,7 @@
     border-top: hidden;
     border-left: hidden;
     border-right: hidden;
-    border-bottom: 2px #3b4890 solid;
+    border-bottom: 2px #F73F52 solid;
 
     color: #FA5858;
 
@@ -75,7 +75,7 @@
     border-top: hidden;
     border-left: hidden;
     border-right: hidden;
-    border-bottom: 2px #3b4890 solid;
+    border-bottom: 2px #F73F52 solid;
     color: #FA5858;
 }
 .t1 {
@@ -83,7 +83,7 @@
     border-top: hidden;
     border-left: hidden;
     border-right: hidden;
-    border-bottom: 2px #3b4890 solid;
+    border-bottom: 2px #F73F52 solid;
 }
 .t1:nth-child(2){
     border-top: hidden;
