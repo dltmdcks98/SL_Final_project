@@ -53,7 +53,8 @@
                 </div>
 
 
-                <c:if test="${'k' ne user.user_name}">
+                <c:if test="${'k' ne user.user_sex}">
+                asdf
                     <form id="update-form" action="/update" method="post" onsubmit="return check()">
 
                         <div class="form-group">
@@ -106,7 +107,7 @@
 
                 </c:if>
 
-                <c:if test="${'k' eq user.user_name}">
+                <c:if test="${'k' eq user.user_sex}">
                     <form id="update-form" action="/update-kakao" method="post" >
                         <div class="form-group">
                             <input type="hidden" name="user_id" class="form-control" value="${user.user_id}" readonly>
