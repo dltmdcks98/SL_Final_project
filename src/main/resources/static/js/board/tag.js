@@ -42,10 +42,7 @@ function chkTag(){
         for(let i =1; i< tagList.length; i++){
             let tagValue = tagList[i-1].value;
             let newTagValue = tagList[i].value;
-            console.log('기존 값'+tagValue);
-            console.log('새로운 값'+newTagValue);
             if(tagValue===newTagValue){
-                console.log('같은 값');
                 tagList[i].parentElement.classList.add('warnTag');
                 tagList[i].value='';
 
@@ -56,7 +53,6 @@ function chkTag(){
             }
         }
     }
-    console.log('다른 값')
     return true;
 }
 
