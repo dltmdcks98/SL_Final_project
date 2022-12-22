@@ -36,7 +36,7 @@ public class BoardController {
 
     // 게시판 메인 페이지
     @GetMapping("")
-    public String board(@ModelAttribute("s") Search search, Model model, HttpSession session) {
+    public String board(@ModelAttribute("s") Search search, Model model, HttpSession session,Admin admin) {
         Map<String, Object> boardMap = boardService.findAllService(search ,session);
         PageMaker pageMaker = new PageMaker(
                 new Page(search.getPageNum(), search.getAmount())
@@ -85,6 +85,19 @@ public class BoardController {
         return "board/board_write";
     }
 
+
+
+    // 글 쓰기 처리
+
+    @PostMapping("/write")
+    public String write(Board board, HttpServletResponse response, HttpServletRequest request,
+                        @RequestParam("files") List<MultipartFile> fileList, RedirectAttributes ra) {
+
+        boolean flag = boardService.insertService(board, response, request);
+        if (flag) ra.addFlashAttribute("msg", "reg-success");
+        return flag ? "redirect:/board" : "redirect:/";
+    }
+
     // 게시글 수정 화면 요청
     @GetMapping("/edit")
     public String edit(int boardNo, Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
@@ -99,18 +112,6 @@ public class BoardController {
         return "board/board_edit";
     }
 
-    // 글 쓰기 처리
-
-    @PostMapping("/write")
-    public String write(Board board, HttpServletResponse response, HttpServletRequest request,
-                        @RequestParam("files") List<MultipartFile> fileList, RedirectAttributes ra) {
-
-        boolean flag = boardService.insertService(board, response, request);
-        if (flag) ra.addFlashAttribute("msg", "reg-success");
-        return flag ? "redirect:/board" : "redirect:/";
-    }
-
-
     // 수정 처리 요청
     @PostMapping("/edit")
     public String edit(@RequestParam int boardNo, Board board, Model model) {
@@ -124,9 +125,6 @@ public class BoardController {
     //게시글 삭제 화면 요청
     @GetMapping("/remove")
     public String remove(@ModelAttribute("boardNo") int boardNo, Model model) {
-
-        log.info("controller request delete : {}", boardNo);
-
         return "board/board_remove";
     }
 
@@ -134,8 +132,6 @@ public class BoardController {
     // 게시글 삭제 처리 요청
     @PostMapping("/remove")
     public String remove(int boardNo) {
-        log.info("controller request delete POST : {}", boardNo);
-
         return boardService.remove(boardNo) ? "redirect:/board" : "redirect:/";
     }
 
@@ -144,12 +140,9 @@ public class BoardController {
     @GetMapping("/file/{bno}")
     @ResponseBody
     public ResponseEntity<List<String>> getFiles(@PathVariable int bno) {
-
         List<String> files = boardService.getFiles(bno);
         log.info("bno : files {} ", bno, files);
 
         return new ResponseEntity<>(files, HttpStatus.OK);
     }
-
-
 }

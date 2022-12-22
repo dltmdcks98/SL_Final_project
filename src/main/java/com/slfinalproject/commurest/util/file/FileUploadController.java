@@ -21,13 +21,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Log4j2
-@Controller
+@RestController
 public class FileUploadController {
 
     // 업로드 파일 저장 경로
+    private static final String UPLOAD_PATH = "/usr/local/upload";
 
-     private static final String UPLOAD_PATH = "/usr/local/upload";
-//        private static final String UPLOAD_PATH="D:\\upload";
 
         @Autowired
         private AdminService adminService;
@@ -146,9 +145,12 @@ public class FileUploadController {
     }
 
     // 서버에 있는 파일 삭제 요청처리
-    @DeleteMapping("/deleteFile")
+    @GetMapping("/deleteFile")
+//    @ResponseBody
+
     public ResponseEntity<String> deleteFile(String fileName) throws Exception {
 
+        log.info("/deleteFile DELETE REQ!! - {}" + fileName);
         try {
             //파일 삭제
             File delFile = new File(UPLOAD_PATH + fileName);
@@ -162,6 +164,4 @@ public class FileUploadController {
         }
 
     }
-
-
 }
