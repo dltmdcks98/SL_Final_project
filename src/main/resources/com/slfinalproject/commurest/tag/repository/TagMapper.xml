@@ -16,7 +16,10 @@
         <result column="tag_value" property="tagValue"/>
         <result column="count" property="count" />
     </resultMap>
-    
+
+    <select id="getTagId" resultType="int">
+        SELECT tag_id FROM tag WHERE tag_value=#{tagValue} AND board_no=#{boardNo};
+    </select>
     <select id="getTagValue" resultType="String">
         SELECT tag_value FROM tag WHERE tag_id=#{tagId}
     </select>
@@ -42,7 +45,7 @@
 
     <update id="updateTag">
         update tag set tag_value=#{tagValue}
-        where board_no=#{boardNo}
+        where tag_id=#{tagId}
     </update>
 
 
@@ -66,4 +69,7 @@
         DELETE FROM tag WHERE user_id=#{userId} AND tag_value=#{tagValue}
     </delete>
 
+    <delete id="deleteTagByBoardNo">
+        DELETE FROM tag WHERE board_no=#{BoardNo}
+    </delete>
 </mapper>
