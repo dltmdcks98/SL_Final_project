@@ -130,33 +130,10 @@ public class MypageController {
     public String myInfo(Model model, HttpSession session) {
         Admin user = adminService.setLoginSession(session);
         session.setAttribute("user", user);
-        List<Admin> findProfile = adminService.findProfile();
-        model.addAttribute("findProfile", findProfile);
         return "member/myInfo";
     }
 
-    //프로필 사진 업로드 페이지
-    @GetMapping("/mypage/imgProfile")
-    public String profile(Model model, HttpSession session) {
-        Admin admin = adminService.setLoginSession(session);
-        model.addAttribute("admin", admin);
 
-        List<Admin> findProfile = adminService.findProfile();
-        model.addAttribute("findProfile", findProfile);
-        boolean flag= adminService.checkProfile(admin.getUserId());
-        return "/member/imgProfile";
-    }
-    // 프로필 사진 업로드 처리
-    @PostMapping("/mypage/imgProfile")
-    public String profileupload(Admin admin) {
-        boolean flag= adminService.checkProfile(admin.getUser_id());
-        if(!flag) {
-            adminService.getFileNames(admin);
-        } else {
-            adminService.updateFileNames(admin);
-        }
-        return "/member/myInfo";
-    }
 
     @GetMapping("/file/{userId}")
     @ResponseBody
