@@ -131,3 +131,6 @@ img {
     transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
     color: #999;
 }
+section{
+    overflow: auto;
+}
