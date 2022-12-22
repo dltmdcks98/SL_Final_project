@@ -114,9 +114,8 @@ public class BoardController {
 
     // 수정 처리 요청
     @PostMapping("/edit")
-    public String edit(@RequestParam int boardNo, Board board, Model model) {
+    public String edit(@RequestParam int boardNo, Board board) {
         board.setBoardNo(boardNo);
-        log.info("boardNo Edit : "+boardNo);
         boolean flag = boardService.edit(board, boardNo);
         return flag ? "redirect:/board/content/" + board.getBoardNo() : "redirect:/";
     }

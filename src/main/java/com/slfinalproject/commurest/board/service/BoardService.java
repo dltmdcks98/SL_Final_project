@@ -75,7 +75,6 @@ public class BoardService {
     // 게시글 수정 요청
 
     public boolean edit(Board board, int boardNo) {
-
         for(int i=0; i< board.getTagList().size();i++){
             tagMapper.updateTag(board.getTagList().get(i),boardNo);
         }
