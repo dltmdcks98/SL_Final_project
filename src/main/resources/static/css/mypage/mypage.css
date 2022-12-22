@@ -49,6 +49,7 @@
 .tableList td {
     padding-bottom: 1rem;
     text-align: left;
+    width: auto;
 }
 .row:nth-child(2) {
     margin-top: 2%;

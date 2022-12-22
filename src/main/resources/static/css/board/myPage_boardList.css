@@ -43,6 +43,7 @@ td {
 .title {
     text-align: left;
     color: #962411;
+    width: 100%;
 }
 
 .title:hover{
