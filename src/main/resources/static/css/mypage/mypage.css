@@ -85,7 +85,7 @@
 .t1 {
     width: 100%;
     border-top:hidden;
-    flex: 1;
+    display: flex;
     float: none;
     justify-content: flex-end;
 }

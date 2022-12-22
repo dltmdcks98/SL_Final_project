@@ -4,13 +4,17 @@ body {
 }
 
 .write-container {
-    width: 85%;
+    width: 55%;
     margin: 0 auto 10rem;
     font-size: 1.5em;
 }
-
+@media screen and (max-width: 768px){
+    .write-container{
+        width: 85%;
+    }
+}
 .fileDrop {
-    width: 35%;
+
     border: 1px dashed gray;
     display: flex;
     justify-content: center;

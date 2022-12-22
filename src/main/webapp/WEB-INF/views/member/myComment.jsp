@@ -50,7 +50,7 @@
                             </tr>
                             <c:forEach var="r" items="${rList}">
                                 <tr onclick="location.href='/board/content/${r.boardNo}'">
-                                    <td class="title">${r.replyText}
+                                    <td colspan="2" class="title">${r.replyText}
                                         <p>${r.replyDate}</p>
                                     </td>
                                 </tr>

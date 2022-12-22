@@ -50,7 +50,7 @@
                             </tr>
                             <c:forEach var="b" items="${bList}">
                                 <tr onclick="location.href='/board/content/${b.boardNo}'" >
-                                    <td class="title">${b.title} <c:if test="${b.replyCnt != 0}">[${b.replyCnt}]</c:if>
+                                    <td colspan="2" class="title">${b.title} <c:if test="${b.replyCnt != 0}">[${b.replyCnt}]</c:if>
                                         <p>${b.simpleDate}</p>
                                     </td>
                                 </tr>
