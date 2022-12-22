@@ -157,6 +157,7 @@
 
     </div>
 </section>
+<%@include file="include/profile.jsp" %>
 <%@include file="../include/footer.jsp" %>
 </body>
 <script>
