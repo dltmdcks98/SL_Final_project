@@ -141,7 +141,6 @@
 
             </div>
 
-
             <%@include file="../include/sidebar.jsp"%>
             <%@include file="../include/list.jsp"%>
         </div>

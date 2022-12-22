@@ -4,8 +4,6 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.slfinalproject.commurest.board.repository.BoardMapper">
 
-
-
     <resultMap id="boardMap" type="com.slfinalproject.commurest.board.domain.Board">
         <result property="boardNo" column="board_no"/>
         <result property="userId" column="user_id"/>
@@ -95,7 +93,7 @@
     <select id="getTotalCountSearch" resultType="int">
         SELECT COUNT(A.board_no)  FROM board A
         LEFT JOIN user_account B ON A.user_id = B.user_id
-        LEFT JOIN (SELECT DISTINCT board_no FROM tag C) C ON A.board_no = C.board_no;
+        LEFT JOIN (SELECT DISTINCT board_no,tag_value FROM tag C) C ON A.board_no = C.board_no
             <if test="type=='title'">WHERE A.title LIKE CONCAT('%', #{keyword}, '%')</if>
             <if test="type=='userName'">WHERE B.user_name LIKE CONCAT('%', #{keyword}, '%')</if>
             <if test="type=='content'">WHERE A.content LIKE CONCAT('%', #{keyword}, '%')</if>

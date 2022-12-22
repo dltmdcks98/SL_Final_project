@@ -186,17 +186,6 @@ public class BoardService {
         return boardMapper.remove(boardNo);
     }
 
-
-
-
-
-    @Transactional
-    public Board findOneService(int boardNo) {
-        return boardMapper.selectOne(boardNo);
-    }
-
-
-
     // 게시글 조회수 갱신
 
     private void hitCount(int boardNo, HttpServletResponse response, HttpServletRequest request) {
@@ -220,7 +209,6 @@ public class BoardService {
    public List<String> getFiles(int bno) {
         return boardMapper.fileNames(bno);
     }
-
 
 
     // 최근에 쓴 이미지가 들어간 게시글 출력

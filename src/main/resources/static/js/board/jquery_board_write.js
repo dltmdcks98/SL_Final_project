@@ -36,8 +36,6 @@ $(document).ready(function () {
             $img.setAttribute('alt', originFileName);
             $img.dataset.imgNumber = $hiddenInput.dataset.imgNumber;
 
-            // console.log(url);
-            // console.log("img : ",$img);
 
             $('.uploaded-list').append($img);
             deleteImg();
@@ -90,9 +88,9 @@ $(document).ready(function () {
 
 
     function showFileData(fileNames) {
+        document.querySelector('.fileDiv').classList.remove('hidden');
         for (let fileName of fileNames) {
             checkExtType(fileName);
-            console.log("fileName : ",fileName);
         }
     }
 

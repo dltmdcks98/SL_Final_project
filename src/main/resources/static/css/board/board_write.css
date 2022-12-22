@@ -5,7 +5,7 @@ body {
 
 .write-container {
     width: 85%;
-    margin: 0 auto;
+    margin: 0 auto 10rem;
     font-size: 1.5em;
 }
 
@@ -35,7 +35,6 @@ body {
     display:flex;
     width: 100%;
     height: 150px;
-/*   임시 */
 }
 
 
@@ -64,7 +63,7 @@ body {
     padding: 0.5rem;
     border: none;
     border-radius: 3rem;
-    flex: 1;
+    display: flex;
     align-items: center;
 }
 .tagInput{
