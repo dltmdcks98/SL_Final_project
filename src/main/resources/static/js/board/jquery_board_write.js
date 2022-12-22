@@ -45,22 +45,22 @@ $(document).ready(function () {
 
 
         }
-        // else {
-        //     const $a = document.createElement('a');
-        //     $a.setAttribute('href', '/loadFile?fileName=' + fileName);
-        //
-        //     const $img = document.createElement('img');
-        //     $img.classList.add('img-sizing');
-        //     $img.setAttribute('src', '/img/hot_png');
-        //     $img.setAttribute('alt', originFileName);
-        //
-        //     $a.append($img);
-        //
-        //     $a.innerHTML += '<span>' + originFileName + '</span>';
-        //
-        //     $('.uploaded-list').append($a);
-        //
-        // }
+        else {
+            const $a = document.createElement('a');
+            $a.setAttribute('href', '/loadFile?fileName=' + fileName);
+
+            const $img = document.createElement('img');
+            $img.classList.add('img-sizing');
+            $img.setAttribute('src', '/img/hot_png');
+            $img.setAttribute('alt', originFileName);
+
+            $a.append($img);
+
+            $a.innerHTML += '<span>' + originFileName + '</span>';
+
+            $('.uploaded-list').append($a);
+
+        }
     }
 
     function deleteImg() {
