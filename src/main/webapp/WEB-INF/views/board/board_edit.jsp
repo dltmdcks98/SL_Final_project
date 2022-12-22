@@ -112,17 +112,8 @@
         }
     };
 
-    <%--if($editBtn) {--%>
-    <%--    //수정버튼--%>
-    <%--    $editBtn.onclick = e => {--%>
-    <%--        if ($editBtn !== null) {--%>
-    <%--            location.href = '/board/edit?boardNo=${board.boardNo}';--%>
-    <%--        }--%>
-    <%--    };--%>
-    <%--}--%>
     const $editBtn = document.getElementById('edit-btn');
     $editBtn.onclick = e => {
-
         const $form = document.getElementById('edit-form');
         $form.submit();
     };
@@ -134,6 +125,7 @@
     });
 
 </script>
+
 <%@ include file="../include/footer.jsp" %>
 </body>
 </html>

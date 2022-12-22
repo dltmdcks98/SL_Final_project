@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     let seq = 0; // 이미지 번호
     const $fileDiv = document.querySelector('.uploaded-list');
 
@@ -67,8 +68,16 @@ $(document).ready(function () {
                         .then(satus => {
                             console.log(satus)
                         });
-                    delTarget.remove();
-                    findHidden.remove();
+                        delTarget.remove();
+                        findHidden.remove();
+
+                        // if($editBtn.click) {
+                        // }
+
+
+                    // 그러면 delTarget은 삭제가 되고(화면상에서만) hidden이 살아있고 수정 버튼을 클릭시 hidden이 삭제되고
+                    // 그렇지 않을경우 delTarget을 리턴한다.
+
                 }
             };
     }
