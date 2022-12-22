@@ -14,8 +14,7 @@ tbody tr:hover {
 
 thead tr {
     display: table-row;
-    border-style: groove hidden;
-    border-color: #81F7D8;
+    border-bottom: 1px #191e21 solid;
 }
 
 thead th {
@@ -43,38 +42,13 @@ td {
 
 .title {
     text-align: left;
-}
-
-
-/*index 인기 태그 photos*/
-/*.gird{
-    width: 100%;
-    margin: 0 auto;
-}
-.item {
-    margin-bottom: .9375rem;
-    border-radius: 0.25rem;
-    overflow: hidden;
-
-    float: left;
-}
-.item img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    display: block;
-}*/
-
-.title{
     color: #962411;
 }
+
 .title:hover{
     color: #46209A;
     cursor: pointer;
 }
-/*tbody td:nth-child(2){
-    width: 50%;
-}*/
 
 .block img{
     width: 30%;
