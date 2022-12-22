@@ -39,7 +39,7 @@
     width: 30%;
     color: #FA5858;
 }
-.tableList tr{
+.tableList tbody tr{
     width: 100%;
 }
 .tableList tr:first-child{
