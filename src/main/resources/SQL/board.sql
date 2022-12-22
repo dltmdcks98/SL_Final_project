@@ -102,9 +102,6 @@ where A.title like '%아이유%' or A.content like '%아이유%' or B.tag_value 
 order by board_no DESC;
 
 
-
-
-
 select  A.board_no, A.title, A.content, B.tag_value
 from board A
          JOIN tag B ON A.board_no = B.board_no

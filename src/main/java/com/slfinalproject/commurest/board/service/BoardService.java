@@ -72,15 +72,36 @@ public class BoardService {
 
         return flag;
     }
-    // 게시글 수정 요청
+    /*
+    public void getFileNames(Board board) {
+        List<String> fileNames = board.getFileNames();
+        log.info("fileName update - {} ", fileNames); // 파일업로드는 insert 하거나 delete 하거나..?
+        if (fileNames != null && fileNames.size() > 0) {
+            for (String fileName : fileNames) {
+                // 첨부파일 내용 DB에 저장
+                boardMapper.addFile(fileName);
+            }
+        }
+    }
 
+     */
+    // 게시글 수정 요청
+    @Transactional
     public boolean edit(Board board, int boardNo) {
 
-        for(int i=0; i< board.getTagList().size();i++){
-            tagMapper.updateTag(board.getTagList().get(i),boardNo);
+//        for(int i=0; i< board.getTagList().size();i++){
+//            tagMapper.updateTag(board.getTagList().get(i),boardNo);
+//        }
+        boardMapper.deleteFile(boardNo);
+        List<String> fileNames = board.getFileNames();
+        log.info("파일업로드 수정 실행!! - {} ", fileNames);
+        if (fileNames != null && fileNames.size() > 0) {
+            for (String fileName : fileNames) {
+                // 첨부파일 내용 DB에 저장
+                boardMapper.updateFile(fileName, boardNo);
+            }
         }
-        boolean flag = boardMapper.edit(board);
-        return flag;
+        return boardMapper.edit(board);
     }
 
 

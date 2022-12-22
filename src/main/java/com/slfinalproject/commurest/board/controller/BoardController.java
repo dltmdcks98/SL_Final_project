@@ -3,6 +3,7 @@ package com.slfinalproject.commurest.board.controller;
 import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.admin.service.AdminService;
 import com.slfinalproject.commurest.board.domain.Board;
+import com.slfinalproject.commurest.board.repository.BoardMapper;
 import com.slfinalproject.commurest.board.service.BoardService;
 import com.slfinalproject.commurest.recommend.service.RecommendService;
 import com.slfinalproject.commurest.util.paging.Page;
@@ -13,6 +14,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -91,7 +93,7 @@ public class BoardController {
 
     @PostMapping("/write")
     public String write(Board board, HttpServletResponse response, HttpServletRequest request,
-                        @RequestParam("files") List<MultipartFile> fileList, RedirectAttributes ra) {
+                        RedirectAttributes ra) {
 
         boolean flag = boardService.insertService(board, response, request);
         if (flag) ra.addFlashAttribute("msg", "reg-success");
@@ -103,21 +105,21 @@ public class BoardController {
     public String edit(int boardNo, Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
         Admin user = (Admin) session.getAttribute("user");
         Board board = boardService.selectOne(boardNo, response, request);
+
         model.addAttribute("a", user);
         model.addAttribute("board", board);
         model.addAttribute("bn", board.getBoardNo());
-
-
 
         return "board/board_edit";
     }
 
     // 수정 처리 요청
     @PostMapping("/edit")
-    public String edit(@RequestParam int boardNo, Board board, Model model) {
+    public String edit(@RequestParam int boardNo, Board board, Model model,RedirectAttributes ra) {
         board.setBoardNo(boardNo);
         log.info("boardNo Edit : "+boardNo);
         boolean flag = boardService.edit(board, boardNo);
+        if (flag) ra.addFlashAttribute("msg", "reg-success");
         return flag ? "redirect:/board/content/" + board.getBoardNo() : "redirect:/";
     }
 

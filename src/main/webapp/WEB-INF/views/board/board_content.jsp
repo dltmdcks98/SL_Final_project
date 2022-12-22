@@ -39,6 +39,7 @@
     <label>
         <input type="hidden" name="boardNo" value="${b.boardNo}"> <!--hidden으로 숨길예정 test용-->
     </label>
+
     <div class="content">
         <p class="boardH">자유게시판</p>
         <div class="content-title-div">

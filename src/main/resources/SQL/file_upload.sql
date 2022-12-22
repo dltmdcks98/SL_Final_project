@@ -22,9 +22,17 @@ ALTER TABLE file_upload
 
 select *
 from file_upload
-order by reg_date desc;
+order by bno ;
+
+select *
+from file_upload;
+
+
 select *
 from board;
 select *
 from file_upload
 order by file_name limit 3;
+
+DELETE FROM file_upload WHERE bno = 571;
+select * from file_upload where bno=571;

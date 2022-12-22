@@ -13,7 +13,6 @@ $(document).ready(function () {
 
         let originFileName = fileName.substring(fileName.indexOf("_") + 1);
 
-
         if (isImageFile(originFileName)) {
 
             const $img = document.createElement('img');
@@ -22,25 +21,6 @@ $(document).ready(function () {
             $img.setAttribute('alt', originFileName);
             $('.uploaded-list').append($img);
         }
-
-        // 이미지가 아니라면 다운로드 링크를 생성
-        else {
-
-            const $a = document.createElement('a');
-            $a.setAttribute('href', '/loadFile?fileName=' + fileName);
-
-            const $img = document.createElement('img');
-            $img.classList.add('img-sizing');
-            $img.setAttribute('src', '/img/hot.png');
-            $img.setAttribute('alt', originFileName);
-
-            $a.append($img);
-            $a.innerHTML += '<span>' + originFileName + '</span>';
-
-            $('.uploaded-list').append($a);
-
-        }
-
 
     }
 

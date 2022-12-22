@@ -131,6 +131,18 @@
         (#{fileName}, LAST_INSERT_ID())
     </insert>
 
+
+    <!-- 파일업로드 수정 삽입    -->
+    <insert id="updateFile">
+        INSERT INTO file_upload(file_name,bno) VALUES (#{fileName}, #{boardNo})
+<!--        WHERE bno = #{boardNo}-->
+    </insert>
+
+    <!-- 파일업로드 수정 삭제-->
+    <delete id="deleteFile">
+        DELETE FROM file_upload WHERE bno = #{boardNo}
+    </delete>
+
     <!-- 파일목록 가져오기 -->
     <select id="fileNames" resultType="string">
         SELECT file_name

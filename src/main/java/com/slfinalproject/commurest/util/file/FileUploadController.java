@@ -25,8 +25,8 @@ import java.util.List;
 public class FileUploadController {
 
     // 업로드 파일 저장 경로
-//    private static final String UPLOAD_PATH = "D:\\sl_stw\\upload";
-    private static final String UPLOAD_PATH = "/usr/local/upload";
+    private static final String UPLOAD_PATH = "D:\\sl_stw\\upload";
+//    private static final String UPLOAD_PATH = "/usr/local/upload";
 
 
         @Autowired
@@ -77,7 +77,8 @@ public class FileUploadController {
 
     // 비동기 요청 파일 업로드 처리
     @PostMapping("/ajax-upload")
-    @ResponseBody
+//    @ResponseBody
+    @Transactional
     public ResponseEntity<List<String>> ajaxUpload(List<MultipartFile> files) {
 
         log.info("/ajax-upload POST! - {}", files.get(0).getOriginalFilename());
