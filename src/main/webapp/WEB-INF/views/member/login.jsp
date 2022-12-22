@@ -14,7 +14,14 @@
     background: white;
 
 }
-
+form .form-group{
+    margin: 5% auto;
+}
+.form-group.text-right button{
+    width: 100%;
+    padding: 1rem 9rem;
+    border-radius: 0.5rem;
+}
 
 </style>
 <body>
