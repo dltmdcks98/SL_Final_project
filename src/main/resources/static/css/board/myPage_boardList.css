@@ -14,7 +14,8 @@ tbody tr:hover {
 
 thead tr {
     display: table-row;
-    border-bottom: 1px #191e21 solid;
+    border-style: groove hidden;
+    border-color: #81F7D8;
 }
 
 thead th {
@@ -22,9 +23,8 @@ thead th {
 }
 
 tbody tr {
-    border-color: #E7E6E6;
-    border: .1rem;
-    border-style: groove hidden;
+    border-bottom: 1px #191e21 solid;
+
 }
 
 tbody td {
