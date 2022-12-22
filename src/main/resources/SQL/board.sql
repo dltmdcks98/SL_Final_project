@@ -13,8 +13,8 @@ create table board
         foreign key (user_id) references user_account (user_id)
             on delete cascade
 );
-alter table user_account ADD COLUMN file_name varchar(150);
-alter table user_account drop COLUMN file_name;
+alter table user_account ADD COLUMN profile varchar(150);
+
 select *from file_upload;
 create table like_good(
     like_id int(10) auto_increment,
