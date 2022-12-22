@@ -90,10 +90,9 @@ public class BoardController {
     // 글 쓰기 처리
 
     @PostMapping("/write")
-    public String write(Board board, HttpServletResponse response, HttpServletRequest request,
-                        @RequestParam("files") List<MultipartFile> fileList, RedirectAttributes ra) {
-
-        boolean flag = boardService.insertService(board, response, request);
+    public String write(Board board, @RequestParam("files") List<MultipartFile> fileList, RedirectAttributes ra, HttpSession session) {
+        Admin user = (Admin) session.getAttribute("user");
+        boolean flag = boardService.insertService(board, user.getUser_id());
         if (flag) ra.addFlashAttribute("msg", "reg-success");
         return flag ? "redirect:/board" : "redirect:/";
     }
@@ -116,6 +115,8 @@ public class BoardController {
     @PostMapping("/edit")
     public String edit(@RequestParam int boardNo, Board board) {
         board.setBoardNo(boardNo);
+        log.info("tagList {}",board.getTagList());
+
         boolean flag = boardService.edit(board, boardNo);
         return flag ? "redirect:/board/content/" + board.getBoardNo() : "redirect:/";
     }

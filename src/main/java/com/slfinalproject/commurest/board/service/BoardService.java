@@ -14,9 +14,6 @@ import com.slfinalproject.commurest.util.paging.Page;
 import com.slfinalproject.commurest.util.search.Search;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.util.WebUtils;
@@ -44,14 +41,8 @@ public class BoardService {
 
     // 게시글 등록
     @Transactional
-    public boolean insertService(Board board,
-                              HttpServletResponse response, HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        Object securityContextObject = session.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
-        SecurityContext securityContext = (SecurityContext) securityContextObject;
-        Authentication authentication = securityContext.getAuthentication();
-        Admin user = (Admin) authentication.getPrincipal();
-        board.setUserId(user.getUser_id());
+    public boolean insertService(Board board, int userid) {
+        board.setUserId(userid);
         // 게시글을 DB에 저장
         boolean flag = boardMapper.insert(board);
         int boardno = tagMapper.getBoardNo();
@@ -65,7 +56,6 @@ public class BoardService {
         }
         if(board.getTagList()!=null){
             for(int i=0; i< board.getTagList().size();i++){
-                log.info("보드갯리;스트 : "+board.getTagList()+" 보드번호 : "+boardno);
                 tagMapper.setTagValueByBoardNo(board.getTagList().get(i),boardno);
             }
         }
@@ -74,9 +64,15 @@ public class BoardService {
     }
     // 게시글 수정 요청
 
+    @Transactional
     public boolean edit(Board board, int boardNo) {
-        for(int i=0; i< board.getTagList().size();i++){
-            tagMapper.updateTag(board.getTagList().get(i),boardNo);
+        if(board.getTagList()!=null){
+            tagMapper.deleteTagByBoardNo(boardNo);
+            for (int i = 0; i < board.getTagList().size(); i++) {
+                log.info(board.getTagList().get(i));
+                String tagValue = board.getTagList().get(i);
+                tagMapper.setTagValueByBoardNo(tagValue,boardNo);
+            }
         }
         boolean flag = boardMapper.edit(board);
         return flag;

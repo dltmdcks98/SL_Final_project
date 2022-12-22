@@ -77,8 +77,7 @@ function createTag(e){
 function delTag(){
     $tagDiv.addEventListener('click',e=>{
         if(e.target.matches('path')||e.target.matches('svg')){
-            console.log(e.target.closest('div').remove());
-
+            e.target.closest('div').remove();
         }
     });
 }
