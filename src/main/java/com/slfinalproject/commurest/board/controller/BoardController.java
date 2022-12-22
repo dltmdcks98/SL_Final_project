@@ -43,21 +43,22 @@ public class BoardController {
                 , (Integer) boardMap.get("tc"));
         model.addAttribute("bList", boardMap.get("bList"));
         model.addAttribute("pageMaker", pageMaker);
-        session.setAttribute("redirectURIt","board");
+        session.setAttribute("redirectURIt", "board");
         return "board/board";
     }
+
 
     // 글 상세보기 페이지
     @GetMapping("/content/{boardNo}")
     public String content(@PathVariable("boardNo") int boardNo, Model model, @ModelAttribute("p") Page page, HttpServletResponse response, HttpServletRequest request) {
-        Board board = boardService.selectOne(boardNo,response,request);
+        Board board = boardService.selectOne(boardNo, response, request);
         Admin admin = adminService.selectOne2(board.getUserId());
         int recommendCount = recommendService.countRecommendBYBoardNo(boardNo);
 
-        if(request.getSession().getAttribute("user")!=null){
+        if (request.getSession().getAttribute("user") != null) {
             Admin user = (Admin) request.getSession().getAttribute("user");
-            boolean recommendedUser = recommendService.confirmRecommend(boardNo,user.getUser_id());
-            model.addAttribute("recommendedUser",recommendedUser);
+            boolean recommendedUser = recommendService.confirmRecommend(boardNo, user.getUser_id());
+            model.addAttribute("recommendedUser", recommendedUser);
         }
 
         board.setRecommend(recommendCount);
@@ -72,7 +73,7 @@ public class BoardController {
     // 글쓰기 페이지
     @GetMapping("/write")
     public String write(Board board, Model model,
-                         HttpSession session, @ModelAttribute("p") Page page) {
+                        HttpSession session, @ModelAttribute("p") Page page) {
         Admin user = (Admin) session.getAttribute("user");
         if (user != null) {
             model.addAttribute("a", user);
@@ -80,7 +81,22 @@ public class BoardController {
         model.addAttribute("p", page);
         model.addAttribute("b", board);
 
+
         return "board/board_write";
+    }
+
+    // 게시글 수정 화면 요청
+    @GetMapping("/edit")
+    public String edit(int boardNo, Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+        Admin user = (Admin) session.getAttribute("user");
+        Board board = boardService.selectOne(boardNo, response, request);
+        model.addAttribute("a", user);
+        model.addAttribute("board", board);
+        model.addAttribute("bn", board.getBoardNo());
+
+
+
+        return "board/board_edit";
     }
 
     // 글 쓰기 처리
@@ -104,9 +120,10 @@ public class BoardController {
 
     // 수정 처리 요청
     @PostMapping("/edit")
-    public String edit(Board board) {
-
-        boolean flag = boardService.edit(board);
+    public String edit(@RequestParam int boardNo, Board board, Model model) {
+        board.setBoardNo(boardNo);
+        log.info("boardNo Edit : "+boardNo);
+        boolean flag = boardService.edit(board, boardNo);
         return flag ? "redirect:/board/content/" + board.getBoardNo() : "redirect:/";
     }
 
@@ -130,6 +147,8 @@ public class BoardController {
     @ResponseBody
     public ResponseEntity<List<String>> getFiles(@PathVariable int bno) {
         List<String> files = boardService.getFiles(bno);
+        log.info("bno : files {} ", bno, files);
+
         return new ResponseEntity<>(files, HttpStatus.OK);
     }
 }

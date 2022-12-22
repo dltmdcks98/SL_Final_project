@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!-- header -->
+
 
 <div class="firstbar">
     <div class="container">
@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="col-md-6 col-sm-12">
-                <form action="/search"  class="search" autocoㄹ - Clone_Project - 3mplete="off">
+                <form action="/search"  class="search" autocomplete="off">
                     <div class="form-group">
                         <div class="input-group">
                             <input id="keyword" type="text" name="keyword" class="form-control" placeholder="검색어를 입력하세요">
@@ -123,26 +123,8 @@
         e.preventDefault();
     });
 
-    sideMenu.addEventListener('click',e=>{
-        e.stopImmediatePropagation();
-        document.querySelector('.sidebar').classList.toggle('active');
-        e.preventDefault();
-
-    });
-    // document.addEventListener('click',e=>{
-    //     console.log(e.target);
-    //     if(!$(e.target).hasClass('sidebar') && !$(e.target).parents().hasClass('sidebar')){
-    //         document.querySelector('.sidebar').classList.remove('active');
-    //     }
-    //
-    // });
-
-
-
     (function (){
-        // menuList.setAttribute('style','display:none');
         $(menuList).fadeOut();
-
 
     })();
 </script>

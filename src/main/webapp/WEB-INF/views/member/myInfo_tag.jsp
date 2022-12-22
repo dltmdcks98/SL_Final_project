@@ -9,22 +9,21 @@
 </head>
 <style>
     .myinfo {
-        background-color: #3b4890;
+        background-color: #F73F52;
         color: white;
     }
 
     .info-menu:nth-child(2) {
-        background-color: #3b4890;
+        background-color: #F73F52;
         color: white;
     }
-    .over{
-        overflow: scroll;
-    }
+
 </style>
 
 <body>
 <%@include file="../include/header.jsp" %>
-<section class="over">
+
+<section>
     <div class="mymain-container">
 
 

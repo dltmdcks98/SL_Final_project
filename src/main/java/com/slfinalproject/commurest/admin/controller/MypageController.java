@@ -2,25 +2,20 @@ package com.slfinalproject.commurest.admin.controller;
 
 
 import com.slfinalproject.commurest.admin.domain.Admin;
-import com.slfinalproject.commurest.admin.repository.AdminMapper;
 import com.slfinalproject.commurest.admin.service.AdminService;
 import com.slfinalproject.commurest.board.service.BoardService;
 import com.slfinalproject.commurest.reply.service.ReplyService;
-import com.slfinalproject.commurest.util.file.FileUploadController;
 import com.slfinalproject.commurest.util.paging.Page;
 import com.slfinalproject.commurest.util.paging.PageMaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpRequest;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -111,6 +106,7 @@ public class MypageController {
     // 개인정보 수정 처리 요청
     @PostMapping("/update")
     public String update(Admin admin, HttpSession s) {
+
         adminService.update(admin);
         s.invalidate();
         return "redirect:/";
@@ -128,20 +124,13 @@ public class MypageController {
     // 개인정보 수정 페이지 요청
     @GetMapping("/mypage/myinfo")
     public String myInfo(Model model, HttpSession session) {
-        Admin user = adminService.setLoginSession(session);
-        session.setAttribute("user", user);
+        Admin user = (Admin) session.getAttribute("user");
+
+        if(user.getProfile()!=null){
+            String profile = adminService.getProfile(user.getUser_id());
+            model.addAttribute("profile", profile);
+        }
         return "member/myInfo";
     }
-
-
-
-    @GetMapping("/file/{userId}")
-    @ResponseBody
-    public ResponseEntity<String> getFiles(@PathVariable int userId) {
-        String files = adminService.getFiles(userId);
-
-        return new ResponseEntity<>(files, HttpStatus.OK);
-    }
-
 
 }

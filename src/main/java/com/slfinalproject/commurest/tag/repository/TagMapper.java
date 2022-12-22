@@ -18,7 +18,7 @@ public interface TagMapper {
     boolean setTagValueByBoardNo(String tagValue,int boardNo);
     boolean setTagValueByUserId(String tagValue,int userId);
     List<Tag> getTagByKeyword(String keyword);
-
+    boolean updateTag(String tagValue, int boardNo);
     List<TagList> getHotTag();
     List<TagList> getHotTagByUser();
     boolean deleteTag(int userId, String tagValue);

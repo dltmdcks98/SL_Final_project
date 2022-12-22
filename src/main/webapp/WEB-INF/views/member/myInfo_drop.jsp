@@ -8,12 +8,12 @@
 </head>
 <style>
     .myinfo {
-        background-color: #3b4890;
+        background-color: #F73F52;
         color: white;
     }
 
     .info-menu:nth-child(3) {
-        background-color: #3b4890;
+        background-color: #F73F52;
         color: white;
     }
 </style>
@@ -81,6 +81,7 @@
 
 </div>
     </section>
+
 <%@include file="../include/footer.jsp" %>
 </body>
 

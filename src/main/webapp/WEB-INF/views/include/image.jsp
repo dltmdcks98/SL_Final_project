@@ -4,18 +4,6 @@
     const $tagsList = document.querySelector('.tags-list');
     let hotTagImg = [];
 
-/*    const URL = '/ajax-gallery/index';
-    function getImg(){
-        fetch(URL)
-            .then(res => res.json());
-  /!*          .then(urls => {
-                for(let i=0; i< urls.length;i++){
-                    $block.innerHTML+='<img src="'+urls[i]+'" onerror="this.style.display=`none`"/>';
-                }
-
-            })*!/;
-    }*/
-
     function tagListMouseOverEventHandler(){
         $tagsList.addEventListener('mouseover',e =>{
             if(e.target.matches('a')){
@@ -27,7 +15,7 @@
                         targetImg = item.tagImg;
                     }
                 });
-                console.log(targetImg);
+
                 $hotTagImg.style.backgroundImage='url('+targetImg+')';
                 $hotTagImg.classList.add('hotTagImgShow');
             }
@@ -37,7 +25,7 @@
     function setTagImgUrl(){
         for(let $li of [...$tagsList.children]){
             getOneUrl($li.children[0].innerHTML);
-            console.log(hotTagImg);
+
         }
     }
 

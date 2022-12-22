@@ -1,15 +1,20 @@
 package com.slfinalproject.commurest.util.file;
 
+import com.slfinalproject.commurest.admin.domain.Admin;
+import com.slfinalproject.commurest.admin.service.AdminService;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -22,6 +27,9 @@ public class FileUploadController {
     // 업로드 파일 저장 경로
     private static final String UPLOAD_PATH = "/usr/local/upload";
 
+
+        @Autowired
+        private AdminService adminService;
 
 
     // 파일 업로드 처리를 위한 요청
@@ -38,18 +46,31 @@ public class FileUploadController {
 
     @PostMapping("/profile-upload")
     @ResponseBody
-    public ResponseEntity<List<String>> profileUpload(List<MultipartFile> files) {
+    @Transactional
+    public ResponseEntity<List<String>> profileUpload(List<MultipartFile> files, HttpSession session) throws Exception {
         List<String> fileNames = new ArrayList<>();
-        log.info("files  -{} ", files);
+        Admin user = (Admin) session.getAttribute("user");
 
         // 클라이언트가 전송한 파일 업로드하기
+        String fullPath = null;
         for (MultipartFile file : files) {
-            String fullPath = FileUtil.uploadFile(file, UPLOAD_PATH);
+            fullPath = FileUtil.uploadFile(file, UPLOAD_PATH);
             fileNames.add(fullPath);
+        }
+        String fileName = fileNames.get(0);
+        int userId = user.getUser_id();
+        String beforeProfile= adminService.getProfile(userId);
 
+        if(adminService.updateProfile(fileName,userId)){
+            if (beforeProfile!=null) {
+                deleteFile(beforeProfile);
+                session.removeAttribute("profile");
+            }
+            session.setAttribute("profile",fileName);
+            return new ResponseEntity<>(fileNames, HttpStatus.OK);
         }
 
-        return new ResponseEntity<>(fileNames, HttpStatus.OK);
+        return  new ResponseEntity<>(fileNames, HttpStatus.BAD_REQUEST);
     }
 
 
@@ -71,14 +92,7 @@ public class FileUploadController {
 
         return new ResponseEntity<>(fileNames, HttpStatus.OK);
     }
-    @PostMapping("/ajax-upload-profile")
-    @ResponseBody
-    public ResponseEntity<List<String>> ajaxUploadProfile(List<MultipartFile> files){
-        log.info("/ajax-upload-profile {}",files.get(0).getOriginalFilename());
-        List<String> list = new ArrayList<>();
-        list.add("test");
-        return new ResponseEntity<>(list,HttpStatus.OK);
-    }
+
     // 파일 데이터 로드 요청 처리
     @GetMapping("/loadFile")
     @ResponseBody

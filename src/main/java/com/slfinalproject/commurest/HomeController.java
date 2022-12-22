@@ -1,8 +1,6 @@
 package com.slfinalproject.commurest;
 
 
-import com.slfinalproject.commurest.admin.domain.Admin;
-import com.slfinalproject.commurest.admin.service.AdminService;
 import com.slfinalproject.commurest.board.domain.Board;
 import com.slfinalproject.commurest.board.service.BoardService;
 import com.slfinalproject.commurest.galleryBoard.service.GalleryBoardService;
@@ -26,10 +24,9 @@ public class HomeController {
     private final TagService tagService;
     private final BoardService boardService;
     private final GalleryBoardService galleryBoardService;
-    private final AdminService adminService;
 
     @GetMapping("/")
-    public String home(HttpSession session, Model model, Admin admin){
+    public String home(HttpSession session, Model model){
         List<TagList> getTagList = tagService.getHotTag();
         session.setAttribute("hotTagList",getTagList);
 
@@ -41,7 +38,6 @@ public class HomeController {
 
         List<Board> findNewImage = boardService.findNewImage();
         model.addAttribute("findNewImage", findNewImage);
-
 
         session.removeAttribute("redirectURIt");
 

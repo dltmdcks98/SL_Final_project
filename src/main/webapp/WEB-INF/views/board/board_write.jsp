@@ -21,7 +21,6 @@
 
 
             <div class="mb-4">
-<%--                <label for="asd" class="form-label">user_id</label>--%>
                 <input type="hidden" class="form-control" id="asd" placeholder="${a.user_id}" name="user_id"
                         disabled>
             </div>
@@ -81,7 +80,13 @@
 
 
 </div>
+
     <%@ include file="../include/footer.jsp" %>
+
+
+
+
+
 </body>
 
 </html>

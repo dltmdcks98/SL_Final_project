@@ -63,6 +63,7 @@ public class AdminController {
             session.setAttribute("userReplyCnt",replyService.getTotalCountReplyByUserId(user.getUser_id()));
             session.removeAttribute("userTagImgs");
             session.setAttribute("userTagImgs",galleryBoardService.getImgUrlByTag(tagService.getRandomTagValueByUserId(user.getUser_id()),0,9));
+            session.setAttribute("profile",adminService.getProfile(user.getUser_id()));
         }
 
 

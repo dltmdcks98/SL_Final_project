@@ -52,6 +52,12 @@
         VALUES (#{title}, #{content}, #{userId})
     </insert>
 
+    <!-- 게시글 수정-->
+    <update id="edit">
+        update board set title = #{title}, content = #{content}
+        where board_no = #{boardNo}
+    </update>
+
     <!-- 전체조회-->
     <select id="selectAll" resultMap="boardMap">
         SELECT DISTINCT A.board_no, A.user_id, A.title, A.reg_date, A.hit, A.recommend, B.user_name, C.tag_value
@@ -110,11 +116,7 @@
         delete from board where board_no = #{boardNo}
     </delete>
 
-    <!-- 게시글 수정-->
-    <update id="edit">
-        update board set user_id = #{userId}, title = #{title}, content = #{content}
-        where board_no = #{boardNo}
-    </update>
+
 
     <!-- 조회수 갱신-->
     <update id="hitCount">

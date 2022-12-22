@@ -9,13 +9,14 @@
 </head>
 <style>
     .home {
-        background-color: #3b4890;
+        background-color: #F73F52;
         color: white;
     }
 </style>
 
 <body>
 <%@include file="../include/header.jsp" %>
+
 <section>
     <div class="mymain-container">
         <div class="test">
@@ -82,13 +83,9 @@
         </div>
     </div>
 </section>
+
 <%@include file="../include/footer.jsp" %>
 
 
 </body>
-<script>
-
-
-</script>
-
 </html>
