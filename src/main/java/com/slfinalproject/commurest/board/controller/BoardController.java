@@ -85,19 +85,7 @@ public class BoardController {
         return "board/board_write";
     }
 
-    // 게시글 수정 화면 요청
-    @GetMapping("/edit")
-    public String edit(int boardNo, Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
-        Admin user = (Admin) session.getAttribute("user");
-        Board board = boardService.selectOne(boardNo, response, request);
-        model.addAttribute("a", user);
-        model.addAttribute("board", board);
-        model.addAttribute("bn", board.getBoardNo());
 
-
-
-        return "board/board_edit";
-    }
 
     // 글 쓰기 처리
 
@@ -112,9 +100,15 @@ public class BoardController {
 
     // 게시글 수정 화면 요청
     @GetMapping("/edit")
-    public String edit(int boardNo, Model model) {
-        Board board = boardService.findOneService(boardNo);
+    public String edit(int boardNo, Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+        Admin user = (Admin) session.getAttribute("user");
+        Board board = boardService.selectOne(boardNo, response, request);
+        model.addAttribute("a", user);
         model.addAttribute("board", board);
+        model.addAttribute("bn", board.getBoardNo());
+
+
+
         return "board/board_edit";
     }
 
