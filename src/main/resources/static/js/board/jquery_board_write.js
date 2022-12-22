@@ -1,10 +1,13 @@
 $(document).ready(function () {
+    let seq = 0; // 이미지 번호
+    const $fileDiv = document.querySelector('.uploaded-list');
 
     function isImageFile(originFileName) {
         //정규표현식
         const pattern = /jpg$|gif$|png$/i;
         return originFileName.match(pattern);
     }
+
 
     // 파일의 확장자에 따른 렌더링 처리
     function checkExtType(fileName) {
@@ -18,19 +21,31 @@ $(document).ready(function () {
         $hiddenInput.setAttribute('name', 'fileNames');
         $hiddenInput.setAttribute('value', fileName);
 
-        $('#write-form').append($hiddenInput);
+        $hiddenInput.dataset.imgNumber = '' + ++seq;
 
+
+
+        $('#write-form').append($hiddenInput);
 
         if (isImageFile(originFileName)) {
 
-            const $img = document.createElement('img');
+            const $img = document.createElement('div');
+            let url ='/loadFile?fileName=' + fileName;
             $img.classList.add('img-sizing');
-            $img.setAttribute('src', '/loadFile?fileName=' + fileName);
+            $img.setAttribute("style", "background-image:url(" + url + ");background-size:cover;");
             $img.setAttribute('alt', originFileName);
+            $img.dataset.imgNumber = $hiddenInput.dataset.imgNumber;
+
+            // console.log(url);
+            // console.log("img : ",$img);
+
             $('.uploaded-list').append($img);
+            deleteImg();
+
+
+
         }
         else {
-
             const $a = document.createElement('a');
             $a.setAttribute('href', '/loadFile?fileName=' + fileName);
 
@@ -40,15 +55,44 @@ $(document).ready(function () {
             $img.setAttribute('alt', originFileName);
 
             $a.append($img);
+
             $a.innerHTML += '<span>' + originFileName + '</span>';
 
             $('.uploaded-list').append($a);
+
         }
     }
-    function showFileData(fileNames) {
 
+    function deleteImg() {
+        $fileDiv.onclick = e => {
+            e.stopPropagation(); // 이벤트 전파 방지
+            if(e.target.matches('div')) {
+                const delTarget = e.target.closest('.img-sizing');
+
+                // console.log("deleteImg Target : ", delTarget);
+                // console.log("deleteImg Target : ", delTarget.dataset.imgNumber);
+
+                const findHidden = document.querySelector('input[data-img-number="' + delTarget.dataset.imgNumber + '"]');
+                // console.log('findHidden:', findHidden);
+                // console.log('findHidden:', findHidden.value);
+
+                fetch('/deleteFile?fileName='+ findHidden.value, { method: 'GET' })
+                    .then(res => res.text())
+                    .then(satus=>{
+                        console.log(satus)
+                    });
+                delTarget.remove();
+                findHidden.remove();
+            }
+        };
+    }
+
+
+
+    function showFileData(fileNames) {
         for (let fileName of fileNames) {
             checkExtType(fileName);
+            console.log("fileName : ",fileName);
         }
     }
 
@@ -71,7 +115,6 @@ $(document).ready(function () {
     $dropBox.on('drop', e => {
         e.preventDefault();
         const files = e.originalEvent.dataTransfer.files;
-
         const $fileInput = $('#ajax-file');
         $fileInput.prop('files', files);
 
@@ -90,10 +133,13 @@ $(document).ready(function () {
         };
         fetch('/ajax-upload', reqInfo)
             .then(res => {
+                console.log("status : ",res.status);
                 return res.json();
             })
             .then(fileNames => {
+                console.log(fileNames);
                 showFileData(fileNames);
             });
     });
 });
+

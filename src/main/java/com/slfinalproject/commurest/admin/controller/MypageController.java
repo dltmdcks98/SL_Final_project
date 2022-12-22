@@ -161,7 +161,6 @@ public class MypageController {
     @GetMapping("/file/{userId}")
     @ResponseBody
     public ResponseEntity<String> getFiles(@PathVariable int userId) {
-
         String files = adminService.getFiles(userId);
 
         return new ResponseEntity<>(files, HttpStatus.OK);

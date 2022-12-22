@@ -129,13 +129,13 @@
         e.preventDefault();
 
     });
-    document.addEventListener('click',e=>{
-        console.log(e.target);
-        if(!$(e.target).hasClass('sidebar') && !$(e.target).parents().hasClass('sidebar')){
-            document.querySelector('.sidebar').classList.remove('active');
-        }
-
-    });
+    // document.addEventListener('click',e=>{
+    //     console.log(e.target);
+    //     if(!$(e.target).hasClass('sidebar') && !$(e.target).parents().hasClass('sidebar')){
+    //         document.querySelector('.sidebar').classList.remove('active');
+    //     }
+    //
+    // });
 
 
 

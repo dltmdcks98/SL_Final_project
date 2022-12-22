@@ -31,8 +31,9 @@ public interface AdminMapper {
     void addFile(String fileName, int userId);
 
     void updateFile(String fileName, int userId);
+
     // 프로필 이미지 등록
-    List<Admin> findProfile();
+    List<Admin> findProfile(int userId);
 
     boolean checkProfile(int userId);
 

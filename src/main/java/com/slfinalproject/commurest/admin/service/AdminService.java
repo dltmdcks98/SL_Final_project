@@ -151,9 +151,10 @@ public class AdminService implements UserDetailsService {
     }
 
     // 프로필 사진 등록
-    public List<Admin> findProfile() {
-        return adminMapper.findProfile();
+    public List<Admin> findProfile(int userId) {
+        return adminMapper.findProfile(userId);
     }
+
 
 
 }

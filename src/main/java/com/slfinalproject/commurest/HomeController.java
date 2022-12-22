@@ -29,7 +29,7 @@ public class HomeController {
     private final AdminService adminService;
 
     @GetMapping("/")
-    public String home(HttpSession session, Model model){
+    public String home(HttpSession session, Model model, Admin admin){
         List<TagList> getTagList = tagService.getHotTag();
         session.setAttribute("hotTagList",getTagList);
 
@@ -42,8 +42,6 @@ public class HomeController {
         List<Board> findNewImage = boardService.findNewImage();
         model.addAttribute("findNewImage", findNewImage);
 
-        List<Admin> findProfile = adminService.findProfile();
-        model.addAttribute("findProfile", findProfile);
 
         session.removeAttribute("redirectURIt");
 

@@ -36,7 +36,7 @@ public class BoardController {
 
     // 게시판 메인 페이지
     @GetMapping("")
-    public String board(@ModelAttribute("s") Search search, Model model, HttpSession session) {
+    public String board(@ModelAttribute("s") Search search, Model model, HttpSession session,Admin admin) {
         Map<String, Object> boardMap = boardService.findAllService(search ,session);
         PageMaker pageMaker = new PageMaker(
                 new Page(search.getPageNum(), search.getAmount())
@@ -44,8 +44,8 @@ public class BoardController {
         model.addAttribute("bList", boardMap.get("bList"));
         model.addAttribute("pageMaker", pageMaker);
         session.setAttribute("redirectURIt","board");
-        List<Admin> findProfile = adminService.findProfile();
-        model.addAttribute("findProfile", findProfile);
+//        List<Admin> findProfile = adminService.findProfile();
+//        model.addAttribute("findProfile", findProfile);
         return "board/board";
     }
 
@@ -99,7 +99,6 @@ public class BoardController {
     // 게시글 수정 화면 요청
     @GetMapping("/edit")
     public String edit(int boardNo, Model model) {
-        log.info("boardNo : {}",boardNo);
         Board board = boardService.findOneService(boardNo);
         model.addAttribute("board", board);
         return "board/board_edit";
@@ -117,9 +116,6 @@ public class BoardController {
     //게시글 삭제 화면 요청
     @GetMapping("/remove")
     public String remove(@ModelAttribute("boardNo") int boardNo, Model model) {
-
-        log.info("controller request delete : {}", boardNo);
-
         return "board/board_remove";
     }
 
@@ -127,8 +123,6 @@ public class BoardController {
     // 게시글 삭제 처리 요청
     @PostMapping("/remove")
     public String remove(int boardNo) {
-        log.info("controller request delete POST : {}", boardNo);
-
         return boardService.remove(boardNo) ? "redirect:/board" : "redirect:/";
     }
 
@@ -137,13 +131,7 @@ public class BoardController {
     @GetMapping("/file/{bno}")
     @ResponseBody
     public ResponseEntity<List<String>> getFiles(@PathVariable int bno) {
-
         List<String> files = boardService.getFiles(bno);
-        log.info("bno : files {} ", bno, files);
-
         return new ResponseEntity<>(files, HttpStatus.OK);
     }
-
-
-
 }
