@@ -276,4 +276,7 @@
 [노션링크-진행일지](https://www.notion.so/dltmdcs98/SL_Final_Project-Commurest-50772fbd4e954a5882f64bc94cf84bd0)
 
 
+## 발표
+<hr />
 
+[PPT](https://docs.google.com/presentation/d/1UDSpC9aLflOEKc0b-9pMPoKhG8qtgmyb/edit?usp=share_link&ouid=111718889642151971511&rtpof=true&sd=true)
