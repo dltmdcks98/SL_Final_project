@@ -14,7 +14,6 @@ $(document).ready(function () {
 
         let originFileName = fileName.substring(fileName.indexOf("_") + 1);
 
-
         // hidden input을 만들어서 변환파일명을 서버로 넘김
         const $hiddenInput = document.createElement('input');
         $hiddenInput.setAttribute('type', 'hidden');
@@ -22,8 +21,6 @@ $(document).ready(function () {
         $hiddenInput.setAttribute('value', fileName);
 
         $hiddenInput.dataset.imgNumber = '' + ++seq;
-
-
 
         $('#write-form').append($hiddenInput);
 
@@ -36,12 +33,8 @@ $(document).ready(function () {
             $img.setAttribute('alt', originFileName);
             $img.dataset.imgNumber = $hiddenInput.dataset.imgNumber;
 
-
             $('.uploaded-list').append($img);
             deleteImg();
-
-
-
         }
         else {
             const $a = document.createElement('a');
@@ -67,18 +60,11 @@ $(document).ready(function () {
             if(e.target.matches('div')) {
                 const delTarget = e.target.closest('.img-sizing');
 
-                // console.log("deleteImg Target : ", delTarget);
-                // console.log("deleteImg Target : ", delTarget.dataset.imgNumber);
-
                 const findHidden = document.querySelector('input[data-img-number="' + delTarget.dataset.imgNumber + '"]');
-                // console.log('findHidden:', findHidden);
-                // console.log('findHidden:', findHidden.value);
+
 
                 fetch('/deleteFile?fileName='+ findHidden.value, { method: 'GET' })
-                    .then(res => res.text())
-                    .then(satus=>{
-                        console.log(satus)
-                    });
+                    .then(res => res.text());
                 delTarget.remove();
                 findHidden.remove();
             }
@@ -131,11 +117,9 @@ $(document).ready(function () {
         };
         fetch('/ajax-upload', reqInfo)
             .then(res => {
-                console.log("status : ",res.status);
                 return res.json();
             })
             .then(fileNames => {
-                console.log(fileNames);
                 showFileData(fileNames);
             });
     });

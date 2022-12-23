@@ -81,8 +81,6 @@ public class BoardController {
         }
         model.addAttribute("p", page);
         model.addAttribute("b", board);
-
-
         return "board/board_write";
     }
 
@@ -114,8 +112,6 @@ public class BoardController {
     @PostMapping("/edit")
     public String edit(@RequestParam int boardNo, Board board) {
         board.setBoardNo(boardNo);
-        log.info("tagList {}",board.getTagList());
-
         boolean flag = boardService.edit(board, boardNo);
         return flag ? "redirect:/board/content/" + board.getBoardNo() : "redirect:/";
     }
@@ -140,8 +136,6 @@ public class BoardController {
     @ResponseBody
     public ResponseEntity<List<String>> getFiles(@PathVariable int bno) {
         List<String> files = boardService.getFiles(bno);
-        log.info("bno : files {} ", bno, files);
-
         return new ResponseEntity<>(files, HttpStatus.OK);
     }
 }

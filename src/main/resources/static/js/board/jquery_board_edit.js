@@ -12,22 +12,17 @@ $(document).ready(function () {
     // 기존에 저장해둔 이미지
     callFileList();
 
-
-
     // 파일의 확장자에 따른 렌더링 처리
     function checkExtType(fileName) {
 
         let originFileName = fileName.substring(fileName.indexOf("_") + 1);
-
 
         // hidden input을 만들어서 변환파일명을 서버로 넘김
         const $hiddenInput = document.createElement('input');
         $hiddenInput.setAttribute('type', 'hidden');
         $hiddenInput.setAttribute('name', 'fileNames');
         $hiddenInput.setAttribute('value', fileName);
-
         $hiddenInput.dataset.imgNumber = '' + ++seq;
-
 
         $('#edit-form').append($hiddenInput);
 
@@ -39,9 +34,6 @@ $(document).ready(function () {
             $img.setAttribute("style", "background-image:url(" + url + ");background-size:cover;");
             $img.setAttribute('alt', originFileName);
             $img.dataset.imgNumber = $hiddenInput.dataset.imgNumber;
-
-            // console.log(url);
-            // console.log("img : ",$img);
 
             $('.uploaded-list').append($img);
             deleteImg();
@@ -56,27 +48,14 @@ $(document).ready(function () {
                 if (e.target.matches('div')) {
                     const delTarget = e.target.closest('.img-sizing');
 
-                    console.log("deleteImg Target : ", delTarget);
-                    console.log("deleteImg Target : ", delTarget.dataset.imgNumber);
 
                     const findHidden = document.querySelector('input[data-img-number="' + delTarget.dataset.imgNumber + '"]');
-                    console.log('findHidden:', findHidden);
-                    console.log('findHidden.value:', findHidden.value);
+
 
                     fetch('/deleteFile?fileName=' + findHidden.value, {method: 'GET'})
-                        .then(res => res.text())
-                        .then(satus => {
-                            console.log(satus)
-                        });
+                        .then(res => res.text());
                         delTarget.remove();
                         findHidden.remove();
-
-                        // if($editBtn.click) {
-                        // }
-
-
-                    // 그러면 delTarget은 삭제가 되고(화면상에서만) hidden이 살아있고 수정 버튼을 클릭시 hidden이 삭제되고
-                    // 그렇지 않을경우 delTarget을 리턴한다.
 
                 }
             };
@@ -100,7 +79,6 @@ $(document).ready(function () {
         fetch('/board/file/'+bno)
             .then(res => res.json())
             .then(fileNames => {
-                console.log("저장된 이미지 : ",fileNames);
                 showFileData(fileNames);
             });
     }
@@ -145,11 +123,9 @@ $(document).ready(function () {
         };
         fetch('/ajax-upload', reqInfo)
             .then(res => {
-                console.log("status : ", res.status);
                 return res.json();
             })
             .then(fileNames => {
-                console.log(fileNames);
                 showFileData(fileNames);
             });
     });

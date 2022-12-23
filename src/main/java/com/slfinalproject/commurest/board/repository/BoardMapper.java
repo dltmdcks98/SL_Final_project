@@ -43,9 +43,8 @@ public interface BoardMapper {
     // 글쓰기 파일 추가
     void addFile(String fileName);
 
-    // 파일업로드 수정하기 ( 내 생각으로는 삽입하거나 삭제하거나 둘중하나다)
+    // 파일업로드 수정하기
     void updateFile(String fileName,int boardNo);
-
     void deleteFile(int boardNo);
 
 
@@ -60,10 +59,5 @@ public interface BoardMapper {
 
     // 게시글 추천
     void recommend(int boardNo);
-
-
-
-
-
 
 }

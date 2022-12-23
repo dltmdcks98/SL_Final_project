@@ -112,15 +112,31 @@
 <script>
     const bno = '${board.boardNo}'; // bno = boardNo와 같다!
     const $listBtn = document.getElementById('list-btn');
+    function validateFormValue() {
+        // 제목 입력태그
+        const $titleInput = document.getElementById('title-input');
+        let flag = false;
+
+        console.log('t: ', $titleInput.value);
+
+        if ($titleInput.value.trim() === '') {
+            alert('제목을 입력해주세요');
+        } else {
+            flag = true;
+        }
+        return flag;
+    }
     //목록버튼
     $listBtn.onclick = e => {
         if($listBtn) {
             location.href = '/board/content/${board.boardNo}';
         }
     };
-
     const $editBtn = document.getElementById('edit-btn');
     $editBtn.onclick = e => {
+        if (!validateFormValue()) {
+            return;
+        }
         const $form = document.getElementById('edit-form');
         $form.submit();
     };

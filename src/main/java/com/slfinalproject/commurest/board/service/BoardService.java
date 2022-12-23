@@ -36,7 +36,7 @@ public class BoardService {
     private final ReplyMapper replyMapper;
     private final RecommendMapper recommendMapper;
     private final RecommendService recommendService;
-    private final AdminMapper adminMapper;
+
 
 
     // 게시글 등록
@@ -76,7 +76,6 @@ public class BoardService {
         }
         boardMapper.deleteFile(boardNo);
         List<String> fileNames = board.getFileNames();
-        log.info("파일업로드 수정 실행!! - {} ", fileNames);
         if (fileNames != null && fileNames.size() > 0) {
             for (String fileName : fileNames) {
                 // 첨부파일 내용 DB에 저장
@@ -139,7 +138,7 @@ public class BoardService {
 
 
 
-    // 날짜 포맷 생성     == 이후에 추가로 할 것 : 당일날 작성한 글은 'HH:mm'만 나오고 다음날로 넘어가면(24:00) 가 되면 'yy-MM-dd'로 변경
+    // 날짜 포맷 생성
     private void dateFormat(Board board) {
         Date date = board.getRegDate();
         SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd'  'HH:mm");
@@ -184,14 +183,12 @@ public class BoardService {
 
 
     // 게시글 삭제 요청
-
     @Transactional
     public boolean remove(int boardNo) {
         return boardMapper.remove(boardNo);
     }
 
     // 게시글 조회수 갱신
-
     private void hitCount(int boardNo, HttpServletResponse response, HttpServletRequest request) {
         Cookie foundcookie = WebUtils.getCookie(request, "b" + boardNo);
         if(foundcookie == null) {
@@ -209,19 +206,14 @@ public class BoardService {
 
 
     // 첨부파일 가져오기
-
    public List<String> getFiles(int bno) {
         return boardMapper.fileNames(bno);
     }
 
 
     // 최근에 쓴 이미지가 들어간 게시글 출력
-
-    public List<Board> findNewImage() {
-        return boardMapper.findNewImage();
-    }
-
-//  사용자 게시물 수 조회
+    public List<Board> findNewImage() {return boardMapper.findNewImage(); }
+    //  사용자 게시물 수 조회
     public int getTotalCountByUserId(int uesrId){
         return boardMapper.getTotalCountByUserId(uesrId);
     }
@@ -230,10 +222,10 @@ public class BoardService {
     public void getReplyCount(Board b) {
         b.setReplyCnt(replyMapper.getReplyCount(b.getBoardNo()));
     }
+
     private void chkNewBoard(Board board){
         long regTime = board.getRegDate().getTime();
         long curTime = System.currentTimeMillis();
-
         long dif = curTime - regTime;
         long limitTime = 60 * 10 * 1000;
         if(dif < limitTime){
@@ -269,6 +261,7 @@ public class BoardService {
     public void getUserName(Board board){
         board.setUserName(boardMapper.findMemberByBoardNo(board.getBoardNo()));
     }
+
     public void dateConvert(Board board){
         Date date = board.getRegDate();
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd HH:mm");

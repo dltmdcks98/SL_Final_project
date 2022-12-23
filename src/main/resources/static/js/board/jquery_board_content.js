@@ -9,8 +9,6 @@ $(document).ready(function () {
     // 렌더링 처리
     function checkExtType(fileName) {
 
-        console.log('checkExtType call');
-
         let originFileName = fileName.substring(fileName.indexOf("_") + 1);
 
         if (isImageFile(originFileName)) {
@@ -36,12 +34,9 @@ $(document).ready(function () {
     // 파일 목록 불러오기
     function showFileList() {
 
-        console.log('showfilelist call')
-
         fetch('/board/file/'+bno)
             .then(res => res.json())
             .then(fileNames => {
-                console.log('respons filelist');
                 showFileData(fileNames);
             });
     }
