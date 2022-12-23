@@ -11,8 +11,8 @@ create table user_account
     user_sex   varchar(1)                           not null
 );
 
-alter table user_account ADD COLUMN file_name varchar(150);
-alter table user_account drop COLUMN file_name;
+alter table user_account ADD COLUMN profile varchar(150);
+alter table user_account drop COLUMN profile;
 #매니저 타입 크기를 1->50으로 늘림
 alter table user_account modify manager varchar(50);
 

@@ -6,10 +6,24 @@
     <%@ include file="../include/static-head.jsp" %>
     <link rel="stylesheet" href="/css/board/board_write.css">
     <link rel="stylesheet" href="/css/board/board_edit.css">
-    <script src="/js/board/write.js" defer></script>
-    <script src="/js/board/jquery_board_write.js" defer></script>
+<%--    <script src="/js/board/write.js" defer></script>--%>
+    <script src="/js/board/jquery_board_edit.js" defer></script>
     <script src="/js/board/tag.js" defer></script>
-
+    <style>
+        .uploaded-list {
+            display: flex;
+            width: 100%;
+            height: 150px;
+        }
+        .img-sizing {
+            background-repeat: no-repeat;
+            background-position: center;
+            display: block;
+            width: 20%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
 <%@ include file="../include/header.jsp" %>
@@ -17,7 +31,7 @@
 <div class="wrap">
     <!-- 게시글 영역 begin -->
     <div class="write-container">
-        <form action="/board/edit?boardNo=${board.boardNo}" method="post" class="myForm">
+        <form id="edit-form" action="/board/edit?boardNo=${board.boardNo}" method="post" class="myForm" autocomplete="off" enctype="multipart/form-data">
 
 
             <div class="mb-4">
@@ -53,9 +67,12 @@
                 <div class="uploadDiv">
                     <input type="file" name="files" id="ajax-file">
                 </div>
-                <!-- 업로드된 파일의 썸네일을 보여줄 영역 -->
-                <div class="uploaded-list">
+                <div class="fileDiv">
+                    <!-- 업로드된 파일의 썸네일을 보여줄 영역 -->
+                    <div class="uploaded-list">
 
+                    </div>
+                    <span>이미지 클릭시 삭제됩니다</span>
                 </div>
             </div>
             <div class="tagDivStart">
@@ -84,7 +101,7 @@
 
             <div class="comments-list">
                 <button id="list-btn" type="button">돌아가기</button>
-                <button id="edit-btn" type="submit">수정하기</button>
+                <button id="edit-btn" type="button">수정하기</button>
             </div>
         </form>
 
@@ -92,23 +109,40 @@
 </div>
 <!-- 게시글 영역 end -->
 
-
 <script>
+    const bno = '${board.boardNo}'; // bno = boardNo와 같다!
     const $listBtn = document.getElementById('list-btn');
+    function validateFormValue() {
+        // 제목 입력태그
+        const $titleInput = document.getElementById('title-input');
+        let flag = false;
+
+        console.log('t: ', $titleInput.value);
+
+        if ($titleInput.value.trim() === '') {
+            alert('제목을 입력해주세요');
+        } else {
+            flag = true;
+        }
+        return flag;
+    }
     //목록버튼
     $listBtn.onclick = e => {
-        location.href = '/board/content/${board.boardNo}';
+        if($listBtn) {
+            location.href = '/board/content/${board.boardNo}';
+        }
+    };
+    const $editBtn = document.getElementById('edit-btn');
+    $editBtn.onclick = e => {
+        if (!validateFormValue()) {
+            return;
+        }
+        const $form = document.getElementById('edit-form');
+        $form.submit();
     };
 
-
-    document.addEventListener("keydown", evt => {
-        if ((evt.keyCode || evt.which) === 13) {
-            evt.preventDefault();
-        }
-    });
-
 </script>
-<%@ include file="../include/scripts.jsp" %>
+
 <%@ include file="../include/footer.jsp" %>
 </body>
 </html>

@@ -13,6 +13,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -80,8 +81,6 @@ public class BoardController {
         }
         model.addAttribute("p", page);
         model.addAttribute("b", board);
-
-
         return "board/board_write";
     }
 
@@ -90,7 +89,7 @@ public class BoardController {
     // 글 쓰기 처리
 
     @PostMapping("/write")
-    public String write(Board board, @RequestParam("files") List<MultipartFile> fileList, RedirectAttributes ra, HttpSession session) {
+    public String write(Board board,  RedirectAttributes ra, HttpSession session) {
         Admin user = (Admin) session.getAttribute("user");
         boolean flag = boardService.insertService(board, user.getUser_id());
         if (flag) ra.addFlashAttribute("msg", "reg-success");
@@ -106,8 +105,6 @@ public class BoardController {
         model.addAttribute("board", board);
         model.addAttribute("bn", board.getBoardNo());
 
-
-
         return "board/board_edit";
     }
 
@@ -115,8 +112,6 @@ public class BoardController {
     @PostMapping("/edit")
     public String edit(@RequestParam int boardNo, Board board) {
         board.setBoardNo(boardNo);
-        log.info("tagList {}",board.getTagList());
-
         boolean flag = boardService.edit(board, boardNo);
         return flag ? "redirect:/board/content/" + board.getBoardNo() : "redirect:/";
     }
@@ -141,8 +136,6 @@ public class BoardController {
     @ResponseBody
     public ResponseEntity<List<String>> getFiles(@PathVariable int bno) {
         List<String> files = boardService.getFiles(bno);
-        log.info("bno : files {} ", bno, files);
-
         return new ResponseEntity<>(files, HttpStatus.OK);
     }
 }

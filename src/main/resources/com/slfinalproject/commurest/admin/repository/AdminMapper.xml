@@ -13,10 +13,6 @@
     </resultMap>
 
 
-    <!-- 프로필 이미지 업데이트   -->
-    <update id="updateFile">
-        UPDATE profile SET file_name=#{fileName} WHERE user_id=#{userId}
-    </update>
 
 
     <!-- profile 가져오기 -->

@@ -9,10 +9,7 @@ $(document).ready(function () {
     // 렌더링 처리
     function checkExtType(fileName) {
 
-        console.log('checkExtType call');
-
         let originFileName = fileName.substring(fileName.indexOf("_") + 1);
-
 
         if (isImageFile(originFileName)) {
 
@@ -22,25 +19,6 @@ $(document).ready(function () {
             $img.setAttribute('alt', originFileName);
             $('.uploaded-list').append($img);
         }
-
-        // 이미지가 아니라면 다운로드 링크를 생성
-        else {
-
-            const $a = document.createElement('a');
-            $a.setAttribute('href', '/loadFile?fileName=' + fileName);
-
-            const $img = document.createElement('img');
-            $img.classList.add('img-sizing');
-            $img.setAttribute('src', '/img/hot.png');
-            $img.setAttribute('alt', originFileName);
-
-            $a.append($img);
-            $a.innerHTML += '<span>' + originFileName + '</span>';
-
-            $('.uploaded-list').append($a);
-
-        }
-
 
     }
 
@@ -56,12 +34,9 @@ $(document).ready(function () {
     // 파일 목록 불러오기
     function showFileList() {
 
-        console.log('showfilelist call')
-
         fetch('/board/file/'+bno)
             .then(res => res.json())
             .then(fileNames => {
-                console.log('respons filelist');
                 showFileData(fileNames);
             });
     }

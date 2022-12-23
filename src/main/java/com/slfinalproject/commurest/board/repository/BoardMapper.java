@@ -43,6 +43,11 @@ public interface BoardMapper {
     // 글쓰기 파일 추가
     void addFile(String fileName);
 
+    // 파일업로드 수정하기
+    void updateFile(String fileName,int boardNo);
+    void deleteFile(int boardNo);
+
+
     // 게시물 파일경로 조회
     List<String> fileNames(int bno);
 
@@ -54,10 +59,5 @@ public interface BoardMapper {
 
     // 게시글 추천
     void recommend(int boardNo);
-
-
-
-
-
 
 }

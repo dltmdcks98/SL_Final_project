@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     let seq = 0; // 이미지 번호
     const $fileDiv = document.querySelector('.uploaded-list');
 
@@ -8,6 +9,8 @@ $(document).ready(function () {
         return originFileName.match(pattern);
     }
 
+    // 기존에 저장해둔 이미지
+    callFileList();
 
     // 파일의 확장자에 따른 렌더링 처리
     function checkExtType(fileName) {
@@ -19,15 +22,14 @@ $(document).ready(function () {
         $hiddenInput.setAttribute('type', 'hidden');
         $hiddenInput.setAttribute('name', 'fileNames');
         $hiddenInput.setAttribute('value', fileName);
-
         $hiddenInput.dataset.imgNumber = '' + ++seq;
 
-        $('#write-form').append($hiddenInput);
+        $('#edit-form').append($hiddenInput);
 
         if (isImageFile(originFileName)) {
 
             const $img = document.createElement('div');
-            let url ='/loadFile?fileName=' + fileName;
+            let url = '/loadFile?fileName=' + fileName;
             $img.classList.add('img-sizing');
             $img.setAttribute("style", "background-image:url(" + url + ");background-size:cover;");
             $img.setAttribute('alt', originFileName);
@@ -36,50 +38,54 @@ $(document).ready(function () {
             $('.uploaded-list').append($img);
             deleteImg();
         }
-        else {
-            const $a = document.createElement('a');
-            $a.setAttribute('href', '/loadFile?fileName=' + fileName);
-
-            const $img = document.createElement('img');
-            $img.classList.add('img-sizing');
-            $img.setAttribute('src', '/img/hot_png');
-            $img.setAttribute('alt', originFileName);
-
-            $a.append($img);
-
-            $a.innerHTML += '<span>' + originFileName + '</span>';
-
-            $('.uploaded-list').append($a);
-
-        }
     }
 
+    // 만약에 수정하기에서 이미지를 지우고 수정하기를 누르지 않았으면?
     function deleteImg() {
-        $fileDiv.onclick = e => {
-            e.stopPropagation(); // 이벤트 전파 방지
-            if(e.target.matches('div')) {
-                const delTarget = e.target.closest('.img-sizing');
 
-                const findHidden = document.querySelector('input[data-img-number="' + delTarget.dataset.imgNumber + '"]');
+            $fileDiv.onclick = e => {
+                e.stopPropagation(); // 이벤트 전파 방지
+                if (e.target.matches('div')) {
+                    const delTarget = e.target.closest('.img-sizing');
 
 
-                fetch('/deleteFile?fileName='+ findHidden.value, { method: 'GET' })
-                    .then(res => res.text());
-                delTarget.remove();
-                findHidden.remove();
-            }
-        };
+                    const findHidden = document.querySelector('input[data-img-number="' + delTarget.dataset.imgNumber + '"]');
+
+
+                    fetch('/deleteFile?fileName=' + findHidden.value, {method: 'GET'})
+                        .then(res => res.text());
+                        delTarget.remove();
+                        findHidden.remove();
+
+                }
+            };
     }
 
-
-
+    // uploaded-list에 보여질 이미지들
     function showFileData(fileNames) {
-        document.querySelector('.fileDiv').classList.remove('hidden');
+        if(!$editBtn.click) {
+            return deleteImg();
+        }
         for (let fileName of fileNames) {
             checkExtType(fileName);
+            console.log("fileName : ", fileName);
         }
     }
 
+    // 기존에 저장된 파일 목록 불러오기
+    function callFileList() {
+
+        console.log('저장된 이미지 불러오기');
+        fetch('/board/file/'+bno)
+            .then(res => res.json())
+            .then(fileNames => {
+                showFileData(fileNames);
+            });
+    }
+
+
+
+    // 드래그 앤 드랍 이벤트
     const $dropBox = $('.fileDrop');
 
     $dropBox.on('dragover dragenter', e => {
