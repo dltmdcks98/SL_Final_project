@@ -3,7 +3,6 @@ package com.slfinalproject.commurest.board.controller;
 import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.admin.service.AdminService;
 import com.slfinalproject.commurest.board.domain.Board;
-import com.slfinalproject.commurest.board.repository.BoardMapper;
 import com.slfinalproject.commurest.board.service.BoardService;
 import com.slfinalproject.commurest.recommend.service.RecommendService;
 import com.slfinalproject.commurest.util.paging.Page;
@@ -38,7 +37,7 @@ public class BoardController {
 
     // 게시판 메인 페이지
     @GetMapping("")
-    public String board(@ModelAttribute("s") Search search, Model model, HttpSession session,Admin admin) {
+    public String board(@ModelAttribute("s") Search search, Model model, HttpSession session) {
         Map<String, Object> boardMap = boardService.findAllService(search ,session);
         PageMaker pageMaker = new PageMaker(
                 new Page(search.getPageNum(), search.getAmount())
@@ -92,10 +91,9 @@ public class BoardController {
     // 글 쓰기 처리
 
     @PostMapping("/write")
-    public String write(Board board, HttpServletResponse response, HttpServletRequest request,
-                        RedirectAttributes ra) {
-
-        boolean flag = boardService.insertService(board, response, request);
+    public String write(Board board,  RedirectAttributes ra, HttpSession session) {
+        Admin user = (Admin) session.getAttribute("user");
+        boolean flag = boardService.insertService(board, user.getUser_id());
         if (flag) ra.addFlashAttribute("msg", "reg-success");
         return flag ? "redirect:/board" : "redirect:/";
     }
@@ -105,7 +103,6 @@ public class BoardController {
     public String edit(int boardNo, Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
         Admin user = (Admin) session.getAttribute("user");
         Board board = boardService.selectOne(boardNo, response, request);
-
         model.addAttribute("a", user);
         model.addAttribute("board", board);
         model.addAttribute("bn", board.getBoardNo());
@@ -115,11 +112,11 @@ public class BoardController {
 
     // 수정 처리 요청
     @PostMapping("/edit")
-    public String edit(@RequestParam int boardNo, Board board, Model model,RedirectAttributes ra) {
+    public String edit(@RequestParam int boardNo, Board board) {
         board.setBoardNo(boardNo);
-        log.info("boardNo Edit : "+boardNo);
+        log.info("tagList {}",board.getTagList());
+
         boolean flag = boardService.edit(board, boardNo);
-        if (flag) ra.addFlashAttribute("msg", "reg-success");
         return flag ? "redirect:/board/content/" + board.getBoardNo() : "redirect:/";
     }
 

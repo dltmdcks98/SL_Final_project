@@ -23,9 +23,8 @@ thead th {
 }
 
 tbody tr {
-    border-color: #E7E6E6;
-    border: .1rem;
-    border-style: groove hidden;
+    border-bottom: 1px #191e21 solid;
+
 }
 
 tbody td {
@@ -43,38 +42,14 @@ td {
 
 .title {
     text-align: left;
-}
-
-
-/*index 인기 태그 photos*/
-/*.gird{
-    width: 100%;
-    margin: 0 auto;
-}
-.item {
-    margin-bottom: .9375rem;
-    border-radius: 0.25rem;
-    overflow: hidden;
-
-    float: left;
-}
-.item img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    display: block;
-}*/
-
-.title{
     color: #962411;
+    width: 100%;
 }
+
 .title:hover{
     color: #46209A;
     cursor: pointer;
 }
-/*tbody td:nth-child(2){
-    width: 50%;
-}*/
 
 .block img{
     width: 30%;

@@ -69,4 +69,13 @@ class TagMapperTest {
     void setTagValueByUserId(){
         Assert.isTrue(tagMapper.setTagValueByUserId("이나경",18));
     }
+
+
+    @Test
+    @DisplayName("get TagId")
+    void getTagId(){
+        int bno =tagMapper.getTagId("아이유",1);
+        System.out.println(bno);
+
+    }
 }

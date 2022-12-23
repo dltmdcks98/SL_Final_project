@@ -7,15 +7,24 @@
         margin-bottom: 1rem;
     }
     .ff{
-        align-items: center;
-        display: flex;
-        width: 100%;
+        width: 95%;
         height: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content:space-between;
     }
     .dd{
-        width: 40%;
-        height: 50px;
-        margin-left: 5%;
+        width: 25%;
+        height: 5rem;
+    }
+    @media screen and (max-width: 768px) {
+        .dd{
+            width: auto;
+        }
+    }
+    .dd button{
+        width: 100%;
     }
 
 </style>

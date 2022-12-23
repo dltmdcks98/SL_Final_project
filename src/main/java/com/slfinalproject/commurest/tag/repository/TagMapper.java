@@ -11,6 +11,7 @@ public interface TagMapper {
 
     String getTagValue(int tagId);
     int getBoardNo();
+    int getTagId(String tagValue, int boardNo);
     List<Tag> getTagValueByUserId(int userId);
     String getRandomTagValueByUserId(int userId);
     List<Tag> getTagValueByBoardNo(int boardNo);
@@ -18,9 +19,10 @@ public interface TagMapper {
     boolean setTagValueByBoardNo(String tagValue,int boardNo);
     boolean setTagValueByUserId(String tagValue,int userId);
     List<Tag> getTagByKeyword(String keyword);
-    boolean updateTag(String tagValue, int boardNo);
+    boolean updateTag(String tagValue, int tagId);
     List<TagList> getHotTag();
     List<TagList> getHotTagByUser();
     boolean deleteTag(int userId, String tagValue);
+    boolean deleteTagByBoardNo(int BoardNo);
 
 }

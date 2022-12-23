@@ -49,7 +49,7 @@
                 <div class="uploadDiv">
                     <input type="file" name="files" id="ajax-file">
                 </div>
-                <div class="fileDiv">
+                <div class="fileDiv hidden">
                     <!-- 업로드된 파일의 썸네일을 보여줄 영역 -->
                     <div class="uploaded-list">
 
