@@ -89,9 +89,9 @@ public class BoardService {
     @Transactional
     public boolean edit(Board board, int boardNo) {
 
-//        for(int i=0; i< board.getTagList().size();i++){
-//            tagMapper.updateTag(board.getTagList().get(i),boardNo);
-//        }
+        for(int i=0; i< board.getTagList().size();i++){
+            tagMapper.updateTag(board.getTagList().get(i),boardNo);
+        }
         boardMapper.deleteFile(boardNo);
         List<String> fileNames = board.getFileNames();
         log.info("파일업로드 수정 실행!! - {} ", fileNames);

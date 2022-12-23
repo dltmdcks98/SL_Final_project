@@ -84,6 +84,9 @@ $(document).ready(function () {
 
     // uploaded-list에 보여질 이미지들
     function showFileData(fileNames) {
+        if(!$editBtn.click) {
+            return deleteImg();
+        }
         for (let fileName of fileNames) {
             checkExtType(fileName);
             console.log("fileName : ", fileName);

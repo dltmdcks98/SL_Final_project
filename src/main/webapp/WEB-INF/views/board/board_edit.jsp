@@ -101,7 +101,6 @@
 </div>
 <!-- 게시글 영역 end -->
 
-
 <script>
     const bno = '${board.boardNo}'; // bno = boardNo와 같다!
     const $listBtn = document.getElementById('list-btn');
@@ -117,12 +116,6 @@
         const $form = document.getElementById('edit-form');
         $form.submit();
     };
-
-    document.addEventListener("keydown", evt => {
-        if ((evt.keyCode || evt.which) === 13) {
-            evt.preventDefault();
-        }
-    });
 
 </script>
 
