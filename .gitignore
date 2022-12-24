@@ -1,6 +1,7 @@
 /src/main/resources/db_info.properties
 /src/main/resources/googleApi.properties
 /src/main/resources/awsdb_info.properties
+/src/main/resources/kakaoLoginApi.properties
 /src/main/java/com/slfinalproject/commurest/config/TomcatWebCustomConfig.java
 HELP.md
 .gradle
