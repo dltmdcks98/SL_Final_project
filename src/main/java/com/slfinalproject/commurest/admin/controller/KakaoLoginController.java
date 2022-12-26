@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.admin.domain.KakaoProfile;
 import com.slfinalproject.commurest.admin.domain.OAuthToken;
-import com.slfinalproject.commurest.admin.repository.AdminMapper;
 import com.slfinalproject.commurest.admin.service.AdminService;
 import com.slfinalproject.commurest.board.service.BoardService;
 import com.slfinalproject.commurest.galleryBoard.service.GalleryBoardService;
@@ -15,6 +14,8 @@ import com.slfinalproject.commurest.util.RandomString;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -40,13 +41,11 @@ import javax.servlet.http.HttpSession;
 @RequiredArgsConstructor
 @Slf4j
 @RequestMapping(value = "/login")
+@PropertySource("classpath:kakaoAPI.properties")
 public class KakaoLoginController {
 
     @Autowired
     private AdminService adminService;
-
-    @Autowired
-    private AdminMapper adminMapper;
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -56,7 +55,8 @@ public class KakaoLoginController {
     private final BoardService boardService;
     private final ReplyService replyService;
 
-
+    @Value("${APIKey}")
+    private String API;
     @GetMapping("/kakao")
     public String kakaoOauthRedirect(@RequestParam String code, HttpSession session, Admin admin, HttpServletRequest request) {
 
@@ -72,10 +72,10 @@ public class KakaoLoginController {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("grant_type", "authorization_code");
         // 카카오 RESTAPI 키
-        params.add("client_id", "eac6586e062e9e84f8798226d9ac9be8");
+
+        params.add("client_id", API);
         // 카카오 redirect 주소
-//        params.add("redirect_uri", "http://13.113.19.114/login/kakao"); // 희진 브랜치 전용
-        params.add("redirect_uri", "http://ec2-52-78-107-113.ap-northeast-2.compute.amazonaws.com/login/kakao");
+        params.add("redirect_uri", "http://ec2-15-165-13-76.ap-northeast-2.compute.amazonaws.com/login/kakao");
         params.add("code", code);
 
         HttpEntity<MultiValueMap<String, String>> kakaoTokenRequest =
