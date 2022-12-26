@@ -75,7 +75,7 @@ public class KakaoLoginController {
 
         params.add("client_id", API);
         // 카카오 redirect 주소
-        params.add("redirect_uri", "http://ec2-15-165-13-76.ap-northeast-2.compute.amazonaws.com/login/kakao");
+        params.add("redirect_uri", "http://commurest.shop/login/kakao");
         params.add("code", code);
 
         HttpEntity<MultiValueMap<String, String>> kakaoTokenRequest =

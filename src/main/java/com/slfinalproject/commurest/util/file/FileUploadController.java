@@ -9,7 +9,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,8 +23,6 @@ import java.util.List;
 @RestController
 public class FileUploadController {
 
-    // 업로드 파일 저장 경로
-//    private static final String UPLOAD_PATH = "D:\\sl_stw\\upload";
     private static final String UPLOAD_PATH = "/usr/local/upload";
 
 
