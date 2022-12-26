@@ -16,6 +16,8 @@ create table reply
 );
 
 
+
+
 alter table reply
     change reply reply_no int(10) auto_increment;
 

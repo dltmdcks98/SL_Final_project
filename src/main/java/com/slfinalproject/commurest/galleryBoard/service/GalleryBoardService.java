@@ -73,7 +73,7 @@ public class GalleryBoardService {
     }
 
     public List<String> getImgUrlByHotTag(int startPage, int size){
-        List<TagList> tagList = tagService.getHotTag();
+        List<TagList> tagList = tagService.getHotTagByUser();
         List<String> urlList = new ArrayList<>();
         if(size==9){
             String firstTag ="null";

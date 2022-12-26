@@ -8,8 +8,10 @@ create table user_account
     user_pass  varchar(150)                         not null,
     user_email varchar(100)                         not null,
     reg_date   datetime default current_timestamp() null,
-    user_sex   varchar(1)                           not null
+    user_sex   varchar(1)                           not null,
+    profile    varchar(300)                         null
 );
+
 
 alter table user_account ADD COLUMN file_name varchar(150);
 alter table user_account drop COLUMN file_name;

@@ -58,7 +58,7 @@ public class KakaoLoginController {
     @Value("${APIKey}")
     private String API;
     @GetMapping("/kakao")
-    public String kakaoOauthRedirect(@RequestParam String code, HttpSession session, Admin admin, HttpServletRequest request) {
+    public String kakaoOauthRedirect(@RequestParam String code, HttpSession session,HttpServletRequest request) {
 
         // POST 방식으로 key=value 데이터 요청(카카오쪽으로)
         RestTemplate rt = new RestTemplate();

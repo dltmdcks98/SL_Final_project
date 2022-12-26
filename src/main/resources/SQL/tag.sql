@@ -16,6 +16,8 @@ create table tag
 
 
 
+
+
 INSERT INTO tag(tag_value,user_id) VALUES ('이나경',18);
 
 INSERT INTO board(user_id, title, content) VALUES (11,'test','asdf');
@@ -30,4 +32,4 @@ SELECT tag_value FROM tag WHERE user_id=51 ORDER BY RAND() LIMIT 1;
 
 DROP TABLE tag;
 
-INSERT INTO tag(tag_value) VALUES ('아이유');
+INSERT INTO tag(tag_value) VALUES ('Welcom');

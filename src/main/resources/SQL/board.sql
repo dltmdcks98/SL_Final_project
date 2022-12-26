@@ -8,11 +8,12 @@ create table board
     hit       int(10)  default 0                   null,
     reg_date  datetime default current_timestamp() null,
     recommend int(10)  default 0                   null,
-    image_url varchar(200)                         null,
     constraint fk_board_user_account
         foreign key (user_id) references user_account (user_id)
             on delete cascade
 );
+
+
 alter table user_account ADD COLUMN profile varchar(150);
 
 select *from file_upload;
