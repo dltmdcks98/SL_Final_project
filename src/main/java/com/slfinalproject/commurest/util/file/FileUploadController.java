@@ -95,9 +95,6 @@ public class FileUploadController {
     @GetMapping("/loadFile")
     @ResponseBody
     public ResponseEntity<byte[]> loadFile(String fileName) {
-
-        log.info("filename load - {}", fileName);
-
         File f = new File(UPLOAD_PATH + fileName);
 
         if (!f.exists()) {

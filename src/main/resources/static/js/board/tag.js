@@ -20,7 +20,7 @@ const tagDeleteButton =
     '</span>';
 
 $tagDiv.addEventListener('input',e=>{
-    e.target.setAttribute('size',e.target.value.length+1);
+    e.target.setAttribute('size',e.target.value.length+3);
 });
 
 $tagDiv.addEventListener('keyup',e =>{

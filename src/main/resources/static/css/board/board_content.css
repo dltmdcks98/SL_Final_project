@@ -172,3 +172,6 @@ section .content .file-div ul{
     height: fit-content;
     width: 100%;
 }
+.modal-body .form-group{
+    width: 100%;
+}
