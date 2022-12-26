@@ -13,7 +13,6 @@ import com.slfinalproject.commurest.tag.service.TagService;
 import com.slfinalproject.commurest.util.RandomString;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpEntity;
@@ -44,11 +43,9 @@ import javax.servlet.http.HttpSession;
 @PropertySource("classpath:kakaoAPI.properties")
 public class KakaoLoginController {
 
-    @Autowired
-    private AdminService adminService;
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final AdminService adminService;
+    private final AuthenticationManager authenticationManager;
 
     private final GalleryBoardService galleryBoardService;
     private final TagService tagService;

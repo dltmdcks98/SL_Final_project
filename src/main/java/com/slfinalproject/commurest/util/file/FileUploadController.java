@@ -2,9 +2,9 @@ package com.slfinalproject.commurest.util.file;
 
 import com.slfinalproject.commurest.admin.domain.Admin;
 import com.slfinalproject.commurest.admin.service.AdminService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.io.IOUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -21,13 +21,11 @@ import java.util.List;
 
 @Log4j2
 @RestController
+@RequiredArgsConstructor
 public class FileUploadController {
 
     private static final String UPLOAD_PATH = "/usr/local/upload";
-
-
-        @Autowired
-        private AdminService adminService;
+    private final AdminService adminService;
 
 
     // 파일 업로드 처리를 위한 요청
@@ -76,8 +74,6 @@ public class FileUploadController {
     @PostMapping("/ajax-upload")
     @ResponseBody
     public ResponseEntity<List<String>> ajaxUpload(List<MultipartFile> files) {
-
-        log.info("/ajax-upload POST! - {}", files.get(0).getOriginalFilename());
 
         // 클라이언트에게 전송할 파일경로 리스트
         List<String> fileNames = new ArrayList<>();
