@@ -160,8 +160,7 @@
                         <div class="form-group">
                             <input id="modReplyId" type="hidden">
                             <label for="modReplyText" hidden>댓글내용</label>
-                            <textarea id="modReplyText" class="form-control" placeholder="수정할 댓글 내용을 입력하세요."
-                                      rows="3"></textarea>
+                            <textarea id="modReplyText" class="form-control" placeholder="수정할 댓글 내용을 입력하세요." rows="3"></textarea>
                         </div>
                     </div>
 

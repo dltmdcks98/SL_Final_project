@@ -24,7 +24,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FileUploadController {
 
-    private static final String UPLOAD_PATH = "/usr/local/upload";
+//    private static final String UPLOAD_PATH = "/usr/local/upload";
+    private static final String UPLOAD_PATH="D:\\upload";
     private final AdminService adminService;
 
 

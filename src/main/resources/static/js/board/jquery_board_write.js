@@ -1,6 +1,7 @@
 $(document).ready(function () {
     let seq = 0; // 이미지 번호
     const $fileDiv = document.querySelector('.uploaded-list');
+    const $fileInput = $('#ajax-file');
 
     function isImageFile(originFileName) {
         //정규표현식
@@ -67,13 +68,7 @@ $(document).ready(function () {
             if(e.target.matches('div')) {
                 const delTarget = e.target.closest('.img-sizing');
 
-                // console.log("deleteImg Target : ", delTarget);
-                // console.log("deleteImg Target : ", delTarget.dataset.imgNumber);
-
                 const findHidden = document.querySelector('input[data-img-number="' + delTarget.dataset.imgNumber + '"]');
-                // console.log('findHidden:', findHidden);
-                // console.log('findHidden:', findHidden.value);
-
                 fetch('/deleteFile?fileName='+ findHidden.value, { method: 'GET' })
                     .then(res => res.text())
                     .then(satus=>{
@@ -92,6 +87,32 @@ $(document).ready(function () {
         for (let fileName of fileNames) {
             checkExtType(fileName);
         }
+    }
+
+    function upload(files){
+
+        $fileInput.prop('files', files);
+
+
+        //  파일 데이터를 비동기 전송
+        const formData = new FormData();
+
+        for (let file of $fileInput[0].files) {
+            formData.append('files', file);
+        }
+
+        // 비동기 요청 전송
+        const reqInfo = {
+            method: 'POST',
+            body: formData
+        };
+        fetch('/ajax-upload', reqInfo)
+            .then(res => {
+                return res.json();
+            })
+            .then(fileNames => {
+                showFileData(fileNames);
+            });
     }
 
     const $dropBox = $('.fileDrop');
@@ -113,31 +134,13 @@ $(document).ready(function () {
     $dropBox.on('drop', e => {
         e.preventDefault();
         const files = e.originalEvent.dataTransfer.files;
-        const $fileInput = $('#ajax-file');
-        $fileInput.prop('files', files);
-
-
-        //  파일 데이터를 비동기 전송
-        const formData = new FormData();
-
-        for (let file of $fileInput[0].files) {
-            formData.append('files', file);
-        }
-
-        // 비동기 요청 전송
-        const reqInfo = {
-            method: 'POST',
-            body: formData
-        };
-        fetch('/ajax-upload', reqInfo)
-            .then(res => {
-                console.log("status : ",res.status);
-                return res.json();
-            })
-            .then(fileNames => {
-                console.log(fileNames);
-                showFileData(fileNames);
-            });
+        upload(files);
     });
+
+    $fileInput.change(e=>{
+        const files = e.target.files;
+        upload(files);
+    });
+
 });
 
