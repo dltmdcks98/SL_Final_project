@@ -19,6 +19,7 @@
             const $img = document.createElement('img');
             $img.setAttribute('src', '/loadFile?fileName=' + fileName);
             $img.setAttribute('alt', originFileName);
+            $('.uploadDiv').css('display','block');
             $('.uploadDiv').append($img);
             $('.uploadDiv').addClass('img-sizing');
             $('.fileDrop').remove();
@@ -63,7 +64,6 @@
             .then(fileNames => {
                 if (confirm("프로필을 변경하시겠어요?")) {
                     checkExtType(fileNames);
-
                 }
             })
             .catch(error=>{
