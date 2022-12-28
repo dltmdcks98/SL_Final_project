@@ -47,7 +47,7 @@
                     <label for="ajax-file">업로드할 이미지를 올려주세요</label>
                 </div>
                 <div class="uploadDiv">
-                    <input type="file" name="files" id="ajax-file">
+                    <input type="file" name="files" id="ajax-file" multiple>
                 </div>
                 <div class="fileDiv hidden">
                     <!-- 업로드된 파일의 썸네일을 보여줄 영역 -->
