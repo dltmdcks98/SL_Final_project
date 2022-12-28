@@ -75,6 +75,7 @@ public class KakaoLoginController {
         params.add("client_id", "eac6586e062e9e84f8798226d9ac9be8");
         // 카카오 redirect 주소
 //        params.add("redirect_uri", "http://13.113.19.114/login/kakao"); // 희진 브랜치 전용
+//        params.add("redirect_uri", "http://buzesil.shop/login/kakao"); // 내꺼!
         params.add("redirect_uri", "http://ec2-52-78-107-113.ap-northeast-2.compute.amazonaws.com/login/kakao");
         params.add("code", code);
 

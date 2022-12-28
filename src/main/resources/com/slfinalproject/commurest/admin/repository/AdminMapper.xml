@@ -13,8 +13,6 @@
     </resultMap>
 
 
-
-
     <!-- profile 가져오기 -->
     <select id="getProfile" resultType="string">
         SELECT profile
