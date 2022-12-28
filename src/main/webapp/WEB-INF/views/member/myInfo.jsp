@@ -91,11 +91,11 @@
                             </c:if>
 
                             <div class="fileDrop">
-                                <label for="profile-file">프로필로 설정할 이미지를 넣어주세요</label>
+                                <label for="profileInputBoxNotKaKao">프로필로 설정할 이미지를 넣어주세요</label>
                             </div>
 
                             <div class="uploadDiv">
-                                <input type="file" name="files" id="profile-file" accept=".jpg,.png" disabled>
+                                <input type="file" name="files" class="profile-inputBox" id="profileInputBoxNotKaKao" accept=".jpg,.png">
                             </div>
                         </div>
 
@@ -138,11 +138,11 @@
                             </c:if>
 
                             <div class="fileDrop">
-                                <label for="profile-file">프로필로 설정할 이미지를 넣어주세요</label>
+                                <label for="profileInputBoxKaKao">프로필로 설정할 이미지를 넣어주세요</label>
                             </div>
 
                             <div class="uploadDiv">
-                                <input type="file" name="files" id="profile-file" accept=".jpg,.png" disabled>
+                                <input type="file" name="files" class="profile-inputBox" id="profileInputBoxKaKao" accept=".jpg,.png">
                             </div>
                         </div>
 

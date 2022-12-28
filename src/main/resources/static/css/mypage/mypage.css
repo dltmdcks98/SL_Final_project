@@ -121,9 +121,6 @@
     font-size: 1.5em;
 }
 .uploadDiv {
-
-}
-.uploadDiv input{
     display: none;
 }
 .show{
@@ -140,23 +137,21 @@
     overflow: hidden;
 }
 .fileDrop label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 14px;
+    font-size: 2rem;
     font-weight: 400;
 }
 .profileContain{
-    display: flex;
-    margin: 1rem 0;
+display: flex;
+margin: 1rem 0;
 }
 .fileDrop{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 85%;
-    background-color: #F2F2F2;
-    border-radius: 2rem;
-    margin-left: 1rem;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 85%;
+background-color: #F2F2F2;
+border-radius: 2rem;
+margin-left: 1rem;
 
 }
 

@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <script>
-    const $fileInput = $('#profile-file');
+
     function isImageFile(originFileName) {
         //정규표현식
         const pattern = /jpg$|gif$|png$/i;
@@ -28,6 +28,7 @@
     }
 
     const $dropBox = $('.fileDrop');
+    const $fileInput = $('.profile-inputBox');
 
     $dropBox.on('dragover dragenter', e => {
         e.preventDefault();
@@ -43,8 +44,6 @@
 
     function upload(files){
         $fileInput.prop('files', files);
-
-
         // 파일 데이터를 비동기 전송
         const formData = new FormData();
 
@@ -64,6 +63,7 @@
             .then(fileNames => {
                 if (confirm("프로필을 변경하시겠어요?")) {
                     checkExtType(fileNames);
+
                 }
             })
             .catch(error=>{

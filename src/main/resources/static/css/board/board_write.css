@@ -14,7 +14,6 @@ body {
     }
 }
 .fileDrop {
-
     border: 1px dashed gray;
     display: flex;
     justify-content: center;
