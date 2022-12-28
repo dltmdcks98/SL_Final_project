@@ -20,8 +20,8 @@ body {
     justify-content: center;
     align-items: center;
 }
-.fileDrop span{
-    font-size: 3rem;
+.fileDrop label{
+    font-size: 2rem;
 }
 .uploadDiv {
     display: none;

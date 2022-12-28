@@ -139,7 +139,7 @@
     object-fit: cover;
     overflow: hidden;
 }
-.profileLabel {
+.fileDrop label {
     display: block;
     margin-bottom: 5px;
     font-size: 14px;

@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <script>
+    const $fileInput = $('#profile-file');
     function isImageFile(originFileName) {
         //정규표현식
         const pattern = /jpg$|gif$|png$/i;
@@ -40,11 +41,7 @@
             .css('background', 'transparent');
     });
 
-    $dropBox.on('drop', e => {
-        e.preventDefault();
-        const files = e.originalEvent.dataTransfer.files;
-
-        const $fileInput = $('#profile-file');
+    function upload(files){
         $fileInput.prop('files', files);
 
 
@@ -73,6 +70,16 @@
                 alert("프로필 변경에 실패했습니다.");
                 console.log(error);
             });
+    }
+    $dropBox.on('drop', e => {
+        e.preventDefault();
+        const files = e.originalEvent.dataTransfer.files;
+        upload(files);
+    });
+
+    $fileInput.change(e=>{
+        const files = e.target.files;
+        upload(files);
     });
 
 </script>

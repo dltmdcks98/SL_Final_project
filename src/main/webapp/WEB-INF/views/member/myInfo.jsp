@@ -91,7 +91,7 @@
                             </c:if>
 
                             <div class="fileDrop">
-                                <span class="profileLabel">프로필로 설정할 이미지를 넣어주세요</span>
+                                <label for="profile-file">프로필로 설정할 이미지를 넣어주세요</label>
                             </div>
 
                             <div class="uploadDiv">
@@ -138,7 +138,7 @@
                             </c:if>
 
                             <div class="fileDrop">
-                                <span class="profileLabel">프로필로 설정할 이미지를 넣어주세요</span>
+                                <label for="profile-file">프로필로 설정할 이미지를 넣어주세요</label>
                             </div>
 
                             <div class="uploadDiv">
