@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <script>
+    const $dropBox = $('.fileDrop');
+    const $fileInput = $('.profile-inputBox');
 
     function isImageFile(originFileName) {
         //정규표현식
@@ -20,6 +22,7 @@
             $img.setAttribute('src', '/loadFile?fileName=' + fileName);
             $img.setAttribute('alt', originFileName);
             $('.uploadDiv').css('display','block');
+            $fileInput.css('display','none');
             $('.uploadDiv').append($img);
             $('.uploadDiv').addClass('img-sizing');
             $('.fileDrop').remove();
@@ -28,8 +31,7 @@
         }
     }
 
-    const $dropBox = $('.fileDrop');
-    const $fileInput = $('.profile-inputBox');
+
 
     $dropBox.on('dragover dragenter', e => {
         e.preventDefault();
